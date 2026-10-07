@@ -2,6 +2,8 @@
 
 Kho lưu trữ tài liệu đặc tả và kế hoạch thực thi của dự án UniSupport (Aurora University).
 
+---
+
 ## 1. Kế hoạch Tổng thể và Tiến độ Dự án (Master Plan & Schedule)
 
 Toàn bộ lộ trình 22 tuần (11 Sprints), phân bổ nhân sự và luồng phụ thuộc công việc của dự án UniSupport được thiết lập và quản lý trực tiếp trên GitHub Projects:
@@ -14,7 +16,29 @@ Toàn bộ lộ trình 22 tuần (11 Sprints), phân bổ nhân sự và luồng
 
 ---
 
-## 2. Hồ sơ Yêu cầu Sản phẩm (PRD - Product Requirements Document)
+## 2. Tổng quan Sản phẩm (Product Overview)
+
+Tài liệu định nghĩa bài toán, mục tiêu, chân dung người dùng và giới hạn phạm vi dự án:
+
+* [Tổng quan Sản phẩm (Product Overview)](./docs/01-product/product-overview.md)
+* [Phát biểu Bài toán (Problem Statement)](./docs/01-product/problem-statement.md)
+* [Mục tiêu Dự án (Goals & Objectives)](./docs/01-product/goals-and-non-goals.md)
+* [Chân dung Người dùng (Actors & Roles)](./docs/01-product/actors-and-roles.md)
+* [Phạm vi Sản phẩm & Giả định (Product Scope)](./docs/01-product/product-scope.md)
+
+---
+
+## 3. Quy tắc Nghiệp vụ Cốt lõi (Domain Rules)
+
+Tài liệu định nghĩa thuật ngữ, quy tắc hệ thống (SLA) và vòng đời dữ liệu:
+
+* [Từ điển Thuật ngữ (Terminology)](./docs/02-domain/terminology.md)
+* [Quy tắc Nghiệp vụ (Business Rules & SLA)](./docs/02-domain/business-rules.md)
+* [Vòng đời Trạng thái (State Transition)](./docs/02-domain/state-transition.md)
+
+---
+
+## 4. Hồ sơ Yêu cầu Sản phẩm (PRD - Modules)
 
 Tài liệu Đặc tả Yêu cầu Sản phẩm được phân rã theo cấu trúc module chuẩn Agile. Vui lòng nhấp vào các liên kết dưới đây để xem chi tiết đặc tả (FR, NFR, Use Cases) của từng phân hệ:
 
