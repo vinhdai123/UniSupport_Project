@@ -5,7 +5,7 @@
 > **Mã phân hệ:** MOD-ADMIN (Module C - Operations & Administration)  
 > **Phiên bản:** v1.0 | Ngày cập nhật: 03/10/2026  
 > **Tài liệu cha:** [UNISUPPORT_PRD.md](file:///c:/Users/Admin/Documents/New%20Folder/UniSupport_Project/docs/prd/UNISUPPORT_PRD.md)  
-> **Giai đoạn triển khai chính:** Phase P2 (Tuần 3–5) & Phase P3 (Tuần 6–8)
+> **Giai đoạn triển khai chính:** Phase P5 (Tuần 13–15)
 
 ---
 
