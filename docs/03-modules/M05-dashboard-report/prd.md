@@ -1,4 +1,4 @@
-# MODULE M04: DASHBOARD & REPORT
+# MODULE M05: DASHBOARD & REPORT
 
 ## Feature: FR-04-1 - Metric & Báo cáo hiệu suất
 
