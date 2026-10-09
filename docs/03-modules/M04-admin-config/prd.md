@@ -1,4 +1,4 @@
-# MODULE M03: ADMIN CONFIG (QUẢN TRỊ & CẤU HÌNH)
+# MODULE M04: ADMIN CONFIG (QUẢN TRỊ & CẤU HÌNH)
 
 ## Feature: FR-03-1 - Quản lý Category & Routing
 
