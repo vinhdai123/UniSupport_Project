@@ -1,4 +1,4 @@
-# MODULE M02: STAFF DESK (KHÔNG GIAN CÁN BỘ)
+# MODULE M03: STAFF DESK (KHÔNG GIAN CÁN BỘ)
 
 ## Feature: FR-02-1 - Hàng đợi xử lý Ticket (Staff Queue)
 
