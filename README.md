@@ -40,12 +40,12 @@ Tài liệu định nghĩa thuật ngữ, quy tắc hệ thống (SLA) và vòng
 
 ## 4. Hồ sơ Yêu cầu Sản phẩm (PRD - Modules)
 
-Tài liệu Đặc tả Yêu cầu Sản phẩm được phân rã theo cấu trúc module chuẩn Agile. Vui lòng nhấp vào các liên kết dưới đây để xem chi tiết đặc tả (FR, NFR, Use Cases) của từng phân hệ:
+Tài liệu Đặc tả Yêu cầu Sản phẩm được phân rã theo cấu trúc module chuẩn Agile. Theo nguyên tắc thiết kế hệ thống, phân hệ Xác thực (User Auth) được định nghĩa đầu tiên làm nền tảng, tiếp nối bằng các phân hệ nghiệp vụ lõi:
 
 | Mã Module | Tên Phân hệ Nghiệp vụ | Giai đoạn | Tài liệu Đặc tả (PRD) |
 | :--- | :--- | :--- | :--- |
-| **MOD-STU** | Phân hệ Sinh viên (Student Portal) | Phase P4 | [Xem PRD Phân hệ Sinh viên](./docs/03-modules/M01-student-portal/prd.md) |
-| **MOD-STAFF**| Phân hệ Cán bộ (Staff Service Desk)| Phase P4 | [Xem PRD Phân hệ Cán bộ](./docs/03-modules/M02-staff-desk/prd.md) |
-| **MOD-ADMIN**| Phân hệ Quản lý, Cấu hình & SLA | Phase P5 | [Xem PRD Phân hệ Quản trị](./docs/03-modules/M03-admin-config/prd.md) |
-| **MOD-REP** | Phân hệ Dashboard & Báo cáo | Phase P6 | [Xem PRD Phân hệ Báo cáo](./docs/03-modules/M04-dashboard-report/prd.md) |
-| **MOD-SEC** | Phân hệ Bảo mật, Xác thực & UX | P2, P3, P7| [Xem PRD Phân hệ Bảo mật](./docs/03-modules/M05-security-auth%20&%20UX/prd.md) |
+| **MOD-AUTH** | Phân hệ Xác thực & Phân quyền (Auth & RBAC) | Phase P3 | [Xem PRD Phân hệ Xác thực](./docs/03-modules/M01-auth-rbac/prd.md) |
+| **MOD-STU** | Phân hệ Sinh viên (Student Portal) | Phase P4 | [Xem PRD Phân hệ Sinh viên](./docs/03-modules/M02-student-portal/prd.md) |
+| **MOD-STAFF**| Phân hệ Cán bộ (Staff Service Desk)| Phase P4 | [Xem PRD Phân hệ Cán bộ](./docs/03-modules/M03-staff-desk/prd.md) |
+| **MOD-ADMIN**| Phân hệ Quản lý, Cấu hình & SLA | Phase P5 | [Xem PRD Phân hệ Quản trị](./docs/03-modules/M04-admin-config/prd.md) |
+| **MOD-REP** | Phân hệ Dashboard & Báo cáo | Phase P6 | [Xem PRD Phân hệ Báo cáo](./docs/03-modules/M05-dashboard-report/prd.md) |
