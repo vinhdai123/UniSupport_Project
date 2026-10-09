@@ -1,4 +1,4 @@
-# MODULE M05: SECURITY, AUTHENTICATION & RBAC
+# MODULE M01: SECURITY, AUTHENTICATION & RBAC
 
 ## Feature: FR-05-1 - Đăng nhập hệ thống (User Login)
 
