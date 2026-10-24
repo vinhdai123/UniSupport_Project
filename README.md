@@ -1,152 +1,142 @@
-# UNISUPPORT PROJECT
-## Student Support Management System – Aurora University
+# UniSupport — Student Support Management System
 
-Kho lưu trữ tài liệu phân tích, đặc tả yêu cầu và kế hoạch triển khai
-của dự án **UniSupport – Student Support Management System**.
+> **Dự án mô phỏng cho môn Software Project Management.** Repository này dùng để lập kế hoạch, đặc tả yêu cầu và theo dõi việc thực hiện một dự án phần mềm giả định cho Aurora University. Các chức năng, mốc phát hành và hoạt động bàn giao bên dưới là **phạm vi/kế hoạch của tình huống học tập**, không phải tuyên bố rằng một hệ thống Production đã được xây dựng hoặc vận hành. Dự án không yêu cầu có đầy đủ mã nguồn.
 
-UniSupport là hệ thống Web hỗ trợ Aurora University quản lý tập trung
-các yêu cầu hỗ trợ sinh viên, bao gồm quá trình tiếp nhận, phân loại,
-phân luồng, xử lý, theo dõi, quản lý thời hạn và báo cáo.
+## Mục lục
 
----
+- [1. Tổng quan](#1-tổng-quan)
+- [2. Nguồn chuẩn và cách đọc repository](#2-nguồn-chuẩn-và-cách-đọc-repository)
+- [3. Phạm vi sản phẩm giả định](#3-phạm-vi-sản-phẩm-giả-định)
+- [4. Quy trình xử lý Ticket](#4-quy-trình-xử-lý-ticket)
+- [5. Kế hoạch 23 tuần](#5-kế-hoạch-23-tuần)
+- [6. GitHub Milestones và Master Schedule](#6-github-milestones-và-master-schedule)
+- [7. Quy trình quản lý công việc](#7-quy-trình-quản-lý-công-việc)
+- [8. Tiêu chí đánh giá và các điểm cần xác nhận](#8-tiêu-chí-đánh-giá-và-các-điểm-cần-xác-nhận)
 
-# 1. Project Planning & Schedule
+## 1. Tổng quan
 
-Kế hoạch triển khai tổng thể của UniSupport được quản lý trên
-**GitHub Projects**.
+Trong tình huống giả định, Aurora University cần một cổng Web tập trung để sinh viên gửi yêu cầu hỗ trợ, theo dõi tiến độ và nhận kết quả. Các phòng ban tiếp nhận, phân luồng, xử lý Ticket; quản lý theo dõi thời hạn, khối lượng công việc và báo cáo. Quy mô đặt ra trong Proposal là khoảng **3.000 sinh viên**.
 
-Theo Proposal, tổng thời gian triển khai dự kiến là **23 tuần**
-với các Phase từ `P1` đến `P9`.
+Mục tiêu của bài làm là thể hiện cách quản lý một dự án phần mềm từ xác định yêu cầu đến bàn giao: xác lập phạm vi, chia công việc, ước lượng lịch 23 tuần, quản lý phụ thuộc, theo dõi tiến độ, kiểm soát thay đổi và mô tả tiêu chí nghiệm thu. **Issue hoặc milestone được lập không có nghĩa là chức năng đã được lập trình xong.** Một issue chỉ được đánh dấu Done/Close khi có bằng chứng cho đầu ra đã định nghĩa trong issue đó, chẳng hạn tài liệu đã được review, prototype đã được duyệt hoặc phần việc mô phỏng đã hoàn tất.
 
-| View | Mục đích | Link |
-|---|---|---|
-| **Monthly Roadmap** | Theo dõi tiến độ công việc theo thời gian chi tiết | [Xem Monthly Roadmap](https://github.com/users/Huybao312/projects/2/views/1) |
-| **Quarterly Roadmap** | Theo dõi các Phase chính của dự án | [Xem Quarterly Roadmap](https://github.com/users/Huybao312/projects/2/views/2) |
-| **Master Plan Table** | Theo dõi công việc, thời lượng, Sprint, dependency và tiến độ | [Xem Master Plan](https://github.com/users/Huybao312/projects/2/views/4) |
+### Các bên liên quan và vai trò trong hệ thống giả định
 
-> GitHub Projects là nơi theo dõi tiến độ thực thi.
->
-> Proposal là nguồn chuẩn cho Timeline, Milestone và phạm vi cam kết với khách hàng.
+| Vai trò | Nhu cầu và trách nhiệm dự kiến |
+| --- | --- |
+| **Student — Sinh viên** | Tạo, theo dõi và bổ sung Ticket; nhận phản hồi, tra cứu FAQ, đánh giá kết quả. |
+| **Staff — Cán bộ xử lý** | Tiếp nhận Ticket trong phạm vi được giao, yêu cầu bổ sung, xử lý, ghi chú nội bộ và trả kết quả. |
+| **Manager — Quản lý** | Theo dõi tiến độ, Ticket tồn đọng, thời hạn và khối lượng công việc; phân công lại khi cần. |
+| **Administrator — Quản trị viên** | Quản lý tài khoản, vai trò, danh mục, phòng ban, quy tắc phân luồng, FAQ và mẫu phản hồi. |
 
----
+Theo quyết định nghiệp vụ của bài làm, **trường cấp tài khoản cho sinh viên và cán bộ**. Người dùng không tự đăng ký công khai. Sản phẩm giả định có bốn vai trò và phải kiểm tra quyền theo cả chức năng lẫn phạm vi dữ liệu.
 
-# 2. Product Documentation
+## 2. Nguồn chuẩn và cách đọc repository
 
-Thư mục `docs/01-product/` chứa các tài liệu mô tả sản phẩm
-ở mức tổng quan.
+**`Software Project Management.md` (Proposal) là nguồn chuẩn cao nhất** cho phạm vi, lịch 23 tuần và các mốc M1–M4. Hai tài liệu `Software Project Management (1).md` (PRD) và `Software Project Management (2).md` (Team Charter) làm rõ yêu cầu và cách phối hợp. Khi có nội dung mâu thuẫn, ưu tiên Proposal; các quyết định cụ thể phát sinh sau đó được ghi trong issue và milestone của repository này.
 
-| Tài liệu | Nội dung |
-|---|---|
-| [Product Overview](./docs/01-product/product-overview.md) | Tổng quan sản phẩm, giá trị và Core Capabilities |
-| [Problem Statement](./docs/01-product/problem-statement.md) | Bài toán và vấn đề UniSupport cần giải quyết |
-| [Goals & Non-Goals](./docs/01-product/goals-and-non-goals.md) | Mục tiêu và các nội dung không thuộc mục tiêu dự án |
-| [Actors & Roles](./docs/01-product/actors-and-roles.md) | 04 Role và phạm vi trách nhiệm |
-| [Product Scope](./docs/01-product/product-scope.md) | In-Scope, Out-of-Scope, Assumptions và Scope Change Control |
+| Nơi theo dõi | Nội dung | Cách sử dụng |
+| --- | --- | --- |
+| **README này** | Bối cảnh, phạm vi, lịch và quy ước chung. | Bắt đầu đọc tại đây. |
+| [GitHub Issues](https://github.com/vinhdai123/UniSupport_Project/issues) | Feature, task, sub-issue, tiêu chí hoàn thành và bằng chứng. | Xem đầu ra cần làm và trạng thái từng việc. |
+| [GitHub Milestones](https://github.com/vinhdai123/UniSupport_Project/milestones) | Các nhóm kết quả cần đạt theo hạn. | Xem phạm vi và tiến độ của từng mốc. |
+| **Master Schedule** trong [tab Projects của repository](https://github.com/vinhdai123/UniSupport_Project/projects) | Lịch, trạng thái và phụ thuộc công việc. | Theo dõi tiến độ tổng hợp của **UniSupport_Project**. |
+| `docs/` trong lịch sử repository | Tài liệu sản phẩm, quy tắc nghiệp vụ và PRD theo module. | Đọc khi cần chi tiết; đối chiếu với Proposal nếu có khác biệt. |
 
-### Source of Truth
+Các tệp Proposal/PRD/Team Charter là tài liệu đầu vào của bài làm; không cần mã nguồn đầy đủ để đọc kế hoạch. Mã giao diện hoặc dữ liệu giả lập, nếu có trong một bản làm việc, chỉ dùng để minh họa ý tưởng và **không tự chứng minh các chức năng trong phạm vi đã hoàn thành**.
 
-`product-scope.md` là tài liệu tham chiếu chính đối với:
+## 3. Phạm vi sản phẩm giả định
 
-- In-Scope.
-- Out-of-Scope.
-- Assumptions.
-- Scope Change Control.
-- Scope Acceptance.
+### Trong phạm vi
 
-Các tài liệu Product khác chỉ tóm tắt hoặc tham chiếu đến phạm vi này
-để tránh lặp Requirement.
+| Nhóm | Yêu cầu dự kiến |
+| --- | --- |
+| **Tài khoản và phân quyền** | Tài khoản do trường cấp; đăng nhập, đặt lại mật khẩu; bốn vai trò; giới hạn quyền truy cập chức năng, Ticket và tệp đính kèm. |
+| **Student Portal** | Tạo Ticket theo danh mục, đính kèm tài liệu/hình ảnh, nhận mã Ticket, xem trạng thái và lịch sử, trao đổi/bổ sung thông tin, mở lại trong thời hạn quy định, tra cứu FAQ, đánh giá hài lòng. |
+| **Staff Desk** | Hàng đợi tập trung, phân luồng theo danh mục/phòng ban, phân công hoặc chuyển cấp, tìm/lọc/sắp xếp, đặt ưu tiên, yêu cầu bổ sung, ghi chú nội bộ, phản hồi chính thức, mẫu phản hồi, lưu lịch sử thao tác. |
+| **Quản lý và quản trị** | Theo dõi workload, Ticket tồn đọng hoặc sắp/quá hạn; phân công lại; cấu hình thời hạn, danh mục, phòng ban, ưu tiên, routing rule, tài khoản, FAQ và mẫu phản hồi. |
+| **Thông báo** | Sinh viên xem cập nhật trên hệ thống và nhận thông báo **trong hệ thống và qua Email** khi Ticket có thay đổi quan trọng. |
+| **Dashboard, báo cáo, xuất dữ liệu** | Thống kê trạng thái, tỷ lệ hoàn thành, thời gian xử lý, hiệu suất, nhóm vấn đề, xu hướng, mức hài lòng; xuất báo cáo CSV theo quyền. |
+| **Chất lượng và bảo mật** | Ghi nhận thao tác quan trọng, kiểm tra RBAC và quyền đối với dữ liệu/tệp, giao diện responsive, hỗ trợ tiếng Việt và tiếng Anh. |
 
----
+### Ngoài phạm vi
 
-# 3. Domain & Business Rules
+Dự án giả định không bao gồm thay đổi quy trình nghiệp vụ nội bộ của trường, cung cấp/nâng cấp hạ tầng, tích hợp SSO hoặc các hệ thống bên thứ ba chưa được thống nhất, chuyển đổi toàn bộ dữ liệu lịch sử, xử lý nghiệp vụ thay cho phòng ban, ứng dụng iOS/Android riêng, AI/chatbot hoặc vận hành dài hạn sau bàn giao ngoài thời gian bảo hành quy định. Yêu cầu phát sinh phải đi qua **Change Request** để đánh giá tác động đến phạm vi, tiến độ, chi phí và nguồn lực.
 
-Thư mục `docs/02-domain/` định nghĩa các khái niệm và quy tắc nghiệp vụ
-được sử dụng chung giữa nhiều Module.
+## 4. Quy trình xử lý Ticket
 
-| Tài liệu | Nội dung |
-|---|---|
-| [Terminology](./docs/02-domain/terminology.md) | Định nghĩa thuật ngữ sử dụng trong hệ thống |
-| [Business Rules](./docs/02-domain/business-rules.md) | Các quy tắc nghiệp vụ dùng chung |
-| [State Transition](./docs/02-domain/state-transition.md) | Trạng thái và vòng đời Ticket |
+Proposal dùng bốn trạng thái nghiệp vụ chính: **Mới tạo → Đang xử lý → Cần bổ sung → Hoàn thành**. Việc bổ sung thông tin đưa Ticket trở lại xử lý; sinh viên có thể mở lại Ticket đã hoàn thành trong thời hạn được thống nhất.
 
-Các giá trị nghiệp vụ chưa được Aurora University xác nhận phải được đánh dấu:
+```mermaid
+flowchart LR
+    A["Mới tạo"] -->|"Tiếp nhận"| B["Đang xử lý"]
+    B -->|"Yêu cầu bổ sung"| C["Cần bổ sung"]
+    C -->|"Sinh viên bổ sung"| B
+    B -->|"Trả kết quả"| D["Hoàn thành"]
+    D -->|"Mở lại trong thời hạn quy định"| B
+```
 
-`TBD – Pending Confirmation`
+Luồng giả định yêu cầu ghi lại người thực hiện, thời điểm, thay đổi trạng thái và trao đổi. Sinh viên chỉ xem dữ liệu của mình; ghi chú nội bộ chỉ dành cho người có quyền. Các quy tắc chi tiết như thời hạn xử lý, thời hạn mở lại và giới hạn tệp phải được xác nhận trước khi trở thành tiêu chí nghiệm thu.
 
-Business Rules không nên định nghĩa lại Functional Requirement của từng Module.
+## 5. Kế hoạch 23 tuần
 
----
+Lịch bài làm đã chốt từ **05/10/2026** đến hết tuần 23, **12/03/2027**. Bảng P1–P9 dưới đây tóm tắt Proposal; các tuần là khung quản lý, không bắt buộc mọi công việc diễn ra tuần tự.
 
-# 4. Product Requirements – Modules
+| Giai đoạn | Tuần | Nội dung chính |
+| --- | --- | --- |
+| **P1 — Khởi động và yêu cầu** | 1–2 | Khởi động, thu thập/xác nhận yêu cầu, xác định phạm vi và quy trình Ticket. |
+| **P2 — Phân tích và thiết kế** | 3–5 | Kiến trúc, dữ liệu, UI/UX prototype; chốt phạm vi. |
+| **P3 — Nền tảng và xác thực** | 6–8 | Giao diện dùng chung, đăng nhập, đặt lại mật khẩu, quyền cơ bản cho bốn vai trò. |
+| **P4 — Luồng Ticket cốt lõi** | 9–12 | Tạo/theo dõi/trao đổi, phân luồng, phân công, ưu tiên, thông báo, ghi chú, lịch sử. |
+| **P5 — Quản lý và quản trị** | 13–15 | Workload, thời hạn, cấu hình danh mục/phòng ban/tài khoản, routing rule, FAQ, mẫu phản hồi. |
+| **P6 — Dashboard và trải nghiệm** | 16–18 | Dashboard, báo cáo, đánh giá hài lòng, CSV, responsive và đa ngôn ngữ. |
+| **P7 — Tổng hợp tích hợp và chất lượng** | 19–20 | Rà soát toàn hệ thống, quyền truy cập, audit log, lỗi và kết quả kiểm thử đã tích lũy. |
+| **P8 — Chuẩn bị phát hành** | 21–22 | Tài liệu, đào tạo, demo tổng thể và xác nhận sẵn sàng Go-live. |
+| **P9 — Go-live và bàn giao** | 23 | Kịch bản triển khai, hướng dẫn và bàn giao theo Proposal. |
 
-Functional Requirements của UniSupport được phân chia theo Module.
+**Tích hợp, kiểm thử và rà soát bảo mật diễn ra song hành với các hạng mục P3–P6.** P7 dùng để tổng hợp và xử lý những vấn đề còn lại, không phải thời điểm đầu tiên mới bắt đầu kiểm thử. Các hoạt động triển khai và bàn giao trong bảng là kế hoạch của tình huống mô phỏng.
 
-Authentication & Authorization được định nghĩa trước
-vì đây là nền tảng kiểm soát quyền truy cập cho các Module nghiệp vụ.
+### Mốc tổng thể của Proposal
 
-| Module | Tên Module | Phase | PRD |
-|---|---|---|---|
-| **M01** | Authentication & RBAC | P3 | [M01 PRD](./docs/03-modules/M01-auth-rbac/prd.md) |
-| **M02** | Student Portal | P4 | [M02 PRD](./docs/03-modules/M02-student-portal/prd.md) |
-| **M03** | Staff Desk | P4 | [M03 PRD](./docs/03-modules/M03-staff-desk/prd.md) |
-| **M04** | Management & Administration | P5 | [M04 PRD](./docs/03-modules/M04-management-admin/prd.md) |
-| **M05** | Dashboard & Reporting | P6 | [M05 PRD](./docs/03-modules/M05-dashboard-report/prd.md) |
+| Mốc | Thời điểm | Kết quả dự kiến |
+| --- | --- | --- |
+| **M1** | Tuần 5 | Prototype và phạm vi được chốt. |
+| **M2** | Tuần 19–20 | Hoàn tất tích hợp và kiểm thử hệ thống theo phạm vi giả định. |
+| **M3** | Tuần 21–22 | Xác nhận sẵn sàng Go-live. |
+| **M4** | Tuần 23 | Go-live và bàn giao trong kịch bản dự án. |
 
----
+## 6. GitHub Milestones và Master Schedule
 
-# 5. Global Non-Functional Requirements
+Milestone GitHub chia nhỏ kết quả công việc để quản lý nội bộ; chúng không thay thế M1–M4 của Proposal.
 
-Các yêu cầu áp dụng cho toàn bộ hệ thống được quản lý riêng để tránh
-lặp lại trong từng Module PRD.
+| Milestone | Kết quả theo kế hoạch | Hạn |
+| --- | --- | --- |
+| [DEV-00](https://github.com/vinhdai123/UniSupport_Project/milestone/5) | Yêu cầu, phạm vi, thiết kế; đóng góp cho M1. | 06/11/2026 |
+| [DEV-01](https://github.com/vinhdai123/UniSupport_Project/milestone/6) | Tài khoản do trường cấp, xác thực và phân quyền. | 27/11/2026 |
+| [DEV-02](https://github.com/vinhdai123/UniSupport_Project/milestone/7) | Sinh viên gửi/theo dõi Ticket; bộ phận có quyền tiếp nhận/xem Ticket. | 11/12/2026 |
+| [DEV-03](https://github.com/vinhdai123/UniSupport_Project/milestone/8) | Phân luồng, phân công và xử lý. | 15/01/2027 |
+| [DEV-04](https://github.com/vinhdai123/UniSupport_Project/milestone/9) | Trả kết quả; thông báo Email và trong hệ thống. | 15/01/2027 |
+| [DEV-05](https://github.com/vinhdai123/UniSupport_Project/milestone/10) | Dashboard và báo cáo. | 05/02/2027 |
+| [DEV-06](https://github.com/vinhdai123/UniSupport_Project/milestone/11) | Xuất CSV, tổng hợp tích hợp và rà soát bảo mật; đóng góp cho M2. | 19/02/2027 |
+| [DEV-08A](https://github.com/vinhdai123/UniSupport_Project/milestone/13) | Tài liệu và xác nhận sẵn sàng Go-live; đóng góp cho M3. | 05/03/2027 |
+| [DEV-08B](https://github.com/vinhdai123/UniSupport_Project/milestone/14) | Go-live và bàn giao trong kế hoạch; đóng góp cho M4. | 12/03/2027 |
 
-[Global Non-Functional Requirements](./docs/03-modules/global-nfr.md)
+Các issue kiểm thử/rà soát chất lượng được phân bổ vào milestone chức năng tương ứng. **Không có milestone GitHub DEV-07 riêng**. Master Schedule của **UniSupport_Project** là nơi theo dõi tiến độ; không dùng Project “Master Plan - UniSupport” của repository khác cho bài làm này.
 
-Bao gồm các nhóm yêu cầu chính:
+## 7. Quy trình quản lý công việc
 
-- Development & Testing sử dụng Mock Data.
-- Hỗ trợ Tiếng Việt và Tiếng Anh.
-- Responsive trên Desktop và Mobile.
-- Giao diện đơn giản, nhất quán và dễ sử dụng.
+Quy ước từ Team Charter và các quyết định của bài làm:
 
----
+1. **Define → Design → Review → Chốt → Development** cho một hạng mục; ghi rõ đầu ra và người chịu trách nhiệm.
+2. Mỗi issue nêu mục tiêu, phạm vi, owner (tạm ghi bằng **vai trò** khi chưa có GitHub username), tuần/milestone, phụ thuộc và tiêu chí hoàn thành có thể kiểm tra.
+3. Theo dõi trạng thái **Todo → In Progress → Review/Test → Done**; ghi Blocked cùng nguyên nhân nếu có. Đánh dấu **Done/Close** khi đầu ra thực sự hoàn thành và có bằng chứng, không chỉ vì đã tới hạn.
+4. Liên kết issue con với hạng mục cha; tránh mở nhiều issue trùng một kết quả. Kiểm thử, tích hợp và rà soát bảo mật được làm cùng từng phần chức năng.
+5. Với phần mã nguồn nếu có, dùng pull request, liên kết issue và review trước khi merge; không đẩy trực tiếp lên nhánh chính.
+6. Yêu cầu ngoài phạm vi đi theo **Change Request → đánh giá tác động → phê duyệt → cập nhật kế hoạch/tài liệu → thực hiện**.
 
-# 6. Module Responsibility
+Trong bài làm mô phỏng, “bằng chứng hoàn thành” có thể là một tài liệu đặc tả đã chốt, sơ đồ, prototype, checklist review, kết quả kiểm thử minh họa hoặc phần mã demo tương ứng với tiêu chí của issue. README không tự xác nhận mọi milestone đã hoàn thành.
 
-Để tránh Requirement bị định nghĩa trùng lặp giữa nhiều Module,
-mỗi nhóm chức năng có một Module chịu trách nhiệm chính.
+## 8. Tiêu chí đánh giá và các điểm cần xác nhận
 
-| Responsibility | Owner |
-|---|---|
-| Authentication & Functional/Data Authorization | M01 |
-| Student Ticket Interaction | M02 |
-| Ticket Processing | M03 |
-| Management, Deadline & System Configuration | M04 |
-| Dashboard & Reporting | M05 |
-| Shared Business Rules | `docs/02-domain/` |
-| Shared UI / NFR | `global-nfr.md` |
+Để đọc tiến độ một cách nhất quán, phân biệt **kế hoạch** (issue/milestone có hạn và đầu ra), **đang thực hiện** (có cập nhật/bằng chứng một phần) và **hoàn thành** (tiêu chí được kiểm tra, issue Done/Close). M1–M4 chỉ được xem là đạt khi các đầu ra tương ứng đã được xác nhận trong hồ sơ dự án; mô tả mốc trong README không phải biên bản nghiệm thu.
 
-Các Module khác có thể tham chiếu Requirement nhưng không nên
-định nghĩa lại cùng một Business Rule hoặc Functional Requirement.
-
----
-
-# 7. Requirement Documentation Convention
-
-Mỗi Functional Requirement trong PRD được viết theo cấu trúc:
-
-1. **User Story**
-2. **Input**
-3. **Processing**
-4. **Output**
-5. **Acceptance Criteria**
-
-Acceptance Criteria ưu tiên sử dụng:
-
-`Given / When / Then`
-
-Ví dụ:
-
-```text
-Given: Staff có quyền xử lý Ticket.
-When: Staff cập nhật trạng thái hợp lệ.
-Then: Hệ thống lưu trạng thái mới và ghi nhận thay đổi vào Ticket History.
+Những quy tắc nghiệp vụ chưa được Aurora University chốt cần ghi **TBD — Pending Confirmation**: định dạng tài khoản và mã Ticket; danh mục/phòng ban; ma trận quyền; loại/số lượng/dung lượng tệp; SLA và giờ làm việc; thời hạn mở lại Ticket; sự kiện thông báo; chỉ số, bộ lọc và quyền xuất CSV. Giá trị trong dữ liệu giả lập hoặc prototype không tự trở thành quy định chính thức.
