@@ -32,7 +32,7 @@ Phần này quy định cơ cấu quản lý, trách nhiệm và tuyến báo c�
 | **Cấp 2**<br>Phụ trách chuyên môn | Technical Lead / Solution Architect<br>(1 người) | Tổng hợp từ Frontend, Backend, DevOps; báo cáo PM. | Theo dõi kiến trúc, mã nguồn, tích hợp và phụ thuộc kỹ thuật; tổng hợp tiến độ, giờ công, lỗi kỹ thuật, rủi ro, phương án xử lý và tác động đến kế hoạch. |
 | | QA/QC Engineer / QA Tester<br>(1 người) | Báo cáo PM; phối hợp Technical Lead xử lý lỗi. | Lập và thực hiện kiểm thử; báo cáo kết quả, bằng chứng, lỗi tồn đọng, mức đáp ứng tiêu chí và đề xuất kiểm thử lại. |
 | | UI/UX Designer<br>(1 người) | Báo cáo PM; phối hợp Technical Lead khi triển khai thiết kế. | Thiết kế wireframe, prototype và giao diện; báo cáo tiến độ, giờ công, phiên bản thiết kế, phản hồi và nội dung cần xác nhận. |
-| **Cấp 3**<br>Quản lý dự án | Project Manager / Business Analyst | Nhận báo cáo từ Technical Lead, QA/QC và UI/UX; báo cáo, trao đổi chính thức với Aurora University. | Tiếp nhận và làm rõ yêu cầu; quản lý phạm vi, thay đổi, kế hoạch và nguồn lực; tổng hợp tiến độ, giờ công, chi phí, chất lượng, rủi ro, quyết định cần khách hàng phản hồi và tình trạng cột mốc. |
+| **Cấp 3**<br>Quản lý dự án | Project Manager kiêm Business Analyst<br>(1 người) | Nhận báo cáo từ Technical Lead, QA/QC và UI/UX; báo cáo, trao đổi chính thức với Aurora University. | Tiếp nhận và làm rõ yêu cầu; quản lý phạm vi, thay đổi, kế hoạch và nguồn lực; tổng hợp tiến độ, giờ công, chi phí, chất lượng, rủi ro, quyết định cần khách hàng phản hồi và tình trạng cột mốc. |
 | **Cấp 4**<br>Khách hàng | Aurora University | Trao đổi yêu cầu, phản hồi và kết quả phê duyệt qua PM. | Cung cấp thông tin nghiệp vụ; phản hồi yêu cầu làm rõ, thay đổi và báo cáo dự án; phê duyệt cột mốc, tham gia demo, đánh giá nghiệm thu và nhận bàn giao theo Proposal. |
 
 ---
@@ -40,43 +40,23 @@ Phần này quy định cơ cấu quản lý, trách nhiệm và tuyến báo c�
 ### 1.3. Sơ đồ cơ cấu quản trị và tuyến báo cáo
 
 ```mermaid
-graph TD
-    %% Nodes Defintion
-    AU["AURORA UNIVERSITY<br/>(Khách hàng / Bên nghiệm thu)"]
-    PM["PROJECT MANAGER (PM)<br/>(Tổng hợp, điều phối và báo cáo)"]
-    
-    TL["TECHNICAL LEAD (TL)<br/>(Quản lý và điều phối kỹ thuật)"]
-    UIUX["UI/UX DESIGNER<br/>(Thiết kế giao diện và trải nghiệm)"]
-    QA["QA/QC ENGINEER<br/>(Kiểm thử và đảm bảo chất lượng)"]
-    
-    DEVOPS["DEVOPS ENGINEER<br/>(Vận hành và triển khai)"]
-    BE["BACKEND DEVELOPER<br/>(Phát triển phía máy chủ)"]
-    FE["FRONTEND DEVELOPER<br/>(Phát triển giao diện)"]
-
-    %% Groupings
-    subgraph ProjectTeam ["PROJECT TEAM - TUYẾN BÁO CÁO NỘI BỘ"]
-        PM
-        TL
-        UIUX
-        QA
-        DEVOPS
-        BE
-        FE
+flowchart BT
+    subgraph ProjectTeam["PROJECT TEAM - TUYẾN BÁO CÁO NỘI BỘ"]
+        FE["Frontend Developer<br/>(2 người)"] --> TL["Technical Lead / Solution Architect<br/>(1 người)"]
+        BE["Backend Developer<br/>(2 người)"] --> TL
+        DEVOPS["DevOps Engineer<br/>(1 người)"] --> TL
+        TL --> PM["Project Manager kiêm Business Analyst<br/>(1 người)"]
+        QA["QA/QC Engineer<br/>(1 người)"] --> PM
+        UIUX["UI/UX Designer<br/>(1 người)"] --> PM
     end
 
-    %% Relationships
-    AU <== "Báo cáo / Trao đổi chính thức & Yêu cầu, phản hồi, phê duyệt" ==> PM
-    TL --> PM
-    UIUX --> PM
-    QA --> PM
-    DEVOPS --> TL
-    BE --> TL
-    FE --> TL
+    PM -. "Báo cáo và trao đổi chính thức" .-> AU["Aurora University<br/>(Khách hàng)"]
+    AU -. "Yêu cầu, phản hồi và phê duyệt" .-> PM
 ```
 
 *Chú thích:*
 - **Mũi tên liền:** Thể hiện tuyến báo cáo nội bộ từ người thực hiện lên cấp tổng hợp.
-- **Mũi tên đứt (hoặc trao đổi hai chiều):** Thể hiện báo cáo, yêu cầu và phản hồi giữa PM với Aurora University.
+- **Mũi tên đứt:** Thể hiện báo cáo, yêu cầu và phản hồi giữa PM với Aurora University.
 
 ---
 
@@ -105,12 +85,12 @@ graph TD
 
 | Loại báo cáo | Thời điểm báo cáo | Người tạo báo cáo và người tiếp nhận | Hình thức báo cáo |
 | :--- | :--- | :--- | :--- |
-| **Báo cáo hằng ngày** | Trong ngày làm việc khi có kết quả hoặc vướng mắc; chốt trạng thái vào cuối ngày. | Frontend, Backend, DevOps $\rightarrow$ Technical Lead;<br>Technical Lead, QA/QC, UI/UX $\rightarrow$ PM. | Cập nhật công việc trên GitHub Project/Issue: trạng thái, kết quả, giờ công và vướng mắc. Vấn đề cần xử lý ngay được báo qua kênh trao đổi nội bộ. |
-| **Báo cáo tuần** | Trước cuộc họp tuần; bổ sung kết quả và quyết định sau cuộc họp. | Technical Lead, QA/QC, UI/UX $\rightarrow$ PM;<br>PM $\rightarrow$ Aurora University. | Báo cáo tổng hợp việc hoàn thành, việc đang làm, tiến độ, giờ công, chi phí phát sinh, lỗi, rủi ro và quyết định cần phản hồi; lưu kèm biên bản họp. |
-| **Báo cáo tháng** | Cuối mỗi tháng, dựa trên các báo cáo tuần trong tháng. | PM $\rightarrow$ Aurora University. | Báo cáo tổng hợp tiến độ, giờ công, chi phí, chất lượng, thay đổi và dự báo các cột mốc tiếp theo; gửi bằng văn bản hoặc email. |
-| **Báo cáo các cột mốc** | Khi kết quả cột mốc sẵn sàng để xem xét: M1 (Tuần 5); M2 (Tuần 19-20); M3 (Tuần 21-22); M4 (Tuần 23). | PM tổng hợp từ các vai trò chuyên môn $\rightarrow$ Aurora University. | Hồ sơ kết quả cột mốc kèm demo, kết quả kiểm thử và tài liệu liên quan; ghi nhận phản hồi, nội dung cần sửa và kết quả phê duyệt bằng văn bản. |
-| **Báo cáo khẩn cấp** | Ngay khi phát hiện sự cố, rủi ro hoặc vướng mắc có thể ảnh hưởng hệ thống, dữ liệu, đường găng hoặc cột mốc. | Người phát hiện $\rightarrow$ Technical Lead hoặc PM;<br>PM $\rightarrow$ Aurora University (nếu ảnh hưởng cam kết với khách hàng). | Thông báo nhanh qua kênh liên lạc nội bộ; sau đó ghi lại sự việc, mức ảnh hưởng, biện pháp xử lý, người phụ trách và kết quả trên công cụ theo dõi hoặc email. |
-| **Báo cáo tổng kết** | Sau khi hoàn tất nghiệm thu và bàn giao dự án. | PM $\rightarrow$ Aurora University. | Báo cáo kết quả so với phạm vi, tiến độ, chi phí và chất lượng đã cam kết; kèm tình trạng cột mốc, vấn đề còn tồn, tài liệu bàn giao và bài học kinh nghiệm. |
+| **Báo cáo hằng ngày** | Cập nhật Issue trước 08:40 mỗi ngày làm việc; tiếp tục cập nhật khi có kết quả hoặc vướng mắc. | Frontend, Backend, DevOps → Technical Lead;<br>Technical Lead, QA/QC, UI/UX → PM. | Cập nhật công việc trên GitHub Project/Issue: trạng thái, kết quả, giờ công và vướng mắc. Vấn đề cần xử lý ngay được báo qua kênh trao đổi nội bộ. |
+| **Báo cáo tuần** | Trước cuộc họp tuần; bổ sung kết quả và quyết định sau cuộc họp. | Technical Lead, QA/QC, UI/UX → PM;<br>PM → Aurora University. | Báo cáo tổng hợp việc hoàn thành, việc đang làm, tiến độ, giờ công, chi phí phát sinh, lỗi, rủi ro và quyết định cần phản hồi; lưu kèm biên bản họp. |
+| **Báo cáo tháng** | Cuối mỗi tháng, dựa trên các báo cáo tuần trong tháng. | PM → Aurora University. | Báo cáo tổng hợp tiến độ, giờ công, chi phí, chất lượng, thay đổi và dự báo các cột mốc tiếp theo; gửi bằng văn bản hoặc email. |
+| **Báo cáo các cột mốc** | Khi kết quả cột mốc sẵn sàng để xem xét: M1 (Tuần 5); M2 (Tuần 19–20); M3 (Tuần 21–22); M4 (Tuần 23). | PM tổng hợp từ các vai trò chuyên môn → Aurora University. | Hồ sơ kết quả cột mốc kèm demo, kết quả kiểm thử và tài liệu liên quan; ghi nhận phản hồi, nội dung cần sửa và kết quả phê duyệt bằng văn bản. |
+| **Báo cáo khẩn cấp** | Ngay khi phát hiện sự cố, rủi ro hoặc vướng mắc có thể ảnh hưởng hệ thống, dữ liệu, đường găng hoặc cột mốc. | Người phát hiện → Technical Lead hoặc PM;<br>PM → Aurora University (nếu ảnh hưởng cam kết với khách hàng). | Thông báo nhanh qua kênh liên lạc nội bộ; sau đó ghi lại sự việc, mức ảnh hưởng, biện pháp xử lý, người phụ trách và kết quả trên công cụ theo dõi hoặc email. |
+| **Báo cáo tổng kết** | Sau khi hoàn tất nghiệm thu và bàn giao dự án. | PM → Aurora University. | Báo cáo kết quả so với phạm vi, tiến độ, chi phí và chất lượng đã cam kết; kèm tình trạng cột mốc, vấn đề còn tồn, tài liệu bàn giao và bài học kinh nghiệm. |
 
 ---
 
@@ -204,7 +184,7 @@ Tại thời điểm bàn giao, PM lập báo cáo tổng kết cho Aurora Unive
 | **Giờ công và chi phí** | Tổng hợp giờ công, chi phí thực tế đã ghi nhận so với kế hoạch; nêu nguyên nhân chênh lệch và các thay đổi đã được hai bên thống nhất. |
 | **Kiểm thử và nghiệm thu** | Tóm tắt kết quả kiểm thử, lỗi còn mở và kết quả xác nhận sẵn sàng nội bộ; ghi riêng tình trạng nghiệm thu, phản hồi của Aurora University. |
 | **Bài học kinh nghiệm** | Ghi cách làm hiệu quả, sai lệch hoặc nguyên nhân gốc gây khó khăn và cải tiến nhóm sẽ áp dụng cho dự án sau. |
-| **Vấn đề còn tồn đọng** | Liệt kê từng vấn đề, mức ảnh hưởng, người phụ trách, hạn xử lý và cách theo dõi sau bàn giao; không ghi chung chung là “sẽ xử lý". |
+| **Vấn đề còn tồn đọng** | Liệt kê từng vấn đề, mức ảnh hưởng, người phụ trách, hạn xử lý và cách theo dõi sau bàn giao; không ghi chung chung là “sẽ xử lý”. |
 | **Xác nhận bàn giao** | Liệt kê hệ thống, mã nguồn, tài liệu và hướng dẫn đã chuyển giao; đối chiếu với biên bản bàn giao và điều kiện bảo hành trong Proposal. |
 
 ---
@@ -217,10 +197,10 @@ Trong báo cáo tuần, tháng và cột mốc, PM đánh giá 4 lĩnh vực the
 
 | Lĩnh vực | Chỉ số và cách đo | Ngưỡng cảnh báo |
 | :--- | :--- | :--- |
-| **Tiến độ** | Tỷ lệ Issue hoàn thành đúng hạn = $\frac{\text{Số Issue Done đúng hạn}}{\text{Số Issue đến hạn trong kỳ}} \times 100\%$<br>So ngày hoàn thành mốc dự báo với Master Schedule. | **Xanh:** Tỷ lệ đạt từ 90%; mốc dự báo đúng hạn.<br>**Vàng:** Tỷ lệ dưới 90%; mốc vẫn dự báo đúng hạn.<br>**Đỏ:** Mốc đã cam kết được dự báo trễ. |
+| **Tiến độ** | Tỷ lệ Issue hoàn thành đúng hạn = (số Issue Done đúng hạn / số Issue đến hạn trong kỳ) × 100%<br>So ngày hoàn thành mốc dự báo với Master Schedule. | **Xanh:** Tỷ lệ đạt từ 90%; mốc dự báo đúng hạn.<br>**Vàng:** Tỷ lệ dưới 90%; mốc vẫn dự báo đúng hạn.<br>**Đỏ:** Mốc đã cam kết được dự báo trễ. |
 | **Giờ công và chi phí** | Giờ dự báo = giờ đã sử dụng + giờ ước tính còn lại.<br>So với giờ kế hoạch; đối chiếu chi phí dự báo với ngân sách nội bộ. | **Xanh:** Giờ và chi phí dự báo trong kế hoạch.<br>**Vàng:** Dự báo vượt kế hoạch cơ sở nhưng còn trong phần dự phòng đã duyệt.<br>**Đỏ:** Dự báo vượt tổng giới hạn đã duyệt, gồm cả dự phòng. |
 | **Chất lượng** | Theo dõi lỗi nghiêm trọng đang mở và kết quả kiểm thử theo tiêu chí của cột mốc. | **Xanh:** Không có lỗi nghiêm trọng; kết quả đạt tiêu chí.<br>**Vàng:** Có lỗi nghiêm trọng đang được sửa hoặc kết quả chưa đạt; chưa đến hạn mốc.<br>**Đỏ:** Còn lỗi nghiêm trọng hoặc kết quả chưa đạt tiêu chí khi đến hạn mốc. |
-| **Phạm vi** | Theo dõi yêu cầu thay đổi, tình trạng đánh giá và tác động đến cam kết với khách hàng. | **Xanh:** Yêu cầu thay đổi được xử lý đúng hạn, không có thay đổi chưa duyệt được triển khai.<br>**Vàng:** Có yêu cầu đang đánh giá hoặc có nguy cơ ảnh hưởng cam kết.<br>**Đỏ:** Đã triển khai thay đổi chưa được chấp thuận hoặc dự báo ảnh hưởng cam kết. |
+| **Phạm vi** | Theo dõi yêu cầu thay đổi, tình trạng đánh giá và tác động đến cam kết với khách hàng. | **Xanh:** Không có yêu cầu thay đổi đang chờ đánh giá; không có thay đổi chưa duyệt được triển khai.<br>**Vàng:** Có yêu cầu đang đánh giá hoặc có nguy cơ ảnh hưởng cam kết.<br>**Đỏ:** Đã triển khai thay đổi chưa được chấp thuận hoặc dự báo ảnh hưởng cam kết. |
 
 *Mức 90% là ngưỡng đề xuất. Giờ và ngân sách được so với kế hoạch đã chốt; nếu thiếu dữ liệu để đánh giá, ghi “chưa đủ dữ liệu” và không tự gán màu.*
 
@@ -233,9 +213,9 @@ Trong báo cáo tuần, tháng và cột mốc, PM đánh giá 4 lĩnh vực the
 
 ### 3.2. Giám sát rủi ro
 
-- PM theo dõi các rủi ro có thể xảy ra trong suốt dự án nhằm phát hiện sớm dấu hiệu và chủ động phòng ngừa. Số rủi ro ban đầu được lập từ cột rủi ro chính trong kế hoạch ngân sách nội bộ, sau đó cập nhật từ tiến độ công việc, kết quả kiểm thử và phản ánh của thành viên.
+- PM theo dõi các rủi ro có thể xảy ra trong suốt dự án nhằm phát hiện sớm dấu hiệu và chủ động phòng ngừa. Sổ rủi ro ban đầu được lập từ cột rủi ro chính trong kế hoạch ngân sách nội bộ, sau đó cập nhật từ tiến độ công việc, kết quả kiểm thử và phản ánh của thành viên.
 - Mỗi rủi ro được ghi rõ khả năng xảy ra và mức ảnh hưởng theo 3 mức **Thấp, Trung bình, Cao**; người theo dõi; dấu hiệu cảnh báo; biện pháp phòng ngừa và hạn thực hiện. Người theo dõi kiểm tra dấu hiệu trong phần việc phụ trách, báo PM khi mức độ tăng và đề xuất hành động. PM xem xét tác động đến tiến độ, giờ công, chi phí và cam kết để quyết định ưu tiên xử lý.
-- Tại họp tuần, PM cùng nhóm rà soát số rủi ro, cập nhật mức đánh giá, kiểm tra hiệu quả biện pháp và bổ sung rủi ro mới. Khi xuất hiện dấu hiệu đáng lo ngại, người theo dõi báo PM ngay để triển khai hoặc điều chỉnh biện pháp phòng ngừa, không đợi đến cuộc họp tiếp theo. Rủi ro chỉ được đóng khi xác định không còn khả năng xảy ra và có ghi lý do.
+- Tại họp tuần, PM cùng nhóm rà soát sổ rủi ro, cập nhật mức đánh giá, kiểm tra hiệu quả biện pháp và bổ sung rủi ro mới. Khi xuất hiện dấu hiệu đáng lo ngại, người theo dõi báo PM ngay để triển khai hoặc điều chỉnh biện pháp phòng ngừa, không đợi đến cuộc họp tiếp theo. Rủi ro chỉ được đóng khi xác định không còn khả năng xảy ra và có ghi lý do.
 - Rủi ro đã xảy ra được chuyển sang nhật ký vấn đề, liên kết với mục ghi nhận ban đầu và xử lý theo mục 4. Báo cáo tháng nêu các rủi ro có khả năng xảy ra cao hoặc mức ảnh hưởng cao, xu hướng thay đổi, biện pháp đang thực hiện và nội dung cần Aurora University phối hợp.
 
 ---
@@ -250,12 +230,12 @@ Cuối mỗi milestone, PM tính **SPI** và **CPI** theo phương pháp giá tr
 
 | Chỉ số | Công thức | Ý nghĩa |
 | :--- | :--- | :--- |
-| **Hiệu suất tiến độ (SPI)** | $SPI = \frac{EV}{PV}$ | - $< 1$: Khối lượng hoàn thành thấp hơn kế hoạch.<br>- $= 1$: Đạt khối lượng kế hoạch.<br>- $> 1$: Vượt khối lượng kế hoạch. |
-| **Hiệu suất chi phí (CPI)** | $CPI = \frac{EV}{AC}$ | - $< 1$: Chi phí thực tế cao hơn ngân sách của phần việc đã hoàn thành.<br>- $= 1$: Chi phí đúng mức ngân sách.<br>- $> 1$: Chi phí thấp hơn mức ngân sách. |
+| **SPI – Hiệu suất tiến độ** | `SPI = EV / PV` | - `< 1`: Khối lượng hoàn thành thấp hơn kế hoạch.<br>- `= 1`: Đạt khối lượng kế hoạch.<br>- `> 1`: Vượt khối lượng kế hoạch. |
+| **CPI – Hiệu suất chi phí** | `CPI = EV / AC` | - `< 1`: Chi phí thực tế cao hơn ngân sách của phần việc đã hoàn thành.<br>- `= 1`: Chi phí đúng mức ngân sách.<br>- `> 1`: Chi phí thấp hơn mức ngân sách. |
 
 **Xử lý chỉ số:**
-- Khi $SPI < 1$, PM xác định công việc chậm và nguyên nhân, điều chỉnh phân công hoặc thứ tự thực hiện, cập nhật dự báo hoàn thành. 
-- Khi $CPI < 1$, PM rà soát giờ công và khoản chi, tìm nguyên nhân vượt mức và đề xuất kiểm soát chi phí phần việc còn lại. 
+- Khi `SPI < 1`, PM xác định công việc chậm và nguyên nhân, điều chỉnh phân công hoặc thứ tự thực hiện, cập nhật dự báo hoàn thành. 
+- Khi `CPI < 1`, PM rà soát giờ công và khoản chi, tìm nguyên nhân vượt mức và đề xuất kiểm soát chi phí phần việc còn lại. 
 - Mỗi biện pháp có người phụ trách, thời hạn và được kiểm tra trong báo cáo tuần sau; thay đổi cam kết phải được thống nhất với Aurora University theo quy trình kiểm soát thay đổi.
 - Nếu thiếu dữ liệu hoặc mẫu số bằng 0, ghi “chưa tính được” cho chỉ số tương ứng. SPI luôn được đối chiếu với ngày hoàn thành thực tế và Master Schedule.
 
@@ -307,3 +287,4 @@ PM quản lý **6 nhật ký bắt buộc**, lưu tập trung và liên kết Gi
 | **Risk Register** | Rủi ro ảnh hưởng milestone, dữ liệu, quyền truy cập, luồng Ticket; khả năng, ảnh hưởng, dấu hiệu, biện pháp, hạn xử lý theo mục 3.2; liên kết Issue khi xảy ra. | Người theo dõi cập nhật; PM rà soát. |
 | **Assumption Log** | Giả định về phản hồi khách hàng, API, nguồn lực, môi trường; căn cứ, hạn xác minh, kết quả. Đánh giá rủi ro hoặc ghi nhận vấn đề và xem xét CR khi giả định sai. | Người được PM giao kiểm chứng cập nhật. |
 | **Lessons Learned Register** | Ghi nhận liên tục: tình huống, nguyên nhân, cách làm cần duy trì/cải thiện, hành động, người thực hiện, hạn áp dụng và kết quả. | Thành viên bổ sung; PM theo dõi hành động tại họp tuần. |
+
