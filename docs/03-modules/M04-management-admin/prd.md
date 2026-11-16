@@ -1,112 +1,171 @@
 # MODULE M04: ADMIN CONFIG (QUẢN TRỊ & CẤU HÌNH)
 
-## FR-ADM-01 – Quản lý danh mục yêu cầu
+# 1. Đặc tả yêu cầu chức năng
 
-### 1. User Story
+## FR-ADM-01 – Quản lý Danh mục yêu cầu (Category Management)
 
-Là **Quản trị viên**, tôi muốn quản lý các danh mục yêu cầu để hệ thống có thể phân loại Ticket theo từng nhóm nghiệp vụ và sử dụng các danh mục này trong quá trình tạo Ticket và phân luồng Ticket.
+### Mô tả
+Cho phép Quản trị viên (Admin) tạo mới, cập nhật và quản lý trạng thái các danh mục (Category) để sinh viên phân loại Ticket khi gửi, đồng thời làm cơ sở cho hệ thống phân luồng.
 
-### 2. Input
+### Actor
+Quản trị viên (Administrator).
 
-- Tên danh mục.
-- Mô tả danh mục.
-- Trạng thái sử dụng của danh mục (nếu áp dụng).
+### Mức độ ưu tiên
+Cao (Critical).
 
-> Các trường dữ liệu cụ thể của Category, quy tắc đặt tên và trạng thái sử dụng: **TBD – Pending Confirmation**.
+### Điều kiện tiên quyết
+Tài khoản đăng nhập có vai trò Administrator.
 
-### 3. Processing
+### Luồng chính
+1. Admin truy cập menu "Cấu hình hệ thống" > "Danh mục yêu cầu".
+2. Hệ thống hiển thị danh sách các Danh mục hiện có (gồm: Mã danh mục, Tên, Mô tả, Trạng thái Hoạt động/Ngưng hoạt động).
+3. Admin chọn "Thêm mới" hoặc bấm vào một danh mục để "Cập nhật".
+4. Admin nhập các thông tin bắt buộc (Tên danh mục) và thông tin tùy chọn (Mô tả).
+5. Admin chọn trạng thái (Hoạt động/Ngưng hoạt động) và bấm "Lưu".
+6. Hệ thống kiểm tra tính hợp lệ của dữ liệu.
+7. Hệ thống lưu vào cơ sở dữ liệu và hiển thị danh mục mới trên danh sách.
 
-#### 3.1. Xem danh sách Category
+### Quy tắc nghiệp vụ
+- BR-ADM-01: Tên danh mục phải là duy nhất (không phân biệt chữ hoa, chữ thường).
+- BR-ADM-02: Không được phép xóa cứng (Hard Delete) danh mục đã có Ticket liên kết. Chỉ được phép chuyển trạng thái sang "Ngưng hoạt động" (Inactive) để bảo toàn dữ liệu lịch sử.
+- BR-ADM-03: Các danh mục ở trạng thái "Ngưng hoạt động" sẽ không hiển thị trên Student Portal khi sinh viên tạo Ticket mới.
 
-1. Administrator truy cập chức năng quản lý danh mục.
-2. Hệ thống kiểm tra quyền quản trị.
-3. Hệ thống lấy danh sách Category hiện có.
-4. Hệ thống hiển thị thông tin của các Category để Administrator theo dõi và quản lý.
+### Luồng rẽ nhánh và lỗi
+- E-ADM-01: Nếu Admin nhập tên danh mục đã tồn tại, hệ thống chặn lưu và báo lỗi: "Tên danh mục đã tồn tại, vui lòng chọn tên khác".
+- E-ADM-02: Nếu Admin bỏ trống tên danh mục, hệ thống báo "Trường Tên danh mục là bắt buộc".
 
-#### 3.2. Tạo Category
+### Tiêu chí nghiệm thu
+- **FR-ADM-01/AC-01:** Thêm mới danh mục thành công
+  - Given: Admin ở form thêm mới Danh mục.
+  - When: Admin nhập tên "Hỗ trợ học phí" và lưu.
+  - Then: Hệ thống thông báo thành công, danh mục xuất hiện trong danh sách với trạng thái Hoạt động.
+- **FR-ADM-01/AC-02:** Chặn trùng lặp tên danh mục (Kiểm tra BR-ADM-01, E-ADM-01)
+  - Given: Hệ thống đã có danh mục "Kỹ thuật".
+  - When: Admin tạo mới một danh mục tên "Kỹ thuật" (hoặc "kỹ thuật").
+  - Then: Hệ thống báo lỗi trùng lặp và không cho phép lưu.
+- **FR-ADM-01/AC-03:** Ngưng hoạt động danh mục (Kiểm tra BR-ADM-02, BR-ADM-03)
+  - Given: Danh mục "Bảo lưu" đang có 10 Ticket cũ.
+  - When: Admin chuyển trạng thái danh mục sang "Ngưng hoạt động".
+  - Then: Trạng thái được cập nhật thành công, sinh viên không còn thấy mục "Bảo lưu" khi tạo Ticket mới, nhưng 10 Ticket cũ không bị lỗi dữ liệu.
 
-1. Administrator chọn chức năng tạo Category mới.
-2. Hệ thống hiển thị form nhập thông tin Category.
-3. Administrator nhập các thông tin cần thiết.
-4. Administrator xác nhận tạo Category.
-5. Hệ thống kiểm tra các trường bắt buộc.
-6. Nếu dữ liệu không hợp lệ:
-   - Không tạo Category.
-   - Hiển thị thông tin cần bổ sung hoặc chỉnh sửa.
-7. Nếu dữ liệu hợp lệ:
-   - Hệ thống tạo Category mới.
-   - Lưu Category vào hệ thống.
-8. Category sau khi được tạo có thể được sử dụng trong các chức năng liên quan.
+---
 
-#### 3.3. Cập nhật Category
+## FR-ADM-02 – Quản lý Phòng ban & Nhóm xử lý (Department Management)
 
-1. Administrator chọn một Category đã tồn tại.
-2. Hệ thống hiển thị thông tin hiện tại của Category.
-3. Administrator chỉnh sửa thông tin.
-4. Administrator xác nhận lưu thay đổi.
-5. Hệ thống kiểm tra dữ liệu.
-6. Nếu hợp lệ:
-   - Cập nhật thông tin Category.
-7. Các chức năng sử dụng Category nhận thông tin mới theo cấu hình hiện tại.
+### Mô tả
+Cho phép Admin thiết lập các Phòng/Ban và phân bổ cán bộ xử lý vào các phòng ban đó để định tuyến công việc.
 
-### 4. Output
+### Actor
+Quản trị viên.
 
-Sau khi xử lý thành công, hệ thống cung cấp:
+### Mức độ ưu tiên
+Cao.
 
-- Danh sách Category hiện có.
-- Thông tin Category đã được tạo hoặc cập nhật.
-- Category khả dụng cho:
-  - Sinh viên lựa chọn khi tạo Ticket.
-  - Hệ thống phân loại Ticket.
-  - Cấu hình Routing Rule.
+### Điều kiện tiên quyết
+Có danh sách tài khoản Staff trong hệ thống.
 
-Nếu thao tác không thành công:
+### Luồng chính
+1. Admin truy cập "Quản lý Phòng ban".
+2. Hệ thống hiển thị danh sách phòng ban.
+3. Admin chọn "Thêm phòng ban mới", nhập Tên phòng ban và Mã phòng ban.
+4. Admin chọn tab "Thành viên" và gán các tài khoản Cán bộ (Staff/Manager) vào phòng ban này.
+5. Admin lưu thông tin.
+6. Hệ thống cập nhật phân quyền, cho phép các Cán bộ được gán có quyền nhìn thấy Hàng đợi (Queue) của phòng ban đó.
 
-- Dữ liệu Category không bị cập nhật không hợp lệ.
-- Hệ thống hiển thị thông báo lỗi hoặc thông tin cần chỉnh sửa.
+### Quy tắc nghiệp vụ
+- BR-ADM-04: Mỗi phòng ban phải có ít nhất 01 Quản lý (Manager).
+- BR-ADM-05: Một cán bộ (Staff) có thể thuộc nhiều phòng ban khác nhau (nếu kiêm nhiệm).
 
-### 5. Acceptance Criteria
+### Luồng rẽ nhánh và lỗi
+- E-ADM-03: Nếu Admin xóa tất cả thành viên khỏi một phòng ban đang có Ticket "Đang xử lý", hệ thống hiện cảnh báo: "Phòng ban này đang có Ticket chưa hoàn thành. Vui lòng chuyển giao Ticket trước khi xóa nhân sự".
 
-**AC1 – Xem danh sách Category**
+### Tiêu chí nghiệm thu
+- **FR-ADM-02/AC-01:** Gán nhân sự vào phòng ban thành công (Kiểm tra BR-ADM-05)
+  - Given: Admin đang sửa Phòng IT.
+  - When: Admin thêm Staff A vào danh sách thành viên và lưu.
+  - Then: Staff A có quyền truy cập Hàng đợi của Phòng IT ngay trong lần tải lại trang tiếp theo.
+- **FR-ADM-02/AC-02:** Ràng buộc xóa nhân sự (Kiểm tra E-ADM-03)
+  - Given: Phòng Khảo thí chỉ có duy nhất Staff B và đang có 5 Ticket chưa đóng.
+  - When: Admin gỡ Staff B khỏi Phòng Khảo thí.
+  - Then: Hệ thống cảnh báo không cho gỡ cho đến khi 5 Ticket kia được chuyển cho người/phòng ban khác.
 
-- Given: Administrator đã đăng nhập và có quyền quản trị Category.
-- When: Administrator truy cập màn hình quản lý danh mục.
-- Then: Hệ thống hiển thị danh sách Category hiện có.
+---
 
-**AC2 – Tạo Category thành công**
+## FR-ADM-03 – Cấu hình Quy tắc phân luồng (Routing Rules)
 
-- Given: Administrator đang ở chức năng tạo Category.
-- When: Administrator nhập đầy đủ thông tin bắt buộc và xác nhận tạo.
-- Then: Hệ thống tạo Category mới và lưu Category vào hệ thống.
+### Mô tả
+Thiết lập các bộ quy tắc tự động chuyển Ticket về đúng Phòng ban dựa trên Danh mục (Category) mà sinh viên đã chọn. Tính năng này cung cấp dữ liệu đầu vào cho FR-STF-02 của Module 03.
 
-**AC3 – Thiếu thông tin bắt buộc**
+### Actor
+Quản trị viên.
 
-- Given: Administrator đang tạo Category.
-- When: Administrator gửi form nhưng thiếu thông tin bắt buộc.
-- Then: Hệ thống không tạo Category và thông báo thông tin cần bổ sung.
+### Mức độ ưu tiên
+Cao.
 
-**AC4 – Cập nhật Category**
+### Điều kiện tiên quyết
+Hệ thống đã có dữ liệu Danh mục (FR-ADM-01) và Phòng ban (FR-ADM-02).
 
-- Given: Category đã tồn tại.
-- When: Administrator chỉnh sửa thông tin hợp lệ và lưu.
-- Then: Hệ thống cập nhật thông tin Category.
+### Luồng chính
+1. Admin truy cập "Cấu hình Phân luồng".
+2. Hệ thống hiển thị bảng mapping (ánh xạ) giữa Danh mục và Phòng ban.
+3. Admin chọn một Danh mục (VD: Đăng ký môn học).
+4. Admin chọn Phòng ban đích (VD: Phòng Đào tạo).
+5. Admin bấm "Lưu quy tắc".
+6. Mọi Ticket mới được tạo với danh mục "Đăng ký môn học" sẽ tự động rơi vào Hàng đợi của "Phòng Đào tạo".
 
-**AC5 – Sử dụng Category khi tạo Ticket**
+### Quy tắc nghiệp vụ
+- BR-ADM-06: Một Danh mục chỉ được phân luồng tự động (Default Routing) tới DUY NHẤT 01 Phòng ban để tránh xung đột trách nhiệm.
+- BR-ADM-07: Admin có thể thiết lập "Nhân sự phụ trách mặc định" (Default Assignee) cho quy tắc này (Tùy chọn).
 
-- Given: Category đã được cấu hình và đang khả dụng.
-- When: Sinh viên truy cập chức năng tạo Ticket.
-- Then: Category có thể được sử dụng để phân loại yêu cầu.
+### Luồng rẽ nhánh và lỗi
+- E-ADM-04: Nếu Admin chọn một Phòng ban đang ở trạng thái "Ngưng hoạt động" làm đích đến phân luồng, hệ thống báo lỗi: "Phòng ban đích không khả dụng".
 
-**AC6 – Sử dụng Category trong Routing Rule**
+### Tiêu chí nghiệm thu
+- **FR-ADM-03/AC-01:** Thiết lập Routing Rule thành công (Kiểm tra BR-ADM-06)
+  - Given: Admin thiết lập Danh mục X ánh xạ sang Phòng Y.
+  - When: Admin lưu cấu hình.
+  - Then: Cấu hình lưu thành công. Giao diện không cho phép gán Danh mục X sang một Phòng Z nào khác.
+- **FR-ADM-03/AC-02:** Ngăn chặn phân luồng vào phòng ban vô hiệu hóa (Kiểm tra E-ADM-04)
+  - Given: Phòng Y đã bị ngưng hoạt động.
+  - When: Admin cố gắng gán Danh mục X sang Phòng Y.
+  - Then: Hệ thống báo lỗi và từ chối lưu quy tắc.
 
-- Given: Category tồn tại trong hệ thống.
-- When: Administrator cấu hình Routing Rule.
-- Then: Category có thể được sử dụng làm thông tin phục vụ cấu hình phân luồng Ticket.
+---
 
-**AC7 – Kiểm soát quyền**
+## FR-ADM-04 – Quản lý Mẫu phản hồi (Response Templates)
 
-- Given: Người dùng không có quyền quản trị Category.
-- When: Người dùng yêu cầu tạo hoặc cập nhật Category.
-- Then: Hệ thống không cho phép thực hiện thao tác.
+### Mô tả
+Cho phép Admin tạo sẵn các đoạn văn bản trả lời chuẩn mực (có chứa các biến tự động điền) để Cán bộ sử dụng nhằm tăng tốc độ xử lý Ticket (phục vụ FR-STF-05 ở Module 03).
 
+### Actor
+Quản trị viên.
 
+### Mức độ ưu tiên
+Trung bình.
+
+### Điều kiện tiên quyết
+Không có.
+
+### Luồng chính
+1. Admin truy cập "Quản lý Mẫu phản hồi".
+2. Chọn "Tạo mẫu mới".
+3. Nhập Tên mẫu (VD: Chào mừng), Mô tả, và Nội dung mẫu.
+4. Trong Nội dung, Admin sử dụng các Biến placeholder do hệ thống cung cấp (VD: `{Ten_Sinh_Vien}`, `{Ma_Ticket}`, `{Ten_Can_Bo}`).
+5. Admin lưu Mẫu phản hồi.
+6. Cán bộ ở Module 03 có thể nhìn thấy và chọn Mẫu này khi trao đổi với sinh viên.
+
+### Quy tắc nghiệp vụ
+- BR-ADM-08: Admin có thể phân quyền để một Mẫu phản hồi hiển thị cho toàn hệ thống (Global) hoặc chỉ dành riêng cho một Phòng ban cụ thể (Department-specific).
+
+### Luồng rẽ nhánh và lỗi
+- E-ADM-05: Nếu Admin nhập sai cú pháp biến (VD: `{Ten_Sinh_Vien` - thiếu dấu đóng ngoặc), hệ thống báo lỗi cú pháp trước khi cho lưu.
+
+### Tiêu chí nghiệm thu
+- **FR-ADM-04/AC-01:** Lưu mẫu phản hồi chứa biến hợp lệ
+  - Given: Admin nhập nội dung "Chào {Ten_Sinh_Vien}".
+  - When: Admin bấm Lưu.
+  - Then: Mẫu được lưu thành công và xuất hiện trong thư viện Template.
+- **FR-ADM-04/AC-02:** Cảnh báo sai cú pháp biến (Kiểm tra E-ADM-05)
+  - Given: Admin nhập nội dung "Chào {Ten_Sinh_Vien".
+  - When: Admin bấm Lưu.
+  - Then: Hệ thống báo "Lỗi cú pháp biến tự động, vui lòng kiểm tra lại cặp dấu {}".
