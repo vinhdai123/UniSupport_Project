@@ -29,21 +29,15 @@ Mỗi Ticket được tạo thành công phải có một mã định danh duy n
 - Ticket ID được cấp khi Ticket được tạo thành công.
 - Ticket ID không thay đổi trong suốt vòng đời Ticket.
 
-**Định dạng đề xuất**
+**Định dạng chuẩn:**
 
 `AU-YYYY-XXXX`
 
 Trong đó:
-
 - `AU`: Mã định danh Aurora University.
 - `YYYY`: Năm tạo Ticket.
 - `XXXX`: Số thứ tự tăng dần, bắt đầu từ `0001` cho mỗi năm.
-
 **Ví dụ:** `AU-2026-0001`
-
-**Lưu ý:** Nếu số lượng Ticket trong năm vượt quá 9.999, phần số thứ tự cần được mở rộng để duy trì tính duy nhất.
-
-**Trạng thái:** Định dạng và quy tắc đánh số cần được xác nhận.
 
 ---
 
@@ -55,7 +49,7 @@ Sinh viên có thể đính kèm tài liệu hoặc hình ảnh khi tạo Ticket
 
 **Quy tắc**
 
-| Thuộc tính | Giá trị đề xuất |
+| Thuộc tính | Giá trị quy định |
 |---|---|
 | Số lượng tối đa | 03 tệp mỗi lần gửi hoặc bổ sung |
 | Dung lượng tối đa | 5 MB/tệp |
@@ -65,11 +59,9 @@ Sinh viên có thể đính kèm tài liệu hoặc hình ảnh khi tạo Ticket
 
 - Không chấp nhận tệp vượt quá dung lượng quy định.
 - Không chấp nhận định dạng nằm ngoài danh sách cho phép.
-- Không cho phép tải lên tệp thực thi hoặc tệp có nội dung nguy hiểm.
+- Không cho phép tải lên tệp thực thi (VD: `.bat`, `.exe`) hoặc tệp có nội dung nguy hiểm.
 - Người dùng chỉ được truy cập tệp đính kèm thuộc Ticket mà họ có quyền truy cập.
-- Khi tệp không hợp lệ, người dùng phải được thông báo lý do từ chối.
-
-**Trạng thái:** Giới hạn số lượng, dung lượng và định dạng cần được xác nhận.
+- Khi tệp không hợp lệ, hệ thống hiển thị thông báo chặn ngay trên giao diện.
 
 ---
 
@@ -79,7 +71,7 @@ Sinh viên có thể đính kèm tài liệu hoặc hình ảnh khi tạo Ticket
 
 Mỗi Ticket được xác định thời hạn xử lý dựa trên mức độ ưu tiên (Priority).
 
-**Ma trận SLA đề xuất**
+**Ma trận SLA chuẩn**
 
 | Priority | Mức độ | Thời hạn xử lý |
 |---|---|---|
@@ -91,19 +83,9 @@ Mỗi Ticket được xác định thời hạn xử lý dựa trên mức độ
 **Quy tắc**
 
 - Ticket mới được gán mức ưu tiên mặc định là `Medium`.
-- Thời hạn xử lý được xác định theo mức độ ưu tiên hiện hành và chính sách SLA.
-- Thời gian SLA được tính theo giờ làm việc của Aurora University.
-- Mỗi Ticket phải có thời hạn xử lý để phục vụ theo dõi và cảnh báo.
-- Chỉ người dùng có quyền phù hợp mới được thay đổi mức độ ưu tiên.
-
-**Các điều kiện cần xác nhận**
-
-- Khung giờ và ngày làm việc chính thức.
-- Cách tính SLA khi Ticket được tạo ngoài giờ làm việc.
-- Cách xử lý SLA khi thay đổi Priority.
-- SLA có tạm dừng khi Ticket ở trạng thái `Cần bổ sung` hay không.
-
-**Trạng thái:** Ma trận SLA và cách tính cần được xác nhận.
+- Thời gian SLA được tính theo giờ làm việc hành chính của Aurora University.
+- Chỉ Manager hoặc Admin mới có quyền thay đổi mức độ ưu tiên của Ticket.
+- Thời gian SLA sẽ **tạm dừng (Pause)** khi Ticket chuyển sang trạng thái `Cần bổ sung` (chờ sinh viên cung cấp thông tin) và tiếp tục đếm khi sinh viên phản hồi.
 
 ---
 
@@ -123,17 +105,13 @@ Hệ thống nhận diện các Ticket sắp đến hạn hoặc đã quá hạn
 
 **Điều kiện nghiệp vụ**
 
-- Cảnh báo vàng được kích hoạt khi thời gian SLA còn lại không vượt quá 25%.
-- Cảnh báo đỏ được kích hoạt khi Ticket quá hạn xử lý.
+- Cảnh báo vàng/đỏ được hệ thống tự động gửi qua Email và thông báo In-app cho cán bộ phụ trách và Manager.
 - Các cảnh báo áp dụng đối với Ticket chưa hoàn thành.
-- Cán bộ và quản lý được theo dõi cảnh báo trong phạm vi quyền truy cập của mình.
-- Ticket đã hoàn thành không tiếp tục phát sinh cảnh báo quá hạn mới cho cùng lần xử lý.
-
-**Trạng thái:** Ngưỡng 25% và quy tắc cảnh báo cần được xác nhận.
+- Ticket đã hoàn thành không tiếp tục phát sinh cảnh báo quá hạn.
 
 ---
 
-### BR-05 – Quy tắc mở lại Ticket (Ticket Reopen Window)
+### BR-05 – Quy tắc mở lại & Đóng Ticket (Ticket Reopen & Close Window)
 
 **Mô tả**
 
@@ -141,26 +119,14 @@ Sinh viên được phép mở lại Ticket đã hoàn thành trong khoảng th�
 
 **Quy tắc**
 
-- Chỉ Ticket ở trạng thái `Hoàn thành` mới đủ điều kiện mở lại.
-- Sinh viên có quyền truy cập Ticket được phép yêu cầu mở lại.
-- Thời gian cho phép mở lại là 72 giờ kể từ thời điểm Ticket được chuyển sang `Hoàn thành`.
-- Sau khi hết thời hạn, Ticket không còn được phép mở lại.
-- Khi Ticket được mở lại, hệ thống phải ghi nhận sự kiện vào lịch sử xử lý.
+- Chỉ Ticket ở trạng thái `Hoàn thành (Resolved)` mới đủ điều kiện mở lại.
+- Sinh viên có quyền truy cập Ticket được phép yêu cầu mở lại thông qua nút "Mở lại".
+- Thời gian cho phép mở lại là **72 giờ (tính theo thời gian thực liên tục)** kể từ thời điểm Ticket được chuyển sang `Hoàn thành`.
+- Sau khi được sinh viên Mở lại, Ticket chuyển về trạng thái `Đang xử lý (In Progress)` và SLA được thiết lập lại từ đầu dựa trên mức độ ưu tiên hiện tại.
 
-**Quy tắc đóng Ticket**
-
-- Sau 72 giờ kể từ thời điểm hoàn thành, Ticket được xem là đã kết thúc thời hạn mở lại.
-- Nếu sử dụng trạng thái `Closed`, trạng thái này phải được định nghĩa thống nhất trong Ticket Lifecycle.
-- Ticket đã đóng không được mở lại thông qua quy trình thông thường.
-
-**Điều kiện cần xác nhận**
-
-- 72 giờ được tính liên tục hay theo giờ làm việc.
-- Trạng thái của Ticket sau khi mở lại.
-- Chính sách SLA áp dụng sau khi mở lại.
-- Việc đóng Ticket là trạng thái riêng hay chỉ là điều kiện không cho phép mở lại.
-
-**Trạng thái:** Thời hạn 72 giờ và quy tắc đóng Ticket cần được xác nhận.
+**Quy tắc Đóng Ticket (Closed)**
+- Sau đúng 72 giờ kể từ thời điểm hoàn thành mà sinh viên không có thao tác mở lại, Ticket tự động chuyển sang trạng thái `Đóng (Closed)`.
+- Ticket đã `Đóng` là trạng thái kết thúc vĩnh viễn, không cho phép mở lại hay trao đổi thêm. Sinh viên muốn hỗ trợ tiếp phải tạo Ticket mới.
 
 ## 3. Nguyên tắc áp dụng (Rule Enforcement)
 

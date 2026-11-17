@@ -96,7 +96,7 @@ Ticket đã được tạo thành công bởi sinh viên ở Module M02.
   - Then: Ticket không bị mất mà rơi vào Hàng đợi dự phòng, chờ Admin xử lý.
 
 ### Tình huống ngoại lệ
-- Không có.
+- Hai quản lý cùng lúc mở một Ticket mới và cùng thao tác Assign cho 2 nhân viên khác nhau. Giao dịch nào đến Server sau sẽ bị từ chối và báo lỗi "Ticket này đã được phân công cho người khác".
 
 ---
 
@@ -137,6 +137,10 @@ Cán bộ có quyền xử lý Ticket đang mở chi tiết Ticket đó.
   - Given: Cán bộ A và Trưởng phòng B cùng đang mở chi tiết 1 Ticket. Trưởng phòng B vừa đổi mức ưu tiên thành Cao.
   - When: Cán bộ A bấm chuyển trạng thái thành "Đang xử lý" mà chưa tải lại trang.
   - Then: Hệ thống từ chối cập nhật và báo "Dữ liệu đã có sự thay đổi từ người dùng khác. Vui lòng tải lại".
+- **FR-STF-03/AC-03:** Chặn lùi trạng thái về "Mới tạo" (Kiểm tra BR-STF-05)
+  - Given: Ticket đang ở trạng thái "Đang xử lý".
+  - When: Cán bộ mở dropdown chọn trạng thái.
+  - Then: Tùy chọn "Mới tạo" (Open/New) bị mờ (disabled) hoặc ẩn đi hoàn toàn, không thể click chọn.
 
 ### Tình huống ngoại lệ
 - Hệ thống hỗ trợ thay đổi trạng thái hàng loạt (Bulk update) đối với nhiều Ticket cùng lúc trên màn hình Hàng đợi (nếu được thiết kế trên giao diện).
@@ -225,9 +229,13 @@ Cán bộ đang phụ trách Ticket đó.
   - Given: Cán bộ đang soạn thảo phản hồi.
   - When: Cán bộ chọn mẫu "Chào mừng".
   - Then: Nội dung ô văn bản tự động điền "Chào em {Tên}, phòng ban đã nhận được yêu cầu..."
+- **FR-STF-05/AC-03:** Chặn tệp đính kèm vi phạm bảo mật (Kiểm tra E-STF-05)
+  - Given: Cán bộ đang soạn thảo phản hồi.
+  - When: Cán bộ đính kèm tệp có định dạng `.bat` hoặc `.exe`.
+  - Then: Hệ thống hiển thị cảnh báo đỏ "Định dạng tệp không được hỗ trợ để đảm bảo an toàn" và gỡ tệp khỏi danh sách đính kèm.
 
 ### Tình huống ngoại lệ
-- Không có.
+- Cán bộ tạo Template phản hồi có chứa Biến `{Ten_Sinh_Vien}`. Tuy nhiên tài khoản sinh viên đó bị lỗi mất dữ liệu trường Tên trong Database. Khi cán bộ dùng Template này, hệ thống phải fallback điền mặc định là "Bạn" (VD: "Chào Bạn") thay vì xuất lỗi crash màn hình.
 
 ---
 
@@ -264,6 +272,14 @@ Cán bộ có quyền truy cập vào Ticket.
   - Given: Cán bộ đã lưu thành công một Ghi chú nội bộ trên Ticket #123.
   - When: Sinh viên sở hữu Ticket #123 đăng nhập và xem chi tiết yêu cầu.
   - Then: Dòng thời gian của sinh viên không hề có đoạn ghi chú đó, cũng không nhận được email thông báo nào.
+- **FR-STF-06/AC-02:** Bảo mật ghi chú giữa các bộ phận (Kiểm tra BR-STF-12)
+  - Given: Cán bộ phòng IT đã lưu một ghi chú nội bộ. Sau đó Ticket được chuyển tiếp (Transfer) sang phòng Đào tạo.
+  - When: Cán bộ phòng Đào tạo mở Ticket ra xem.
+  - Then: Cán bộ phòng Đào tạo không nhìn thấy nội dung ghi chú nội bộ của phòng IT trước đó.
+- **FR-STF-06/AC-03:** Giới hạn độ dài ghi chú nội bộ (Kiểm tra E-STF-06)
+  - Given: Cán bộ đang nhập ghi chú nội bộ.
+  - When: Cán bộ dán một đoạn văn bản dài vượt quá 2000 ký tự và bấm Lưu.
+  - Then: Hệ thống chặn lưu và báo "Nội dung ghi chú không được vượt quá 2000 ký tự".
 
 ### Tình huống ngoại lệ
-- Không có.
+- Cán bộ vừa gõ xong một đoạn ghi chú nội bộ rất dài nhưng chưa kịp bấm Lưu thì bị mất điện/rớt mạng. Hệ thống trình duyệt (Local Storage) tự động lưu nháp (auto-save) đoạn văn bản này để khi có mạng lại cán bộ không phải gõ lại từ đầu.

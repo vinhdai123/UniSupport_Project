@@ -48,9 +48,13 @@ Tài khoản có quyền xem báo cáo và hệ thống có dữ liệu Ticket.
   - Given: Một yêu cầu mất tổng cộng 5 ngày để đóng, trong đó có 3 ngày nằm ở trạng thái chờ sinh viên bổ sung giấy tờ.
   - When: Hệ thống tính toán thời gian xử lý trung bình.
   - Then: Yêu cầu này chỉ được ghi nhận có thời gian xử lý thực tế là 2 ngày.
+- **FR-RPT-01/AC-04:** Hiển thị an toàn khi không có dữ liệu (Kiểm tra E-RPT-02)
+  - Given: Người dùng chọn khoảng thời gian rơi vào kỳ nghỉ lễ, không có bất kỳ Ticket nào được tạo.
+  - When: Hệ thống tải Bảng điều khiển.
+  - Then: Các con số thống kê hiển thị "0", biểu đồ hiển thị nhãn "Chưa có dữ liệu", tuyệt đối không văng lỗi (crash) giao diện.
 
 ### Tình huống ngoại lệ
-- Không có.
+- Admin đang xem Bảng điều khiển. Cùng lúc đó, các Staff liên tục cập nhật trạng thái Ticket. Bảng điều khiển sẽ không tự động nhảy số (real-time) để tránh giật lag giao diện, dữ liệu chỉ được làm mới khi Admin chủ động tải lại trang hoặc đổi bộ lọc.
 
 ---
 
@@ -89,9 +93,13 @@ Tài khoản có quyền xem báo cáo cấp phòng ban.
   - Given: Quản lý phòng Công nghệ thông tin đang dùng hệ thống.
   - When: Thử tìm kiếm hoặc truy cập dữ liệu của phòng Kế toán.
   - Then: Hệ thống không hiển thị bất kỳ thông tin nhân sự nào của phòng Kế toán.
+- **FR-RPT-02/AC-03:** Hiển thị hiệu suất nhân sự mới (Kiểm tra E-RPT-03)
+  - Given: Hệ thống vừa thêm mới nhân sự "Trần Thị B" vào phòng Đào tạo sáng nay, chưa được gán Ticket nào.
+  - When: Quản lý phòng Đào tạo mở Báo cáo hiệu suất.
+  - Then: Tên "Trần Thị B" vẫn xuất hiện trong danh sách nhân sự của phòng, nhưng các chỉ số Ticket đang giữ và hoàn thành đều bằng 0.
 
 ### Tình huống ngoại lệ
-- Không có.
+- Một nhân viên chuyển công tác từ phòng IT sang phòng Đào tạo vào giữa tháng. Báo cáo hiệu suất tháng đó phải tính toán tách biệt: lượng Ticket nhân viên đó làm lúc ở IT sẽ ghi nhận cho phòng IT, phần còn lại ghi nhận cho phòng Đào tạo, không được cộng dồn sai lệch.
 
 ---
 
@@ -132,7 +140,7 @@ Hệ thống có dữ liệu Ticket.
   - Then: Hệ thống từ chối vẽ biểu đồ và hiển thị thông báo "Vui lòng chọn khoảng thời gian tối đa 1 năm".
 
 ### Tình huống ngoại lệ
-- Không có.
+- Một Danh mục (Category) có lượng Ticket rất cao nhưng vừa bị Quản trị viên xóa khỏi hệ thống. Khi vẽ biểu đồ Phân tích vấn đề cho dữ liệu lịch sử, hệ thống vẫn phải nhóm các Ticket này vào một nhãn "Danh mục đã xóa" (hoặc giữ nguyên tên cũ) để bảo toàn tổng số lượng, không được làm sai lệch tỷ lệ % của biểu đồ.
 
 ---
 
@@ -167,16 +175,20 @@ Trung bình.
   - Given: Phòng ban có 10 Ticket hoàn thành, nhưng chỉ có 4 sinh viên đánh giá (hai lượt 5 sao, hai lượt 4 sao).
   - When: Hệ thống tính toán điểm mức độ hài lòng.
   - Then: Điểm trung bình hiển thị là 4.5 sao, hoàn toàn không bị kéo tụt bởi 6 Ticket không tham gia đánh giá.
+- **FR-RPT-04/AC-02:** Xử lý khi chưa có dữ liệu đánh giá (Kiểm tra E-RPT-05)
+  - Given: Phòng ban mới thành lập, các Ticket đã hoàn thành nhưng sinh viên chưa ai vào chấm sao.
+  - When: Quản lý xem báo cáo Đánh giá hài lòng.
+  - Then: Điểm trung bình hiển thị "N/A" hoặc "0", bảng bình luận hiển thị "Chưa có phản hồi nào".
 
 ### Tình huống ngoại lệ
-- Không có.
+- Sinh viên để lại đánh giá 5 sao nhưng cố tình chèn mã độc (XSS/JavaScript) vào ô nhận xét. Báo cáo CSAT phải tự động mã hóa (sanitize) đoạn text này thành dạng văn bản thuần túy trước khi hiển thị lên danh sách bình luận để bảo vệ Quản lý.
 
 ---
 
 ## FR-RPT-05 – Trích xuất và Tải xuống Báo cáo (Export)
 
 ### Mô tả
-Cho phép người dùng xuất dữ liệu hiện tại của các báo cáo hoặc danh sách yêu cầu ra định dạng file CSV/Excel để phục vụ phân tích ngoại tuyến hoặc lưu trữ.
+Cho phép người dùng xuất dữ liệu hiện tại của các báo cáo hoặc danh sách yêu cầu ra định dạng file CSV để phục vụ phân tích ngoại tuyến hoặc lưu trữ.
 
 ### Actor
 Quản lý, Quản trị viên.
@@ -188,7 +200,7 @@ Trung bình.
 Bộ lọc báo cáo đã được áp dụng và đang có dữ liệu hiển thị trên màn hình.
 
 ### Luồng chính
-1. Người dùng bấm nút "Trích xuất CSV/Excel" trên giao diện báo cáo.
+1. Người dùng bấm nút "Trích xuất CSV" trên giao diện báo cáo.
 2. Hệ thống đọc các điều kiện bộ lọc hiện tại (Thời gian, Trạng thái, Danh mục, Quyền dữ liệu).
 3. Hệ thống truy xuất dữ liệu dưới dạng bảng.
 4. Hệ thống tạo file và tiến hành tải xuống máy tính của người dùng.
@@ -214,4 +226,4 @@ Bộ lọc báo cáo đã được áp dụng và đang có dữ liệu hiển t
   - Then: Hệ thống chặn tiến trình và báo "Dữ liệu quá lớn. Vui lòng thu hẹp khoảng thời gian trước khi xuất".
 
 ### Tình huống ngoại lệ
-- Không có.
+- Quản lý tải file CSV với dữ liệu khoảng 8.000 dòng (dưới ngưỡng bị chặn). Do mạng chậm hoặc DB đang quá tải, thời gian truy xuất kéo dài quá 30 giây (timeout). Hệ thống không được treo cứng (freeze) trình duyệt, mà chuyển sang xử lý ngầm (asynchronous) và thông báo: "File đang được tạo, liên kết tải xuống sẽ được gửi qua thông báo/email khi hoàn tất".

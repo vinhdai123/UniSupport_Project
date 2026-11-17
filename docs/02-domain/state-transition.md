@@ -14,16 +14,15 @@ Mục tiêu:
 
 ## 2. Danh sách trạng thái (Ticket States)
 
-Hệ thống UniSupport sử dụng 04 trạng thái Ticket chính:
+Hệ thống UniSupport sử dụng 05 trạng thái Ticket chính để bao quát toàn bộ vòng đời:
 
 | Trạng thái | Mã trạng thái | Mô tả |
 |---|---|---|
-| Mới tạo | `New` | Ticket được tạo thành công và đang chờ tiếp nhận hoặc xử lý. |
-| Đang xử lý | `In Progress` | Ticket đang được cán bộ tiếp nhận và xử lý. |
-| Cần bổ sung | `Pending` | Ticket đang chờ sinh viên cung cấp thêm thông tin hoặc tài liệu. |
-| Hoàn thành | `Resolved` | Ticket đã được cán bộ xử lý hoàn tất và có kết quả giải quyết. |
-
-Các trạng thái được sử dụng để sinh viên theo dõi tiến độ và cán bộ quản lý quá trình xử lý yêu cầu.
+| Mới tạo | `New/Open` | Ticket được tạo thành công và đang chờ tiếp nhận hoặc phân công. |
+| Đang xử lý | `In Progress` | Ticket đang được cán bộ giải quyết. |
+| Cần bổ sung | `Pending` | Ticket đang tạm dừng để chờ sinh viên cung cấp thêm thông tin hoặc tài liệu. |
+| Hoàn thành | `Resolved` | Ticket đã được cán bộ xử lý xong, đang trong thời gian chờ sinh viên xác nhận (72 giờ). |
+| Đóng | `Closed` | Trạng thái kết thúc vĩnh viễn. Sinh viên không thể mở lại hay tương tác thêm. |
 
 ## 3. Sơ đồ chuyển đổi trạng thái (State Transition Diagram)
 
@@ -33,12 +32,14 @@ flowchart TD
     B["In Progress – Đang xử lý"]
     C["Pending – Cần bổ sung"]
     D["Resolved – Hoàn thành"]
+    E["Closed - Đóng"]
 
-    A -->|"Cán bộ tiếp nhận xử lý"| B
-    B -->|"Yêu cầu bổ sung thông tin"| C
-    C -->|"Sinh viên bổ sung thông tin"| B
-    B -->|"Hoàn tất xử lý Ticket"| D
-    D -->|"Sinh viên mở lại trong thời gian quy định"| B
+    A -->|"Cán bộ tiếp nhận"| B
+    B -->|"Yêu cầu bổ sung"| C
+    C -->|"Sinh viên phản hồi"| B
+    B -->|"Hoàn tất xử lý"| D
+    D -->|"Sinh viên Mở lại (trong 72h)"| B
+    D -->|"Quá 72h không khiếu nại"| E
 ```
 
 ## 4. Các chuyển đổi trạng thái hợp lệ (Valid Transitions)
@@ -49,7 +50,8 @@ flowchart TD
 | In Progress | Yêu cầu sinh viên bổ sung thông tin | Pending | Staff |
 | Pending | Sinh viên bổ sung thông tin theo yêu cầu | In Progress | Student |
 | In Progress | Hoàn tất xử lý và cập nhật kết quả | Resolved | Staff |
-| Resolved | Mở lại Ticket trong thời gian quy định | In Progress | Student |
+| Resolved | Bấm nút Mở lại Ticket trong 72 giờ | In Progress | Student |
+| Resolved | Hết thời hạn 72 giờ chờ phản hồi | Closed | Hệ thống (Tự động) |
 
 ## 5. Quy tắc chuyển đổi trạng thái (Transition Rules)
 
@@ -70,14 +72,14 @@ flowchart TD
 
 - Trong quá trình xử lý, cán bộ có thể yêu cầu sinh viên bổ sung thông tin hoặc tài liệu.
 - Ticket chuyển từ `In Progress` sang `Pending`.
-- Nội dung cần bổ sung được gửi đến sinh viên.
-- Sinh viên được thông báo về yêu cầu bổ sung thông tin.
+- Thời gian SLA sẽ tạm dừng (Pause) khi Ticket ở trạng thái này.
+- Nội dung cần bổ sung được gửi đến sinh viên kèm theo thông báo.
 
 ### ST-04 – Tiếp tục xử lý Ticket
 
 - Sinh viên cung cấp thông tin hoặc tài liệu bổ sung theo yêu cầu.
 - Ticket chuyển từ `Pending` sang `In Progress`.
-- Cán bộ tiếp tục xử lý yêu cầu dựa trên thông tin được bổ sung.
+- Cán bộ tiếp tục xử lý yêu cầu dựa trên thông tin được bổ sung và thời gian SLA tiếp tục đếm.
 - Hệ thống ghi nhận nội dung và thời điểm bổ sung.
 
 ### ST-05 – Hoàn thành Ticket
@@ -90,29 +92,33 @@ flowchart TD
 
 ### ST-06 – Mở lại Ticket
 
-- Sinh viên được phép mở lại Ticket ở trạng thái `Resolved` trong thời gian quy định.
-- Khi được mở lại, Ticket chuyển sang `In Progress`.
+- Sinh viên được phép mở lại Ticket ở trạng thái `Resolved` trong vòng 72 giờ (tính theo thời gian thực liên tục).
+- Khi được mở lại, Ticket chuyển sang `In Progress` và SLA được thiết lập lại từ đầu dựa trên mức độ ưu tiên hiện tại.
 - Cán bộ tiếp tục xử lý yêu cầu.
 - Hệ thống ghi nhận sự kiện mở lại trong lịch sử Ticket.
 
-Thời hạn cụ thể cho phép mở lại Ticket cần được xác định trong quy tắc nghiệp vụ.
+### ST-07 – Đóng Ticket
+
+- Sau đúng 72 giờ kể từ thời điểm Ticket chuyển sang `Resolved` mà sinh viên không có thao tác mở lại, hệ thống tự động chuyển trạng thái sang `Closed`.
+- Ticket đã `Closed` là trạng thái kết thúc vĩnh viễn, không cho phép mở lại.
 
 ## 6. Ràng buộc chuyển đổi trạng thái (State Constraints)
 
 ### 6.1. Quyền cập nhật trạng thái
 
-- **Student:** Tạo Ticket, bổ sung thông tin và mở lại Ticket trong thời gian quy định.
+- **Student:** Tạo Ticket, bổ sung thông tin và mở lại Ticket trong thời gian 72 giờ.
 - **Staff:** Tiếp nhận, cập nhật trạng thái, yêu cầu bổ sung và hoàn thành Ticket theo quyền được cấp.
 - **Manager:** Giám sát tiến độ, điều chuyển hoặc phân công lại Ticket trong phạm vi quản lý.
 - **Administrator:** Quản lý tài khoản, vai trò và cấu hình hệ thống theo quyền quản trị.
+- **Hệ thống (System):** Tự động đóng Ticket (`Closed`) khi hết thời hạn chờ 72 giờ.
 
 ### 6.2. Điều kiện thay đổi trạng thái
 
-- Ticket chỉ được chuyển đổi giữa các trạng thái hợp lệ.
+- Ticket chỉ được chuyển đổi giữa các trạng thái hợp lệ theo sơ đồ.
 - Việc thay đổi trạng thái phải tuân thủ quyền truy cập của người thực hiện.
 - Khi yêu cầu bổ sung thông tin, cán bộ cần nêu rõ nội dung cần bổ sung.
 - Khi hoàn thành Ticket, cán bộ cần cập nhật kết quả xử lý.
-- Sinh viên chỉ được mở lại Ticket trong thời gian được hệ thống cho phép.
+- Sinh viên chỉ được mở lại Ticket trong giới hạn 72 giờ, qua thời gian này nút "Mở lại" sẽ bị ẩn.
 
 ### 6.3. Lịch sử thay đổi trạng thái
 
@@ -124,7 +130,7 @@ Hệ thống ghi nhận các thông tin liên quan đến thay đổi trạng th
 - Thời điểm cập nhật.
 - Nội dung xử lý hoặc bổ sung liên quan.
 
-Lịch sử xử lý được sử dụng để theo dõi quá trình giải quyết yêu cầu.
+Lịch sử xử lý được sử dụng để theo dõi toàn bộ quá trình giải quyết yêu cầu.
 
 ## 7. Các trường hợp không hợp lệ (Invalid Transitions)
 
@@ -137,7 +143,8 @@ Ví dụ:
 | New → Resolved | Ticket chưa trải qua bước tiếp nhận và xử lý. |
 | New → Pending | Ticket chưa được cán bộ tiếp nhận để yêu cầu bổ sung. |
 | Pending → Resolved | Ticket đang chờ sinh viên bổ sung thông tin. |
-| Resolved → Pending | Ticket đã hoàn thành, cần được mở lại trước khi tiếp tục xử lý. |
+| Resolved → Pending | Ticket đã hoàn thành, cần được mở lại (In Progress) trước khi tiếp tục xử lý. |
+| Closed → In Progress | Ticket đã đóng vĩnh viễn, sinh viên phải tạo Ticket mới nếu cần hỗ trợ thêm. |
 
 ## 8. Tài liệu liên quan (Related Documents)
 

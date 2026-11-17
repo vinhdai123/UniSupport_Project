@@ -75,13 +75,12 @@ Mỗi nhóm người dùng có trách nhiệm, nhu cầu và phạm vi truy cậ
 - Cần kiểm soát tài khoản và quyền truy cập của các nhóm người dùng.
 
 **Mục tiêu sử dụng:**
-- Quản lý tài khoản và vai trò người dùng.
-- Quản lý danh mục yêu cầu và phòng ban.
-- Cấu hình mức độ ưu tiên của Ticket.
-- Thiết lập quy tắc phân luồng tự động (Routing Rules).
-- Quản lý FAQ/Knowledge Base.
-- Quản lý mẫu phản hồi.
-- Cấu hình thời hạn xử lý theo loại Ticket hoặc mức ưu tiên.
+- Quản lý tài khoản và phân quyền người dùng (Role & Department).
+- Quản lý danh mục yêu cầu và cơ cấu phòng ban.
+- Cấu hình mức độ ưu tiên của Ticket và hệ thống SLA/Cảnh báo tự động.
+- Thiết lập quy tắc phân luồng tự động (Routing Rules) và gán người phụ trách mặc định.
+- Quản lý Câu hỏi thường gặp (FAQ).
+- Quản lý mẫu phản hồi dùng chung.
 
 ## 6. Nguyên tắc phân quyền
 

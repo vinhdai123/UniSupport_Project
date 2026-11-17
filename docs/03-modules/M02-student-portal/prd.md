@@ -135,6 +135,10 @@ Sinh viên đang xem chi tiết một Ticket thuộc sở hữu của mình.
   - Given: Sinh viên mở một Ticket có trạng thái "Hoàn thành".
   - When: Sinh viên lướt xuống khu vực trao đổi.
   - Then: Khu vực nhập văn bản bị ẩn hoặc vô hiệu hóa, kèm dòng chữ "Yêu cầu này đã đóng, không thể trao đổi thêm".
+- **FR-STU-03/AC-03:** Chặn gửi phản hồi rỗng (Kiểm tra E-STU-04)
+  - Given: Sinh viên đang ở khu vực trao đổi của Ticket "Đang xử lý".
+  - When: Sinh viên không nhập text, không đính kèm file và bấm Gửi.
+  - Then: Hệ thống vô hiệu hóa nút gửi hoặc hiển thị báo lỗi màu đỏ "Vui lòng nhập nội dung phản hồi".
 
 ### Tình huống ngoại lệ
 - Cán bộ vừa bấm đóng Ticket trên hệ thống nội bộ đúng vào giây sinh viên đang gõ chữ phản hồi. Khi sinh viên bấm gửi, hệ thống từ chối và báo "Yêu cầu đã được đóng bởi cán bộ xử lý".
@@ -179,7 +183,7 @@ Ticket đang ở trạng thái "Hoàn thành".
   - Then: Nút "Mở lại yêu cầu" không còn xuất hiện trên giao diện.
 
 ### Tình huống ngoại lệ
-- Không có.
+- Admin hệ thống vừa xóa Danh mục (Category) của Ticket này. Khi sinh viên bấm "Mở lại", hệ thống vẫn cho phép mở lại thành công bằng cách giữ nguyên luồng lưu trữ cũ, hoặc yêu cầu sinh viên chọn lại một danh mục mới đang hoạt động.
 
 ---
 
@@ -219,9 +223,13 @@ Ticket đang ở trạng thái "Hoàn thành" hoặc "Đóng".
   - Given: Sinh viên ở bảng đánh giá.
   - When: Sinh viên chọn 1 sao, không ghi nhận xét và bấm Gửi.
   - Then: Hệ thống chặn lại và báo "Vui lòng cho biết lý do bạn chưa hài lòng để chúng tôi cải thiện".
+- **FR-STU-05/AC-03:** Chỉ cho phép đánh giá 1 lần (Kiểm tra BR-STU-08)
+  - Given: Ticket X đã được sinh viên đánh giá 5 sao từ hôm qua.
+  - When: Sinh viên truy cập lại vào chi tiết Ticket X.
+  - Then: Bảng chọn sao không còn hiển thị, thay vào đó hiển thị kết quả "Bạn đã đánh giá 5 sao cho hỗ trợ này".
 
 ### Tình huống ngoại lệ
-- Không có.
+- Sinh viên mở 2 tab trình duyệt cho cùng 1 Ticket. Sinh viên gửi đánh giá ở tab 1 thành công. Sau đó qua tab 2 bấm gửi đánh giá một lần nữa -> Hệ thống API từ chối request thứ 2, báo lỗi "Yêu cầu này đã được đánh giá".
 
 ---
 
@@ -262,6 +270,10 @@ Sinh viên có quyền truy cập chức năng FAQ.
   - Given: Sinh viên ở màn hình FAQ.
   - When: Sinh viên nhập "tên lửa".
   - Then: Hệ thống báo "Không tìm thấy kết quả" kèm liên kết để Sinh viên gửi Ticket hỏi đáp.
+- **FR-STU-06/AC-03:** Không hiển thị bài viết chưa xuất bản (Kiểm tra BR-STU-09)
+  - Given: Có một bài FAQ chứa từ "học bổng" nhưng đang ở trạng thái "Lưu nháp" (Draft).
+  - When: Sinh viên nhập "học bổng" vào ô tìm kiếm.
+  - Then: Hệ thống không trả về bài viết Lưu nháp đó.
 
 ### Tình huống ngoại lệ
-- Không có.
+- Sinh viên lưu URL trực tiếp của một bài FAQ. Sau đó Admin chuyển bài FAQ đó sang trạng thái "Lưu nháp" hoặc "Nội bộ cho Staff". Khi sinh viên F5 truy cập lại URL, hệ thống phải báo lỗi "404 - Bài viết không tồn tại hoặc bạn không có quyền truy cập".
