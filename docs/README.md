@@ -76,6 +76,6 @@
 
 | File | Người chịu trách nhiệm chính |
 | --- | --- |
-| `08-project/proposal.docx` | Trần Vĩnh Đại — phân công đề xuất theo Charter |
-| `08-project/quotation.xlsx` | Huỳnh Hữu Như Mẫn — phân công đề xuất theo Charter |
-| `08-project/master-plan.xlsx` | Huỳnh Hữu Như Mẫn — phân công đề xuất theo Charter |
+| `08-project/proposal.docx` | Trần Vĩnh Đại — theo README cập nhật tại dfe998d |
+| `08-project/quotation.xlsx` | Phùng Ngô Huy Bảo — theo README cập nhật tại dfe998d |
+| `08-project/master-plan.xlsx` | Phùng Ngô Huy Bảo — theo README cập nhật tại dfe998d |

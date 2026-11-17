@@ -11,13 +11,13 @@ Hệ thống quản lý và xử lý yêu cầu hỗ trợ tập trung cho sinh 
 ## Thành viên nhóm thực hiện
 
 | MSSV | Họ tên | Trách nhiệm tài liệu đề xuất |
-| --- | --- | --- 
-| 23090009  | Trần Vĩnh Đại | Proposal, Quản lý chất lượng, Quảng lý sản phẩm |
+| --- | --- | --- |
+| 23090009  | Trần Vĩnh Đại | Proposal, Quản lý chất lượng, Quản lý sản phẩm |
 | 23090011 | Nguyễn Thành An | Team Charter, Git |
 | 23090017 | Phùng Ngô Huy Bảo | Master Plan, Quản trị và giám sát, Báo giá |
 | 23090020 | Huỳnh Hữu Như Mẫn | PRD, Review |
 
-Tên và trưởng nhóm đối chiếu feedback R1 của nhóm. Phân công chi tiết đang chờ nhóm xác nhận theo Team Charter. MSSV và ánh xạ tài khoản GitHub cần được chính thành viên cung cấp.
+MSSV và phân công tài liệu theo bản README được nhóm cập nhật tại commit dfe998d. Trưởng nhóm đối chiếu feedback R1. Reviewer, dự phòng và quyền merge được xác nhận theo Team Charter. Ánh xạ tên với tài khoản GitHub do thành viên bổ sung.
 
 ---
 
