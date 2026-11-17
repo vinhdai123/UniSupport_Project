@@ -89,7 +89,7 @@ Vị trí đề xuất khi đưa Charter vào repo là `docs/08-project/team-cha
 | --- | --- |
 | Phạm vi, assumptions và nghiệm thu | [Proposal](Proposal.docx) |
 | Giá và khối lượng bán | [Báo giá](quotation.xlsx) |
-| Ngày, WBS, MS-xx, nguồn lực, rủi ro và lịch sử kế hoạch | [Master Plan](UniSupport_Master_Plan_23_Weeks.xlsx) |
+| Ngày, WBS, MS-xx, nguồn lực, rủi ro và lịch sử kế hoạch | [Master Plan](master-plan.xlsx) |
 | Lịch họp, báo cáo, cảnh báo và CR | Tài liệu Quản trị và giám sát của nhóm, mục Quy trình báo cáo và Quản lý thay đổi |
 | FR, AC và NFR đang được review | PRD theo module trên nhánh làm việc, được nhận diện bằng commit trong Issue review |
 | Quy trình QA/QC, DoD và điều kiện phát hành | Quality Plan được nhóm xác nhận |
