@@ -4,354 +4,266 @@
 
 ## FR-AUTH-01 – Đăng nhập hệ thống
 
-### User Story
+### Mô tả
+Cho phép người dùng xác thực danh tính bằng tài khoản hệ thống để truy cập các chức năng và dữ liệu được cấp quyền trong UniSupport.
 
-Là một người dùng UniSupport, tôi muốn đăng nhập bằng tài khoản hệ thống để hệ thống xác định danh tính và vai trò của tôi, từ đó cho phép tôi truy cập các chức năng và dữ liệu được cấp quyền.
+### Actor
+Tất cả người dùng.
 
-### Input
+### Mức độ ưu tiên
+Cao.
 
-- Thông tin định danh tài khoản UniSupport.
-- Mật khẩu.
+### Điều kiện tiên quyết
+Người dùng đã có tài khoản hợp lệ trên hệ thống.
 
-> Định dạng cụ thể của thông tin định danh tài khoản: **TBD – Pending Confirmation**.
-
-### Xử lý
-
+### Luồng chính
 1. Người dùng truy cập màn hình đăng nhập.
 2. Người dùng nhập thông tin định danh tài khoản và mật khẩu.
 3. Hệ thống kiểm tra các thông tin bắt buộc.
-4. Hệ thống tìm tài khoản tương ứng trong hệ thống UniSupport.
-5. Hệ thống kiểm tra thông tin xác thực của tài khoản.
-6. Nếu thông tin không hợp lệ:
-   - Không cho phép đăng nhập.
-   - Hiển thị thông báo đăng nhập không thành công.
-7. Nếu thông tin hợp lệ:
-   - Xác định người dùng hiện tại.
-   - Xác định Role của tài khoản.
-   - Áp dụng quyền chức năng và quyền dữ liệu tương ứng.
-8. Hệ thống cho phép người dùng truy cập UniSupport.
+4. Hệ thống tìm tài khoản tương ứng và kiểm tra thông tin xác thực.
+5. Khi thông tin hợp lệ, hệ thống xác định vai trò của người dùng và áp dụng quyền chức năng, quyền dữ liệu tương ứng.
+6. Hệ thống chuyển hướng người dùng vào trang chủ phù hợp với vai trò.
 
-### Output
+### Quy tắc nghiệp vụ
+- BR-AUTH-01: Thông tin định danh và mật khẩu là bắt buộc, không được để trống.
+- BR-AUTH-02: Quyền truy cập sau khi đăng nhập phải tuân thủ chính xác theo vai trò của tài khoản.
 
-Khi đăng nhập thành công:
+### Luồng rẽ nhánh và lỗi
+- E-AUTH-01: Nếu người dùng thiếu thông tin bắt buộc, hệ thống không cho phép gửi yêu cầu và hiển thị cảnh báo.
+- E-AUTH-02: Nếu thông tin không hợp lệ, hệ thống từ chối truy cập và hiển thị thông báo lỗi chung để bảo mật thông tin tài khoản.
 
-- Người dùng được xác thực.
-- Role của người dùng được xác định.
-- Quyền chức năng và dữ liệu tương ứng được áp dụng.
-- Người dùng được chuyển vào hệ thống.
+### Tiêu chí nghiệm thu
+- **FR-AUTH-01/AC-01:** Kiểm tra đăng nhập thành công
+  - Given: Người dùng ở màn hình đăng nhập và có tài khoản hợp lệ.
+  - When: Người dùng nhập đúng thông tin định danh cùng mật khẩu và chọn đăng nhập.
+  - Then: Hệ thống xác thực thành công và chuyển người dùng vào bên trong hệ thống.
+- **FR-AUTH-01/AC-02:** Kiểm tra đăng nhập thất bại
+  - Given: Người dùng ở màn hình đăng nhập.
+  - When: Người dùng nhập sai mật khẩu.
+  - Then: Hệ thống từ chối đăng nhập và hiển thị thông báo lỗi.
 
-Khi đăng nhập không thành công:
-
-- Người dùng không được truy cập hệ thống.
-- Hệ thống hiển thị thông báo lỗi.
-
-### Acceptance Criteria
-
-- [ ] Người dùng có tài khoản UniSupport hợp lệ có thể đăng nhập.
-- [ ] Không cho phép gửi Login khi thiếu thông tin bắt buộc.
-- [ ] Thông tin đăng nhập không hợp lệ không được phép truy cập hệ thống.
-- [ ] Sau khi đăng nhập thành công, hệ thống xác định đúng người dùng.
-- [ ] Sau khi đăng nhập thành công, hệ thống xác định đúng Role.
-- [ ] Quyền truy cập sau Login phải tuân theo Role của tài khoản.
+### Tình huống ngoại lệ
+- Người dùng đăng nhập thành công nhưng tài khoản vừa bị vô hiệu hóa trên cơ sở dữ liệu. Hệ thống sẽ ngay lập tức hủy phiên làm việc và yêu cầu đăng nhập lại.
 
 ---
 
 ## FR-AUTH-02 – Đặt lại mật khẩu
 
-### User Story
+### Mô tả
+Cho phép người dùng đặt lại mật khẩu khi không thể sử dụng mật khẩu hiện tại thông qua quy trình xác minh an toàn.
 
-Là một người dùng UniSupport, tôi muốn đặt lại mật khẩu khi không thể sử dụng mật khẩu hiện tại để có thể tiếp tục truy cập hệ thống bằng tài khoản của mình.
+### Actor
+Tất cả người dùng.
 
-### Input
+### Mức độ ưu tiên
+Cao.
 
-- Thông tin xác định tài khoản.
-- Thông tin cần thiết để xác minh người dùng.
-- Mật khẩu mới sau khi xác minh thành công.
+### Điều kiện tiên quyết
+Tài khoản của người dùng tồn tại trên hệ thống.
 
-> Quy trình xác minh người dùng và Password Policy cụ thể: **TBD – Pending Confirmation**.
-
-### Xử lý
-
-1. Người dùng chọn chức năng đặt lại mật khẩu.
+### Luồng chính
+1. Người dùng chọn chức năng đặt lại mật khẩu trên màn hình đăng nhập.
 2. Người dùng cung cấp thông tin xác định tài khoản.
-3. Hệ thống kiểm tra tài khoản có tồn tại hay không.
-4. Nếu không xác định được tài khoản:
-   - Không tiếp tục quy trình Reset Password.
-5. Nếu tài khoản tồn tại:
-   - Hệ thống thực hiện quy trình xác minh người dùng.
-6. Nếu xác minh không thành công:
-   - Không cho phép thay đổi mật khẩu.
-7. Nếu xác minh thành công:
-   - Người dùng nhập mật khẩu mới.
-8. Hệ thống kiểm tra mật khẩu mới theo Password Policy đã được xác nhận.
-9. Nếu hợp lệ:
-   - Hệ thống cập nhật mật khẩu mới.
-10. Hệ thống thông báo Reset Password thành công.
-11. Người dùng có thể sử dụng mật khẩu mới cho lần đăng nhập tiếp theo.
+3. Hệ thống thực hiện quy trình xác minh người dùng qua email hoặc mã xác thực.
+4. Sau khi xác minh thành công, người dùng nhập mật khẩu mới.
+5. Hệ thống kiểm tra tính hợp lệ của mật khẩu mới.
+6. Hệ thống cập nhật mật khẩu, thông báo thành công và chuyển về màn hình đăng nhập.
 
-### Output
+> Quy trình xác minh người dùng cụ thể: **TBD – Pending Confirmation**.
 
-Khi thành công:
+### Quy tắc nghiệp vụ
+- BR-AUTH-03: Mật khẩu mới phải đáp ứng chính sách bảo mật mật khẩu của hệ thống.
+- BR-AUTH-04: Quá trình xác minh người dùng có giới hạn thời gian hiệu lực.
 
-- Mật khẩu mới được ghi nhận.
-- Người dùng có thể sử dụng mật khẩu mới để đăng nhập.
+### Luồng rẽ nhánh và lỗi
+- E-AUTH-03: Nếu tài khoản không tồn tại, hệ thống không tiếp tục quy trình để tránh lộ lọt thông tin.
+- E-AUTH-04: Nếu xác minh người dùng không thành công, hệ thống không cho phép thay đổi mật khẩu.
 
-Khi không thành công:
+### Tiêu chí nghiệm thu
+- **FR-AUTH-02/AC-01:** Đặt lại mật khẩu thành công
+  - Given: Người dùng đã vượt qua bước xác minh danh tính.
+  - When: Người dùng nhập mật khẩu mới hợp lệ và xác nhận lưu.
+  - Then: Hệ thống cập nhật mật khẩu mới và người dùng có thể sử dụng ngay lập tức.
+- **FR-AUTH-02/AC-02:** Mật khẩu mới không đạt chuẩn
+  - Given: Người dùng ở bước nhập mật khẩu mới.
+  - When: Người dùng nhập mật khẩu quá ngắn hoặc thiếu ký tự bảo mật.
+  - Then: Hệ thống báo lỗi và yêu cầu nhập lại theo đúng chính sách.
 
-- Mật khẩu hiện tại không bị thay đổi.
-- Hệ thống hiển thị thông báo lỗi.
-
-### Acceptance Criteria
-
-- [ ] Hệ thống cung cấp chức năng đặt lại mật khẩu.
-- [ ] Chỉ tài khoản tồn tại mới được tiếp tục quy trình Reset Password.
-- [ ] Xác minh người dùng không thành công không được thay đổi mật khẩu.
-- [ ] Mật khẩu mới phải đáp ứng Password Policy sau khi Policy được xác nhận.
-- [ ] Sau khi Reset Password thành công, người dùng có thể đăng nhập bằng mật khẩu mới.
+### Tình huống ngoại lệ
+- Người dùng yêu cầu gửi mã xác minh quá nhiều lần trong thời gian ngắn. Hệ thống sẽ tạm khóa chức năng này đối với tài khoản đó trong một khoảng thời gian nhất định.
 
 ---
 
-## FR-AUTH-03 – Xác định vai trò người dùng
+## FR-AUTH-03 – Phân quyền chức năng theo vai trò
 
-### User Story
+### Mô tả
+Kiểm soát quyền truy cập và thao tác của người dùng dựa trên vai trò được cấu hình, đảm bảo người dùng chỉ sử dụng các chức năng phù hợp với phạm vi quyền hạn.
 
-Là hệ thống UniSupport, tôi cần xác định vai trò của từng người dùng để áp dụng đúng quyền chức năng và quyền dữ liệu sau khi người dùng được xác thực.
+### Actor
+Hệ thống.
 
-### Roles
+### Mức độ ưu tiên
+Cao.
 
-Hệ thống hỗ trợ 04 vai trò:
+### Điều kiện tiên quyết
+Người dùng đã đăng nhập thành công và được gán một vai trò cụ thể.
 
-1. `Student`
-2. `Staff`
-3. `Manager`
-4. `Administrator`
+### Luồng chính
+1. Người dùng yêu cầu truy cập một chức năng hoặc thực hiện một thao tác.
+2. Hệ thống xác định chức năng được yêu cầu.
+3. Hệ thống kiểm tra vai trò hiện tại của người dùng có quyền sử dụng chức năng này hay không.
+4. Nếu có quyền, hệ thống cho phép truy cập hoặc thực hiện thao tác.
 
-### Input
+> Hệ thống hỗ trợ 04 vai trò: Student, Staff, Manager, Administrator. Permission Matrix chi tiết được quy định tại các module khác.
 
-- User được xác thực.
-- Role đã được cấu hình cho User.
+### Quy tắc nghiệp vụ
+- BR-AUTH-05: Việc kiểm tra quyền phải được thực hiện ở cả giao diện người dùng và lớp xử lý logic bên dưới.
+- BR-AUTH-06: Người dùng không có vai trò hợp lệ sẽ không được tự động cấp bất kỳ quyền nghiệp vụ nào.
 
-### Xử lý
+### Luồng rẽ nhánh và lỗi
+- E-AUTH-05: Nếu người dùng không có quyền truy cập, hệ thống từ chối thao tác và không hiển thị chức năng được yêu cầu.
 
-1. Sau khi người dùng đăng nhập thành công, hệ thống xác định User hiện tại.
-2. Hệ thống lấy Role được liên kết với tài khoản.
-3. Hệ thống kiểm tra Role có thuộc danh sách Role được hỗ trợ hay không.
-4. Nếu Role hợp lệ:
-   - Role được sử dụng trong quá trình kiểm tra quyền chức năng.
-   - Role được sử dụng trong quá trình kiểm tra quyền dữ liệu.
-5. Nếu Role không hợp lệ hoặc chưa được xác định:
-   - Không cấp quyền truy cập vào các chức năng nghiệp vụ tương ứng.
+### Tiêu chí nghiệm thu
+- **FR-AUTH-03/AC-01:** Cho phép truy cập hợp lệ
+  - Given: Người dùng có vai trò Student.
+  - When: Người dùng truy cập chức năng tạo yêu cầu hỗ trợ mới.
+  - Then: Hệ thống hiển thị màn hình tạo yêu cầu bình thường.
+- **FR-AUTH-03/AC-02:** Ngăn chặn truy cập trái phép
+  - Given: Người dùng có vai trò Student.
+  - When: Người dùng cố tình truy cập vào đường dẫn chức năng của Administrator.
+  - Then: Hệ thống từ chối truy cập và chuyển hướng đến trang thông báo lỗi phân quyền.
 
-### Output
-
-- Role hiện tại của người dùng.
-- Thông tin Role được sử dụng cho Authorization.
-
-### Acceptance Criteria
-
-- [ ] Hệ thống hỗ trợ đúng 04 Role: Student, Staff, Manager và Administrator.
-- [ ] Mỗi người dùng sau khi đăng nhập phải được xác định Role.
-- [ ] Role hợp lệ được sử dụng để kiểm tra quyền chức năng.
-- [ ] Role hợp lệ được sử dụng để kiểm tra quyền dữ liệu.
-- [ ] User không có Role hợp lệ không được tự động cấp quyền nghiệp vụ.
-
-> Việc tạo, cập nhật hoặc thay đổi Role thuộc chức năng quản lý tài khoản và vai trò trong Module M04.
+### Tình huống ngoại lệ
+- Quản trị viên thay đổi quyền của một nhân sự khi nhân sự đó đang sử dụng hệ thống. Lần thao tác tiếp theo của nhân sự đó sẽ áp dụng ngay bộ quyền mới.
 
 ---
 
-## FR-AUTH-04 – Phân quyền chức năng theo vai trò
+## FR-AUTH-04 – Kiểm soát quyền truy cập dữ liệu và tệp đính kèm
 
-### User Story
+### Mô tả
+Đảm bảo người dùng chỉ được xem hoặc thao tác trên các bản ghi dữ liệu và tệp đính kèm nằm trong phạm vi được cấp quyền của mình.
 
-Là một người dùng UniSupport, tôi chỉ muốn truy cập và thực hiện các chức năng phù hợp với vai trò của mình để đảm bảo đúng phạm vi sử dụng hệ thống.
+### Actor
+Hệ thống.
 
-### Input
+### Mức độ ưu tiên
+Cao.
 
-- User ID.
-- Role của người dùng.
-- Chức năng người dùng yêu cầu truy cập hoặc thực hiện.
+### Điều kiện tiên quyết
+Người dùng đã vượt qua bước kiểm tra quyền chức năng tại FR-AUTH-03.
 
-### Xử lý
-
-1. Người dùng yêu cầu truy cập một chức năng.
-2. Hệ thống xác định User hiện tại.
-3. Hệ thống xác định Role của User.
-4. Hệ thống xác định chức năng được yêu cầu.
-5. Hệ thống kiểm tra Role có quyền sử dụng chức năng hay không.
-6. Nếu có quyền:
-   - Cho phép người dùng truy cập hoặc thực hiện chức năng.
-7. Nếu không có quyền:
-   - Từ chối thao tác.
-   - Không thực hiện chức năng được yêu cầu.
-
-### Output
-
-- Cho phép truy cập nếu User có Permission phù hợp.
-- Từ chối truy cập nếu User không có Permission.
-
-### Acceptance Criteria
-
-- [ ] Student chỉ sử dụng các chức năng được cấp cho Student.
-- [ ] Staff chỉ sử dụng các chức năng xử lý được cấp cho Staff.
-- [ ] Manager chỉ sử dụng các chức năng quản lý và báo cáo được cấp quyền.
-- [ ] Administrator chỉ sử dụng các chức năng quản trị được cấp quyền.
-- [ ] Người dùng không thể sử dụng chức năng ngoài Permission của mình.
-- [ ] Việc kiểm tra quyền phải được thực hiện trước khi chức năng nghiệp vụ được thực thi.
-
-> Permission Matrix chi tiết được xác định dựa trên Functional Requirements của M02, M03, M04 và M05.
-
----
-
-## FR-AUTH-05 – Kiểm soát quyền truy cập dữ liệu
-
-### User Story
-
-Là một người dùng UniSupport, tôi chỉ được xem hoặc thao tác trên dữ liệu nằm trong phạm vi được cấp quyền cho tài khoản và vai trò của mình.
-
-### Input
-
-- User ID.
-- Role.
-- Dữ liệu hoặc tài nguyên được yêu cầu truy cập.
-- Loại thao tác người dùng muốn thực hiện.
-
-### Xử lý
-
-1. Người dùng yêu cầu truy cập hoặc thao tác trên dữ liệu.
-2. Hệ thống xác định User hiện tại.
-3. Hệ thống xác định Role.
-4. Hệ thống xác định dữ liệu được yêu cầu.
-5. Hệ thống xác định phạm vi dữ liệu User được phép truy cập.
-6. Hệ thống kiểm tra dữ liệu yêu cầu có nằm trong phạm vi được cấp hay không.
-7. Nếu nằm trong phạm vi:
-   - Cho phép xem hoặc thao tác tương ứng.
-8. Nếu nằm ngoài phạm vi:
-   - Từ chối yêu cầu.
-   - Không trả dữ liệu cho người dùng.
-
-### Output
-
-- Dữ liệu được phép truy cập; hoặc
-- Yêu cầu truy cập bị từ chối.
-
-### Acceptance Criteria
-
-- [ ] Hệ thống kiểm tra quyền dữ liệu trước khi cung cấp dữ liệu.
-- [ ] Người dùng không thể xem dữ liệu ngoài phạm vi được cấp quyền.
-- [ ] Người dùng không thể cập nhật dữ liệu ngoài phạm vi được cấp quyền.
-- [ ] Có quyền sử dụng chức năng không đồng nghĩa với quyền truy cập toàn bộ dữ liệu của chức năng đó.
-- [ ] Việc kiểm soát Data Access phải được áp dụng nhất quán giữa các Module.
+### Luồng chính
+1. Người dùng yêu cầu xem dữ liệu hoặc tải tệp đính kèm.
+2. Hệ thống xác định phạm vi dữ liệu mà vai trò của người dùng được phép truy cập.
+3. Hệ thống đối chiếu dữ liệu được yêu cầu với phạm vi cho phép.
+4. Nếu hợp lệ, hệ thống trả về dữ liệu hoặc tệp đính kèm tương ứng.
 
 > Data Scope cụ thể của từng Role: **TBD – Pending Confirmation**.
 
----
+### Quy tắc nghiệp vụ
+- BR-AUTH-07: Quyền truy cập tệp đính kèm phải nhất quán hoàn toàn với quyền truy cập dữ liệu liên quan.
+- BR-AUTH-08: Việc có quyền sử dụng một chức năng không đồng nghĩa với việc được phép xem toàn bộ dữ liệu của chức năng đó.
 
-## FR-AUTH-06 – Kiểm soát quyền truy cập tệp đính kèm
+### Luồng rẽ nhánh và lỗi
+- E-AUTH-06: Nếu dữ liệu nằm ngoài phạm vi phân quyền, hệ thống từ chối yêu cầu và không hiển thị nội dung.
 
-### User Story
+### Tiêu chí nghiệm thu
+- **FR-AUTH-04/AC-01:** Hiển thị dữ liệu đúng phạm vi
+  - Given: Nhân viên thuộc phòng Công nghệ thông tin.
+  - When: Nhân viên xem danh sách các yêu cầu hỗ trợ.
+  - Then: Hệ thống chỉ hiển thị các yêu cầu thuộc danh mục Công nghệ thông tin.
+- **FR-AUTH-04/AC-02:** Chặn truy cập tệp đính kèm trái phép
+  - Given: Sinh viên A.
+  - When: Sinh viên A cố tình truy cập vào liên kết tải tệp đính kèm từ một yêu cầu của Sinh viên B.
+  - Then: Hệ thống từ chối tải tệp và hiển thị thông báo lỗi truy cập.
 
-Là một người dùng UniSupport, tôi chỉ được truy cập các tệp đính kèm thuộc Ticket hoặc dữ liệu mà mình có quyền truy cập.
-
-### Input
-
-- User ID.
-- Role.
-- Attachment được yêu cầu truy cập.
-- Ticket hoặc Resource liên quan đến Attachment.
-
-### Xử lý
-
-1. Người dùng yêu cầu truy cập Attachment.
-2. Hệ thống xác định User hiện tại.
-3. Hệ thống xác định Attachment được yêu cầu.
-4. Hệ thống xác định Ticket hoặc Resource liên quan đến Attachment.
-5. Hệ thống kiểm tra quyền truy cập dữ liệu của User đối với Ticket/Resource đó.
-6. Nếu User có quyền:
-   - Cho phép truy cập Attachment.
-7. Nếu User không có quyền:
-   - Từ chối yêu cầu.
-   - Không cung cấp nội dung tệp.
-
-### Output
-
-- Attachment được cung cấp cho User có quyền; hoặc
-- Access Denied.
-
-### Acceptance Criteria
-
-- [ ] Người dùng có quyền đối với Ticket/Resource có thể truy cập Attachment liên quan.
-- [ ] Người dùng không có quyền đối với Ticket/Resource không thể truy cập Attachment.
-- [ ] Quyền truy cập Attachment phải nhất quán với quyền truy cập dữ liệu liên quan.
-- [ ] Hệ thống phải kiểm tra Authorization trước khi cung cấp Attachment.
+### Tình huống ngoại lệ
+- Một yêu cầu hỗ trợ vừa được chuyển giao sang bộ phận khác trong lúc nhân viên bộ phận cũ đang xem chi tiết yêu cầu đó. Khi nhân viên này tải lại trang, hệ thống sẽ ẩn dữ liệu này đi.
 
 ---
 
-## FR-AUTH-07 – Ghi nhận thao tác quan trọng
+## FR-AUTH-05 – Ghi nhận nhật ký thao tác
 
-### User Story
+### Mô tả
+Tự động ghi nhận các thao tác quan trọng vào hệ thống để hỗ trợ quá trình theo dõi, kiểm tra và truy vết hoạt động.
 
-Là người quản lý hệ thống, tôi muốn các thao tác quan trọng được ghi nhận để hỗ trợ việc theo dõi, kiểm tra và truy vết hoạt động của UniSupport.
+### Actor
+Hệ thống.
 
-### Input
+### Mức độ ưu tiên
+Trung bình.
 
-- Người dùng thực hiện thao tác.
-- Thao tác được thực hiện.
-- Đối tượng bị tác động.
-- Thời điểm thực hiện.
+### Điều kiện tiên quyết
+Người dùng vừa thực hiện thành công một thao tác làm thay đổi dữ liệu hoặc trạng thái trên hệ thống.
 
-### Xử lý
+### Luồng chính
+1. Hệ thống xác định thao tác người dùng vừa thực hiện có thuộc nhóm cần ghi nhật ký hay không.
+2. Nếu thuộc nhóm cần ghi nhận, hệ thống thu thập thông tin bao gồm người thực hiện, thao tác, đối tượng bị tác động và thời điểm.
+3. Hệ thống tạo bản ghi nhật ký và lưu trữ an toàn vào cơ sở dữ liệu.
 
-1. Người dùng thực hiện một thao tác trong hệ thống.
-2. Hệ thống xác định thao tác có thuộc nhóm thao tác cần Audit hay không.
-3. Nếu thao tác không thuộc nhóm cần Audit:
-   - Hệ thống tiếp tục xử lý nghiệp vụ bình thường.
-4. Nếu thao tác thuộc nhóm cần Audit:
-   - Xác định User thực hiện.
-   - Xác định Action.
-   - Xác định Target/Object liên quan.
-   - Ghi nhận thời điểm thực hiện.
-5. Hệ thống tạo Audit Record.
-6. Audit Record được lưu lại để phục vụ việc kiểm tra khi cần.
+> Danh sách cụ thể các thao tác cần ghi nhật ký: **TBD – Pending Confirmation**.
 
-### Output
+### Quy tắc nghiệp vụ
+- BR-AUTH-09: Việc ghi nhật ký hệ thống diễn ra độc lập và không được làm thay đổi kết quả hay tốc độ xử lý của thao tác gốc.
 
-Audit Record tối thiểu phải có khả năng xác định:
+### Luồng rẽ nhánh và lỗi
+- E-AUTH-07: Nếu quá trình lưu bản ghi nhật ký gặp sự cố kỹ thuật, hệ thống vẫn đảm bảo hoàn thành giao dịch chính của người dùng mà không gây lỗi ứng dụng.
 
-- Actor/User thực hiện.
-- Action được thực hiện.
-- Target/Object bị tác động.
-- Timestamp.
+### Tiêu chí nghiệm thu
+- **FR-AUTH-05/AC-01:** Ghi nhận thao tác thành công
+  - Given: Quản trị viên thay đổi vai trò của một tài khoản.
+  - When: Thao tác cập nhật thành công.
+  - Then: Hệ thống lưu lại một bản ghi chứa ID của quản trị viên, hành động thay đổi quyền và thời gian thực hiện.
 
-### Acceptance Criteria
+### Tình huống ngoại lệ
+- Nếu hành động chính của người dùng bị hoàn tác do lỗi nghiệp vụ ở bước cuối cùng, hệ thống sẽ không ghi nhận bản ghi nhật ký báo thành công cho thao tác đó.
 
-- [ ] Các thao tác được xác định là quan trọng phải tạo Audit Record.
-- [ ] Audit Record phải liên kết được với User thực hiện thao tác.
-- [ ] Audit Record phải xác định được Action.
-- [ ] Audit Record phải xác định được đối tượng liên quan.
-- [ ] Audit Record phải xác định được thời điểm thao tác.
-- [ ] Việc ghi Audit không được làm thay đổi kết quả nghiệp vụ của thao tác gốc.
+---
 
-> Danh sách cụ thể các thao tác cần Audit và nội dung chi tiết Audit Log: **TBD – Pending Confirmation**.
+## FR-AUTH-06 – Đăng xuất hệ thống
+
+### Mô tả
+Cho phép người dùng chủ động kết thúc phiên làm việc để đảm bảo an toàn cho tài khoản và dữ liệu.
+
+### Actor
+Tất cả người dùng.
+
+### Mức độ ưu tiên
+Cao.
+
+### Điều kiện tiên quyết
+Người dùng đang ở trạng thái đăng nhập trên hệ thống.
+
+### Luồng chính
+1. Người dùng chọn chức năng đăng xuất trên giao diện.
+2. Hệ thống thu hồi và xóa bỏ phiên làm việc hiện tại của người dùng.
+3. Hệ thống chuyển hướng người dùng về màn hình đăng nhập.
+
+### Quy tắc nghiệp vụ
+- BR-AUTH-10: Các thông tin xác thực cũ sẽ bị vô hiệu hóa hoàn toàn và không thể sử dụng lại sau khi đăng xuất.
+
+### Luồng rẽ nhánh và lỗi
+- E-AUTH-08: Nếu mất kết nối mạng khi đang xử lý đăng xuất, hệ thống vẫn xóa thông tin xác thực trên trình duyệt để đảm bảo an toàn tại máy khách.
+
+### Tiêu chí nghiệm thu
+- **FR-AUTH-06/AC-01:** Đăng xuất thành công
+  - Given: Người dùng đang đăng nhập hợp lệ.
+  - When: Người dùng chọn chức năng đăng xuất.
+  - Then: Hệ thống kết thúc phiên làm việc và hiển thị lại màn hình đăng nhập.
+
+### Tình huống ngoại lệ
+- Dù người dùng không chủ động đăng xuất, hệ thống sẽ tự động kết thúc phiên làm việc nếu trình duyệt không có bất kỳ tương tác nào vượt quá khoảng thời gian giới hạn an toàn.
 
 ---
 
 # 2. Yêu cầu phi chức năng / Ràng buộc
 
-## NFR-AUTH-01 – Development & Testing Data
+## NFR-AUTH-01 – Dữ liệu phát triển và kiểm thử
 
-### Requirement
+### Yêu cầu
+Trong suốt quá trình phát triển và kiểm thử, hệ thống phải sử dụng hoàn toàn dữ liệu giả lập theo phạm vi đã thống nhất. Tuyệt đối không sử dụng dữ liệu thật của Aurora University khi chưa được cho phép.
 
-Trong quá trình Development và Testing, UniSupport sử dụng dữ liệu giả lập theo phạm vi đã thống nhất.
-
-Không sử dụng dữ liệu thật của Aurora University khi chưa được cho phép.
-
-### Acceptance Criteria
-
-- [ ] Development Environment có dữ liệu giả lập phục vụ phát triển.
-- [ ] Testing Environment có dữ liệu giả lập phục vụ kiểm thử.
-- [ ] Mock Data phải đủ để kiểm thử các chức năng Authentication và Authorization.
-- [ ] Không sử dụng dữ liệu thật của Aurora University nếu chưa được phê duyệt.
-
-
-
-Các yêu cầu mới ngoài In-Scope phải được xử lý thông qua Change Request.
+### Tiêu chí nghiệm thu
+- Môi trường phát triển và kiểm thử chỉ chứa dữ liệu giả lập.
+- Dữ liệu giả lập phải đa dạng và đủ trường hợp để kiểm thử toàn vẹn các chức năng phân quyền.
+- Không có bất kỳ dữ liệu thật nào tồn tại trên các môi trường này.
