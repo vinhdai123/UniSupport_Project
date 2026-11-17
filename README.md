@@ -10,12 +10,12 @@ Hệ thống quản lý và xử lý yêu cầu hỗ trợ tập trung cho sinh 
 
 ## Thành viên nhóm thực hiện
 
-| MSSV | Họ tên | GitHub | Trách nhiệm tài liệu đề xuất |
-| --- | --- | --- | --- |
-| Chờ thành viên cung cấp | Trần Vĩnh Đại | Chờ xác nhận tài khoản | Điều phối, Proposal và Charter |
-| Chờ thành viên cung cấp | Nguyễn Thành An | Chờ xác nhận tài khoản | PRD và quản lý sản phẩm |
-| Chờ thành viên cung cấp | Phùng Ngô Huy Bảo | Chờ xác nhận tài khoản | Chất lượng, test và truy vết |
-| Chờ thành viên cung cấp | Huỳnh Hữu Như Mẫn | Chờ xác nhận tài khoản | Master Plan, báo giá và nguồn lực |
+| MSSV | Họ tên | Trách nhiệm tài liệu đề xuất |
+| --- | --- | --- 
+| 23090009  | Trần Vĩnh Đại | Proposal, Quản lý chất lượng, Quảng lý sản phẩm |
+| 23090011 | Nguyễn Thành An | Team Charter, Git |
+| 23090017 | Phùng Ngô Huy Bảo | Master Plan, Quản trị và giám sát, Báo giá |
+| 23090020 | Huỳnh Hữu Như Mẫn | PRD, Review |
 
 Tên và trưởng nhóm đối chiếu feedback R1 của nhóm. Phân công chi tiết đang chờ nhóm xác nhận theo Team Charter. MSSV và ánh xạ tài khoản GitHub cần được chính thành viên cung cấp.
 
