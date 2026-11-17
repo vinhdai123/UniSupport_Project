@@ -32,3 +32,5 @@ PM gửi phiên bản, kịch bản và quyền dùng thử. Khách phản hồi
 CR được đánh giá và xác nhận theo [quy trình thay đổi](../11-governance/change-control.md). Lưu bản trước, thêm Change Log rồi cập nhật PRD, báo giá, WBS, Resources, test và GitHub. Gantt vẽ từ ngày bằng công thức.
 
 Lịch gốc bắt đầu 05/10/2026. Tại ngày rà soát 17/11/2026, MS-01 đã có ngày baseline trong quá khứ. Đây là kế hoạch Mô phỏng, PM xác nhận tình huống hoặc tái lập lịch có Change Log trước khi sử dụng làm lịch triển khai thực tế.
+
+Parent task [#101](https://github.com/vinhdai123/UniSupport_Project/issues/101) theo dõi bản đăng nhập đầu tiên. MS-02 kiểm quyền tài khoản và chức năng đã hiện diện. Quyền Ticket và tệp được kiểm khi các luồng xuất hiện tại MS-03/MS-04, với đợt hồi quy đầy đủ theo [#59](https://github.com/vinhdai123/UniSupport_Project/issues/59).

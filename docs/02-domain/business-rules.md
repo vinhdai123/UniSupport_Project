@@ -155,7 +155,7 @@ Sinh viên được phép mở lại Ticket đã hoàn thành trong khoảng th�
 
 **Điều kiện cần xác nhận**
 
-- 72 giờ được tính liên tục hay theo giờ làm việc.
+- Xác nhận phương án 72 giờ liên tục đang dùng trong PRD, hoặc cập nhật đồng bộ nếu trường chọn cách tính khác.
 - Xác nhận phương án `Resolved` → `In Progress` đang được dùng thống nhất trong kế hoạch.
 - Chính sách SLA áp dụng sau khi mở lại.
 - Xác nhận điều kiện hết hạn mở lại, Ticket tiếp tục giữ `Resolved`.

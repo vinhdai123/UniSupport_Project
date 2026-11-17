@@ -25,4 +25,4 @@ Dự án đang ở mức lập tài liệu và kế hoạch theo chuẩn môn h�
 
 ## Kế hoạch kỳ tiếp theo
 
-Người review độc lập đối chiếu ba luồng đăng nhập, gửi Ticket và CSV từ Q-xx đến FR/AC, MS-xx, parent task và TS-xxx. Nhóm xác nhận phân công Charter, tham số còn mở và hoàn thiện thông tin thành viên. PM theo dõi CR minh họa bằng Issue gốc trong [quy trình thay đổi](change-control.md).
+Người review độc lập đối chiếu ba luồng đăng nhập, gửi Ticket và CSV từ Q-xx đến FR/AC, MS-xx, parent task và TS-xxx. Nhóm xác nhận phân công Charter, tham số còn mở và hoàn thiện thông tin thành viên. PM theo dõi [CR-01 Mô phỏng](https://github.com/vinhdai123/UniSupport_Project/issues/102) theo [quy trình thay đổi](change-control.md).

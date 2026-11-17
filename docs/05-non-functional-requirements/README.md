@@ -9,7 +9,7 @@ Các thông số đo trong bảng là định mức đề xuất kế thừa b�
 | NFR-GLOBAL-03 | Tính tương thích | Web Responsive trên Desktop và Mobile | Layout chuẩn trên màn hình >= 375px (Mobile) và >= 1024px (Desktop) | Chrome DevTools Responsive / BrowserStack | Toàn bộ giao diện M01-M05 |
 | NFR-GLOBAL-04 | Usability | Giao diện nhất quán, rõ ràng, dễ sử dụng | 100% form có validation feedback; thuật ngữ nhất quán | Usability review / UAT | Toàn bộ giao diện M01-M05 |
 | NFR-PERF-01 | Hiệu năng | Thời gian phản hồi trang chính | 95% request trả về < 1.5s khi 100 người dùng đồng thời | JMeter / K6 Load testing | M01, M02, M03 |
-| NFR-SEC-01 | Bảo mật | Kiểm soát quyền truy cập RBAC và bảo vệ phiên làm việc | 0 lỗ hổng IDOR/Unauthorized access; JWT hết hạn sau 24h | OWASP ZAP / Security Testing | Toàn hệ thống |
+| NFR-SEC-01 | Bảo mật | Kiểm soát quyền truy cập RBAC và bảo vệ phiên làm việc | 0 ca truy cập trái phép trong bộ kiểm thử quyền đã xác nhận, JWT hết hạn sau 24h theo cấu hình đề xuất | OWASP ZAP / Security Testing | Toàn hệ thống |
 
 ---
 

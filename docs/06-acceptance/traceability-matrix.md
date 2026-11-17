@@ -1,29 +1,29 @@
 # Ma trận truy vết UniSupport
 
-Bảng tổng hợp theo từng AC từ PRD, test, task GitHub và kế hoạch. Bảng dùng phương án cập nhật trong PR R1. Mỗi Q-xx dẫn hạng mục theo module trong báo giá, nhiều AC dùng chung một hạng mục.
+Bảng tổng hợp theo từng AC từ PRD, test, task GitHub và kế hoạch. Bảng dùng phương án cập nhật trong PR R1. Mỗi Q-xx dẫn hạng mục theo module trong báo giá, nhiều AC dùng chung một hạng mục. Một chức năng có thể được triển khai qua nhiều gói công việc, như phần Sinh viên ở Q-04 và luồng xử lý/kết quả tại Q-05. Quản trị tài khoản theo WBS 3.7 thuộc Q-06, thông báo WBS 4.6 thuộc Q-05, SLA WBS 5.3 thuộc Q-06.
 
 | AC hoặc NFR | Test | Parent task | Milestone | Báo giá |
 | --- | --- | --- | --- | --- |
-| [FR-AUTH-01/AC-01](../03-modules/M01-auth-rbac/prd.md) | TS-001 | [#53](https://github.com/vinhdai123/UniSupport_Project/issues/53) | MS-01 | Q-03 |
-| [FR-AUTH-01/AC-02](../03-modules/M01-auth-rbac/prd.md) | TS-002 | [#53](https://github.com/vinhdai123/UniSupport_Project/issues/53) | MS-01 | Q-03 |
-| [FR-AUTH-01/AC-03](../03-modules/M01-auth-rbac/prd.md) | TS-003 | [#53](https://github.com/vinhdai123/UniSupport_Project/issues/53) | MS-01 | Q-03 |
+| [FR-AUTH-01/AC-01](../03-modules/M01-auth-rbac/prd.md) | TS-001 | [#101](https://github.com/vinhdai123/UniSupport_Project/issues/101) | MS-01 | Q-03 |
+| [FR-AUTH-01/AC-02](../03-modules/M01-auth-rbac/prd.md) | TS-002 | [#101](https://github.com/vinhdai123/UniSupport_Project/issues/101) | MS-01 | Q-03 |
+| [FR-AUTH-01/AC-03](../03-modules/M01-auth-rbac/prd.md) | TS-003 | [#101](https://github.com/vinhdai123/UniSupport_Project/issues/101) | MS-01 | Q-03 |
 | [FR-AUTH-02/AC-01](../03-modules/M01-auth-rbac/prd.md) | TS-004 | [#56](https://github.com/vinhdai123/UniSupport_Project/issues/56) | MS-02 | Q-03 |
 | [FR-AUTH-02/AC-02](../03-modules/M01-auth-rbac/prd.md) | TS-005 | [#56](https://github.com/vinhdai123/UniSupport_Project/issues/56) | MS-02 | Q-03 |
 | [FR-AUTH-02/AC-03](../03-modules/M01-auth-rbac/prd.md) | TS-006 | [#56](https://github.com/vinhdai123/UniSupport_Project/issues/56) | MS-02 | Q-03 |
 | [FR-AUTH-02/AC-04](../03-modules/M01-auth-rbac/prd.md) | TS-007 | [#56](https://github.com/vinhdai123/UniSupport_Project/issues/56) | MS-02 | Q-03 |
-| [FR-AUTH-03/AC-01](../03-modules/M01-auth-rbac/prd.md) | TS-008 | [#55](https://github.com/vinhdai123/UniSupport_Project/issues/55) | MS-02 | Q-03 |
+| [FR-AUTH-03/AC-01](../03-modules/M01-auth-rbac/prd.md) | TS-008 | [#93](https://github.com/vinhdai123/UniSupport_Project/issues/93) | MS-03 | Q-03 |
 | [FR-AUTH-03/AC-02](../03-modules/M01-auth-rbac/prd.md) | TS-009 | [#55](https://github.com/vinhdai123/UniSupport_Project/issues/55) | MS-02 | Q-03 |
 | [FR-AUTH-03/AC-03](../03-modules/M01-auth-rbac/prd.md) | TS-010 | [#55](https://github.com/vinhdai123/UniSupport_Project/issues/55) | MS-02 | Q-03 |
-| [FR-AUTH-04/AC-01](../03-modules/M01-auth-rbac/prd.md) | TS-011 | [#59](https://github.com/vinhdai123/UniSupport_Project/issues/59) | MS-02 | Q-03 |
-| [FR-AUTH-04/AC-02](../03-modules/M01-auth-rbac/prd.md) | TS-012 | [#59](https://github.com/vinhdai123/UniSupport_Project/issues/59) | MS-02 | Q-03 |
+| [FR-AUTH-04/AC-01](../03-modules/M01-auth-rbac/prd.md) | TS-011 | [#59](https://github.com/vinhdai123/UniSupport_Project/issues/59) | MS-04 | Q-03 |
+| [FR-AUTH-04/AC-02](../03-modules/M01-auth-rbac/prd.md) | TS-012 | [#59](https://github.com/vinhdai123/UniSupport_Project/issues/59) | MS-04 | Q-03 |
 | [FR-AUTH-05/AC-01](../03-modules/M01-auth-rbac/prd.md) | TS-013 | [#77](https://github.com/vinhdai123/UniSupport_Project/issues/77) | MS-04 | Q-03 |
 | [FR-AUTH-05/AC-02](../03-modules/M01-auth-rbac/prd.md) | TS-014 | [#77](https://github.com/vinhdai123/UniSupport_Project/issues/77) | MS-04 | Q-03 |
-| [FR-AUTH-06/AC-01](../03-modules/M01-auth-rbac/prd.md) | TS-015 | [#54](https://github.com/vinhdai123/UniSupport_Project/issues/54) | MS-01 | Q-03 |
-| [FR-AUTH-06/AC-02](../03-modules/M01-auth-rbac/prd.md) | TS-016 | [#54](https://github.com/vinhdai123/UniSupport_Project/issues/54) | MS-01 | Q-03 |
-| [FR-AUTH-06/AC-03](../03-modules/M01-auth-rbac/prd.md) | TS-017 | [#54](https://github.com/vinhdai123/UniSupport_Project/issues/54) | MS-01 | Q-03 |
-| [FR-AUTH-07/AC-01](../03-modules/M01-auth-rbac/prd.md) | TS-018 | [#80](https://github.com/vinhdai123/UniSupport_Project/issues/80) | MS-02 | Q-03 |
-| [FR-AUTH-07/AC-02](../03-modules/M01-auth-rbac/prd.md) | TS-019 | [#80](https://github.com/vinhdai123/UniSupport_Project/issues/80) | MS-02 | Q-03 |
-| [FR-AUTH-07/AC-03](../03-modules/M01-auth-rbac/prd.md) | TS-020 | [#80](https://github.com/vinhdai123/UniSupport_Project/issues/80) | MS-02 | Q-03 |
+| [FR-AUTH-06/AC-01](../03-modules/M01-auth-rbac/prd.md) | TS-015 | [#101](https://github.com/vinhdai123/UniSupport_Project/issues/101) | MS-01 | Q-03 |
+| [FR-AUTH-06/AC-02](../03-modules/M01-auth-rbac/prd.md) | TS-016 | [#101](https://github.com/vinhdai123/UniSupport_Project/issues/101) | MS-01 | Q-03 |
+| [FR-AUTH-06/AC-03](../03-modules/M01-auth-rbac/prd.md) | TS-017 | [#101](https://github.com/vinhdai123/UniSupport_Project/issues/101) | MS-01 | Q-03 |
+| [FR-AUTH-07/AC-01](../03-modules/M01-auth-rbac/prd.md) | TS-018 | [#80](https://github.com/vinhdai123/UniSupport_Project/issues/80) | MS-02 | Q-06 |
+| [FR-AUTH-07/AC-02](../03-modules/M01-auth-rbac/prd.md) | TS-019 | [#80](https://github.com/vinhdai123/UniSupport_Project/issues/80) | MS-02 | Q-06 |
+| [FR-AUTH-07/AC-03](../03-modules/M01-auth-rbac/prd.md) | TS-020 | [#80](https://github.com/vinhdai123/UniSupport_Project/issues/80) | MS-02 | Q-06 |
 | [FR-STU-01/AC-01](../03-modules/M02-student-portal/prd.md) | TS-021 | [#60](https://github.com/vinhdai123/UniSupport_Project/issues/60) | MS-03 | Q-04 |
 | [FR-STU-01/AC-02](../03-modules/M02-student-portal/prd.md) | TS-022 | [#60](https://github.com/vinhdai123/UniSupport_Project/issues/60) | MS-03 | Q-04 |
 | [FR-STU-01/AC-03](../03-modules/M02-student-portal/prd.md) | TS-023 | [#60](https://github.com/vinhdai123/UniSupport_Project/issues/60) | MS-03 | Q-04 |
@@ -33,17 +33,17 @@ Bảng tổng hợp theo từng AC từ PRD, test, task GitHub và kế hoạch.
 | [FR-STU-03/AC-02](../03-modules/M02-student-portal/prd.md) | TS-027 | [#79](https://github.com/vinhdai123/UniSupport_Project/issues/79) | MS-04 | Q-04 |
 | [FR-STU-03/AC-03](../03-modules/M02-student-portal/prd.md) | TS-028 | [#79](https://github.com/vinhdai123/UniSupport_Project/issues/79) | MS-04 | Q-04 |
 | [FR-STU-03/AC-04](../03-modules/M02-student-portal/prd.md) | TS-029 | [#79](https://github.com/vinhdai123/UniSupport_Project/issues/79) | MS-04 | Q-04 |
-| [FR-STU-04/AC-01](../03-modules/M02-student-portal/prd.md) | TS-030 | [#74](https://github.com/vinhdai123/UniSupport_Project/issues/74) | MS-04 | Q-04 |
-| [FR-STU-04/AC-02](../03-modules/M02-student-portal/prd.md) | TS-031 | [#74](https://github.com/vinhdai123/UniSupport_Project/issues/74) | MS-04 | Q-04 |
-| [FR-STU-05/AC-01](../03-modules/M02-student-portal/prd.md) | TS-032 | [#75](https://github.com/vinhdai123/UniSupport_Project/issues/75) | MS-04 | Q-04 |
-| [FR-STU-05/AC-02](../03-modules/M02-student-portal/prd.md) | TS-033 | [#75](https://github.com/vinhdai123/UniSupport_Project/issues/75) | MS-04 | Q-04 |
-| [FR-STU-05/AC-03](../03-modules/M02-student-portal/prd.md) | TS-034 | [#75](https://github.com/vinhdai123/UniSupport_Project/issues/75) | MS-04 | Q-04 |
+| [FR-STU-04/AC-01](../03-modules/M02-student-portal/prd.md) | TS-030 | [#74](https://github.com/vinhdai123/UniSupport_Project/issues/74) | MS-04 | Q-04, Q-05 |
+| [FR-STU-04/AC-02](../03-modules/M02-student-portal/prd.md) | TS-031 | [#74](https://github.com/vinhdai123/UniSupport_Project/issues/74) | MS-04 | Q-04, Q-05 |
+| [FR-STU-05/AC-01](../03-modules/M02-student-portal/prd.md) | TS-032 | [#75](https://github.com/vinhdai123/UniSupport_Project/issues/75) | MS-04 | Q-04, Q-05 |
+| [FR-STU-05/AC-02](../03-modules/M02-student-portal/prd.md) | TS-033 | [#75](https://github.com/vinhdai123/UniSupport_Project/issues/75) | MS-04 | Q-04, Q-05 |
+| [FR-STU-05/AC-03](../03-modules/M02-student-portal/prd.md) | TS-034 | [#75](https://github.com/vinhdai123/UniSupport_Project/issues/75) | MS-04 | Q-04, Q-05 |
 | [FR-STU-06/AC-01](../03-modules/M02-student-portal/prd.md) | TS-035 | [#14](https://github.com/vinhdai123/UniSupport_Project/issues/14) | MS-03 | Q-04 |
 | [FR-STU-06/AC-02](../03-modules/M02-student-portal/prd.md) | TS-036 | [#14](https://github.com/vinhdai123/UniSupport_Project/issues/14) | MS-03 | Q-04 |
 | [FR-STU-06/AC-03](../03-modules/M02-student-portal/prd.md) | TS-037 | [#14](https://github.com/vinhdai123/UniSupport_Project/issues/14) | MS-03 | Q-04 |
-| [FR-STU-07/AC-01](../03-modules/M02-student-portal/prd.md) | TS-038 | [#70](https://github.com/vinhdai123/UniSupport_Project/issues/70) | MS-04 | Q-04 |
-| [FR-STU-07/AC-02](../03-modules/M02-student-portal/prd.md) | TS-039 | [#70](https://github.com/vinhdai123/UniSupport_Project/issues/70) | MS-04 | Q-04 |
-| [FR-STU-07/AC-03](../03-modules/M02-student-portal/prd.md) | TS-040 | [#70](https://github.com/vinhdai123/UniSupport_Project/issues/70) | MS-04 | Q-04 |
+| [FR-STU-07/AC-01](../03-modules/M02-student-portal/prd.md) | TS-038 | [#70](https://github.com/vinhdai123/UniSupport_Project/issues/70) | MS-04 | Q-05 |
+| [FR-STU-07/AC-02](../03-modules/M02-student-portal/prd.md) | TS-039 | [#70](https://github.com/vinhdai123/UniSupport_Project/issues/70) | MS-04 | Q-05 |
+| [FR-STU-07/AC-03](../03-modules/M02-student-portal/prd.md) | TS-040 | [#70](https://github.com/vinhdai123/UniSupport_Project/issues/70) | MS-04 | Q-05 |
 | [FR-STF-01/AC-01](../03-modules/M03-staff-desk/prd.md) | TS-041 | [#67](https://github.com/vinhdai123/UniSupport_Project/issues/67) | MS-04 | Q-05 |
 | [FR-STF-01/AC-02](../03-modules/M03-staff-desk/prd.md) | TS-042 | [#67](https://github.com/vinhdai123/UniSupport_Project/issues/67) | MS-04 | Q-05 |
 | [FR-STF-01/AC-03](../03-modules/M03-staff-desk/prd.md) | TS-043 | [#67](https://github.com/vinhdai123/UniSupport_Project/issues/67) | MS-04 | Q-05 |
@@ -63,9 +63,9 @@ Bảng tổng hợp theo từng AC từ PRD, test, task GitHub và kế hoạch.
 | [FR-STF-06/AC-01](../03-modules/M03-staff-desk/prd.md) | TS-057 | [#15](https://github.com/vinhdai123/UniSupport_Project/issues/15) | MS-04 | Q-05 |
 | [FR-STF-06/AC-02](../03-modules/M03-staff-desk/prd.md) | TS-058 | [#15](https://github.com/vinhdai123/UniSupport_Project/issues/15) | MS-04 | Q-05 |
 | [FR-STF-06/AC-03](../03-modules/M03-staff-desk/prd.md) | TS-059 | [#15](https://github.com/vinhdai123/UniSupport_Project/issues/15) | MS-04 | Q-05 |
-| [FR-STF-07/AC-01](../03-modules/M03-staff-desk/prd.md) | TS-060 | [#71](https://github.com/vinhdai123/UniSupport_Project/issues/71) | MS-04 | Q-05 |
-| [FR-STF-07/AC-02](../03-modules/M03-staff-desk/prd.md) | TS-061 | [#71](https://github.com/vinhdai123/UniSupport_Project/issues/71) | MS-04 | Q-05 |
-| [FR-STF-07/AC-03](../03-modules/M03-staff-desk/prd.md) | TS-062 | [#71](https://github.com/vinhdai123/UniSupport_Project/issues/71) | MS-04 | Q-05 |
+| [FR-STF-07/AC-01](../03-modules/M03-staff-desk/prd.md) | TS-060 | [#71](https://github.com/vinhdai123/UniSupport_Project/issues/71) | MS-04 | Q-06 |
+| [FR-STF-07/AC-02](../03-modules/M03-staff-desk/prd.md) | TS-061 | [#71](https://github.com/vinhdai123/UniSupport_Project/issues/71) | MS-04 | Q-06 |
+| [FR-STF-07/AC-03](../03-modules/M03-staff-desk/prd.md) | TS-062 | [#71](https://github.com/vinhdai123/UniSupport_Project/issues/71) | MS-04 | Q-06 |
 | [FR-ADM-01/AC-01](../03-modules/M04-management-admin/prd.md) | TS-063 | [#17](https://github.com/vinhdai123/UniSupport_Project/issues/17) | MS-04 | Q-06 |
 | [FR-ADM-01/AC-02](../03-modules/M04-management-admin/prd.md) | TS-064 | [#17](https://github.com/vinhdai123/UniSupport_Project/issues/17) | MS-04 | Q-06 |
 | [FR-ADM-01/AC-03](../03-modules/M04-management-admin/prd.md) | TS-065 | [#17](https://github.com/vinhdai123/UniSupport_Project/issues/17) | MS-04 | Q-06 |

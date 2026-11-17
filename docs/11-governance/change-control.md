@@ -56,3 +56,7 @@ Khi một Change Request được phê duyệt, các tài liệu sau bắt buộ
 3. **Kế hoạch tổng thể:** Ghi nhận vào sheet `Change Log` của `docs/08-project/master-plan.xlsx` (phiên bản, ngày, mã CR, nội dung thay đổi) và cập nhật Gantt chart nếu có điều chỉnh ngày.
 4. **Kịch bản kiểm thử:** Bổ sung/sửa đổi test scenario trong `docs/06-acceptance/test-scenarios.md` và `traceability-matrix.md`.
 5. **GitHub Issues:** Cập nhật nhãn `change-request` và liên kết với Milestone tương ứng.
+
+## Tình huống áp dụng Mô phỏng
+
+[CR-01 bổ sung xuất XLSX](https://github.com/vinhdai123/UniSupport_Project/issues/102) minh họa tiếp nhận, phân tích phạm vi, ước lượng, nguồn lực, giá, tiến độ, rủi ro, test và điều kiện cập nhật đồng bộ. CR đang đề xuất, chờ quyết định của các vai trò có thẩm quyền.

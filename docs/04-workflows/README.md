@@ -21,7 +21,7 @@ sequenceDiagram
     Sys-->>CB: Gán vào hàng đợi (Queue) phòng ban
     CB->>Sys: Tiếp nhận (In Progress) & Gửi phản hồi
     alt Cần sinh viên bổ sung thông tin
-        CB->>Sys: Chuyển trạng thái "Pending Info"
+        CB->>Sys: Chuyển trạng thái "Pending – Cần bổ sung"
         Sys-->>SV: Thông báo cần bổ sung thông tin
         SV->>Sys: Cung cấp thông tin bổ sung
         Sys-->>CB: Tự động chuyển lại "In Progress"

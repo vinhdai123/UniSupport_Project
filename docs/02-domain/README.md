@@ -6,4 +6,4 @@ Thư mục này đặc tả chi tiết các yếu tố nghiệp vụ miền củ
 
 - [Thuật ngữ nghiệp vụ (Terminology & Glossary)](terminology.md): Định nghĩa chuẩn hóa các khái niệm: Ticket, SLA, Category, CSAT, Internal Notes, Escalation...
 - [Quy tắc nghiệp vụ (Business Rules)](business-rules.md): Các quy định ràng buộc về quyền truy cập, quyền gán việc, tính toán thời hạn SLA, điều kiện đóng Ticket và tính toán tỷ lệ tuân thủ.
-- [Chuyển trạng thái (State Transition)](state-transition.md): Sơ đồ vòng đời và ma trận chuyển đổi các trạng thái Ticket (`Open` ➔ `In Progress` ➔ `Pending Info` ➔ `Resolved` ➔ `Closed`).
+- [Chuyển trạng thái (State Transition)](state-transition.md): Sơ đồ vòng đời và ma trận chuyển đổi các trạng thái Ticket (`New`, `In Progress`, `Pending`, `Resolved`).
