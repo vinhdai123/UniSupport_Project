@@ -41,7 +41,7 @@ Hoạt động Kiểm soát chất lượng (QC) tập trung vào việc kiểm 
    - **Functional Testing:** QA kiểm tra hoạt động từng chức năng theo các kịch bản kiểm thử [06-acceptance/test-scenarios.md](../06-acceptance/test-scenarios.md).
    - **Integration Testing:** Kiểm tra tính liên thông giữa các module (ví dụ: tạo Ticket ở M02 tự động xuất hiện trong Queue của M03).
    - **Security & RBAC Testing:** Kiểm tra phân quyền truy cập, xác thực JWT, ngăn chặn truy cập trái phép hoặc xem chéo dữ liệu phòng ban khác.
-   - **Regression Testing:** Chạy lại toàn bộ bộ test kiểm tra hồi quy trước mỗi mốc bàn giao để đảm bảo code mới không làm hỏng tính năng cũ.
+   - **Regression Testing:** Trước mỗi mốc, kiểm phần mới và hồi quy các luồng đã giao theo RTM. Bản RC trên Staging được hồi quy toàn bộ chức năng trước MS-07. Production chạy smoke và bộ ca luồng chính đã xác nhận tại Resources.
    - **User Acceptance Testing (UAT):** Đại diện sinh viên và cán bộ Aurora University trực tiếp thao tác nghiệm thu trên môi trường Staging.
 2. **Môi trường và Dữ liệu kiểm thử:**
    - **Dev Environment:** Dùng cho lập trình viên chạy Unit Test.
@@ -86,7 +86,7 @@ Một công việc/tính năng chỉ được xem là hoàn thành (Done) khi đ
 Hệ thống UniSupport chỉ được phép bàn giao nghiệm thu và đưa vào sử dụng chính thức khi thỏa mãn:
 
 1. 100% các chức năng In-Scope thuộc 5 module M01–M05 đã được triển khai hoàn tất.
-2. 100% kịch bản kiểm thử chấp nhận (Acceptance Test Scenarios) và bộ Regression Test đều đạt kết quả PASS.
+2. Hồ sơ phiên bản trên Staging có kết quả PASS cho các AC và NFR thuộc phạm vi nghiệm thu. Các phần chịu ảnh hưởng của bản sửa được kiểm lại. Production đạt smoke và bộ hồi quy luồng chính đã xác nhận.
 3. 0 lỗi Critical và 0 lỗi High còn tồn đọng chưa được giải quyết.
 4. Tỷ lệ lỗi Medium còn mở dưới 5 lỗi (và các lỗi này phải có phương án khắc phục tạm thời được chấp thuận).
 5. Đại diện Aurora University ký biên bản nghiệm thu UAT chính thức.
@@ -99,3 +99,7 @@ Hệ thống UniSupport chỉ được phép bàn giao nghiệm thu và đưa v�
 - **Công cụ ghi nhận lỗi:** Sử dụng GitHub Issues với mẫu `2-bug.md` có sẵn trong `.github/ISSUE_TEMPLATE/`.
 - **Gắn nhãn chuẩn:** Mỗi lỗi phải được gắn nhãn Severity (`critical`, `high`, `medium`, `low`) và gán Milestone (`MS-xx`).
 - **Phân công trách nhiệm:** QA tạo bug issue kèm video/ảnh chụp màn hình và các bước tái hiện (reproduce steps); Tech Lead phân công Developer tương ứng; Developer sửa lỗi và tạo PR; QA verify lại trên Staging trước khi đóng Issue.
+
+## Định mức QA trong kế hoạch
+
+Resources trong Master Plan v2.1 ghi 97 AC chức năng, 19 AC NFR toàn cục và 6 ngưỡng NFR. Ước tính theo định mức Mô phỏng là 287,75 giờ trước bảo hành, đối chiếu 320 giờ QA triển khai. Có 24 giờ QA bảo hành trong tổng 98 giờ bảo hành. PM và QA kiểm tra lại định mức khi có số liệu chạy thử, thay đổi AC hoặc thêm vòng sửa lỗi.

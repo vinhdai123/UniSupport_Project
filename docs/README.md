@@ -30,7 +30,7 @@
 | Nội dung | Ở đâu |
 | --- | --- |
 | **Phạm vi (Scope: Làm và Không làm)** | `08-project/proposal.docx`; `01-product/goals-and-non-goals.md`, `01-product/product-scope.md` |
-| **Nguồn lực & Nhân sự** | `08-project/master-plan.xlsx` sheet Resources; [08-project/team-charter.md](08-project/team-charter.md) |
+| **Nguồn lực & Nhân sự** | `08-project/master-plan.xlsx` sheet Resources, ước tính QA từ dòng 704; [08-project/team-charter.md](08-project/team-charter.md) |
 | **Giá và hạng mục báo giá** | [08-project/quotation.xlsx](08-project/quotation.xlsx) (sheet Báo giá) |
 | **Kế hoạch 23 tuần & Milestone** | [08-project/master-plan.xlsx](08-project/master-plan.xlsx), [08-project/master-plan.md](08-project/master-plan.md) |
 | **Sổ theo dõi rủi ro** | [08-project/risk-register.md](08-project/risk-register.md) |

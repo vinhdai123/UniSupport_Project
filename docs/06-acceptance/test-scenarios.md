@@ -2,6 +2,12 @@
 
 Kế hoạch kiểm thử Mô phỏng. Mỗi dòng là một kịch bản dự kiến, QA ghi kết quả thực thi và bằng chứng tại test run/bug Issue khi triển khai. Tham số đang đề xuất cần được xác nhận trước nghiệm thu.
 
+## Lịch kiểm tra theo phiên bản
+
+Tại mỗi mốc, QA kiểm AC mới và hồi quy phần đã giao theo RTM. Bộ 19 AC NFR toàn cục được kiểm đầy đủ ở MS-05, kiểm lại ở MS-06 cùng 6 ngưỡng NFR. Trước MS-07, bản RC trên Staging được hồi quy toàn bộ chức năng và kiểm các phần chịu ảnh hưởng của bản sửa.
+
+Production kiểm smoke và các ca luồng chính TS-001, TS-002, TS-015, TS-021, TS-022, TS-023, TS-024, TS-012, TS-053, TS-057, TS-048, TS-095. QA cùng Tech Lead chốt bộ ca theo phiên bản và rủi ro. Mô hình định mức và giờ theo từng mốc nằm tại Resources từ dòng 704 của master-plan.xlsx. Kết quả thực thi được lưu theo phiên bản kiểm thử.
+
 ## Dữ liệu dùng chung
 
 | Bộ dữ liệu giả lập | Thiết lập |
