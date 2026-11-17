@@ -1,3 +1,18 @@
+# Yêu cầu phi chức năng (Non-Functional Requirements)
+
+<!-- Hướng dẫn: NFR phải đo được (có số và cách đo). Toàn bộ hệ thống UniSupport tuân thủ các chuẩn NFR dưới đây. -->
+
+| Mã | Nhóm | Yêu cầu | Ngưỡng đo | Cách đo | Áp dụng cho |
+| --- | --- | --- | --- | --- | --- |
+| NFR-GLOBAL-01 | Dữ liệu kiểm thử | Sử dụng 100% Mock Data trong Dev & Test, không dùng data thật | 0 bản ghi thật trên Dev/Staging | Audit database Dev/Staging | Toàn hệ thống |
+| NFR-GLOBAL-02 | Đa ngôn ngữ | Hỗ trợ song ngữ Tiếng Việt & Tiếng Anh | 100% nhãn, nút, thông báo hệ thống được bản địa hóa | UI Test Suite / Manual check | Toàn bộ giao diện M01-M05 |
+| NFR-GLOBAL-03 | Tính tương thích | Web Responsive trên Desktop và Mobile | Layout chuẩn trên màn hình >= 375px (Mobile) và >= 1024px (Desktop) | Chrome DevTools Responsive / BrowserStack | Toàn bộ giao diện M01-M05 |
+| NFR-GLOBAL-04 | Usability | Giao diện nhất quán, rõ ràng, dễ sử dụng | 100% form có validation feedback; thuật ngữ nhất quán | Usability review / UAT | Toàn bộ giao diện M01-M05 |
+| NFR-PERF-01 | Hiệu năng | Thời gian phản hồi trang chính | 95% request trả về < 1.5s khi 100 người dùng đồng thời | JMeter / K6 Load testing | M01, M02, M03 |
+| NFR-SEC-01 | Bảo mật | Kiểm soát quyền truy cập RBAC và bảo vệ phiên làm việc | 0 lỗ hổng IDOR/Unauthorized access; JWT hết hạn sau 24h | OWASP ZAP / Security Testing | Toàn hệ thống |
+
+---
+
 # GLOBAL NON-FUNCTIONAL REQUIREMENTS
 
 # 1. Tổng quan
