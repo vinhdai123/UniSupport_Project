@@ -16,11 +16,20 @@ Hoạt động Đảm bảo chất lượng (QA) tập trung vào việc phòng 
 3. **Tiêu chuẩn Code Review & Kiểm soát nhánh:**
    - 100% Pull Request từ Developer bắt buộc phải có sự review và phê duyệt của Technical Lead trước khi merge vào nhánh chính.
    - Không commit code trực tiếp vào nhánh chính (`main`/`master`).
-4. **Cổng kiểm soát chất lượng theo Milestone (Milestone Quality Gates):**
-   - **M1 Gate (Tuần 5):** Khóa PRD, kiến trúc và Prototype. Yêu cầu 0 lỗi Critical/High trong đặc tả.
-   - **M2 Gate (Tuần 19-20):** Hoàn thành Integration Test toàn bộ 5 phân hệ M01–M05; Unit Test đạt tối thiểu 80% Code Coverage cho các logic nghiệp vụ cốt lõi (Auth, Ticket Routing, SLA calculation).
-   - **M3 Gate (Tuần 21-22):** Nghiệm thu UAT đạt yêu cầu với sự xác nhận của Aurora University; 0 lỗi Critical/High tồn đọng.
-   - **M4 Gate (Tuần 23):** Final Smoke Test trên môi trường Production thành công; hoàn tất hồ sơ bàn giao và kích hoạt bảo hành.
+4. **Cổng kiểm soát chất lượng theo milestone**
+
+   Mọi bản giao có kiểm tra chức năng mới, quyền dữ liệu, tích hợp, hồi quy và bản sửa lỗi trước khi trình xác nhận. Kế hoạch chi tiết theo Milestone Matrix và WBS trong Master Plan.
+
+| Mốc | Phạm vi kiểm dự kiến |
+| --- | --- |
+| MS-01 | Màn hình, API và dữ liệu xác thực hoạt động cùng nhau. Tài khoản sai bị từ chối, tài khoản hợp lệ vào đúng trang, phiên kết thúc không còn truy cập được. |
+| MS-02 | Tài khoản và thay đổi vai trò được lưu, đăng nhập áp dụng đúng quyền. Xác minh đặt lại mật khẩu và kiểm quyền theo PRD. |
+| MS-03 | Ticket và tệp được lưu, được tra cứu theo quyền và quy tắc PRD. Hồi quy đăng nhập và quyền trước bàn giao. |
+| MS-04 | Vòng đời Ticket, ghi chú nội bộ, Email/In-App và cảnh báo theo quy tắc PRD. Quyền dữ liệu được bảo vệ, hồi quy luồng đã giao. |
+| MS-05 | Số liệu màn hình/CSV khớp dữ liệu chuẩn bị, quyền và bộ lọc. Kiểm VI/EN, responsive và hồi quy Ticket. |
+| MS-06 | Đối chiếu PRD, hồ sơ kiểm thử và lỗi còn tồn. Khắc phục lỗi chặn luồng chính hoặc vi phạm quyền, lỗi khác theo tiêu chí đã thống nhất. |
+| MS-07 | Xác nhận kết quả UAT, hồi quy bản sửa, tài liệu và đào tạo, lịch triển khai, sao lưu/khôi phục và quyền truy cập cần thiết. |
+| MS-08 | Smoke/hồi quy Production có hồ sơ theo phiên bản, biên bản bàn giao được xác nhận và bắt đầu bảo hành 30 ngày. |
 
 ---
 
@@ -36,12 +45,15 @@ Hoạt động Kiểm soát chất lượng (QC) tập trung vào việc kiểm 
    - **User Acceptance Testing (UAT):** Đại diện sinh viên và cán bộ Aurora University trực tiếp thao tác nghiệm thu trên môi trường Staging.
 2. **Môi trường và Dữ liệu kiểm thử:**
    - **Dev Environment:** Dùng cho lập trình viên chạy Unit Test.
-   - **Staging Environment:** Cấu hình tương đương 99% môi trường Production, dùng cho Integration Test, Security Test và UAT.
+   - **Staging Environment:** Cấu hình được xác nhận đủ điều kiện kiểm các luồng và NFR theo kế hoạch, dùng cho Integration Test, Security Test và UAT.
    - **Quy định Mock Data:** Tuyệt đối không dùng dữ liệu thật của 3.000 sinh viên. Đội QA khởi tạo bộ Mock Data chuẩn trên Staging gồm 4 nhóm tài khoản mẫu (Student, Staff, Manager, Admin) và 50 Ticket bao phủ đầy đủ các trạng thái, Category và SLA.
 
 ---
 
 ## Definition of Done (DoD)
+
+Với tài liệu và kế hoạch của bài làm, Done yêu cầu đúng phạm vi Issue, nội dung có căn cứ, mã/liên kết hợp lệ, phần bị ảnh hưởng được đồng bộ và có review độc lập. Các tiêu chí triển khai dưới đây áp dụng trong kế hoạch thực hiện phần mềm Mô phỏng. Ngưỡng coverage, dữ liệu test và hạn sửa lỗi là đề xuất cần nhóm xác nhận trong PR.
+
 
 Một công việc/tính năng chỉ được xem là hoàn thành (Done) khi đáp ứng toàn bộ các tiêu chí:
 

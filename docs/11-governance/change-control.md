@@ -31,7 +31,7 @@ Mỗi Change Request bắt buộc phải được đánh giá trên 6 khía cạ
 - **Phạm vi (Scope):** Tính năng này có thuộc phạm vi Release 1.0 không hay nên dời sang Release 1.x / 2.0?
 - **Nỗ lực (Effort):** Số giờ công (man-hours) của từng vai trò (BA, FE, BE, QA, DevOps) cần thêm.
 - **Chi phí (Cost):** Đơn giá giờ công phát sinh và tác động tới tổng giá trị hợp đồng.
-- **Tiến độ (Timeline):** Có làm chậm các cột mốc M1, M2, M3, M4 hoặc vi phạm hạn chót Tuần 23 không?
+- **Tiến độ (Timeline):** Có ảnh hưởng một trong các mốc MS-01 đến MS-08 hoặc hạn bàn giao tuần 23 không?
 - **Rủi ro (Risk):** Ảnh hưởng đến tính toàn vẹn dữ liệu, hiệu năng hoặc an ninh thông tin.
 - **Kiểm thử (Acceptance & Test):** Số kịch bản kiểm thử (Test Scenarios) cần viết mới hoặc sửa đổi.
 
@@ -41,7 +41,7 @@ Mỗi Change Request bắt buộc phải được đánh giá trên 6 khía cạ
 
 | Loại thay đổi | Người duyệt | Hình thức phê duyệt |
 | --- | --- | --- |
-| **Thay đổi In-Scope, Ngân sách hoặc Cột mốc bàn giao (M1–M4)** | Đại diện có thẩm quyền của Aurora University & Project Manager | Văn bản ký xác nhận hoặc Email chính thức |
+| **Thay đổi In-Scope, Ngân sách hoặc Cột mốc bàn giao (MS-01 đến MS-08)** | Đại diện có thẩm quyền của Aurora University & Project Manager | Văn bản ký xác nhận hoặc Email chính thức |
 | **Thay đổi giải pháp kỹ thuật, thư viện, kiến trúc nội bộ** | Technical Lead | Phê duyệt trên GitHub Pull Request / Architecture review |
 | **Điều chỉnh phân bổ nhân sự, thứ tự task nội bộ (không trễ mốc)** | Project Manager | Cập nhật trên GitHub Projects / Milestone board |
 | **Thay đổi nhỏ về nhãn hiển thị, tinh chỉnh giao diện nhỏ (UI tweak)** | UI/UX Designer & BA / PM | Xác nhận qua Issue comment |
@@ -53,6 +53,6 @@ Mỗi Change Request bắt buộc phải được đánh giá trên 6 khía cạ
 Khi một Change Request được phê duyệt, các tài liệu sau bắt buộc phải được cập nhật đồng thời:
 1. **Đặc tả yêu cầu (PRD):** Cập nhật tiêu chí nghiệm thu (AC) và mô tả chức năng trong `docs/03-modules/Mxx-*/prd.md`.
 2. **Báo giá dự án:** Ghi nhận hạng mục bổ sung trong `docs/08-project/quotation.xlsx` (nếu có phát sinh chi phí).
-3. **Kế hoạch tổng thể:** Ghi nhận vào sheet `Change log` của `docs/08-project/master-plan.xlsx` (phiên bản, ngày, mã CR, nội dung thay đổi) và cập nhật Gantt chart nếu có điều chỉnh ngày.
+3. **Kế hoạch tổng thể:** Ghi nhận vào sheet `Change Log` của `docs/08-project/master-plan.xlsx` (phiên bản, ngày, mã CR, nội dung thay đổi) và cập nhật Gantt chart nếu có điều chỉnh ngày.
 4. **Kịch bản kiểm thử:** Bổ sung/sửa đổi test scenario trong `docs/06-acceptance/test-scenarios.md` và `traceability-matrix.md`.
 5. **GitHub Issues:** Cập nhật nhãn `change-request` và liên kết với Milestone tương ứng.

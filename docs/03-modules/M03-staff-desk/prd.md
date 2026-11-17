@@ -1,5 +1,8 @@
 # MODULE M03: STAFF DESK (KHÔNG GIAN CÁN BỘ)
 
+Bản đặc tả phục vụ kế hoạch Mô phỏng. Tham số mật khẩu, thời hạn, tệp, số dòng và chính sách quyền theo Business Rules/NFR là đề xuất cần PM/BA xác nhận trước baseline nghiệm thu.
+
+
 # 1. Đặc tả yêu cầu chức năng
 
 ## FR-STF-01 – Hàng đợi và Quản lý danh sách Ticket (Ticket Queue)
@@ -46,8 +49,9 @@ Cán bộ đã đăng nhập thành công.
   - When: Cán bộ nhập một Ticket ID không tồn tại.
   - Then: Danh sách trống trơn và hệ thống báo "Không tìm thấy Ticket nào phù hợp".
 
+
 ### Tình huống ngoại lệ
-- Trong lúc cán bộ đang xem Hàng đợi, có một Ticket mới thuộc phòng ban được sinh viên gửi lên. Dữ liệu sẽ không tự động nhảy ra nếu cán bộ không tải lại trang hoặc hệ thống không cấu hình Real-time Update.
+- Kết hợp bộ lọc không có kết quả với dữ liệu ở phòng khác, kiểm trạng thái trống không rò rỉ dữ liệu.
 
 ---
 
@@ -95,8 +99,13 @@ Ticket đã được tạo thành công bởi sinh viên ở Module M02.
   - When: Có Ticket gửi vào danh mục này.
   - Then: Ticket không bị mất mà rơi vào Hàng đợi dự phòng, chờ Admin xử lý.
 
+- **FR-STF-02/AC-04:** Tự nhận và tranh chấp người phụ trách (BR-STF-03, BR-STF-04)
+  - Given: Ticket chưa có người phụ trách, hai Staff cùng phòng mở phiên bản hiện tại.
+  - When: Hai người đồng thời chọn tự nhận Ticket.
+  - Then: Chỉ một người được lưu làm assignee, yêu cầu còn lại được báo dữ liệu đã thay đổi và tải lại, không ghi đè người nhận trước.
+
 ### Tình huống ngoại lệ
-- Không có.
+- Hai Staff cùng tự nhận một Ticket chưa gán, kiểm chỉ một assignee được lưu.
 
 ---
 
@@ -138,8 +147,13 @@ Cán bộ có quyền xử lý Ticket đang mở chi tiết Ticket đó.
   - When: Cán bộ A bấm chuyển trạng thái thành "Đang xử lý" mà chưa tải lại trang.
   - Then: Hệ thống từ chối cập nhật và báo "Dữ liệu đã có sự thay đổi từ người dùng khác. Vui lòng tải lại".
 
+- **FR-STF-03/AC-03:** Chặn chuyển lùi về Mới tạo (BR-STF-05)
+  - Given: Ticket đã bắt đầu xử lý.
+  - When: Staff gọi giao diện hoặc API yêu cầu đổi về Mới tạo.
+  - Then: Hệ thống từ chối, giữ trạng thái và lịch sử đã có.
+
 ### Tình huống ngoại lệ
-- Hệ thống hỗ trợ thay đổi trạng thái hàng loạt (Bulk update) đối với nhiều Ticket cùng lúc trên màn hình Hàng đợi (nếu được thiết kế trên giao diện).
+- Hai cán bộ lưu thay đổi trên cùng phiên bản Ticket, kiểm yêu cầu cũ bị từ chối và lịch sử không bị ghi đè.
 
 ---
 
@@ -182,8 +196,9 @@ Ticket đang chưa đóng.
   - When: Cán bộ không nhập chữ nào vào ô lý do và bấm Lưu.
   - Then: Hệ thống không thực hiện việc chuyển và báo "Lý do chuyển là bắt buộc".
 
+
 ### Tình huống ngoại lệ
-- Không có.
+- Mở Ticket ở phòng cũ sau khi chuyển phòng thành công, kiểm phạm vi dữ liệu mới và giữ nguyên Ticket ID.
 
 ---
 
@@ -226,8 +241,17 @@ Cán bộ đang phụ trách Ticket đó.
   - When: Cán bộ chọn mẫu "Chào mừng".
   - Then: Nội dung ô văn bản tự động điền "Chào em {Tên}, phòng ban đã nhận được yêu cầu..."
 
+- **FR-STF-05/AC-03:** Chặn yêu cầu bổ sung sai trạng thái (BR-STF-09)
+  - Given: Ticket đang ở Mới tạo hoặc Hoàn thành.
+  - When: Staff gửi thao tác Yêu cầu bổ sung qua API.
+  - Then: Hệ thống từ chối thao tác và giữ nguyên trạng thái.
+- **FR-STF-05/AC-04:** Từ chối tệp không an toàn (E-STF-05)
+  - Given: QA chuẩn bị tệp kiểm thử an toàn mô phỏng định dạng bị cấm theo BR-02.
+  - When: Staff gửi phản hồi kèm tệp đó.
+  - Then: Hệ thống từ chối gửi, nêu lỗi tệp, không phát hành phản hồi hoặc chuyển trạng thái một phần.
+
 ### Tình huống ngoại lệ
-- Không có.
+- Gửi tệp vi phạm chính sách hoặc thao tác yêu cầu bổ sung từ màn hình đã cũ, kiểm không lưu một phần.
 
 ---
 
@@ -265,5 +289,60 @@ Cán bộ có quyền truy cập vào Ticket.
   - When: Sinh viên sở hữu Ticket #123 đăng nhập và xem chi tiết yêu cầu.
   - Then: Dòng thời gian của sinh viên không hề có đoạn ghi chú đó, cũng không nhận được email thông báo nào.
 
+- **FR-STF-06/AC-02:** Giới hạn quyền ghi chú (BR-STF-12)
+  - Given: Có ghi chú thuộc phòng A và một Staff chỉ thuộc phòng B.
+  - When: Staff B mở Ticket hoặc gọi API đọc ghi chú của phòng A.
+  - Then: Nội dung ghi chú bị chặn. Manager trong phạm vi quản lý và Admin được kiểm theo ma trận quyền đã xác nhận.
+- **FR-STF-06/AC-03:** Vượt giới hạn ký tự (E-STF-06)
+  - Given: Baseline đã xác nhận giới hạn L ký tự cho ghi chú.
+  - When: Nhập L ký tự rồi thử L+1 ký tự.
+  - Then: L ký tự được lưu nếu hợp lệ. L+1 bị từ chối với thông báo, không cắt mất nội dung hoặc tạo bản ghi dở dang.
+
 ### Tình huống ngoại lệ
-- Không có.
+- Thử ghi chú tại L và L+1 ký tự theo giới hạn đã xác nhận, kiểm không lộ nội dung qua API hoặc thông báo sinh viên.
+
+---
+
+## FR-STF-07 – Theo dõi hạn và cảnh báo SLA
+
+### Mô tả
+Cán bộ và quản lý xem hạn xử lý, mức cảnh báo Ticket thuộc phạm vi theo SLA và lịch làm việc đã cấu hình.
+
+### Actor
+Staff, Manager.
+
+### Mức độ ưu tiên
+Cao.
+
+### Điều kiện tiên quyết
+Ticket có priority và cấu hình SLA hợp lệ theo BR-03, BR-04.
+
+### Luồng chính
+1. Hệ thống tính hạn theo priority, lịch làm việc và chính sách chờ bổ sung đã xác nhận.
+2. Hàng đợi hiển thị hạn và cảnh báo hiện tại.
+3. Người dùng lọc Ticket sắp hạn hoặc quá hạn trong phạm vi quyền.
+4. Khi hoàn thành, hệ thống giữ dữ liệu đo và ngừng tạo cảnh báo mới cho lần xử lý đã kết thúc.
+
+### Quy tắc nghiệp vụ
+- BR-STF-13: Công thức thời hạn và ngưỡng cảnh báo dùng BR-03, BR-04 gốc.
+- BR-STF-14: Cảnh báo chỉ hiển thị trong phạm vi quyền dữ liệu và áp dụng với Ticket chưa hoàn thành.
+
+### Luồng rẽ nhánh và lỗi
+- E-STF-07: Thiếu cấu hình SLA hoặc lịch làm việc thì báo cấu hình chưa hoàn tất, chuyển PM/BA và Admin xử lý, tránh hiển thị một hạn giả.
+
+### Tiêu chí nghiệm thu
+- **FR-STF-07/AC-01:** Cảnh báo đúng biên thời gian (BR-STF-13)
+  - Given: Bộ dữ liệu có Ticket tại trên, đúng và dưới ngưỡng vàng, đúng hạn và quá hạn theo BR-04 đã xác nhận.
+  - When: Mở hàng đợi bằng thời gian kiểm thử cố định.
+  - Then: Mỗi Ticket có hạn và màu đúng công thức được xác nhận, điểm đúng hạn được kiểm riêng.
+- **FR-STF-07/AC-02:** Phạm vi và Ticket hoàn thành (BR-STF-14)
+  - Given: Có Ticket phòng khác và một Ticket đã hoàn thành.
+  - When: Staff mở bộ lọc cảnh báo.
+  - Then: Ticket ngoài quyền bị ẩn, Ticket đã hoàn thành không phát sinh cảnh báo quá hạn mới cho lần xử lý đã xong.
+- **FR-STF-07/AC-03:** Thiếu cấu hình (E-STF-07)
+  - Given: Môi trường thử thiếu SLA cho một priority.
+  - When: Tạo hoặc hiển thị Ticket liên quan.
+  - Then: Hiển thị tình trạng thiếu cấu hình, ghi vấn đề cho người phụ trách và không tạo hạn giả.
+
+### Tình huống ngoại lệ
+- Ticket tạo ngoài giờ, gặp ngày nghỉ hoặc đổi priority khi đang Pending, kiểm theo quyết định SLA đã xác nhận.

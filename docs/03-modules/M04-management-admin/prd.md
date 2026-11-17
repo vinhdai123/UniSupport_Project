@@ -1,5 +1,8 @@
 # MODULE M04: ADMIN CONFIG (QUẢN TRỊ & CẤU HÌNH)
 
+Bản đặc tả phục vụ kế hoạch Mô phỏng. Tham số mật khẩu, thời hạn, tệp, số dòng và chính sách quyền theo Business Rules/NFR là đề xuất cần PM/BA xác nhận trước baseline nghiệm thu.
+
+
 # 1. Đặc tả yêu cầu chức năng
 
 ## FR-ADM-01 – Quản lý Danh mục yêu cầu (Category Management)
@@ -47,6 +50,13 @@ Tài khoản đăng nhập có vai trò Administrator.
   - Given: Danh mục "Bảo lưu" đang có 10 Ticket cũ.
   - When: Admin chuyển trạng thái danh mục sang "Ngưng hoạt động".
   - Then: Trạng thái được cập nhật thành công, sinh viên không còn thấy mục "Bảo lưu" khi tạo Ticket mới, nhưng 10 Ticket cũ không bị lỗi dữ liệu.
+- **FR-ADM-01/AC-04:** Tên danh mục bắt buộc (E-ADM-02)
+  - Given: Admin ở form danh mục.
+  - When: Để tên rỗng hoặc chỉ có khoảng trắng rồi lưu.
+  - Then: Hệ thống báo trường bắt buộc, không lưu danh mục.
+
+### Tình huống ngoại lệ
+- Tạo tên chỉ khác hoa/thường với tên đang có, hoặc ngưng danh mục đã có Ticket lịch sử.
 
 ---
 
@@ -88,6 +98,17 @@ Có danh sách tài khoản Staff trong hệ thống.
   - Given: Phòng Khảo thí chỉ có duy nhất Staff B và đang có 5 Ticket chưa đóng.
   - When: Admin gỡ Staff B khỏi Phòng Khảo thí.
   - Then: Hệ thống cảnh báo không cho gỡ cho đến khi 5 Ticket kia được chuyển cho người/phòng ban khác.
+- **FR-ADM-02/AC-03:** Phải giữ ít nhất một Manager (BR-ADM-04)
+  - Given: Phòng ban đang có một Manager.
+  - When: Admin xóa hoặc hạ vai trò Manager cuối cùng mà chưa bố trí người thay thế.
+  - Then: Hệ thống từ chối lưu thay đổi, yêu cầu bổ sung Manager và giữ cấu hình hiện tại.
+- **FR-ADM-02/AC-04:** Cán bộ kiêm nhiệm (BR-ADM-05)
+  - Given: Staff A thuộc phòng X.
+  - When: Admin thêm Staff A vào phòng Y và lưu.
+  - Then: Staff A có quyền hàng đợi của X và Y sau khi tải lại, vẫn bị chặn đối với phòng Z.
+
+### Tình huống ngoại lệ
+- Gỡ Manager cuối cùng và thử Staff kiêm nhiệm hai phòng, kiểm cấu hình và quyền từng phòng.
 
 ---
 
@@ -124,11 +145,18 @@ Hệ thống đã có dữ liệu Danh mục (FR-ADM-01) và Phòng ban (FR-ADM-
 - **FR-ADM-03/AC-01:** Thiết lập Routing Rule thành công (Kiểm tra BR-ADM-06)
   - Given: Admin thiết lập Danh mục X ánh xạ sang Phòng Y.
   - When: Admin lưu cấu hình.
-  - Then: Cấu hình lưu thành công. Giao diện không cho phép gán Danh mục X sang một Phòng Z nào khác.
+  - Then: Cấu hình lưu thành công và có đúng một phòng đích hoạt động cho danh mục X. Cập nhật mapping hợp lệ thay thế phòng đích hiện tại, không tạo hai mapping mặc định.
 - **FR-ADM-03/AC-02:** Ngăn chặn phân luồng vào phòng ban vô hiệu hóa (Kiểm tra E-ADM-04)
   - Given: Phòng Y đã bị ngưng hoạt động.
   - When: Admin cố gắng gán Danh mục X sang Phòng Y.
   - Then: Hệ thống báo lỗi và từ chối lưu quy tắc.
+- **FR-ADM-03/AC-03:** Người phụ trách mặc định tùy chọn (BR-ADM-07)
+  - Given: Danh mục X định tuyến tới phòng Y có Staff A khả dụng.
+  - When: Lưu lần lượt quy tắc không có assignee, sau đó có assignee A và tạo Ticket mới cho từng cấu hình.
+  - Then: Cả hai cấu hình hợp lệ. Trường hợp đầu Ticket ở hàng đợi Y chưa gán, trường hợp sau gán A và giữ phòng Y.
+
+### Tình huống ngoại lệ
+- Phòng đích bị ngưng hoạt động sau khi mở form cấu hình nhưng trước lúc lưu.
 
 ---
 
@@ -144,7 +172,7 @@ Quản trị viên.
 Trung bình.
 
 ### Điều kiện tiên quyết
-Không có.
+Người dùng đã đăng nhập bằng vai trò Administrator, danh sách biến và phạm vi hiển thị mẫu đã được xác nhận.
 
 ### Luồng chính
 1. Admin truy cập "Quản lý Mẫu phản hồi".
@@ -169,3 +197,133 @@ Không có.
   - Given: Admin nhập nội dung "Chào {Ten_Sinh_Vien".
   - When: Admin bấm Lưu.
   - Then: Hệ thống báo "Lỗi cú pháp biến tự động, vui lòng kiểm tra lại cặp dấu {}".
+- **FR-ADM-04/AC-03:** Phạm vi mẫu phản hồi (BR-ADM-08)
+  - Given: Có mẫu Global và mẫu chỉ dành cho phòng A.
+  - When: Staff A và Staff B thuộc phòng khác tải danh sách và mở từng mẫu qua API.
+  - Then: Cả hai dùng được mẫu Global. Chỉ Staff A được lấy mẫu của phòng A.
+
+### Tình huống ngoại lệ
+- Mẫu có biến thiếu dấu đóng hoặc mẫu phòng A được truy cập từ Staff phòng B.
+
+---
+
+## FR-ADM-05 – Quản trị FAQ
+
+### Mô tả
+Admin quản lý nội dung FAQ và đối tượng xem, xuất bản hoặc gỡ xuất bản để hỗ trợ tra cứu FR-STU-06.
+
+### Actor
+Administrator.
+
+### Mức độ ưu tiên
+Cao.
+
+### Điều kiện tiên quyết
+Admin đã đăng nhập, có quyền quản lý nội dung FAQ.
+
+### Luồng chính
+1. Mở danh sách FAQ và tạo hoặc sửa bài.
+2. Nhập câu hỏi, nội dung trả lời, từ khóa và đối tượng xem.
+3. Lưu bản nháp hoặc xuất bản.
+4. Kiểm kết quả tra cứu bằng tài khoản đúng đối tượng.
+
+### Quy tắc nghiệp vụ
+- BR-ADM-09: Chỉ FAQ đã xuất bản và đúng đối tượng mới hiển thị cho sinh viên theo FR-STU-06.
+
+### Luồng rẽ nhánh và lỗi
+- E-ADM-06: Thiếu câu hỏi hoặc câu trả lời thì từ chối xuất bản và chỉ rõ trường thiếu.
+
+### Tiêu chí nghiệm thu
+- **FR-ADM-05/AC-01:** Lưu và xuất bản FAQ (BR-ADM-09)
+  - Given: Admin có FAQ nháp dành sinh viên.
+  - When: Xuất bản rồi tìm bằng Student, sau đó gỡ xuất bản và tải lại.
+  - Then: Student chỉ tìm và mở bài khi đã xuất bản.
+- **FR-ADM-05/AC-02:** Nội dung bắt buộc (E-ADM-06)
+  - Given: Admin tạo FAQ thiếu câu hỏi hoặc câu trả lời.
+  - When: Chọn xuất bản.
+  - Then: Hệ thống từ chối xuất bản, chỉ rõ trường thiếu và không tạo bài công khai.
+
+### Tình huống ngoại lệ
+- Bài vừa bị gỡ xuất bản vẫn còn trong kết quả cũ, truy cập lại phải kiểm trạng thái xuất bản hiện tại.
+
+---
+
+## FR-ADM-06 – Cấu hình SLA và lịch làm việc
+
+### Mô tả
+Admin thiết lập định mức xử lý theo priority, giờ/ngày làm việc và ngưỡng cảnh báo theo quyết định nghiệp vụ được xác nhận.
+
+### Actor
+Administrator.
+
+### Mức độ ưu tiên
+Cao.
+
+### Điều kiện tiên quyết
+PM/BA đã tổng hợp chính sách tại BR-03, BR-04 và quyền phê duyệt cấu hình.
+
+### Luồng chính
+1. Mở cấu hình SLA và lịch làm việc.
+2. Nhập hoặc sửa định mức theo priority, lịch và ngưỡng cảnh báo.
+3. Kiểm giá trị, lưu cấu hình kèm thời điểm hiệu lực.
+4. Thử một Ticket theo cấu hình mới, kiểm tác động tới Ticket đang mở theo quyết định đã xác nhận.
+
+### Quy tắc nghiệp vụ
+- BR-ADM-10: Định mức và ngưỡng dùng cùng giá trị với BR-03, BR-04 đã xác nhận. Mỗi cấu hình có thời điểm hiệu lực.
+
+### Luồng rẽ nhánh và lỗi
+- E-ADM-07: Giá trị thời gian không dương, ngưỡng ngoài phạm vi hợp lệ hoặc cấu hình thiếu bị từ chối, giữ cấu hình hiện tại.
+
+### Tiêu chí nghiệm thu
+- **FR-ADM-06/AC-01:** Lưu cấu hình hợp lệ (BR-ADM-10)
+  - Given: Admin có bộ SLA và lịch được xác nhận.
+  - When: Lưu và tạo Ticket với priority tương ứng trong thời gian thử cố định.
+  - Then: Hạn và cảnh báo khớp phép tính độc lập của bộ dữ liệu, lưu được thời điểm hiệu lực.
+- **FR-ADM-06/AC-02:** Chặn cấu hình sai (E-ADM-07)
+  - Given: Có cấu hình SLA hợp lệ đang dùng.
+  - When: Thử thời gian 0, thời gian âm, ngưỡng phần trăm ngoài 0–100 hoặc thiếu priority bắt buộc.
+  - Then: Hệ thống từ chối thay đổi, chỉ rõ lỗi và giữ cấu hình hiện tại.
+
+### Tình huống ngoại lệ
+- Cấu hình thay đổi khi còn Ticket đang mở, chính sách hồi tố hoặc áp dụng từ thời điểm hiệu lực phải được PM/BA xác nhận trước triển khai.
+
+---
+
+## FR-ADM-07 – Theo dõi workload và phân công lại
+
+### Mô tả
+Manager xem tải Ticket của nhân sự trong phạm vi quản lý và điều chỉnh assignee để cân bằng xử lý.
+
+### Actor
+Manager.
+
+### Mức độ ưu tiên
+Cao.
+
+### Điều kiện tiên quyết
+Manager đã đăng nhập, dữ liệu phòng ban và nhân sự đang hoạt động đã xác nhận.
+
+### Luồng chính
+1. Mở bảng workload của phòng quản lý.
+2. Xem số Ticket theo người và trạng thái, xác định Ticket cần điều chỉnh.
+3. Chọn nhân sự đích thuộc quyền quản lý, nhập lý do và xác nhận.
+4. Hệ thống cập nhật một assignee, lưu lịch sử và tải lại workload.
+
+### Quy tắc nghiệp vụ
+- BR-ADM-11: Manager chỉ điều phối Ticket và nhân sự trong phạm vi quyền, mỗi Ticket có tối đa một assignee theo BR-STF-03.
+
+### Luồng rẽ nhánh và lỗi
+- E-ADM-08: Nhân sự đích không khả dụng hoặc Ticket đã được cập nhật bởi người khác thì từ chối thay đổi, yêu cầu tải lại.
+
+### Tiêu chí nghiệm thu
+- **FR-ADM-07/AC-01:** Phân công lại và cập nhật workload (BR-ADM-11)
+  - Given: Ticket đang gán Staff A, Staff B cùng phòng đang hoạt động.
+  - When: Manager chuyển Ticket từ A sang B với lý do.
+  - Then: Chỉ B là assignee, lịch sử giữ trước/sau, workload của A giảm và B tăng một.
+- **FR-ADM-07/AC-02:** Chặn ngoài quyền hoặc dữ liệu cũ (E-ADM-08, BR-ADM-11)
+  - Given: Manager có màn hình cũ và có nhân sự phòng khác.
+  - When: Thử phân công cho người ngoài quyền, rồi thử ghi đè Ticket vừa được người khác sửa.
+  - Then: Cả hai yêu cầu bị từ chối, không thay đổi assignee hoặc làm sai số liệu workload.
+
+### Tình huống ngoại lệ
+- Hai Manager cùng phân công một Ticket, kiểm chỉ cập nhật hợp lệ đầu tiên và yêu cầu sau tải lại.

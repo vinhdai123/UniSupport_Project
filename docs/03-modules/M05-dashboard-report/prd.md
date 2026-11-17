@@ -1,5 +1,8 @@
 # MODULE M05: DASHBOARD & REPORT (BÁO CÁO THỐNG KÊ)
 
+Bản đặc tả phục vụ kế hoạch Mô phỏng. Tham số mật khẩu, thời hạn, tệp, số dòng và chính sách quyền theo Business Rules/NFR là đề xuất cần PM/BA xác nhận trước baseline nghiệm thu.
+
+
 # 1. Đặc tả yêu cầu chức năng
 
 ## FR-RPT-01 – Bảng điều khiển Tổng quan (Overview Metrics)
@@ -49,8 +52,17 @@ Tài khoản có quyền xem báo cáo và hệ thống có dữ liệu Ticket.
   - When: Hệ thống tính toán thời gian xử lý trung bình.
   - Then: Yêu cầu này chỉ được ghi nhận có thời gian xử lý thực tế là 2 ngày.
 
+- **FR-RPT-01/AC-04:** Phân biệt tồn đọng và chưa quá hạn (BR-RPT-02)
+  - Given: Có một Ticket chưa hoàn thành đã quá hạn, một chưa hoàn thành còn hạn và một hoàn thành.
+  - When: Mở thống kê Tồn đọng.
+  - Then: Chỉ Ticket chưa hoàn thành đã quá hạn được tính theo định nghĩa BR-RPT-02.
+- **FR-RPT-01/AC-05:** Khoảng thời gian không có Ticket (E-RPT-02)
+  - Given: Khoảng thời gian hợp lệ không có Ticket thuộc quyền xem.
+  - When: Áp dụng bộ lọc và tải báo cáo.
+  - Then: Chỉ số hiển thị 0 hoặc Chưa có dữ liệu, không chia cho 0 hoặc báo lỗi.
+
 ### Tình huống ngoại lệ
-- Không có.
+- Bộ lọc hợp lệ không có Ticket, kiểm không chia cho 0 và không giữ số liệu của bộ lọc cũ.
 
 ---
 
@@ -90,8 +102,13 @@ Tài khoản có quyền xem báo cáo cấp phòng ban.
   - When: Thử tìm kiếm hoặc truy cập dữ liệu của phòng Kế toán.
   - Then: Hệ thống không hiển thị bất kỳ thông tin nhân sự nào của phòng Kế toán.
 
+- **FR-RPT-02/AC-03:** Cán bộ chưa xử lý Ticket (E-RPT-03)
+  - Given: Phòng có Staff mới chưa xử lý Ticket.
+  - When: Manager mở báo cáo hiệu suất phòng.
+  - Then: Staff mới vẫn xuất hiện, số lượng xử lý bằng 0, chỉ số thiếu mẫu được trình bày rõ.
+
 ### Tình huống ngoại lệ
-- Không có.
+- Staff mới có 0 Ticket, kiểm vẫn hiển thị cùng phạm vi quyền phòng ban.
 
 ---
 
@@ -131,8 +148,9 @@ Hệ thống có dữ liệu Ticket.
   - When: Bấm tải dữ liệu.
   - Then: Hệ thống từ chối vẽ biểu đồ và hiển thị thông báo "Vui lòng chọn khoảng thời gian tối đa 1 năm".
 
+
 ### Tình huống ngoại lệ
-- Không có.
+- Kiểm dải 30/31 ngày và 365/366 ngày theo giá trị đề xuất đã xác nhận, có cả năm nhuận.
 
 ---
 
@@ -168,15 +186,20 @@ Trung bình.
   - When: Hệ thống tính toán điểm mức độ hài lòng.
   - Then: Điểm trung bình hiển thị là 4.5 sao, hoàn toàn không bị kéo tụt bởi 6 Ticket không tham gia đánh giá.
 
+- **FR-RPT-04/AC-02:** Chưa có phản hồi hài lòng (E-RPT-05)
+  - Given: Cán bộ hoặc danh mục được lọc chưa có đánh giá.
+  - When: Mở báo cáo CSAT.
+  - Then: Hiển thị Chưa có dữ liệu đánh giá, số mẫu bằng 0 và không trình bày điểm trung bình giả.
+
 ### Tình huống ngoại lệ
-- Không có.
+- Ticket hoàn thành chưa được đánh giá, kiểm mẫu số chỉ gồm các đánh giá hợp lệ.
 
 ---
 
 ## FR-RPT-05 – Trích xuất và Tải xuống Báo cáo (Export)
 
 ### Mô tả
-Cho phép người dùng xuất dữ liệu hiện tại của các báo cáo hoặc danh sách yêu cầu ra định dạng file CSV/Excel để phục vụ phân tích ngoại tuyến hoặc lưu trữ.
+Cho phép người dùng xuất dữ liệu hiện tại của các báo cáo hoặc danh sách yêu cầu ra định dạng file CSV để phục vụ phân tích ngoại tuyến hoặc lưu trữ.
 
 ### Actor
 Quản lý, Quản trị viên.
@@ -188,7 +211,7 @@ Trung bình.
 Bộ lọc báo cáo đã được áp dụng và đang có dữ liệu hiển thị trên màn hình.
 
 ### Luồng chính
-1. Người dùng bấm nút "Trích xuất CSV/Excel" trên giao diện báo cáo.
+1. Người dùng bấm nút "Trích xuất CSV" trên giao diện báo cáo.
 2. Hệ thống đọc các điều kiện bộ lọc hiện tại (Thời gian, Trạng thái, Danh mục, Quyền dữ liệu).
 3. Hệ thống truy xuất dữ liệu dưới dạng bảng.
 4. Hệ thống tạo file và tiến hành tải xuống máy tính của người dùng.
@@ -213,5 +236,6 @@ Bộ lọc báo cáo đã được áp dụng và đang có dữ liệu hiển t
   - When: Người dùng bấm Trích xuất.
   - Then: Hệ thống chặn tiến trình và báo "Dữ liệu quá lớn. Vui lòng thu hẹp khoảng thời gian trước khi xuất".
 
+
 ### Tình huống ngoại lệ
-- Không có.
+- Thử đúng giới hạn số dòng đã xác nhận và vượt một dòng, kèm tiếng Việt và bộ lọc quyền.

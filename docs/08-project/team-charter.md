@@ -87,7 +87,7 @@ Vị trí đề xuất khi đưa Charter vào repo là `docs/08-project/team-cha
 
 | Nội dung gốc | Vị trí để đối chiếu |
 | --- | --- |
-| Phạm vi, assumptions và nghiệm thu | [Proposal](Proposal.docx) |
+| Phạm vi, assumptions và nghiệm thu | [Proposal](proposal.docx) |
 | Giá và khối lượng bán | [Báo giá](quotation.xlsx) |
 | Ngày, WBS, MS-xx, nguồn lực, rủi ro và lịch sử kế hoạch | [Master Plan](master-plan.xlsx) |
 | Lịch họp, báo cáo, cảnh báo và CR | Tài liệu Quản trị và giám sát của nhóm, mục Quy trình báo cáo và Quản lý thay đổi |
@@ -130,6 +130,7 @@ Với các điểm PRD đã được review như trạng thái mở lại Ticket
 ## 5. Lịch phối hợp và báo cáo
 
 Lịch dưới đây kế thừa mục 2.1 và 2.2 của tài liệu Quản trị và giám sát đã được review. Nhóm xác nhận khả năng tham gia khi thông qua Charter. Thay đổi lịch sau đó được cập nhật ở tài liệu quản trị và dẫn chiếu từ Charter.
+
 | Hoạt động | Lịch hiện được ghi trong tài liệu quản trị | Chủ trì và đầu ra |
 | --- | --- | --- |
 | Cập nhật trước họp ngày | Trước 08:40 mỗi ngày làm việc | Người thực hiện cập nhật Issue về kết quả, giờ công, ETA và blocker |
@@ -253,7 +254,8 @@ Bản này được viết từ Charter gốc của nhóm, review hiện tại, 
 
 - Chuẩn môn, phần Nội dung tối thiểu, Format repo, Quy ước mã và Công bằng và dùng AI. [spm-standard.md](https://github.com/vinhdai123/UniSupport_Project/blob/e5beb485a45a2dc2962c768f66200d3c11bd651e/.claude/spm-standard.md).
 - Feedback R1-08 trang 6 và R1-10 trang 7, bản đánh giá commit `7c1534ae93` ngày 04/11/2026. Bản PDF do nhóm cung cấp có tên `feedback-r1-nhom-1.pdf`.
-- Cơ cấu, tuyến báo cáo, lịch họp và thẩm quyền phê duyệt trong tài liệu quản trị. [Nguồn quản trị đã đối chiếu](https://github.com/vinhdai123/UniSupport_Project/blob/e5beb…8f66200d3c11bd651e/docs/project_governance_and_monitoring.md).
+- Cơ cấu, tuyến báo cáo, lịch họp và thẩm quyền phê duyệt trong tài liệu quản trị. [Nguồn quản trị đã đối chiếu](../11-governance/reporting.md).
+
 | Nội dung feedback cần xử lý | Vị trí trong Charter mới | Bằng chứng cần bổ sung khi nhóm áp dụng |
 | --- | --- | --- |
 | Nơi gốc của Team Charter và mục lục | Mục 3 và 11 | File trong repo, link từ mục lục và PR liên kết issue feedback |

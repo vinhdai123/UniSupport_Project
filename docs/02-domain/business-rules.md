@@ -150,15 +150,15 @@ Sinh viên được phép mở lại Ticket đã hoàn thành trong khoảng th�
 **Quy tắc đóng Ticket**
 
 - Sau 72 giờ kể từ thời điểm hoàn thành, Ticket được xem là đã kết thúc thời hạn mở lại.
-- Nếu sử dụng trạng thái `Closed`, trạng thái này phải được định nghĩa thống nhất trong Ticket Lifecycle.
-- Ticket đã đóng không được mở lại thông qua quy trình thông thường.
+- Ticket giữ trạng thái `Resolved` khi hết thời hạn mở lại. Sự kiện mở lại đưa Ticket về `In Progress` theo [vòng đời Ticket](state-transition.md).
+- Hệ thống kiểm thời hạn ở API cho mọi yêu cầu mở lại.
 
 **Điều kiện cần xác nhận**
 
 - 72 giờ được tính liên tục hay theo giờ làm việc.
-- Trạng thái của Ticket sau khi mở lại.
+- Xác nhận phương án `Resolved` → `In Progress` đang được dùng thống nhất trong kế hoạch.
 - Chính sách SLA áp dụng sau khi mở lại.
-- Việc đóng Ticket là trạng thái riêng hay chỉ là điều kiện không cho phép mở lại.
+- Xác nhận điều kiện hết hạn mở lại, Ticket tiếp tục giữ `Resolved`.
 
 **Trạng thái:** Thời hạn 72 giờ và quy tắc đóng Ticket cần được xác nhận.
 
@@ -172,8 +172,8 @@ Sinh viên được phép mở lại Ticket đã hoàn thành trong khoảng th�
 
 ## 4. Quan hệ với tài liệu khác (Related Documents)
 
-- `ticket-lifecycle.md`: Vòng đời và chuyển đổi trạng thái Ticket.
-- `ticket-routing.md`: Phân luồng, phân công và chuyển cấp Ticket.
-- `sla-management.md`: Quản lý thời hạn xử lý.
+- [Vòng đời và chuyển đổi trạng thái Ticket](state-transition.md).
+- [Phân luồng, phân công và chuyển cấp Ticket](../03-modules/M03-staff-desk/prd.md).
+- Ma trận SLA và cảnh báo tại BR-03, BR-04 trong tài liệu này.
 - `../01-product/product-scope.md`: Phạm vi sản phẩm.
 - `../03-modules/`: Yêu cầu chức năng của từng module.

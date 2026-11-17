@@ -1,6 +1,6 @@
 # Yêu cầu phi chức năng (Non-Functional Requirements)
 
-<!-- Hướng dẫn: NFR phải đo được (có số và cách đo). Toàn bộ hệ thống UniSupport tuân thủ các chuẩn NFR dưới đây. -->
+Các thông số đo trong bảng là định mức đề xuất kế thừa bản hiện tại, cần đại diện nhóm và khách hàng Mô phỏng xác nhận trước khi dùng làm baseline nghiệm thu. Người phụ trách PRD lưu quyết định, dữ liệu và công cụ đo trong Issue liên quan.
 
 | Mã | Nhóm | Yêu cầu | Ngưỡng đo | Cách đo | Áp dụng cho |
 | --- | --- | --- | --- | --- | --- |
@@ -69,25 +69,25 @@ Không sử dụng dữ liệu thật của Aurora University khi chưa được
 
 ### Acceptance Criteria
 
-**AC1 – Development sử dụng Mock Data**
+**NFR-GLOBAL-01/AC-01 – Development sử dụng Mock Data**
 
 - Given: Hệ thống đang được phát triển.
 - When: Developer cần dữ liệu để phát triển chức năng.
 - Then: Có dữ liệu giả lập phù hợp để sử dụng.
 
-**AC2 – Testing sử dụng Mock Data**
+**NFR-GLOBAL-01/AC-02 – Testing sử dụng Mock Data**
 
 - Given: QA thực hiện kiểm thử chức năng.
 - When: Test Case yêu cầu dữ liệu đầu vào.
 - Then: Có Mock Data phù hợp để thực hiện kiểm thử.
 
-**AC3 – Không tự ý sử dụng dữ liệu thật**
+**NFR-GLOBAL-01/AC-03 – Không tự ý sử dụng dữ liệu thật**
 
 - Given: Dữ liệu thật của Aurora University chưa được cho phép sử dụng.
 - When: Development hoặc Testing được thực hiện.
 - Then: Dữ liệu thật không được sử dụng trong các môi trường tương ứng.
 
-**AC4 – Mock Data hỗ trợ Functional Testing**
+**NFR-GLOBAL-01/AC-04 – Mock Data hỗ trợ Functional Testing**
 
 - Given: Một Functional Requirement cần được kiểm thử.
 - When: QA chuẩn bị Test Data.
@@ -149,25 +149,25 @@ Yêu cầu này áp dụng cho các giao diện người dùng của:
 
 ### Acceptance Criteria
 
-**AC1 – Giao diện Tiếng Việt**
+**NFR-GLOBAL-02/AC-01 – Giao diện Tiếng Việt**
 
 - Given: Hệ thống đang sử dụng Tiếng Việt.
 - When: User truy cập các chức năng chính.
 - Then: Các thành phần giao diện thuộc phạm vi hỗ trợ hiển thị bằng Tiếng Việt.
 
-**AC2 – Giao diện Tiếng Anh**
+**NFR-GLOBAL-02/AC-02 – Giao diện Tiếng Anh**
 
 - Given: Hệ thống đang sử dụng Tiếng Anh.
 - When: User truy cập các chức năng chính.
 - Then: Các thành phần giao diện thuộc phạm vi hỗ trợ hiển thị bằng Tiếng Anh.
 
-**AC3 – Nhất quán ngôn ngữ**
+**NFR-GLOBAL-02/AC-03 – Nhất quán ngôn ngữ**
 
 - Given: Một ngôn ngữ đã được áp dụng.
 - When: User di chuyển giữa các Module.
 - Then: Giao diện phải tiếp tục sử dụng ngôn ngữ tương ứng.
 
-**AC4 – Không ảnh hưởng dữ liệu**
+**NFR-GLOBAL-02/AC-04 – Không ảnh hưởng dữ liệu**
 
 - Given: User thay đổi ngôn ngữ giao diện.
 - When: Hệ thống cập nhật ngôn ngữ.
@@ -226,31 +226,31 @@ Tất cả các giao diện chính của:
 
 ### Acceptance Criteria
 
-**AC1 – Desktop**
+**NFR-GLOBAL-03/AC-01 – Desktop**
 
 - Given: User truy cập UniSupport trên Desktop.
 - When: User sử dụng một chức năng nằm trong In-Scope.
 - Then: Giao diện phải hiển thị và cho phép thực hiện chức năng tương ứng.
 
-**AC2 – Mobile**
+**NFR-GLOBAL-03/AC-02 – Mobile**
 
 - Given: User truy cập UniSupport trên Mobile.
 - When: User sử dụng một chức năng nằm trong In-Scope.
 - Then: Giao diện phải hiển thị và cho phép thực hiện chức năng tương ứng.
 
-**AC3 – Responsive Layout**
+**NFR-GLOBAL-03/AC-03 – Responsive Layout**
 
 - Given: Kích thước màn hình thay đổi.
 - When: Giao diện được render lại.
 - Then: Nội dung phải điều chỉnh phù hợp và không mất chức năng cốt lõi.
 
-**AC4 – Navigation**
+**NFR-GLOBAL-03/AC-04 – Navigation**
 
 - Given: User đang sử dụng Mobile hoặc Desktop.
 - When: User điều hướng giữa các chức năng.
 - Then: Các chức năng chính vẫn có thể truy cập được.
 
-**AC5 – Business Logic**
+**NFR-GLOBAL-03/AC-05 – Business Logic**
 
 - Given: Cùng một User và cùng một chức năng.
 - When: User sử dụng trên Desktop hoặc Mobile.
@@ -317,7 +317,7 @@ Toàn bộ giao diện của UniSupport.
 
 ### Acceptance Criteria
 
-**AC1 – Consistent Terminology**
+**NFR-GLOBAL-04/AC-01 – Consistent Terminology**
 
 - Given: Một thuật ngữ nghiệp vụ được sử dụng ở nhiều Module.
 - When: User truy cập các Module khác nhau.
@@ -333,7 +333,7 @@ Ví dụ:
 - Manager.
 - Administrator.
 
-**AC2 – Consistent Ticket Status**
+**NFR-GLOBAL-04/AC-02 – Consistent Ticket Status**
 
 - Given: Ticket được hiển thị ở nhiều màn hình.
 - When: User xem trạng thái Ticket.
@@ -343,25 +343,25 @@ Ví dụ:
   - Cần bổ sung.
   - Hoàn thành.
 
-**AC3 – Form Validation Feedback**
+**NFR-GLOBAL-04/AC-03 – Form Validation Feedback**
 
 - Given: User nhập thiếu hoặc nhập dữ liệu không hợp lệ.
 - When: User thực hiện Submit.
 - Then: Hệ thống phải cung cấp thông tin để User nhận biết dữ liệu cần bổ sung hoặc chỉnh sửa.
 
-**AC4 – Success Feedback**
+**NFR-GLOBAL-04/AC-04 – Success Feedback**
 
 - Given: Một thao tác được thực hiện thành công.
 - When: Hệ thống hoàn tất xử lý.
 - Then: User phải nhận được phản hồi thể hiện kết quả thao tác.
 
-**AC5 – Permission-aware UI**
+**NFR-GLOBAL-04/AC-05 – Permission-aware UI**
 
 - Given: User có một Role cụ thể.
 - When: User truy cập hệ thống.
 - Then: Các chức năng được cung cấp phải phù hợp với Permission của Role đó.
 
-**AC6 – Cross-module Consistency**
+**NFR-GLOBAL-04/AC-06 – Cross-module Consistency**
 
 - Given: Cùng một loại dữ liệu hoặc thao tác xuất hiện ở nhiều Module.
 - When: User sử dụng các Module khác nhau.

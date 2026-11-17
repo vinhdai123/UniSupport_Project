@@ -2,7 +2,7 @@
 
 <!-- Hướng dẫn: phần này dùng làm bằng chứng cho PRD, effort và rủi ro. Giúp làm rõ cách các tác nhân phối hợp xuyên suốt các chức năng của UniSupport. -->
 
-Hệ thống **UniSupport** bao gồm 4 luồng quy trình chính:
+Các luồng dưới đây dùng vòng đời Ticket gốc và các tham số đề xuất trong [Business Rules](../02-domain/business-rules.md). Nhóm xác nhận tham số trước khi lập baseline nghiệm thu.
 
 ---
 
@@ -29,7 +29,11 @@ sequenceDiagram
     CB->>Sys: Giải quyết Ticket & Ghi nhận kết quả (Resolved)
     Sys-->>SV: Thông báo kết quả xử lý
     SV->>Sys: Đánh giá độ hài lòng (CSAT) hoặc yêu cầu mở lại
-    Sys->>Sys: Tự động đóng Ticket sau 48h (Closed)
+    opt Sinh viên mở lại trong thời hạn theo BR-05
+        SV->>Sys: Gửi lý do mở lại
+        Sys->>Sys: Resolved chuyển về In Progress, ghi lịch sử
+    end
+    Sys->>Sys: Hết hạn mở lại thì giữ Resolved và chặn mở lại
 ```
 
 ---
@@ -39,14 +43,14 @@ sequenceDiagram
 1. **Nhận diện sai tuyến:** Cán bộ phát hiện Ticket không thuộc phạm vi xử lý của phòng ban mình.
 2. **Yêu cầu chuyển tiếp:** Cán bộ chọn phòng ban đích và nhập lý do chuyển giao (Ghi chú nội bộ - Internal Note).
 3. **Phê duyệt chuyển phòng:** Trưởng phòng hoặc Cán bộ có thẩm quyền xác nhận chuyển giao.
-4. **Cập nhật SLA:** Hệ thống tính toán lại SLA theo chính sách của phòng ban tiếp nhận mới.
+4. **Kiểm ảnh hưởng SLA:** Áp dụng chính sách chuyển phòng được xác nhận trong BR-03. PM/BA chốt cách giữ hoặc tính lại hạn trước baseline.
 
 ---
 
 ## 3. Luồng Thu thập Phản hồi và Đánh giá (CSAT Workflow)
 
 1. Khi Ticket chuyển sang trạng thái `Resolved`, sinh viên nhận thông báo kèm khảo sát CSAT (1-5 sao + bình luận).
-2. Nếu sinh viên đánh giá $\le 2$ sao (bất mãn), hệ thống tự động gắn cờ cảnh báo gửi tới Trưởng phòng ban để rà soát chất lượng dịch vụ.
+2. Quy tắc nhận xét cho đánh giá thấp tuân theo FR-STU-05. Phản hồi được xem xét theo quy trình quản lý sản phẩm.
 3. Số liệu CSAT được tổng hợp trực tiếp vào [M05 - Dashboard & Report](../03-modules/M05-dashboard-report/prd.md).
 
 ---

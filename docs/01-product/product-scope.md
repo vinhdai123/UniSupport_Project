@@ -188,7 +188,7 @@ theo kế hoạch nghiệm thu.
 
 ## 5. Quản lý thay đổi phạm vi
 
-- Phạm vi dự án được xác nhận và khóa tại Milestone M1 – Tuần 5.
+- Phạm vi dự án được xác nhận và khóa tại Milestone MS-01 – Tuần 5.
 - Các yêu cầu bổ sung hoặc điều chỉnh ngoài phạm vi phải được ghi nhận
   bằng Change Request.
 - Change Request phải được đánh giá tác động đến:

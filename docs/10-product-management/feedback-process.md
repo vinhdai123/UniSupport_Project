@@ -8,7 +8,7 @@ Tài liệu này quy định quy trình thu thập, phân loại, đánh giá v�
 
 1. **Khảo sát CSAT tự động (In-App CSAT Survey):** Hiển thị ngay sau khi Ticket được chuyển sang trạng thái `Resolved` để sinh viên đánh giá 1-5 sao và để lại nhận xét.
 2. **Biểu mẫu góp ý trực tiếp trên hệ thống (In-App Feedback Form):** Dành cho cả sinh viên và cán bộ gửi ý kiến đóng góp về giao diện, tính năng hoặc hiệu năng.
-3. **Các buổi Review và Demo cột mốc:** Thu thập ý kiến trực tiếp từ đại diện các phòng ban Aurora University tại các mốc M1, M2, M3.
+3. **Các buổi Review và Demo cột mốc:** Thu thập ý kiến trực tiếp từ đại diện các phòng ban Aurora University tại các mốc MS-01, MS-06, MS-07.
 4. **Kênh tiếp nhận sự cố khẩn cấp:** Hotline hoặc kênh trao đổi kỹ thuật dành riêng cho quản trị viên nhà trường khi có sự cố nghiêm trọng.
 
 ---
