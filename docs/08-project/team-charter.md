@@ -1,10 +1,10 @@
 # Team Charter UniSupport
 
-Phiên bản dự thảo 2.1 — ngày 17/11/2026
+Phiên bản 2.4 — dự thảo ngày 18/11/2026
 
 Dự án mô phỏng môn Software Project Management, phục vụ tình huống Aurora University với khoảng 3.000 sinh viên. Charter quy định trách nhiệm, phối hợp, quyết định, xử lý bất đồng và quản lý thay đổi trong quá trình xây dựng tài liệu, kế hoạch và quy trình dự án UniSupport.
 
-**Trạng thái xác nhận.** Danh sách bốn thành viên và thông tin trưởng nhóm lấy từ feedback R1. MSSV và mảng phụ trách kế thừa README được nhóm cập nhật tại commit dfe998d. Reviewer, người dự phòng, quyền merge và các thời hạn bổ sung là phương án đề xuất để nhóm xác nhận. Lịch họp kế thừa tài liệu quản trị đã đọc. Các quy định có hiệu lực sau khi nhóm xác nhận phiên bản qua PR hoặc biên bản quyết định.
+**Trạng thái.** Bản 2.4 đang chờ nhóm thông qua. Danh sách thành viên và trưởng nhóm được đối chiếu với feedback R1. Mảng phụ trách theo README tại commit `dfe998d`. Lịch họp hiện được ghi ở tài liệu Reporting. Các quy tắc phối hợp, dự phòng và thẩm quyền mới trong bản này là đề xuất. Xem mục 11 để kiểm tra bằng chứng xác nhận và ngày hiệu lực.
 
 ## 1. Mục tiêu và nguyên tắc phối hợp
 
@@ -21,14 +21,14 @@ Nhóm chịu trách nhiệm xây dựng bộ tài liệu nhất quán từ phạ
 
 ### 2.1. Ban quản lý dự án
 
-Danh sách theo feedback R1 gồm Trần Vĩnh Đại, Nguyễn Thành An, Phùng Ngô Huy Bảo và Huỳnh Hữu Như Mẫn. Trần Vĩnh Đại được ghi là trưởng nhóm. Mảng phụ trách trong bảng theo README cập nhật tại dfe998d. Người dự phòng là đề xuất cần nhóm xác nhận.
+Danh sách theo feedback R1 gồm Trần Vĩnh Đại, Nguyễn Thành An, Phùng Ngô Huy Bảo và Huỳnh Hữu Như Mẫn. Trần Vĩnh Đại được ghi là trưởng nhóm. Mảng phụ trách trong bảng theo README cập nhật tại `dfe998d`. Tra người dự phòng theo từng đầu ra tại mục 2.3.
 
-| Thành viên | Mảng phụ trách đề xuất | Trách nhiệm chính | Người dự phòng đề xuất |
-| --- | --- | --- | --- |
-| Trần Vĩnh Đại | Proposal, quản lý chất lượng và quản lý sản phẩm | Điều phối với vai trò trưởng nhóm, duy trì Proposal, Quality Plan, test/RTM và tài liệu quản lý sản phẩm | Huỳnh Hữu Như Mẫn |
-| Nguyễn Thành An | Team Charter và Git | Duy trì Charter, tổ chức repo và quy trình Issue, branch, PR, review và merge theo quyền được nhóm xác nhận | Phùng Ngô Huy Bảo |
-| Phùng Ngô Huy Bảo | Master Plan, quản trị và giám sát, báo giá | Duy trì kế hoạch, nguồn lực, rủi ro, Change Log, báo giá và số liệu quản trị, đối chiếu phạm vi–effort–lịch–giá | Nguyễn Thành An |
-| Huỳnh Hữu Như Mẫn | PRD và review | Duy trì PRD/NFR/domain, kiểm bao phủ yêu cầu và tham gia review độc lập các tài liệu thuộc phạm vi được phân công | Trần Vĩnh Đại |
+| Thành viên | Mảng phụ trách đề xuất | Trách nhiệm chính |
+| --- | --- | --- |
+| Trần Vĩnh Đại | Proposal, quản lý chất lượng và quản lý sản phẩm | Điều phối với vai trò trưởng nhóm, duy trì Proposal, Quality Plan, test/RTM và tài liệu quản lý sản phẩm |
+| Nguyễn Thành An | Team Charter và Git | Duy trì Charter, tổ chức repo và quy trình Issue, branch, PR, review và merge theo quyền được nhóm xác nhận |
+| Phùng Ngô Huy Bảo | Master Plan, quản trị và giám sát, báo giá | Duy trì kế hoạch, nguồn lực, rủi ro, Change Log, báo giá và số liệu quản trị, đối chiếu phạm vi–effort–lịch–giá |
+| Huỳnh Hữu Như Mẫn | PRD và review | Duy trì PRD/NFR/domain, kiểm bao phủ yêu cầu và tham gia review độc lập các tài liệu thuộc phạm vi được phân công |
 
 Người chịu trách nhiệm chính tổng hợp ý kiến và duy trì bản gốc. Reviewer kiểm nội dung độc lập. Người dự phòng tiếp nhận công việc theo mục 6 khi có quyết định bàn giao.
 
@@ -66,7 +66,7 @@ Người chịu trách nhiệm chính theo mảng trong README. Reviewer và ng�
 | Quản trị và giám sát | Phùng Ngô Huy Bảo | Huỳnh Hữu Như Mẫn | Trần Vĩnh Đại |
 | Team Charter, Git và mục lục tài liệu | Nguyễn Thành An | Huỳnh Hữu Như Mẫn | Trần Vĩnh Đại |
 
-Khi reviewer tiếp nhận vai trò tác giả thay thế, nhóm chỉ định reviewer khác trước khi duyệt. File Word/Excel được chỉnh bởi một người tại một thời điểm, việc tiếp nhận chỉnh sửa được ghi vào Issue để tránh ghi đè phiên bản.
+Bảng này là nguồn duy nhất để xác định người dự phòng của từng tài liệu. Khi người dự phòng tham gia viết hoặc chỉnh sửa, chọn reviewer khác độc lập theo mục 9.3. File Word/Excel được chỉnh bởi một người tại một thời điểm, việc tiếp nhận chỉnh sửa được ghi vào Issue để tránh ghi đè phiên bản.
 
 ## 3. Công cụ và nơi lưu thông tin
 
@@ -83,18 +83,18 @@ Khi reviewer tiếp nhận vai trò tác giả thay thế, nhóm chỉ định r
 | Postman / Swagger trong kế hoạch kỹ thuật | API contract, mock và mô tả request/response | Gắn phiên bản yêu cầu và công việc liên quan |
 Việc chọn GitHub Issue làm kênh trao đổi có lưu vết mặc định là đề xuất của bản Charter này. Khi nhóm bổ sung kênh chat, ghi tên kênh và cách liên hệ khẩn trong quyết định thông qua Charter. Sự cố khẩn được báo bằng cuộc gọi trực tiếp tới đầu mối phụ trách, sau đó lưu nội dung vào Issue.
 
-Vị trí đề xuất khi đưa Charter vào repo là `docs/08-project/team-charter.md`. Nhóm cập nhật `docs/README.md` và README gốc để người đọc tìm được bản này. Các đường dẫn trong bảng dưới là vị trí làm việc tại thư mục SPM hiện tại.
+Bản gốc của Charter nằm tại `docs/08-project/team-charter.md` và được dẫn từ [README gốc](../../README.md) và [mục lục tài liệu](../README.md).
 
 | Nội dung gốc | Vị trí để đối chiếu |
 | --- | --- |
 | Phạm vi, assumptions và nghiệm thu | [Proposal](proposal.docx) |
 | Giá và khối lượng bán | [Báo giá](quotation.xlsx) |
 | Ngày, WBS, MS-xx, nguồn lực, rủi ro và lịch sử kế hoạch | [Master Plan](master-plan.xlsx) |
-| Lịch họp, báo cáo, cảnh báo và CR | Tài liệu Quản trị và giám sát của nhóm, mục Quy trình báo cáo và Quản lý thay đổi |
-| FR, AC và NFR đang được review | PRD theo module trên nhánh làm việc, được nhận diện bằng commit trong Issue review |
-| Quy trình QA/QC, DoD và điều kiện phát hành | Quality Plan được nhóm xác nhận |
+| Lịch họp, báo cáo, cảnh báo và CR | [Reporting](../11-governance/reporting.md), [Monitoring](../11-governance/monitoring.md) và [Change Control](../11-governance/change-control.md) |
+| FR, AC và NFR đang được review | [PRD theo module](../03-modules/README.md) và [NFR](../05-non-functional-requirements/README.md). Issue review ghi commit được đối chiếu |
+| Quy trình QA/QC, DoD và điều kiện phát hành | [Quality Plan](../09-quality/quality-plan.md) |
 
-Khi đưa bản này vào repo, người phụ trách mục lục cập nhật các liên kết theo vị trí file thật trong cùng PR. Kế hoạch chi phí và lợi nhuận nội bộ được lưu trong vùng hạn chế của nhóm, quyền truy cập được PM rà soát trước khi chia sẻ tài liệu.
+Kế hoạch chi phí và lợi nhuận nội bộ được lưu trong vùng hạn chế của nhóm, quyền truy cập được PM rà soát trước khi chia sẻ tài liệu.
 
 ## 4. Ra quyết định và kiểm soát thay đổi
 
@@ -102,15 +102,15 @@ Khi đưa bản này vào repo, người phụ trách mục lục cập nhật c
 
 | Loại quyết định | Người chuẩn bị | Người quyết định hoặc xác nhận |
 | --- | --- | --- |
-| Phân công và ưu tiên bài làm trong cam kết hiện tại | Người phụ trách mảng | Trưởng nhóm hoặc người dự phòng đã tiếp nhận |
+| Phân công, đổi thứ tự, đổi hạn nội bộ và bàn giao việc soạn hoặc review tài liệu của nhóm | Người phụ trách mảng | Trưởng nhóm khi có mặt, điều phối viên tạm thời theo mục 6 khi trưởng nhóm vắng. Áp dụng trong phạm vi công việc nội bộ, giữ các cam kết dự án |
 | Cách diễn đạt và cấu trúc PRD trong phạm vi đã thống nhất | Người phụ trách yêu cầu, reviewer chất lượng | Người phụ trách yêu cầu chốt sau review, trưởng nhóm xử lý bất đồng liên mảng |
 | Lựa chọn kỹ thuật trong dự án Mô phỏng | Tech Lead tham vấn các vai trò bị ảnh hưởng | Tech Lead trong giới hạn phạm vi, lịch và ngân sách đã được xác nhận |
 | Kế hoạch chất lượng và tiêu chí kiểm | Người phụ trách chất lượng hoặc QA Mô phỏng | Ban quản lý xác nhận tài liệu nội bộ, khách hàng xác nhận điều kiện nghiệm thu liên quan theo Proposal |
-| Thay đổi effort, capacity và thứ tự công việc | Người phụ trách kế hoạch | Trưởng nhóm quyết định điều phối nội bộ, thay đổi cam kết được trình theo CR |
+| Điều chỉnh effort, phân bổ nhân sự hoặc thứ tự task trong kế hoạch thực thi Mô phỏng | Người phụ trách kế hoạch | PM quyết định điều chỉnh nội bộ trong phạm vi thẩm quyền theo [Change Control](../11-governance/change-control.md#người-duyệt). Thay đổi cam kết được trình theo mục 4.3 |
 | Thay đổi phạm vi, giá, hạn hoặc điều kiện nghiệm thu đã cam kết | PM tổng hợp đánh giá tác động | Đại diện có thẩm quyền của Project Team và Aurora University xác nhận bằng văn bản |
 | Thông qua hoặc thay đổi Charter | Trưởng nhóm tổng hợp ý kiến | Đề xuất cần ít nhất 3 trong 4 thành viên đồng ý, ghi rõ ý kiến và ngày áp dụng |
 
-Quy tắc 3 trong 4 là đề xuất cần nhóm xác nhận. Thành viên vắng được gửi ý kiến bằng văn bản. Khi chưa đủ xác nhận, người điều phối ghi phần chưa thống nhất và tổ chức trao đổi tiếp. Trường hợp trưởng nhóm là một bên tranh chấp về tài liệu, người dự phòng chủ trì và lấy ý kiến hai thành viên còn lại.
+Quy tắc 3 trong 4 là đề xuất cần nhóm xác nhận. Thành viên vắng được gửi ý kiến bằng văn bản. Khi chưa đủ xác nhận, người điều phối ghi phần chưa thống nhất và tổ chức trao đổi tiếp. Thẩm quyền kết luận khi có xung đột lợi ích và cách xử lý khi quá hạn được quy định tại mục 7.1.
 
 ### 4.2. Ghi nhận quyết định
 
@@ -120,21 +120,16 @@ Với các điểm PRD đã được review như trạng thái mở lại Ticket
 
 ### 4.3. Change Request
 
-1. Người đề xuất tạo Issue CR theo mẫu, nêu lý do và tài liệu liên quan.
-2. PM phối hợp người phụ trách yêu cầu, kế hoạch và chất lượng đánh giá phạm vi, effort, giá, ngày, nguồn lực, rủi ro và kiểm thử.
-3. Người có thẩm quyền theo mục 4.1 xác nhận chấp thuận, từ chối hoặc hoãn và lưu căn cứ.
-4. Với thay đổi được duyệt, chủ tài liệu cập nhật Proposal, PRD/AC/NFR, báo giá, WBS, Resources, rủi ro, test và Issue/Milestone bị ảnh hưởng.
-5. Người phụ trách kế hoạch lưu phiên bản trước và thêm Change Log. Reviewer đối chiếu các nguồn trước khi merge.
-6. PM thông báo quyết định, phạm vi áp dụng và ngày thực hiện cho các bên liên quan.
+[Change Control](../11-governance/change-control.md) là nguồn gốc cho việc mở CR, đánh giá tác động, phê duyệt và cập nhật tài liệu. Khi đề xuất làm thay đổi cam kết với khách hàng, PM trình quyết định theo thẩm quyền tại mục 4.1 và lưu bằng chứng phê duyệt trong hồ sơ CR.
 
 ## 5. Lịch phối hợp và báo cáo
 
-Lịch dưới đây kế thừa mục 2.1 và 2.2 của tài liệu Quản trị và giám sát đã được review. Nhóm xác nhận khả năng tham gia khi thông qua Charter. Thay đổi lịch sau đó được cập nhật ở tài liệu quản trị và dẫn chiếu từ Charter.
+[Reporting, mục 2](../11-governance/reporting.md#2-bảng-quy-trình-báo-cáo) là nguồn gốc của lịch họp ngày, họp tuần và yêu cầu báo sự cố nghiêm trọng ngay khi phát hiện. [Master Plan](master-plan.xlsx) là nguồn lịch bàn giao. Nhóm xác nhận khả năng tham gia và khung giờ phối hợp khi thông qua Charter.
 
-| Hoạt động | Lịch hiện được ghi trong tài liệu quản trị | Chủ trì và đầu ra |
+| Hoạt động | Lịch hoặc thời điểm | Chủ trì và đầu ra |
 | --- | --- | --- |
-| Cập nhật trước họp ngày | Trước 08:40 mỗi ngày làm việc | Người thực hiện cập nhật Issue về kết quả, giờ công, ETA và blocker |
-| Họp điều phối ngày | 08:45–09:00 trên Google Meet | PM điều phối, ghi người xử lý và thời hạn cho vấn đề phát sinh |
+| Cập nhật trước họp ngày | Trước 08:40 mỗi ngày làm việc · đề xuất tại Charter | Người thực hiện cập nhật Issue về kết quả, giờ công, ETA và blocker |
+| Họp điều phối ngày | 08:45–09:00 các ngày làm việc trên Google Meet | PM điều phối, ghi người xử lý và thời hạn cho vấn đề phát sinh |
 | Họp tuần | Thứ Sáu 15:00–15:45 trên Google Meet | PM tổng hợp tiến độ, nguồn lực, chất lượng, rủi ro và kế hoạch tuần sau |
 | Review tài liệu | Theo hạn trong Issue và trước lần bàn giao liên quan | Chủ tài liệu gửi phiên bản, reviewer ghi nhận xét và kết quả xử lý |
 | Họp xử lý bất đồng hoặc blocker | Khi phát sinh ảnh hưởng công việc phụ thuộc | Đầu mối theo mục 4 và 7 lưu quyết định, owner và hạn |
@@ -142,22 +137,24 @@ Lịch dưới đây kế thừa mục 2.1 và 2.2 của tài liệu Quản tr�
 
 Giờ trong lịch dùng múi giờ Việt Nam, UTC+7. Khả dụng thực tế và giờ vắng được ghi ở Resources. Trưởng nhóm cùng từng thành viên xác nhận khung giờ phối hợp chung khi duyệt Charter.
 
-Vấn đề thông thường được phản hồi trong ngày làm việc. Sự cố nghiêm trọng trong khung giờ phối hợp được xác nhận tiếp nhận và giao hướng xử lý ban đầu trong 30 phút theo tài liệu quản trị. Ngoài khung giờ đó, đầu mối xác nhận khi tiếp nhận cuộc gọi và ghi thời điểm cập nhật tiếp theo.
+Charter đề xuất phản hồi vấn đề thông thường trong ngày làm việc. Với sự cố nghiêm trọng trong khung giờ phối hợp đã thống nhất, Charter đề xuất xác nhận tiếp nhận và giao hướng xử lý ban đầu trong 30 phút kể từ lúc đầu mối nhận báo cáo. Ngoài khung giờ đó, đầu mối xác nhận khi tiếp nhận cuộc gọi và ghi thời điểm cập nhật tiếp theo. Việc báo ngay khi phát hiện tuân theo Reporting.
 
 Người vắng họp báo đầu mối, gửi cập nhật trước cuộc họp khi có thể và đọc biên bản sau đó. Các quyết định ảnh hưởng công việc của người vắng phải được gửi trực tiếp để người đó xác nhận đã nhận thông tin.
 
 ## 6. Vắng dài ngày và bàn giao công việc
 
-Ngưỡng kích hoạt đề xuất là vắng dự kiến từ một ngày làm việc trở lên, hoặc vắng trong thời điểm cần quyết định quan trọng, review hay bàn giao. Với tình huống đột xuất, trưởng nhóm kích hoạt phương án dự phòng ngay khi biết công việc có nguy cơ bị gián đoạn.
+Ngưỡng kích hoạt đề xuất là vắng dự kiến từ một ngày làm việc trở lên, hoặc vắng khi cần quyết định, review hay bàn giao. Khi công việc có nguy cơ gián đoạn, người phát hiện báo ngay cho trưởng nhóm. Nếu trưởng nhóm vắng, báo các thành viên còn lại trên Issue.
 
-1. Người vắng hoặc người phát hiện báo trưởng nhóm, nêu thời gian dự kiến và các Issue bị ảnh hưởng.
-2. Trưởng nhóm xác nhận người dự phòng theo mục 2.1, hoặc chỉ định người khác phù hợp khi người dự phòng cũng vắng.
-3. Nội dung bàn giao gồm phiên bản file/commit, công việc đã thực hiện, việc còn lại, hạn, phụ thuộc, quyết định đang chờ và quyền truy cập cần dùng.
-4. Người tiếp nhận xác nhận trong Issue, kiểm quyền truy cập và khả năng hoàn thành. PM hoặc trưởng nhóm cập nhật owner, người review và ETA.
-5. Người phụ trách kế hoạch kiểm tác động tới capacity, lịch, rủi ro và mốc. Nếu cần thay đổi cam kết, thực hiện CR theo mục 4.3.
-6. Khi thành viên quay lại, hai người đối chiếu các thay đổi và trưởng nhóm xác nhận việc chuyển lại trách nhiệm.
+**Đầu mối điều phối nội bộ.** Khi trưởng nhóm có mặt, trưởng nhóm điều phối. Khi trưởng nhóm vắng, các thành viên có mặt chọn một điều phối viên tạm thời và ghi tên, phạm vi, thời hạn ủy quyền trong Issue. Nếu chưa thống nhất được hoặc chỉ còn một người có mặt, người đầu tiên có thể nhận việc theo thứ tự **An → Bảo → Mẫn → Đại** làm điều phối viên tạm thời. Nếu chưa có ai có thể nhận điều phối, người phát hiện ghi `Blocked` trên Issue và hẹn xem xét lại khi có thành viên khả dụng.
 
-Nếu người giữ báo giá vắng, người dự phòng tiếp nhận file nguồn đã xác định, đối chiếu tổng và công thức, cập nhật theo CR được duyệt và yêu cầu một thành viên độc lập kiểm lại trước khi phát hành. Quyền truy cập được cấp theo tài khoản riêng và phạm vi cần thiết.
+Trong phạm vi ghi trên Issue, điều phối viên tạm thời thực hiện quyền nội bộ tại mục 4.1, gồm đổi thứ tự hoặc hạn nội bộ và chỉ định reviewer thay thế theo mục 9.3. Đầu mối ghi quyết định, lý do, owner, reviewer và ETA liên quan trên Issue. Điều chỉnh kế hoạch thực thi Mô phỏng được chuyển PM theo mục 4.1.
+
+1. Đầu mối điều phối xác nhận đúng một người tiếp nhận cho mỗi đầu ra theo mục 2.3. Nếu người dự phòng cũng vắng, quá tải hoặc thiếu quyền, đầu mối chỉ định người có khả năng hoàn thành và có quyền cần thiết. Nếu chưa có người phù hợp, ghi `Blocked`, lý do và lần kiểm tra tiếp theo.
+2. Bàn giao phiên bản file hoặc commit, phần đã làm, việc còn lại, hạn, phụ thuộc, quyết định đang chờ và quyền cần dùng. Người tiếp nhận xác nhận khả năng thực hiện và quyền truy cập trên Issue.
+3. Đầu mối điều phối cập nhật owner, reviewer độc lập, ETA và lý do thay đổi trên Issue. Người được phân công theo dõi kế hoạch kiểm tác động đến capacity, lịch, rủi ro và mốc. Mọi thay đổi cam kết được trình theo mục 4.3.
+4. Khi người phụ trách quay lại, hai người đối chiếu thay đổi. Đầu mối điều phối xác nhận chuyển lại trách nhiệm và cập nhật Issue.
+
+Nếu người giữ báo giá vắng, người được xác nhận tiếp nhận ở bước 1 dùng file nguồn đã xác định, đối chiếu tổng và công thức, cập nhật theo CR được duyệt và yêu cầu một thành viên độc lập kiểm lại trước khi phát hành. Quyền truy cập được cấp theo tài khoản riêng và phạm vi cần thiết.
 
 ## 7. Bất đồng, blocker và escalation
 
@@ -165,7 +162,12 @@ Nếu người giữ báo giá vắng, người dự phòng tiếp nhận file n
 
 Hai bên ghi rõ nội dung đang tranh luận, nguồn yêu cầu, bằng chứng và phương án cùng tác động trong Issue. Đầu mối phụ trách tổ chức trao đổi để thống nhất cách xử lý. Mốc xử lý nội bộ đề xuất là trong một ngày làm việc từ khi đủ thông tin, hoặc sớm hơn theo hạn của công việc phụ thuộc.
 
-Nếu vẫn bất đồng, xử lý theo mục 4.1. Người chủ trì ghi kết luận, căn cứ và ý kiến còn khác biệt. Khi quyết định làm thay đổi cam kết với khách hàng, PM trình theo CR và lưu xác nhận của hai bên.
+Nếu trao đổi chưa có đồng thuận, áp dụng cơ chế đề xuất sau.
+
+1. Người có thẩm quyền theo mục 4.1 kết luận trong phạm vi của mình nếu có thể xử lý độc lập. Một người được xem là có liên quan trực tiếp khi là bên tranh chấp hoặc khi kết luận sẽ quyết định trách nhiệm cá nhân của chính họ trong vụ việc.
+2. Với bất đồng nội bộ về tài liệu, ghi các đầu ra bị ảnh hưởng vào một Issue. Khi vụ việc liên quan nhiều đầu ra có người phụ trách khác nhau, trưởng nhóm là người có thẩm quyền ở bước 1. Nếu người có thẩm quyền vắng hoặc liên quan trực tiếp, lập danh sách người dự phòng của tất cả đầu ra theo mục 2.3, gộp tên trùng và loại người vắng hoặc liên quan trực tiếp. Chọn đúng một người từ danh sách theo thứ tự đề xuất **An → Bảo → Mẫn → Đại**. Nếu danh sách này rỗng, áp dụng cùng thứ tự cho những thành viên còn lại đủ điều kiện. Người được chọn tham vấn nhóm, kết luận trong phạm vi điều phối nội bộ và ghi căn cứ cùng ý kiến còn khác biệt vào Issue.
+3. Khi hết hạn một ngày làm việc mà chưa có kết luận, hoặc không có người đủ điều kiện, đánh dấu các công việc phụ thuộc là `Blocked`, giữ bản đã được xác nhận gần nhất và tiếp tục các việc độc lập. Người ghi nhận Issue cập nhật tác động và hẹn lần xem xét tiếp theo vào ngày làm việc kế tiếp. Nếu tất cả người đủ điều kiện đều vắng, áp dụng lại thứ tự chọn khi có người trở lại. Nếu mọi thành viên đều có liên quan trực tiếp, nhóm có thể thống nhất phương án bằng văn bản hoặc cùng chỉ định người trung lập để kết luận trong phạm vi điều phối nội bộ. Công việc phụ thuộc tiếp tục khi có quyết định được ghi vào Issue.
+4. Phạm vi kết luận nội bộ giới hạn ở cam kết hiện hành. Thay đổi Charter theo mục 11. Thay đổi cam kết khách hàng được PM trình theo mục 4.3 và chờ phê duyệt trước khi áp dụng.
 
 ### 7.2. Bất đồng kỹ thuật và chất lượng
 
@@ -191,7 +193,7 @@ Task được tạo từ phạm vi và WBS. Parent task ghi mã FR liên quan, m
 
 Trạng thái công việc dùng `To Do → In Progress → Review/Test → Done`, có `Blocked` khi cần ghi trở ngại. Người thực hiện cập nhật kết quả và đường dẫn đầu ra. Reviewer kiểm theo tiêu chí của Issue và quy định chất lượng đang áp dụng trước khi xác nhận hoàn thành.
 
-Khi trễ hạn, owner ghi nguyên nhân, mức ảnh hưởng, ETA mới và đề xuất xử lý. Người phụ trách kế hoạch kiểm việc phụ thuộc, trưởng nhóm chốt điều phối hoặc trình CR. Mỗi lần thay đổi kế hoạch được lưu theo quy trình phiên bản trong Master Plan.
+Khi trễ hạn, owner ghi nguyên nhân, ảnh hưởng và ETA đề xuất. Với việc làm tài liệu, đầu mối điều phối theo mục 6 kiểm các việc phụ thuộc cùng người phụ trách kế hoạch, quyết định thứ tự hoặc hạn nội bộ và cập nhật Issue. Với kế hoạch thực thi Mô phỏng, người phụ trách kế hoạch đánh giá tác động và chuyển PM quyết định theo mục 4.1. Nếu ảnh hưởng cam kết, PM trình CR theo mục 4.3. Thay đổi kế hoạch được lưu theo quy trình phiên bản trong Master Plan.
 
 ## 9. Branch, PR, review và merge
 
@@ -201,6 +203,7 @@ Các quy tắc chi tiết dưới đây là phương án đề xuất cho nhóm 
 
 - Thay đổi tài liệu dùng `docs/<issue>-<noi-dung>`, tạo từ `main` và mở PR về `main`. Nhánh `docs/issue-98-refactor-prd` là một ví dụ đang dùng trong repo.
 - Khi triển khai phần mềm theo kế hoạch, `feature/<issue>-<noi-dung>` và `bugfix/<issue>-<noi-dung>` được tạo từ `develop`, mở PR về `develop`. Người quản lý repo xác nhận nhánh và quyền trước khi áp dụng luồng này.
+- Phát hành thông thường dùng PR từ `develop` vào `main` theo mục 9.4.
 - `hotfix/<issue>-<noi-dung>` phục vụ sửa sự cố khẩn của bản phát hành, tạo từ `main`, PR về `main` rồi đưa thay đổi tương ứng vào `develop` theo điều phối Tech Lead.
 - Commit mô tả đúng thay đổi, tập trung vào một nội dung. Với tài liệu có thể dùng `docs: clarify ticket reopen criteria`.
 - Mọi thay đổi vào `main` được thực hiện qua PR và có lịch sử review.
@@ -212,15 +215,24 @@ Word/Excel phải có mô tả thay đổi bằng chữ trong PR. Báo giá ho�
 
 ### 9.3. Review và phê duyệt
 
-Mỗi PR cần ít nhất một người khác tác giả approve. Dùng reviewer chính tại mục 2.3. Khi reviewer trở thành người sửa nội dung, chỉ định người review độc lập thay thế.
+PR tài liệu cần ít nhất một người không tham gia soạn hoặc chỉnh sửa nội dung của PR approve. Dùng reviewer chính tại mục 2.3. Nếu reviewer vắng, không thể review trước hạn hoặc đã tham gia sửa, tác giả báo trên Issue. Trưởng nhóm, hoặc điều phối viên tạm thời theo mục 6 khi trưởng nhóm vắng, chỉ định reviewer độc lập đủ khả năng và ghi tên, hạn review trên Issue cùng liên kết PR. Tác giả tiếp tục phụ trách tài liệu. Nếu chưa có reviewer độc lập, đầu mối ghi `Blocked` và cập nhật ETA. Điều phối viên có thể nhận review nếu đáp ứng yêu cầu độc lập. PR code áp dụng yêu cầu phê duyệt kỹ thuật tại mục 9.4.
 
 Reviewer kiểm nội dung theo chuẩn môn và yêu cầu của Issue, mã/liên kết còn dùng được, sự nhất quán với phạm vi và tài liệu phụ thuộc, nguồn và trạng thái xác nhận của thông số. Với PRD, kiểm đủ nội dung mẫu FR, quan hệ rule/error–AC, NFR và kịch bản test chịu ảnh hưởng. Với tài liệu kế hoạch, kiểm ngày, effort và cơ sở huy động.
 
-Các nhận xét cần sửa phải được xử lý hoặc có kết luận được ghi nhận. Thay đổi nội dung sau approve phải được reviewer kiểm lại phần bị ảnh hưởng trước khi merge. Phần mã nguồn, nếu được thực hiện, áp dụng thêm kiểm thử và review kỹ thuật phù hợp với thay đổi.
+Các nhận xét cần sửa phải được xử lý hoặc có kết luận được ghi nhận. Thay đổi nội dung sau approve phải được reviewer kiểm lại phần bị ảnh hưởng trước khi merge. Với mã nguồn trong kế hoạch thực thi, kiểm thử và review kỹ thuật theo [Quality Plan](../09-quality/quality-plan.md).
 
 ### 9.4. Thẩm quyền merge
 
-Đề xuất Trần Vĩnh Đại thực hiện merge PR tài liệu đã được approve. Huỳnh Hữu Như Mẫn là người thay thế khi Đại vắng hoặc cần chuyển quyền điều phối. Cả hai chỉ thực hiện khi được người quản lý repo cấp quyền và nhóm xác nhận phân công. Nếu cả hai vắng, các thành viên còn lại ghi quyết định chỉ định người thay thế và nhờ người quản lý repo cấp quyền cần thiết.
+| Loại PR | Nhánh đích | Phê duyệt bắt buộc | Người merge đề xuất |
+| --- | --- | --- | --- |
+| Tài liệu | `main` | Ít nhất một reviewer độc lập theo mục 9.3 | Trần Vĩnh Đại, Huỳnh Hữu Như Mẫn thay khi Đại vắng hoặc được chuyển quyền |
+| Feature hoặc bugfix trong kế hoạch Mô phỏng | `develop` | Technical Lead review và approve PR của Developer theo [Quality Plan, mục Tiêu chuẩn Code Review](../09-quality/quality-plan.md) | Technical Lead hoặc người thực thi được Lead ủy quyền trên PR |
+| Phát hành thông thường trong kế hoạch Mô phỏng | `main`, nguồn `develop` | Technical Lead review và approve PR phát hành sau khi kiểm hồ sơ của bản ứng viên | Technical Lead hoặc người thực thi được Lead ủy quyền trên PR |
+| Hotfix trong kế hoạch Mô phỏng | `main`, sau đó PR đồng bộ về `develop` | Technical Lead review và approve cả PR hotfix và PR đồng bộ | Technical Lead hoặc người thực thi được Lead ủy quyền trên từng PR |
+
+Với đợt phát hành thông thường, sau khi feature và bugfix đã vào `develop`, Technical Lead mở hoặc phân công mở PR `develop` → `main`. PR ghi commit ứng viên, các Issue hoặc PR đã tích hợp và bằng chứng Staging tương ứng theo [Quality Plan](../09-quality/quality-plan.md#điều-kiện-release-release-criteria). Nếu commit ứng viên thay đổi, cập nhật bằng chứng và duyệt lại trước khi merge. Sau khi merge, DevOps ghi phiên bản triển khai từ `main`, QA ghi kết quả smoke và hồi quy trên Production theo Quality Plan trước khi xác nhận đủ điều kiện đưa vào sử dụng chính thức. Các bước này thuộc kế hoạch Mô phỏng.
+
+Nếu Technical Lead là tác giả PR code, PM chỉ định người có năng lực tương đương làm Technical Lead thay thế cho PR đó để review độc lập. Nếu cả hai đầu mối merge tài liệu vắng, nhóm ghi quyết định chỉ định người thay thế. Với mọi PR, người merge cần có quyền tương ứng được quản lý repo cấp trước khi thực hiện.
 
 Trước merge, người thực hiện kiểm nhánh đích, phiên bản cuối, approve độc lập, nhận xét còn mở, conflict, liên kết và các kiểm tra áp dụng. Khi có conflict ở file Word/Excel, chủ tài liệu và reviewer đối chiếu hai bản để tạo một bản hợp nhất được kiểm lại.
 
@@ -235,18 +247,19 @@ Quyền chỉnh sửa được cấp theo nhiệm vụ. Quyền với dữ liệ
 
 ## 11. Xác nhận và duy trì Charter
 
-Trưởng nhóm tổng hợp ý kiến bốn thành viên và lưu quyết định thông qua, phiên bản, ngày hiệu lực cùng các nội dung còn mở trong PR hoặc biên bản. Tài liệu được review khi có thay đổi thành viên, trách nhiệm, công cụ, lịch phối hợp hoặc vấn đề cho thấy quy tắc cần điều chỉnh.
+**Bản 2.4 — chờ thông qua.** Bằng chứng thông qua, phạm vi đã duyệt và ngày hiệu lực đang chờ nhóm ghi nhận. [PR #103](https://github.com/vinhdai123/UniSupport_Project/pull/103) là hồ sơ tích hợp bản 2.1. Quyết định áp dụng bản 2.4 cần có bản ghi biểu quyết riêng.
 
-Các nội dung cần nhóm xác nhận trước khi áp dụng bản dự thảo này gồm
+Nhóm cần xác nhận các nội dung sau.
 
-1. Phân công, reviewer và người dự phòng tại mục 2.
-2. Kênh trao đổi mặc định, lịch họp kế thừa và khung giờ phối hợp chung.
-3. Ngưỡng vắng một ngày, thời hạn xử lý bất đồng một ngày và phương án tiếp nhận đột xuất.
-4. Cơ chế ít nhất 3 trong 4 người đồng ý khi thông qua hoặc thay đổi Charter.
-5. Quy ước nhánh đích, approve độc lập, người merge và quyền repo thực tế.
-6. Vị trí gốc trong repo và cách cập nhật mục lục, các liên kết đang dùng tại thư mục SPM.
+1. Người dự phòng theo tài liệu, quyền điều phối nội bộ và cơ chế thay reviewer tại mục 2, 4, 6, 8 và 9.3.
+2. Người có quyền kết luận khi có xung đột lợi ích, thứ tự thay thế và cách xử lý quá hạn tại mục 4 và 7.
+3. Kênh liên hệ khẩn, khung giờ phối hợp và các mốc nội bộ đề xuất tại mục 3 và 5.
+4. Quy tắc biểu quyết đề xuất ít nhất 3 trong 4 thành viên đồng ý để thông qua hoặc sửa Charter.
+5. Người merge PR tài liệu và code, người phê duyệt, quyền repo và luồng PR phát hành thông thường tại mục 9.
 
-Sau khi nhóm xác nhận, người phụ trách ghi ngày áp dụng và dẫn tới bằng chứng quyết định. Các thay đổi tiếp theo có PR, người review và lịch sử phiên bản.
+Trưởng nhóm tổng hợp trong Issue, PR hoặc biên bản có liên kết. Bản ghi nêu phiên bản, ý kiến từng thành viên, các điều khoản được thông qua, các điều khoản còn mở, người chịu trách nhiệm và ngày hiệu lực. Sau khi có quyết định, chủ tài liệu cập nhật trạng thái đầu file và dẫn tới bản ghi này. Nếu nhóm duyệt từng phần, ghi phiên bản và ngày hiệu lực cho từng phần, các phần còn mở tiếp tục mang trạng thái đề xuất.
+
+Nhóm xem lại Charter khi đổi thành viên, trách nhiệm, công cụ, lịch phối hợp hoặc khi quy tắc hiện hành gây vướng mắc.
 
 ## 12. Căn cứ và đối chiếu feedback
 
@@ -256,13 +269,13 @@ Bản này được viết từ Charter gốc của nhóm, review hiện tại, 
 - Feedback R1-08 trang 6 và R1-10 trang 7, bản đánh giá commit `7c1534ae93` ngày 04/11/2026. Bản PDF do nhóm cung cấp có tên `feedback-r1-nhom-1.pdf`.
 - Cơ cấu, tuyến báo cáo, lịch họp và thẩm quyền phê duyệt trong tài liệu quản trị. [Nguồn quản trị đã đối chiếu](../11-governance/reporting.md).
 
-| Nội dung feedback cần xử lý | Vị trí trong Charter mới | Bằng chứng cần bổ sung khi nhóm áp dụng |
+| Nội dung feedback cần xử lý | Vị trí trong Charter | Bằng chứng cần bổ sung khi nhóm áp dụng |
 | --- | --- | --- |
-| Nơi gốc của Team Charter và mục lục | Mục 3 và 11 | File trong repo, link từ mục lục và PR liên kết issue feedback |
+| Nơi gốc của Team Charter và mục lục | Mục 3 và 11 | Đường dẫn từ README và mục lục đã có. PR xử lý feedback cần dẫn tới issue tương ứng |
 | Thành viên, vai trò và trách nhiệm tài liệu | Mục 2 | Xác nhận phân công của nhóm |
 | Quy ước nhánh, PR, review và merge | Mục 9 | Quyết định thông qua và quyền thực tế của người phụ trách repo |
 | Xử lý bất đồng | Mục 4 và 7 | Quy tắc được nhóm xác nhận, quyết định được lưu khi phát sinh |
 | Khi thiếu người | Mục 6 | Người dự phòng được xác nhận, bản ghi bàn giao khi kích hoạt |
 | Công cụ và lịch phối hợp thống nhất | Mục 3 và 5 | Liên kết tới nguồn lịch áp dụng và quyết định khi có thay đổi |
 
-Bảng này mô tả phần nội dung đã soạn và bằng chứng cần có khi áp dụng. Nhóm dùng điều kiện Hoàn thành khi trong feedback để xác nhận xử lý xong R1-08 sau khi hoàn tất cập nhật repo và liên kết PR.
+Đối chiếu điều kiện hoàn thành của R1-08 khi có PR dẫn tới issue feedback tương ứng. Bằng chứng thông qua quy tắc và ngày hiệu lực được ghi theo mục 11.

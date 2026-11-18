@@ -32,7 +32,7 @@ Toàn bộ tài liệu quản lý dự án được tổ chức chuẩn hóa the
 5. [`05-non-functional-requirements/`](docs/05-non-functional-requirements/README.md): Yêu cầu phi chức năng (Mock data, đa ngôn ngữ, web responsive, usability, hiệu năng, bảo mật).
 6. [`06-acceptance/`](docs/06-acceptance/test-scenarios.md): Kịch bản kiểm thử (Test Scenarios) và Ma trận truy vết yêu cầu (Traceability Matrix).
 7. [`07-architecture/`](docs/07-architecture/README.md): Kiến trúc hệ thống phân tầng và giải pháp công nghệ.
-8. [`08-project/`](docs/08-project/): Kế hoạch tổng thể 23 tuần ([master-plan.xlsx](docs/08-project/master-plan.xlsx)), Báo giá ([quotation.xlsx](docs/08-project/quotation.xlsx)), Proposal ([proposal.docx](docs/08-project/proposal.docx)), Team Charter, Sổ rủi ro, Giả định, Ràng buộc.
+8. [`08-project/`](docs/08-project/): Kế hoạch tổng thể 23 tuần ([master-plan.xlsx](docs/08-project/master-plan.xlsx)), Báo giá ([quotation.xlsx](docs/08-project/quotation.xlsx)), Proposal ([proposal.docx](docs/08-project/proposal.docx)), [Team Charter](docs/08-project/team-charter.md), Sổ rủi ro, Giả định, Ràng buộc.
 9. [`09-quality/`](docs/09-quality/quality-plan.md): Kế hoạch chất lượng (QA/QC, Definition of Done, Quản lý lỗi, Điều kiện release).
 10. [`10-product-management/`](docs/10-product-management/): Quy trình feedback, Lộ trình sản phẩm (Roadmap) và Chỉ số giá trị (Success Metrics).
 11. [`11-governance/`](docs/11-governance/): Cơ chế báo cáo, Giám sát tiến độ & EVM, và Quy trình kiểm soát thay đổi (Change Request).
