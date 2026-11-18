@@ -1,10 +1,10 @@
 # Team Charter UniSupport
 
-Phiên bản dự thảo 2.0 — ngày 17/11/2026
+Phiên bản dự thảo 2.1 — ngày 17/11/2026
 
 Dự án mô phỏng môn Software Project Management, phục vụ tình huống Aurora University với khoảng 3.000 sinh viên. Charter quy định trách nhiệm, phối hợp, quyết định, xử lý bất đồng và quản lý thay đổi trong quá trình xây dựng tài liệu, kế hoạch và quy trình dự án UniSupport.
 
-**Trạng thái xác nhận.** Danh sách bốn thành viên và thông tin trưởng nhóm lấy từ feedback R1. Phân công chi tiết, người dự phòng, quyền merge và các thời hạn bổ sung trong bản này là phương án đề xuất để nhóm xác nhận. Lịch họp kế thừa tài liệu quản trị đã đọc. Các quy định có hiệu lực sau khi nhóm xác nhận phiên bản qua PR hoặc biên bản quyết định.
+**Trạng thái xác nhận.** Danh sách bốn thành viên và thông tin trưởng nhóm lấy từ feedback R1. MSSV và mảng phụ trách kế thừa README được nhóm cập nhật tại commit dfe998d. Reviewer, người dự phòng, quyền merge và các thời hạn bổ sung là phương án đề xuất để nhóm xác nhận. Lịch họp kế thừa tài liệu quản trị đã đọc. Các quy định có hiệu lực sau khi nhóm xác nhận phiên bản qua PR hoặc biên bản quyết định.
 
 ## 1. Mục tiêu và nguyên tắc phối hợp
 
@@ -21,14 +21,14 @@ Nhóm chịu trách nhiệm xây dựng bộ tài liệu nhất quán từ phạ
 
 ### 2.1. Ban quản lý dự án
 
-Danh sách theo feedback R1 gồm Trần Vĩnh Đại, Nguyễn Thành An, Phùng Ngô Huy Bảo và Huỳnh Hữu Như Mẫn. Trần Vĩnh Đại được ghi là trưởng nhóm. Bảng sau là phân công đề xuất, cần từng thành viên xác nhận.
+Danh sách theo feedback R1 gồm Trần Vĩnh Đại, Nguyễn Thành An, Phùng Ngô Huy Bảo và Huỳnh Hữu Như Mẫn. Trần Vĩnh Đại được ghi là trưởng nhóm. Mảng phụ trách trong bảng theo README cập nhật tại dfe998d. Người dự phòng là đề xuất cần nhóm xác nhận.
 
 | Thành viên | Mảng phụ trách đề xuất | Trách nhiệm chính | Người dự phòng đề xuất |
 | --- | --- | --- | --- |
-| Trần Vĩnh Đại | Điều phối, phạm vi và quyết định dự án | Điều phối tiến độ bài làm, quản lý Proposal, Charter, CR và giao tiếp chính thức, tổng hợp vấn đề cần quyết định | Huỳnh Hữu Như Mẫn |
-| Nguyễn Thành An | Yêu cầu và quản lý sản phẩm | Quản lý PRD M01–M05, NFR, quy tắc nghiệp vụ và vòng đời Ticket, kiểm bao phủ phạm vi và tiếp nhận phản hồi sản phẩm | Phùng Ngô Huy Bảo |
-| Phùng Ngô Huy Bảo | Chất lượng và nghiệm thu | Quản lý kế hoạch chất lượng, kịch bản test và ma trận truy vết, kiểm rule/error–AC, tổng hợp bằng chứng xử lý feedback | Nguyễn Thành An |
-| Huỳnh Hữu Như Mẫn | Kế hoạch, nguồn lực và tài chính | Quản lý Master Plan, báo giá, nguồn lực, sổ rủi ro, lịch sử kế hoạch và dữ liệu giám sát | Trần Vĩnh Đại |
+| Trần Vĩnh Đại | Proposal, quản lý chất lượng và quản lý sản phẩm | Điều phối với vai trò trưởng nhóm, duy trì Proposal, Quality Plan, test/RTM và tài liệu quản lý sản phẩm | Huỳnh Hữu Như Mẫn |
+| Nguyễn Thành An | Team Charter và Git | Duy trì Charter, tổ chức repo và quy trình Issue, branch, PR, review và merge theo quyền được nhóm xác nhận | Phùng Ngô Huy Bảo |
+| Phùng Ngô Huy Bảo | Master Plan, quản trị và giám sát, báo giá | Duy trì kế hoạch, nguồn lực, rủi ro, Change Log, báo giá và số liệu quản trị, đối chiếu phạm vi–effort–lịch–giá | Nguyễn Thành An |
+| Huỳnh Hữu Như Mẫn | PRD và review | Duy trì PRD/NFR/domain, kiểm bao phủ yêu cầu và tham gia review độc lập các tài liệu thuộc phạm vi được phân công | Trần Vĩnh Đại |
 
 Người chịu trách nhiệm chính tổng hợp ý kiến và duy trì bản gốc. Reviewer kiểm nội dung độc lập. Người dự phòng tiếp nhận công việc theo mục 6 khi có quyết định bàn giao.
 
@@ -52,19 +52,19 @@ Giờ huy động, effort và dự phòng theo vai trò được quản lý tạ
 
 ### 2.3. Trách nhiệm đối với từng tài liệu
 
-Bảng phân công này thuộc phương án chờ nhóm xác nhận tại mục 2.1.
+Người chịu trách nhiệm chính theo mảng trong README. Reviewer và người dự phòng dưới đây là đề xuất cần nhóm xác nhận.
 
 | Tài liệu | Người chịu trách nhiệm chính | Reviewer chính | Người dự phòng |
 | --- | --- | --- | --- |
 | Proposal | Trần Vĩnh Đại | Huỳnh Hữu Như Mẫn | Huỳnh Hữu Như Mẫn |
-| Báo giá và kế hoạch chi phí nội bộ | Huỳnh Hữu Như Mẫn | Trần Vĩnh Đại | Trần Vĩnh Đại |
-| Master Plan, Resources và Change Log | Huỳnh Hữu Như Mẫn | Nguyễn Thành An | Trần Vĩnh Đại |
-| Risk Register | Huỳnh Hữu Như Mẫn | Phùng Ngô Huy Bảo | Trần Vĩnh Đại |
-| PRD, NFR và tài liệu domain | Nguyễn Thành An | Phùng Ngô Huy Bảo | Phùng Ngô Huy Bảo |
-| Quality Plan, test scenarios và traceability matrix | Phùng Ngô Huy Bảo | Nguyễn Thành An | Nguyễn Thành An |
-| Quản lý sản phẩm | Nguyễn Thành An | Trần Vĩnh Đại | Phùng Ngô Huy Bảo |
-| Quản trị và giám sát | Trần Vĩnh Đại | Huỳnh Hữu Như Mẫn | Huỳnh Hữu Như Mẫn |
-| Team Charter và mục lục tài liệu | Trần Vĩnh Đại | Nguyễn Thành An | Huỳnh Hữu Như Mẫn |
+| Báo giá và kế hoạch chi phí nội bộ | Phùng Ngô Huy Bảo | Trần Vĩnh Đại | Trần Vĩnh Đại |
+| Master Plan, Resources và Change Log | Phùng Ngô Huy Bảo | Nguyễn Thành An | Trần Vĩnh Đại |
+| Risk Register | Phùng Ngô Huy Bảo | Huỳnh Hữu Như Mẫn | Trần Vĩnh Đại |
+| PRD, NFR và tài liệu domain | Huỳnh Hữu Như Mẫn | Phùng Ngô Huy Bảo | Nguyễn Thành An |
+| Quality Plan, test scenarios và traceability matrix | Trần Vĩnh Đại | Huỳnh Hữu Như Mẫn | Nguyễn Thành An |
+| Quản lý sản phẩm | Trần Vĩnh Đại | Huỳnh Hữu Như Mẫn | Phùng Ngô Huy Bảo |
+| Quản trị và giám sát | Phùng Ngô Huy Bảo | Huỳnh Hữu Như Mẫn | Trần Vĩnh Đại |
+| Team Charter, Git và mục lục tài liệu | Nguyễn Thành An | Huỳnh Hữu Như Mẫn | Trần Vĩnh Đại |
 
 Khi reviewer tiếp nhận vai trò tác giả thay thế, nhóm chỉ định reviewer khác trước khi duyệt. File Word/Excel được chỉnh bởi một người tại một thời điểm, việc tiếp nhận chỉnh sửa được ghi vào Issue để tránh ghi đè phiên bản.
 
@@ -87,7 +87,7 @@ Vị trí đề xuất khi đưa Charter vào repo là `docs/08-project/team-cha
 
 | Nội dung gốc | Vị trí để đối chiếu |
 | --- | --- |
-| Phạm vi, assumptions và nghiệm thu | [Proposal](Proposal.docx) |
+| Phạm vi, assumptions và nghiệm thu | [Proposal](proposal.docx) |
 | Giá và khối lượng bán | [Báo giá](quotation.xlsx) |
 | Ngày, WBS, MS-xx, nguồn lực, rủi ro và lịch sử kế hoạch | [Master Plan](master-plan.xlsx) |
 | Lịch họp, báo cáo, cảnh báo và CR | Tài liệu Quản trị và giám sát của nhóm, mục Quy trình báo cáo và Quản lý thay đổi |
@@ -130,6 +130,7 @@ Với các điểm PRD đã được review như trạng thái mở lại Ticket
 ## 5. Lịch phối hợp và báo cáo
 
 Lịch dưới đây kế thừa mục 2.1 và 2.2 của tài liệu Quản trị và giám sát đã được review. Nhóm xác nhận khả năng tham gia khi thông qua Charter. Thay đổi lịch sau đó được cập nhật ở tài liệu quản trị và dẫn chiếu từ Charter.
+
 | Hoạt động | Lịch hiện được ghi trong tài liệu quản trị | Chủ trì và đầu ra |
 | --- | --- | --- |
 | Cập nhật trước họp ngày | Trước 08:40 mỗi ngày làm việc | Người thực hiện cập nhật Issue về kết quả, giờ công, ETA và blocker |
@@ -253,7 +254,8 @@ Bản này được viết từ Charter gốc của nhóm, review hiện tại, 
 
 - Chuẩn môn, phần Nội dung tối thiểu, Format repo, Quy ước mã và Công bằng và dùng AI. [spm-standard.md](https://github.com/vinhdai123/UniSupport_Project/blob/e5beb485a45a2dc2962c768f66200d3c11bd651e/.claude/spm-standard.md).
 - Feedback R1-08 trang 6 và R1-10 trang 7, bản đánh giá commit `7c1534ae93` ngày 04/11/2026. Bản PDF do nhóm cung cấp có tên `feedback-r1-nhom-1.pdf`.
-- Cơ cấu, tuyến báo cáo, lịch họp và thẩm quyền phê duyệt trong tài liệu quản trị. [Nguồn quản trị đã đối chiếu](https://github.com/vinhdai123/UniSupport_Project/blob/e5beb…8f66200d3c11bd651e/docs/project_governance_and_monitoring.md).
+- Cơ cấu, tuyến báo cáo, lịch họp và thẩm quyền phê duyệt trong tài liệu quản trị. [Nguồn quản trị đã đối chiếu](../11-governance/reporting.md).
+
 | Nội dung feedback cần xử lý | Vị trí trong Charter mới | Bằng chứng cần bổ sung khi nhóm áp dụng |
 | --- | --- | --- |
 | Nơi gốc của Team Charter và mục lục | Mục 3 và 11 | File trong repo, link từ mục lục và PR liên kết issue feedback |

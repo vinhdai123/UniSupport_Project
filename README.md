@@ -1,6 +1,6 @@
 # UniSupport — Student Support Management System
 
-Hệ thống quản lý và xử lý yêu cầu hỗ trợ tập trung cho sinh viên Trường Đại học Aurora (Aurora University). Dự án được lập kế hoạch, đặc tả và quản trị theo chuẩn môn học Software Project Management (SPM).
+Hệ thống quản lý và xử lý yêu cầu hỗ trợ tập trung cho sinh viên Trường Đại học Aurora (Aurora University). Khách hàng và đội thực thi là Mô phỏng. Dự án được lập kế hoạch, đặc tả và quản trị theo chuẩn môn học Software Project Management (SPM).
 
 - Hướng dẫn dùng bộ khung repo: [`HUONG-DAN.md`](HUONG-DAN.md).
 - Toàn bộ tài liệu dự án: Bắt đầu từ mục lục [`docs/README.md`](docs/README.md) (thứ tự đọc, tra cứu nhanh, quy ước mã).
@@ -10,10 +10,14 @@ Hệ thống quản lý và xử lý yêu cầu hỗ trợ tập trung cho sinh 
 
 ## Thành viên nhóm thực hiện
 
-| MSSV | Họ tên | GitHub | Vai trò chính |
-| --- | --- | --- | --- |
-| *Cập nhật* | *Cập nhật* | `@vinhdai123` | Project Manager / BA |
-| *Cập nhật* | *Cập nhật* | | Technical Lead / Solution Architect |
+| MSSV | Họ tên | Trách nhiệm tài liệu đề xuất |
+| --- | --- | --- |
+| 23090009  | Trần Vĩnh Đại | Proposal, Quản lý chất lượng, Quản lý sản phẩm |
+| 23090011 | Nguyễn Thành An | Team Charter, Git |
+| 23090017 | Phùng Ngô Huy Bảo | Master Plan, Quản trị và giám sát, Báo giá |
+| 23090020 | Huỳnh Hữu Như Mẫn | PRD, Review |
+
+MSSV và phân công tài liệu theo bản README được nhóm cập nhật tại commit dfe998d. Trưởng nhóm đối chiếu feedback R1. Reviewer, dự phòng và quyền merge được xác nhận theo Team Charter. Ánh xạ tên với tài khoản GitHub do thành viên bổ sung.
 
 ---
 

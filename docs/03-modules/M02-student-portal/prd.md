@@ -1,5 +1,8 @@
 # MODULE M02: STUDENT PORTAL (CỔNG HỖ TRỢ SINH VIÊN)
 
+Bản đặc tả phục vụ kế hoạch Mô phỏng. Tham số mật khẩu, thời hạn, tệp, số dòng và chính sách quyền theo Business Rules/NFR là đề xuất cần PM/BA xác nhận trước baseline nghiệm thu.
+
+
 # 1. Đặc tả yêu cầu chức năng
 
 ## FR-STU-01 – Tạo yêu cầu hỗ trợ (Submit Ticket)
@@ -50,8 +53,9 @@ Sinh viên đã đăng nhập thành công vào Cổng hỗ trợ sinh viên.
   - When: Sinh viên tải lên tệp `.exe` hoặc tệp lớn hơn 5MB.
   - Then: Hệ thống hiển thị thông báo "Định dạng tệp không được hỗ trợ hoặc vượt quá 5MB".
 
+
 ### Tình huống ngoại lệ
-- Mất kết nối mạng ngay khi sinh viên vừa bấm nút gửi. Hệ thống trình duyệt sẽ giữ nguyên nội dung sinh viên đã nhập thay vì làm trắng trang, đồng thời hiển thị thông báo lỗi mạng để sinh viên thử lại sau.
+- Thử tại giới hạn số tệp và dung lượng theo BR-02, sau đó vượt từng giới hạn một đơn vị. Các giá trị cần được xác nhận trước baseline.
 
 ---
 
@@ -92,8 +96,9 @@ Sinh viên đã đăng nhập.
   - When: Sinh viên C truy cập Danh sách yêu cầu.
   - Then: Hệ thống hiển thị thông báo "Bạn chưa có yêu cầu hỗ trợ nào" kèm nút bấm điều hướng đi tạo yêu cầu mới.
 
+
 ### Tình huống ngoại lệ
-- Quản trị viên vừa xóa một Ticket rác trên hệ thống. Sinh viên lưu lại đường dẫn (URL) của Ticket đó và truy cập trực tiếp. Hệ thống phải báo lỗi "Yêu cầu không tồn tại hoặc đã bị xóa".
+- Sinh viên đổi Ticket ID trên URL sang Ticket của sinh viên khác, kiểm cả trang chi tiết và API.
 
 ---
 
@@ -121,7 +126,7 @@ Sinh viên đang xem chi tiết một Ticket thuộc sở hữu của mình.
 
 ### Quy tắc nghiệp vụ
 - BR-STU-05: Chức năng gửi phản hồi chỉ khả dụng khi Ticket ở trạng thái "Mới tạo", "Đang xử lý" hoặc "Cần bổ sung". 
-- BR-STU-06: Không cho phép trao đổi thêm nếu Ticket đã chuyển sang trạng thái "Đóng" hoặc "Hoàn thành".
+- BR-STU-06: Không cho phép trao đổi thêm nếu Ticket đã chuyển sang trạng thái "Hoàn thành".
 
 ### Luồng rẽ nhánh và lỗi
 - E-STU-04: Nếu sinh viên không nhập nội dung mà bấm gửi, hệ thống vô hiệu hóa nút gửi hoặc yêu cầu nhập văn bản.
@@ -136,8 +141,17 @@ Sinh viên đang xem chi tiết một Ticket thuộc sở hữu của mình.
   - When: Sinh viên lướt xuống khu vực trao đổi.
   - Then: Khu vực nhập văn bản bị ẩn hoặc vô hiệu hóa, kèm dòng chữ "Yêu cầu này đã đóng, không thể trao đổi thêm".
 
+- **FR-STU-03/AC-03:** Không gửi phản hồi rỗng (E-STU-04)
+  - Given: Sinh viên có quyền trao đổi trên Ticket chưa hoàn thành.
+  - When: Gửi nội dung rỗng hoặc chỉ có khoảng trắng.
+  - Then: Hệ thống từ chối, chỉ rõ nội dung bắt buộc và không thêm phản hồi.
+- **FR-STU-03/AC-04:** Trao đổi khi chưa cần bổ sung (BR-STU-05)
+  - Given: Ticket thuộc sinh viên, lần lượt ở trạng thái Mới tạo và Đang xử lý.
+  - When: Gửi phản hồi hợp lệ.
+  - Then: Phản hồi được lưu, trạng thái hiện tại được giữ nguyên. Quy tắc Pending chuyển In Progress áp dụng tại AC-01.
+
 ### Tình huống ngoại lệ
-- Cán bộ vừa bấm đóng Ticket trên hệ thống nội bộ đúng vào giây sinh viên đang gõ chữ phản hồi. Khi sinh viên bấm gửi, hệ thống từ chối và báo "Yêu cầu đã được đóng bởi cán bộ xử lý".
+- Hai tab cùng mở Ticket, một tab vừa nhận kết quả hoàn thành, tab còn lại gửi phản hồi từ màn hình cũ.
 
 ---
 
@@ -160,26 +174,27 @@ Ticket đang ở trạng thái "Hoàn thành".
 2. Sinh viên chọn chức năng "Mở lại yêu cầu".
 3. Hệ thống yêu cầu sinh viên nhập lý do muốn mở lại.
 4. Sinh viên nhập lý do và xác nhận.
-5. Hệ thống cập nhật trạng thái Ticket thành "Mở lại" (Reopened) và thông báo cho cán bộ phụ trách.
+5. Hệ thống cập nhật trạng thái Ticket thành "Đang xử lý" (In Progress), ghi sự kiện mở lại vào lịch sử và thông báo cho cán bộ phụ trách.
 
 ### Quy tắc nghiệp vụ
-- BR-STU-07: Sinh viên chỉ được phép Mở lại yêu cầu trong vòng 72 giờ (3 ngày) kể từ thời điểm Ticket được chuyển sang trạng thái "Hoàn thành".
+- BR-STU-07: Thời hạn đề xuất theo BR-05 là 72 giờ liên tục từ thời điểm hoàn thành, cần xác nhận trước baseline. Khi mở lại dùng trạng thái In Progress theo vòng đời gốc.
 
 ### Luồng rẽ nhánh và lỗi
-- E-STU-05: Nếu đã quá 72 giờ, nút "Mở lại yêu cầu" sẽ bị hệ thống ẩn đi vĩnh viễn và Ticket chuyển sang trạng thái "Đóng" (Closed).
+- E-STU-05: Nếu đã quá 72 giờ, hệ thống từ chối yêu cầu mở lại ở cả giao diện và API. Ticket giữ trạng thái "Hoàn thành".
 
 ### Tiêu chí nghiệm thu
 - **FR-STU-04/AC-01:** Mở lại yêu cầu hợp lệ
   - Given: Ticket vừa được chuyển sang "Hoàn thành" cách đây 1 ngày.
   - When: Sinh viên bấm Mở lại, nhập lý do và xác nhận.
-  - Then: Ticket chuyển trạng thái thành "Mở lại" và lưu lý do vào dòng thời gian.
+  - Then: Ticket chuyển trạng thái thành "Đang xử lý" và lưu lý do vào dòng thời gian.
 - **FR-STU-04/AC-02:** Quá thời hạn mở lại (Kiểm tra BR-STU-07, E-STU-05)
   - Given: Ticket đã ở trạng thái "Hoàn thành" cách đây 4 ngày.
   - When: Sinh viên vào xem chi tiết Ticket.
-  - Then: Nút "Mở lại yêu cầu" không còn xuất hiện trên giao diện.
+  - Then: Nút "Mở lại yêu cầu" không còn xuất hiện. Gọi API trực tiếp bị từ chối và Ticket giữ trạng thái "Hoàn thành".
+
 
 ### Tình huống ngoại lệ
-- Không có.
+- Thử yêu cầu tại ngay trước, đúng và sau hạn mở lại đã xác nhận. Server là nơi kiểm thời điểm. Biên thời gian cần được PM/BA xác nhận.
 
 ---
 
@@ -220,8 +235,13 @@ Ticket đang ở trạng thái "Hoàn thành" hoặc "Đóng".
   - When: Sinh viên chọn 1 sao, không ghi nhận xét và bấm Gửi.
   - Then: Hệ thống chặn lại và báo "Vui lòng cho biết lý do bạn chưa hài lòng để chúng tôi cải thiện".
 
+- **FR-STU-05/AC-03:** Không tạo đánh giá trùng (BR-STU-08)
+  - Given: Ticket đã lưu một đánh giá của sinh viên.
+  - When: Gửi lại yêu cầu đánh giá từ trang cũ hoặc trực tiếp qua API.
+  - Then: Hệ thống giữ một đánh giá, trả thông báo đã đánh giá và không tăng số lượng đánh giá.
+
 ### Tình huống ngoại lệ
-- Không có.
+- Nhấn gửi hai lần hoặc gửi lại cùng yêu cầu sau timeout, kiểm một Ticket chỉ có một đánh giá.
 
 ---
 
@@ -263,5 +283,57 @@ Sinh viên có quyền truy cập chức năng FAQ.
   - When: Sinh viên nhập "tên lửa".
   - Then: Hệ thống báo "Không tìm thấy kết quả" kèm liên kết để Sinh viên gửi Ticket hỏi đáp.
 
+- **FR-STU-06/AC-03:** Ẩn FAQ chưa xuất bản hoặc sai đối tượng (BR-STU-09)
+  - Given: Có ba FAQ cùng từ khóa, một đã xuất bản cho sinh viên, một bản nháp và một dành nội bộ.
+  - When: Sinh viên tìm kiếm và mở URL trực tiếp của từng FAQ.
+  - Then: Chỉ FAQ đã xuất bản cho sinh viên được xem, hai FAQ còn lại bị chặn cả khi truy cập trực tiếp.
+
 ### Tình huống ngoại lệ
-- Không có.
+- Truy cập URL của FAQ vừa bị gỡ xuất bản trong khi kết quả tìm kiếm cũ vẫn còn trên màn hình.
+
+---
+
+## FR-STU-07 – Nhận thông báo Ticket
+
+### Mô tả
+Sinh viên nhận thông báo trong hệ thống và Email cho các sự kiện Ticket thuộc quyền xem, đồng thời mở được đúng Ticket liên quan.
+
+### Actor
+Student.
+
+### Mức độ ưu tiên
+Cao.
+
+### Điều kiện tiên quyết
+Sinh viên có tài khoản, Ticket thuộc quyền, cấu hình Email và danh mục sự kiện được xác nhận.
+
+### Luồng chính
+1. Phát sinh yêu cầu bổ sung hoặc kết quả xử lý Ticket.
+2. Hệ thống tạo thông báo trong tài khoản sinh viên và gửi Email theo cấu hình.
+3. Sinh viên mở thông báo và truy cập Ticket.
+4. Hệ thống kiểm lại quyền trước khi hiển thị nội dung.
+
+### Quy tắc nghiệp vụ
+- BR-STU-10: Chỉ người có quyền xem Ticket được nhận nội dung thông báo tương ứng, ghi chú nội bộ không được gửi cho sinh viên.
+- BR-STU-11: Một sự kiện nghiệp vụ chỉ có một thông báo trong hệ thống cho mỗi người nhận.
+
+### Luồng rẽ nhánh và lỗi
+- E-STU-08: Lỗi Email được lưu trạng thái gửi và báo cho vận hành. Ticket và thông báo trong hệ thống vẫn được giữ.
+- E-STU-09: Khi người nhận đã mất quyền, truy cập từ liên kết cũ bị từ chối.
+
+### Tiêu chí nghiệm thu
+- **FR-STU-07/AC-01:** Nhận và mở thông báo đúng Ticket
+  - Given: Ticket của SV-MOCK-01 đang xử lý.
+  - When: Staff yêu cầu bổ sung rồi sinh viên mở thông báo.
+  - Then: Có thông báo cho SV-MOCK-01 và liên kết mở đúng Ticket, Email được kiểm bằng hộp thư thử.
+- **FR-STU-07/AC-02:** Chặn thông báo sai quyền (BR-STU-10, E-STU-09)
+  - Given: Có ghi chú nội bộ và một sinh viên khác không sở hữu Ticket.
+  - When: Tạo ghi chú, sau đó thử truy cập liên kết thông báo từ tài khoản khác.
+  - Then: Ghi chú không phát sinh thông báo sinh viên, người ngoài quyền bị chặn.
+- **FR-STU-07/AC-03:** Xử lý gửi lại và lỗi Email (BR-STU-11, E-STU-08)
+  - Given: Môi trường kiểm thử làm dịch vụ Email lỗi.
+  - When: Tạo sự kiện rồi xử lý lại cùng sự kiện.
+  - Then: Ticket giữ dữ liệu, có một thông báo trong hệ thống, lỗi gửi được theo dõi để xử lý theo chính sách thử lại đã xác nhận.
+
+### Tình huống ngoại lệ
+- Sinh viên mở thông báo từ Email sau khi Ticket đã thay đổi trạng thái hoặc quyền xem, server kiểm quyền hiện tại.
