@@ -2,15 +2,17 @@
 
 ## 1. Thông tin sản phẩm
 
+**Mô phỏng.** Khách hàng, quy mô phục vụ và mốc triển khai dưới đây thuộc tình huống lập kế hoạch UniSupport.
+
 | Thông tin | Mô tả |
 |---|---|
 | Tên sản phẩm | UniSupport – Student Support Management System |
-| Khách hàng | Aurora University |
+| Khách hàng mô phỏng | Aurora University |
 | Quy mô phục vụ | Khoảng 3.000 sinh viên |
 | Loại sản phẩm | Web-based Student Support Management System |
 | Người dùng chính | Student, Staff, Manager, Administrator |
-| Thời gian triển khai | 23 tuần |
-| Go-live Target | Tuần 23 |
+| Thời gian triển khai | 23 tuần theo [lịch baseline](../08-project/master-plan.md) |
+| Go-live dự kiến | MS-08, tuần 23 theo baseline |
 
 > Project Sponsor: **TBD / Reference Client Brief** nếu chưa được xác nhận trong Proposal.
 
@@ -31,9 +33,7 @@ Hệ thống hướng đến:
 - Hỗ trợ Quản trị viên quản lý các cấu hình và dữ liệu nền.
 - Cung cấp Dashboard và báo cáo phục vụ công tác quản lý.
 
-Chi tiết mục tiêu dự án được mô tả tại:
-
-`goals-and-non-goals.md`
+Tra [Goals and Non-goals](goals-and-non-goals.md) để xem mục tiêu và giới hạn có mã.
 
 ---
 
@@ -48,9 +48,7 @@ UniSupport hỗ trợ 04 Role:
 | Manager | Giám sát và điều phối hoạt động xử lý |
 | Administrator | Quản lý cấu hình và tài khoản hệ thống |
 
-Chi tiết trách nhiệm và phạm vi của từng Role được mô tả tại:
-
-`actors-and-roles.md`
+Tra [Đối tượng và phân vai](actors-and-roles.md) để xem trách nhiệm và phạm vi của từng vai trò.
 
 ---
 
@@ -162,53 +160,10 @@ Hệ thống:
 - Sử dụng tài khoản nội bộ UniSupport.
 - Áp dụng Role-Based Access Control.
 
-Các giới hạn và nội dung ngoài phạm vi được quản lý tại:
-
-`goals-and-non-goals.md`
-
-và:
-
-`product-scope.md`
-
-Không lặp lại toàn bộ Out-of-Scope tại tài liệu này để tránh
-duy trì cùng một requirement ở nhiều nơi.
+Tra phần In-Scope và Out-of-Scope trong [Proposal](../08-project/proposal.docx) để kiểm phạm vi cam kết. [Product Scope](product-scope.md) diễn giải phạm vi theo nhóm chức năng để tra PRD.
 
 ---
 
 ## 8. Release Target
 
-Tổng thời gian triển khai dự kiến: **23 tuần**.
-
-### Tuần 1–5
-
-- Khởi động dự án.
-- Xác nhận yêu cầu.
-- Phân tích và thiết kế.
-- Hoàn thiện UI/UX Prototype.
-
-### Tuần 6–18
-
-- Phát triển nền tảng và Authentication.
-- Phát triển Ticket Flow.
-- Phát triển Management & Administration.
-- Phát triển Dashboard & Reporting.
-- Hoàn thiện Responsive và đa ngôn ngữ.
-
-### Tuần 19–20
-
-- Tích hợp toàn hệ thống.
-- System Testing.
-- Security Review.
-- Fix lỗi.
-
-### Tuần 21–22
-
-- User Acceptance Testing.
-- Hoàn thiện phiên bản nghiệm thu.
-
-### Tuần 23
-
-- Go-live.
-- Hướng dẫn sử dụng.
-- Bàn giao hệ thống, mã nguồn và tài liệu.
-
+Tra ngày, đầu ra và điều kiện kiểm của từng mốc tại [lịch baseline và cơ sở chia mốc](../08-project/master-plan.md). [Mục lục dự án](../README.md#tra-nhanh-vị-trí) chỉ vị trí các sheet dùng để rà soát ngày nghiệm thu và nguồn lực theo kịch bản.

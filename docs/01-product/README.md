@@ -2,13 +2,14 @@
 
 <!-- Hướng dẫn: phần mở đầu của PRD. Ngắn, cụ thể, đủ để người đọc hiểu vì sao làm và làm cho ai. -->
 
-Tài liệu này tổng hợp bối cảnh, bài toán, đối tượng sử dụng, mục tiêu và phạm vi của hệ thống **UniSupport - Student Support Management System** dành cho Aurora University.
+Tài liệu này tổng hợp bối cảnh, bài toán, đối tượng sử dụng, mục tiêu và phạm vi của hệ thống **UniSupport - Student Support Management System** dành cho Aurora University trong tình huống **Mô phỏng**.
 
-Chi tiết xem tại các tài liệu chuyên sâu:
+Các nguồn để tra cứu chi tiết gồm
 - [Bài toán thực tế](problem-statement.md)
 - [Đối tượng & Phân vai](actors-and-roles.md)
-- [Mục tiêu & Ngoài phạm vi](goals-and-non-goals.md)
-- [Phạm vi chi tiết (Scope)](product-scope.md)
+- [Mục tiêu có mã BG/UG và giới hạn NG](goals-and-non-goals.md)
+- [Phạm vi cam kết trong Proposal](../08-project/proposal.docx)
+- [Phạm vi chi tiết phục vụ PRD](product-scope.md)
 - [Bản mô tả tổng quan sản phẩm](product-overview.md)
 
 ---
@@ -39,7 +40,7 @@ Chi tiết: [actors-and-roles.md](actors-and-roles.md)
 
 ## Goals
 
-- **Tập trung hóa:** Quy chuẩn 100% yêu cầu hỗ trợ sinh viên về một cổng thông tin duy nhất.
+- **Tập trung hóa:** Tiếp nhận và theo dõi yêu cầu hỗ trợ thuộc phạm vi UniSupport qua một cổng tập trung. Xem [BG-01](goals-and-non-goals.md#bg-01--quản-lý-tập-trung-yêu-cầu-hỗ-trợ).
 - **Minh bạch hóa:** Cung cấp mã định danh Ticket và trạng thái tiến độ thời gian thực cho sinh viên.
 - **Tự động hóa & Kiểm soát SLA:** Tự động phân luồng yêu cầu tới đúng phòng ban chuyên trách và cảnh báo vi phạm cam kết thời gian giải quyết.
 - **Quản trị bằng dữ liệu:** Cung cấp Dashboard đo lường khối lượng, tỷ lệ giải quyết đúng hạn và độ hài lòng (CSAT).
@@ -57,4 +58,4 @@ Chi tiết: [goals-and-non-goals.md](goals-and-non-goals.md)
 - **Không thay thế Cổng đào tạo / Cổng đăng ký tín chỉ hiện có:** UniSupport là hệ thống tiếp nhận và giải quyết yêu cầu hỗ trợ, không can thiệp trực tiếp vào cơ sở dữ liệu xếp lớp hoặc thu học phí tự động.
 - **Không can thiệp vào quy trình nghiệp vụ nội bộ độc quyền ngoài hệ thống:** Việc ra quyết định chuyên môn nội bộ vẫn thuộc thẩm quyền của Aurora University.
 
-Chi tiết: [product-scope.md](product-scope.md)
+Tra [Non-goals có mã](goals-and-non-goals.md#2-mục-tiêu-ngoài-phạm-vi-non-goals) và phần Out-of-Scope trong [Proposal](../08-project/proposal.docx) để đối chiếu phạm vi cam kết.

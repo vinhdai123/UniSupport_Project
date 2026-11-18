@@ -64,7 +64,7 @@ Quản trị viên có thể quản lý các cấu hình và dữ liệu nền c
 để hệ thống UniSupport hoạt động nhất quán.
 
 > Chi tiết trách nhiệm, phạm vi sử dụng và chức năng của từng Role
-> được mô tả tại `actors-roles.md` và các PRD Module tương ứng.
+> được mô tả tại [tài liệu đối tượng và phân vai](actors-and-roles.md) và các PRD Module tương ứng.
 
 ---
 

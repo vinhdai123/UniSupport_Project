@@ -1,10 +1,8 @@
-# Ràng buộc (Constraints)
-
-<!-- Hướng dẫn: mỗi dòng một mục, ghi ảnh hưởng tới giá, plan hoặc phạm vi nếu có. -->
+# Ràng buộc
 
 | # | Nội dung | Ảnh hưởng | Trạng thái |
 | --- | --- | --- | --- |
-| 1 | **Thời gian triển khai:** Tổng thời gian dự án cố định trong 23 tuần (kết thúc tại Tuần 23 với việc bàn giao và nghiệm thu) | Kế hoạch WBS và tiến độ phải được kiểm soát chặt chẽ theo đường găng | Đang áp dụng |
-| 2 | **Ngân sách cố định:** Báo giá và chi phí nhân sự tuân thủ nghiêm ngặt theo bảng báo giá [quotation.xlsx](quotation.xlsx) | Mọi chi phí vượt hạn mức cần phê duyệt qua Change Request | Đang áp dụng |
-| 3 | **Bảo mật dữ liệu:** Tuân thủ quy định bảo vệ dữ liệu cá nhân của sinh viên và cán bộ nhà trường | Không đưa dữ liệu thật lên môi trường Dev/Staging | Đang áp dụng |
-| 4 | **Công nghệ & Nền tảng:** Hệ thống triển khai dưới dạng Web Responsive (Desktop & Mobile Browser), không phát triển Native App | Giới hạn phạm vi kỹ thuật của đội Frontend | Đang áp dụng |
+| 1 | Lịch triển khai theo baseline [Master Plan](master-plan.xlsx) và mốc trong [Proposal](proposal.docx). | WBS và công việc phụ thuộc bám lịch baseline. Nếu phép thử cho thấy lệch mốc, PM đánh giá lại trước khi đề xuất đổi lịch. | Baseline Mô phỏng |
+| 2 | Giá trọn gói cho phạm vi đã duyệt được đối chiếu giữa Proposal và [Báo giá](quotation.xlsx). | Thay đổi làm phát sinh phạm vi, giá hoặc cam kết được đánh giá qua [Change Request](../11-governance/change-control.md). | Theo Proposal đã duyệt |
+| 3 | Dev/Staging dùng dữ liệu giả lập theo [NFR-GLOBAL-01](../05-non-functional-requirements/README.md). | Chuẩn bị dữ liệu thử cho bốn vai trò và kiểm quyền dữ liệu theo PRD. | Áp dụng trong kế hoạch |
+| 4 | Phạm vi là Web Responsive trên trình duyệt desktop và mobile theo [Product Scope](../01-product/product-scope.md) và Proposal. | Phát triển và nghiệm thu giao diện trên trình duyệt. Native App thuộc phạm vi loại trừ. | Theo Proposal đã duyệt |

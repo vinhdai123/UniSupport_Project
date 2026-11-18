@@ -1,10 +1,9 @@
-# Hồ sơ Proposal gửi khách hàng
+# Bản đã gửi khách
 
-Bản hiện hành là v2.1, đồng bộ ngày 17/11/2026. PM xác nhận người nhận, ngày gửi và bằng chứng trao đổi trong tình huống Mô phỏng trước khi chuyển trạng thái sang Đã gửi.
+<!-- Lưu PDF của mỗi lần gửi Proposal trong thư mục này. Đặt tên theo mẫu proposal-v<phiên-bản>-<YYYY-MM-DD>.pdf và thêm một dòng dưới đây khi có xác nhận gửi. -->
 
-| Phiên bản | Ngày xuất | Word | PDF | Trạng thái |
-| --- | --- | --- | --- | --- |
-| v2.1 | 17/11/2026 | [Proposal](../proposal.docx) | [Proposal PDF](proposal-v2.1-2026-11-17.pdf) | Mô phỏng — đã chuẩn bị, chờ xác nhận gửi |
-| v1.0 | 17/11/2026 | Truy vết qua Git | [Bản PDF trước đồng bộ](proposal-v1.0-2026-11-17.pdf) | Được thay thế bởi v2.1 |
+| Phiên bản | Ngày gửi | File | Thay đổi so với bản trước |
+| --- | --- | --- | --- |
+| | | | |
 
-Khi phát hành phiên bản khác, lưu phiên bản và ngày, ghi quyết định thay thế và giữ bản đã gửi để truy vết.
+[Proposal v2.1](../proposal.docx) đã được duyệt. Bảng trên ghi nhận lần gửi trong tình huống **Mô phỏng** khi có ngày gửi và bản PDF tương ứng.

@@ -1,42 +1,35 @@
-# Master Plan UniSupport
+# Master Plan
 
-Kế hoạch Mô phỏng gồm 23 tuần triển khai và 30 ngày bảo hành. Workbook [master-plan.xlsx](master-plan.xlsx) quản lý ngày, effort, capacity và phiên bản. Tám mốc dưới đây dùng cùng mã với Proposal và GitHub.
+[Workbook Master Plan](master-plan.xlsx) là nguồn tra ngày, effort, nguồn lực, các kịch bản và lịch sử phiên bản của kế hoạch **Mô phỏng**. Dùng sheet **Milestone Matrix** và **Master Schedule (Gantt)** cho baseline, **Nghiệm thu** và **Kịch bản** cho phép thử 2.2.
 
-| Mốc | Tuần | Ngày dự kiến | Phần mềm khách tự dùng thử | Điều kiện kiểm |
-| --- | ---: | --- | --- | --- |
-| MS-01 | 5 | 06/11/2026 | Client mở URL Staging, dùng tài khoản hợp lệ để đăng nhập, thử thông tin sai và kết thúc phiên. | Màn hình, API và dữ liệu xác thực hoạt động cùng nhau. Tài khoản sai bị từ chối, tài khoản hợp lệ vào đúng trang, phiên kết thúc không còn truy cập được. |
-| MS-02 | 8 | 27/11/2026 | Client dùng vai quản trị tạo/cập nhật tài khoản, gán vai trò, đặt lại mật khẩu và thử truy cập được phép/bị chặn. | Tài khoản, vai trò, reset mật khẩu và quyền chức năng đã có hoạt động đúng. Quyền Ticket/tệp kiểm tại MS-03/MS-04. |
-| MS-03 | 10 | 11/12/2026 | Client đăng nhập vai sinh viên, gửi Ticket có tệp, nhận mã, mở lại trang tra cứu và xem FAQ. | Ticket và tệp được lưu, được tra cứu theo quyền và quy tắc PRD. Hồi quy đăng nhập và quyền trước bàn giao. |
-| MS-04 | 15 | 15/01/2027 | Client dùng vai cán bộ phân công/xử lý, yêu cầu bổ sung, trả kết quả. Vai sinh viên kiểm thông báo và mở lại, vai quản lý kiểm workload/cấu hình. | Vòng đời Ticket, ghi chú nội bộ, Email/In-App và cảnh báo theo quy tắc PRD. Quyền dữ liệu được bảo vệ, hồi quy luồng đã giao. |
-| MS-05 | 18 | 05/02/2027 | Client xem/lọc báo cáo, đối chiếu số liệu với bộ dữ liệu giả lập và tải CSV theo quyền. | Số liệu màn hình/CSV khớp dữ liệu chuẩn bị, quyền và bộ lọc. Kiểm VI/EN, responsive và hồi quy Ticket. |
-| MS-06 | 20 | 19/02/2027 | Client chạy toàn bộ luồng từ đăng nhập, gửi/xử lý Ticket đến nhận kết quả và xem báo cáo trên cùng bản tích hợp. | Đối chiếu PRD, hồ sơ kiểm thử và lỗi còn tồn. Khắc phục lỗi chặn luồng chính hoặc vi phạm quyền, lỗi khác theo tiêu chí đã thống nhất. |
-| MS-07 | 22 | 05/03/2027 | Đại diện trường chạy UAT bằng bốn vai trò, kiểm bản sửa phản hồi và thử hướng dẫn sử dụng trên bản phát hành. | Xác nhận kết quả UAT, hồi quy bản sửa, tài liệu và đào tạo, lịch triển khai, sao lưu/khôi phục và quyền truy cập cần thiết. |
-| MS-08 | 23 | 12/03/2027 | Client dùng hệ thống Production, thử luồng chính theo quyền và tiếp nhận mã nguồn, cấu hình, tài liệu vận hành. | Smoke và hồi quy luồng chính Production có hồ sơ theo phiên bản, xác nhận bàn giao và bắt đầu bảo hành 30 ngày. |
+## Cách chia milestone
 
-## Cơ sở chia mốc
+MS-01 giao đăng nhập xuyên suốt từ giao diện đến dữ liệu trên Staging để khách có thể thử sớm. MS-02 mở rộng sang tài khoản và phân quyền. MS-03 và MS-04 nối thành vòng đời Ticket từ phía sinh viên đến cán bộ và quản lý. MS-05 giao Dashboard và CSV sau khi có nghiệp vụ tạo dữ liệu. MS-06 kiểm toàn bộ luồng tích hợp, MS-07 xác nhận UAT và sẵn sàng phát hành, MS-08 giao hệ thống trên Production. Thao tác dùng thử và điều kiện nghiệm thu của từng mốc nằm trong **Milestone Matrix**.
 
-MS-01 có luồng đăng nhập UI–API–DB trên Staging. WBS 3.1–3.3 chuẩn bị môi trường và phát triển trong tuần 3–4, 3.6 tích hợp và hồi quy trước cuối tuần 4, 3.9 dành tuần 5 cho khách dùng thử. PRD, thiết kế và Prototype đi cùng phiên bản đăng nhập.
+## Phụ thuộc giữa các milestone
 
-MS-02 bổ sung tài khoản và quyền. MS-03 giao gửi/tra cứu Ticket và FAQ. MS-04 tích hợp xử lý, bổ sung, trả kết quả và quản trị. MS-05 có Dashboard và CSV. MS-06 kiểm toàn bộ bản tích hợp, MS-07 xác nhận bản sẵn sàng phát hành, MS-08 bàn giao Production.
+Luồng đăng nhập trên Staging cần xong WBS 3.6 trước khi khách dùng thử ở WBS 3.9. Theo dõi môi trường [#52](https://github.com/vinhdai123/UniSupport_Project/issues/52), API [#53](https://github.com/vinhdai123/UniSupport_Project/issues/53), phiên [#54](https://github.com/vinhdai123/UniSupport_Project/issues/54) và ca kiểm [#58](https://github.com/vinhdai123/UniSupport_Project/issues/58) trước khi chốt [#101](https://github.com/vinhdai123/UniSupport_Project/issues/101). Tech Lead chốt hạn nội bộ từ WBS trước khi cập nhật Issue.
 
-## Nguồn lực và kiểm soát chất lượng
+MS-04 cung cấp dữ liệu và quyền cho phần tích hợp ở MS-05. Trong lúc chờ xác nhận, WBS 6.4 có thể chuẩn bị cấu trúc CSV, dữ liệu giả lập và ca kiểm. Bước tích hợp với dữ liệu và quyền của bản MS-04 cùng WBS 6.1 phải chờ xác nhận. MS-07 phải hoàn tất trước triển khai Production. Tại MS-08, ký bàn giao và kích hoạt bảo hành chờ khách xác nhận, còn bảo hành tính từ ngày liền sau ngày ký. Tra **Nghiệm thu** để xem việc được chuẩn bị và việc bị chặn theo từng mốc.
 
-Resources đối chiếu 3.000 giờ triển khai và 98 giờ bảo hành với báo giá. 152 giờ dự phòng được tách riêng, cần nhóm xác nhận huy động. Chín vai trò là Mô phỏng. Trần 40 giờ/người/tuần và lịch nghỉ được xác nhận trước khi cam kết khả dụng. QA được phân bổ theo bảng tuần và công việc.
+## Effort cho test, regression và sửa lỗi
 
-WBS 3.6, 3.5, 4.2, 4.6, 6.3–6.4, 7.4, 8.4 và 9.2 dành giờ tích hợp, sửa lỗi hoặc hồi quy trước các mốc tương ứng. Các mốc phụ thuộc đầu vào và bản tích hợp đã nêu trong WBS. PM kiểm việc phụ thuộc và capacity khi thay đổi ngày.
+Các việc kiểm và sửa dự kiến nằm trong WBS và [Báo giá](quotation.xlsx). WBS 3.6/3.5 dùng Q-03, 4.2 dùng Q-04, 4.6 dùng Q-05 và 5.3 dùng Q-06. WBS 6.3–6.4 dùng Q-07/Q-08, 7.2–7.4 dùng Q-08, 8.3–8.4 dùng Q-09/Q-10 và 9.2 dùng Q-10. **Resources** đối chiếu effort theo vai trò, tuần và mốc. Dùng định mức QA ở phần cuối sheet để kiểm sức chứa khi thêm một vòng hồi quy.
 
-## Feedback và thay đổi
+MS-05 cần bằng chứng kiểm CSV theo WBS 6.4 và [TS-095](../06-acceptance/test-scenarios.md), gồm bộ lọc, quyền dữ liệu và đối chiếu kết quả với Dashboard. Đề xuất cập nhật [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) và đối chiếu với [#90](https://github.com/vinhdai123/UniSupport_Project/issues/90). MS-06 hồi quy CSV trên bản tích hợp và tổng hợp các ngưỡng NFR thuộc mốc đó.
 
-PM gửi phiên bản, kịch bản và quyền dùng thử. Khách phản hồi theo điều kiện nghiệm thu mục 8 Proposal, dự kiến trong 5 ngày làm việc từ khi nhận đủ hồ sơ. Các giá trị là kế hoạch Mô phỏng.
+## Dự phòng cho thay đổi và rủi ro
 
-CR được đánh giá và xác nhận theo [quy trình thay đổi](../11-governance/change-control.md). Lưu bản trước, thêm Change Log rồi cập nhật PRD, báo giá, WBS, Resources, test và GitHub. Gantt vẽ từ ngày bằng công thức.
+Tra tổng giờ dự phòng ở **Resources** và WBS `CR.01`. Đây là năng lực đề xuất huy động cho thay đổi hoặc rủi ro, được theo dõi riêng với effort đã báo giá cho test, sửa lỗi và bảo hành. PM kiểm khả dụng theo đúng vai trò và tuần. Phần việc phát sinh ngoài phạm vi được định giá trong CR để hai bên xác nhận.
 
-Lịch gốc bắt đầu 05/10/2026. Tại ngày rà soát 17/11/2026, MS-01 đã có ngày baseline trong quá khứ. Đây là kế hoạch Mô phỏng, PM xác nhận tình huống hoặc tái lập lịch có Change Log trước khi sử dụng làm lịch triển khai thực tế.
+[CR-01](https://github.com/vinhdai123/UniSupport_Project/issues/102) thử thêm XLSX. Sheet **Kịch bản** cho thấy Junior Backend và Junior Frontend kín tải trong ba tuần cuối trước MS-05. QA cũng kín tải ở tuần chốt MS-05 và MS-06 và thiếu giờ nếu vừa vắng vừa cần kiểm lại. PM chỉ trình đưa XLSX vào mốc khi có phương án tái phân bổ và kiểm hồi quy khả thi. CR hiện chờ quyết định, baseline tiếp tục dùng CSV.
 
-Parent task [#101](https://github.com/vinhdai123/UniSupport_Project/issues/101) theo dõi bản đăng nhập đầu tiên. MS-02 kiểm quyền tài khoản và chức năng đã hiện diện. Quyền Ticket và tệp được kiểm khi các luồng xuất hiện tại MS-03/MS-04, với đợt hồi quy đầy đủ theo [#59](https://github.com/vinhdai123/UniSupport_Project/issues/59).
+## Cách nhận feedback của client sau mỗi milestone
 
-## Đồng bộ phiên bản 2.1
+PM gửi phiên bản, quyền truy cập, kịch bản và hồ sơ kiểm. Ghi thời điểm khách nhận đủ hồ sơ và hạn phản hồi theo mục 8 [Proposal](proposal.docx). Mỗi phản hồi có Issue, phiên bản, người chịu trách nhiệm, bằng chứng và kết quả kiểm lại. Khi hồ sơ thay đổi sau sửa, PM thống nhất hạn của lần gửi lại. Xác nhận mốc cần bằng chứng bằng văn bản.
 
-Mô hình QA ở Resources từ dòng 704 có định mức soạn ca, thực thi, hồi quy, đo NFR, triage, hỗ trợ UAT và smoke. Nhu cầu Mô phỏng 287,75 giờ được đối chiếu với 320 giờ QA triển khai ở từng mốc. 22 giờ QA được điều chuyển giữa Q-03/Q-04 và Q-09/Q-10. Lịch UAT có 50 giờ QA trong tuần 21–22, Production có 12 giờ QA cho smoke và 12 ca luồng chính. Bảo hành có 24 giờ QA trong tổng dự trù 98 giờ.
+Sheet **Nghiệm thu** mô phỏng khách dùng hết hạn phản hồi theo lịch làm việc. MS-04 và MS-08 lệch baseline nếu gửi đủ hồ sơ theo ngày sẵn sàng hiện tại. Kết quả ở từng dòng tính riêng, chưa cộng dồn phụ thuộc. Dùng phần phép thử ở cuối sheet để xem tác động của vòng sửa và kiểm bổ sung.
 
-Định mức QA là giả định cần nhóm xác nhận khi có số liệu thử. Khoảng giờ QA còn trong ngân sách triển khai được theo dõi riêng với 152 giờ dự phòng CR/rủi ro. Ngày bảo hành trên WBS bắt đầu từ ngày liền sau ký nghiệm thu và bàn giao, thời hạn 30 ngày lịch.
+## Thay đổi kế hoạch
+
+Khi chỉnh kế hoạch theo feedback nội bộ hoặc của giảng viên, ghi căn cứ và phiên bản trong **Change Log** và lịch sử PR. Bản 2.2 là dự thảo rà soát. Sau khi khách nhận Proposal, đề nghị đổi phạm vi, giá hoặc mốc được xử lý theo [Change Control](../11-governance/change-control.md). Khi CR được duyệt, lưu bản trước, thêm phiên bản, ngày, mã CR và tác động vào **Change Log**. Cập nhật các nguồn liên quan, gồm báo giá, WBS, Resources, PRD, test và các mốc trên GitHub. Tra bằng chứng gửi tại [Bản đã gửi khách](sent/README.md).
