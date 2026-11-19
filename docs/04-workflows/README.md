@@ -40,10 +40,12 @@ sequenceDiagram
 
 ## 2. Luồng Chuyển tiếp Phòng ban (Ticket Escalation & Re-route Workflow)
 
-1. **Nhận diện sai tuyến:** Cán bộ phát hiện Ticket không thuộc phạm vi xử lý của phòng ban mình.
-2. **Yêu cầu chuyển tiếp:** Cán bộ chọn phòng ban đích và nhập lý do chuyển giao (Ghi chú nội bộ - Internal Note).
-3. **Phê duyệt chuyển phòng:** Trưởng phòng hoặc Cán bộ có thẩm quyền xác nhận chuyển giao.
-4. **Kiểm ảnh hưởng SLA:** Áp dụng chính sách chuyển phòng được xác nhận trong BR-03. PM/BA chốt cách giữ hoặc tính lại hạn trước baseline.
+Luồng theo đề xuất tại [FR-STF-04](../03-modules/M03-staff-desk/prd.md#fr-stf-04--chuyển-tiếp-và-chuyển-cấp-transfer--escalation), chờ xác nhận OQ-05.
+
+1. **Nhận diện sai tuyến:** Staff phát hiện Ticket cần chuyển. Nếu thiếu quyền chuyển, báo Manager để người có quyền thực hiện.
+2. **Xác nhận chuyển:** Staff hoặc Manager có quyền chọn đích, nhập lý do bàn giao và xác nhận trực tiếp trong cùng thao tác. Hệ thống kiểm quyền, đích và phiên bản hiện hành trước khi lưu.
+3. **Bàn giao:** Ticket giữ ID và chuyển hàng đợi. Phòng đích thấy phần lịch sử theo quyền và sự kiện bàn giao. Ghi chú/tệp nội bộ giữ quyền gốc theo BR-STF-12. Phòng cũ mất quyền gắn với việc phụ trách cũ.
+4. **Kiểm ảnh hưởng SLA:** PM/BA chốt cách giữ hoặc tính lại hạn theo BR-03 trước baseline.
 
 ---
 

@@ -140,13 +140,13 @@ Hệ thống có dữ liệu Ticket.
 
 ### Tiêu chí nghiệm thu
 - **FR-RPT-03/AC-01:** Nhóm biểu đồ tự động (Kiểm tra BR-RPT-05)
-  - Given: Người dùng chọn mốc thời gian là 3 tháng (90 ngày).
-  - When: Biểu đồ đường được tải.
-  - Then: Trục ngang của biểu đồ tự động chia theo Tuần (tuần 1, tuần 2...) thay vì hiển thị 90 điểm chấm theo ngày.
+  - Given: Có bộ dữ liệu đối chứng cho các khoảng thời gian 30 và 31 ngày.
+  - When: Tải biểu đồ với từng khoảng.
+  - Then: Khoảng 30 ngày vẫn hiển thị theo ngày. Khoảng 31 ngày tự động nhóm theo tuần hoặc tháng theo cấu hình áp dụng. Tổng số Ticket trong các nhóm khớp dữ liệu lọc.
 - **FR-RPT-03/AC-02:** Chặn truy vấn quá giới hạn (Kiểm tra E-RPT-04)
-  - Given: Người dùng chọn mốc thời gian kéo dài 2 năm.
-  - When: Bấm tải dữ liệu.
-  - Then: Hệ thống từ chối vẽ biểu đồ và hiển thị thông báo "Vui lòng chọn khoảng thời gian tối đa 1 năm".
+  - Given: Có dữ liệu đối chứng và khoảng thời gian 365 ngày, 366 ngày, gồm trường hợp đi qua ngày 29/02.
+  - When: Tải báo cáo lần lượt với từng khoảng.
+  - Then: 365 ngày được xử lý và nhóm theo BR-RPT-05. 366 ngày bị từ chối, hiển thị yêu cầu thu hẹp về tối đa 365 ngày và không thay biểu đồ bằng kết quả của truy vấn bị từ chối.
 
 
 ### Tình huống ngoại lệ

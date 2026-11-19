@@ -319,7 +319,7 @@ Admin đã đăng nhập, danh sách vai trò và phạm vi quản trị đã x�
 
 ### Luồng rẽ nhánh và lỗi
 - E-AUTH-09: Thiếu dữ liệu hoặc định danh trùng thì từ chối lưu, giữ cấu hình hiện tại.
-- E-AUTH-10: Thao tác quản trị từ tài khoản không có quyền bị từ chối ở API.
+- E-AUTH-10: API từ chối thao tác của tài khoản thiếu quyền quản trị hoặc yêu cầu gán quyền vượt phạm vi được ủy quyền.
 
 ### Tiêu chí nghiệm thu
 - **FR-AUTH-07/AC-01:** Tạo tài khoản và áp dụng vai trò
@@ -330,10 +330,10 @@ Admin đã đăng nhập, danh sách vai trò và phạm vi quản trị đã x�
   - Given: Đã có tài khoản SV-MOCK-01.
   - When: Tạo lại định danh này, sau đó thử dữ liệu bắt buộc rỗng.
   - Then: Các yêu cầu bị từ chối, không tạo bản ghi trùng hoặc dở dang.
-- **FR-AUTH-07/AC-03:** Khóa tài khoản và chặn quản trị trái quyền (BR-AUTH-12, E-AUTH-10)
-  - Given: Có tài khoản Student đang hoạt động và một người dùng không có quyền quản trị.
-  - When: Admin khóa tài khoản, thử đăng nhập mới, sau đó người dùng khác gọi API đổi vai trò.
-  - Then: Đăng nhập mới bị từ chối, yêu cầu đổi vai trò trái quyền bị chặn và không thay đổi dữ liệu.
+- **FR-AUTH-07/AC-03:** Khóa tài khoản và chặn cấp quyền trái ủy quyền (BR-AUTH-11, BR-AUTH-12, E-AUTH-10)
+  - Given: Có tài khoản Student đang hoạt động, người dùng không có quyền quản trị và Admin có phạm vi cấp quyền giới hạn theo ma trận quyền áp dụng.
+  - When: Thử riêng ba ca. Admin khóa tài khoản rồi thử đăng nhập mới. Người không có quyền quản trị yêu cầu đổi vai trò. Admin có quyền quản trị thử gán một quyền ngoài phạm vi được ủy quyền.
+  - Then: Đăng nhập mới bị từ chối. Cả hai yêu cầu đổi quyền trái phép bị từ chối tại API, quyền của tài khoản đích giữ nguyên.
 
 ### Tình huống ngoại lệ
 - Hai Admin đồng thời sửa cùng tài khoản, kiểm phát hiện phiên bản cũ theo cơ chế cập nhật đã xác nhận.

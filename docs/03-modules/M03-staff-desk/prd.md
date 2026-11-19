@@ -70,8 +70,8 @@ Cao.
 Ticket đã được tạo thành công bởi sinh viên ở Module M02.
 
 ### Luồng chính
-1. Hệ thống tiếp nhận Ticket mới, đọc thông tin Danh mục (Category).
-2. Hệ thống tra cứu Quy tắc phân luồng (Routing Rule) và chuyển ẩn Ticket về đúng Phòng ban (Department) chịu trách nhiệm.
+1. Staff Desk nhận Ticket mới cùng kết quả phòng tiếp nhận mà luồng tạo Ticket đã lưu theo FR-STU-01 tại MS-03.
+2. Tại MS-04, hệ thống áp dụng quy tắc danh mục–phòng đích cho luồng tích hợp và đưa Ticket vào hàng đợi đúng quyền. Nếu không có quy tắc hợp lệ, áp dụng E-STF-02. WBS 4.4 và #63 hoàn thiện phần này trên đầu ra #60.
 3. Trưởng bộ phận (Manager) mở Ticket chưa được phân công.
 4. Trưởng bộ phận chọn chức năng "Phân công" (Assign).
 5. Hệ thống hiển thị danh sách các cán bộ xử lý (Staff) thuộc phòng ban đó.
@@ -160,41 +160,39 @@ Cán bộ có quyền xử lý Ticket đang mở chi tiết Ticket đó.
 ## FR-STF-04 – Chuyển tiếp và Chuyển cấp (Transfer & Escalation)
 
 ### Mô tả
-Hỗ trợ cán bộ chuyển tiếp Ticket sang bộ phận khác nếu xử lý nhầm luồng, hoặc chuyển cấp lên cấp quản lý cao hơn nếu tính chất vụ việc vượt quá thẩm quyền.
+Cán bộ và quản lý xử lý Ticket sai tuyến bằng chuyển phòng hoặc chuyển cấp. Cơ chế xác nhận trực tiếp và phạm vi dữ liệu sau chuyển dưới đây là **đề xuất chờ xác nhận tại [OQ-05](../../08-project/open-questions.md)**.
 
 ### Actor
-Cán bộ xử lý.
+Staff hoặc Manager có quyền chuyển Ticket hiện tại theo ma trận quyền. Staff thiếu quyền báo Manager qua kênh phối hợp hiện hành để người có quyền thực hiện.
 
 ### Mức độ ưu tiên
 Trung bình.
 
 ### Điều kiện tiên quyết
-Ticket đang chưa đóng.
+Ticket chưa Hoàn thành. Người thực hiện có quyền chuyển trên Ticket và đích hợp lệ theo ma trận quyền.
 
 ### Luồng chính
-1. Cán bộ nhận thấy Ticket không thuộc chuyên môn hoặc quá khó.
-2. Cán bộ chọn chức năng Chuyển tiếp (Transfer) hoặc Chuyển cấp (Escalate).
-3. Hệ thống hiển thị danh sách phòng ban (nếu chuyển tiếp) hoặc danh sách Quản lý (nếu chuyển cấp).
-4. Cán bộ chọn đích đến và BẮT BUỘC nhập lý do chuyển.
-5. Hệ thống thu hồi quyền phụ trách của cán bộ hiện tại.
-6. Ticket được đẩy sang Hàng đợi của đối tượng mới, ghi chú lý do vào Lịch sử.
+1. Người có quyền mở Chuyển tiếp hoặc Chuyển cấp. Hệ thống liệt kê phòng ban hoặc Manager được phép nhận.
+2. Người thực hiện chọn đích, nhập lý do và xác nhận. Xác nhận của người có quyền là quyết định chuyển trực tiếp, không tạo trạng thái chờ duyệt.
+3. API kiểm quyền hiện tại, lý do, đích và phiên bản Ticket tại thời điểm xác nhận. Nếu hợp lệ, cập nhật đích và quyền phụ trách, giữ Ticket ID.
+4. Hệ thống lưu sự kiện bàn giao vào lịch sử gồm nguồn, đích, người thực hiện, thời điểm và lý do. Áp dụng chính sách SLA đã xác nhận tại BR-03.
 
 ### Quy tắc nghiệp vụ
-- BR-STF-07: Việc chuyển tiếp/chuyển cấp bắt buộc phải kèm theo lý do giải trình.
-- BR-STF-08: Hệ thống không tạo mới Ticket, mã Ticket ID vẫn giữ nguyên để đảm bảo liền mạch lịch sử.
+- BR-STF-07: Chuyển tiếp/chuyển cấp cần quyền trên Ticket và đích, kèm lý do giải trình. Lý do là dữ liệu của sự kiện bàn giao, chỉ xem được bởi người được phép xem sự kiện, tách khỏi ghi chú nội bộ của phòng.
+- BR-STF-08: Giữ Ticket ID và lịch sử. Với chuyển phòng, phòng đích được xem lịch sử nghiệp vụ thuộc quyền hiện hành như trao đổi công khai, mốc trạng thái và sự kiện bàn giao. Ghi chú và tệp nội bộ vẫn theo phòng tạo và ma trận quyền BR-STF-12. Phòng cũ mất quyền phát sinh từ việc phụ trách trước đó. Quyền độc lập khác tiếp tục theo ma trận quyền, được kiểm lại khi đọc Ticket, ghi chú và tệp.
 
 ### Luồng rẽ nhánh và lỗi
-- E-STF-04: Nếu cán bộ bấm chuyển tiếp mà bỏ trống ô lý do, hệ thống chặn lại và báo lỗi.
+- E-STF-04: Nếu thiếu lý do, thiếu quyền, đích không hợp lệ hoặc phiên bản Ticket đã cũ, API từ chối, nêu lý do phù hợp và giữ nguyên Ticket. Với phiên bản cũ, yêu cầu tải lại.
 
 ### Tiêu chí nghiệm thu
-- **FR-STF-04/AC-01:** Chuyển tiếp thành công, giữ nguyên ID (Kiểm tra BR-STF-08)
-  - Given: Cán bộ Đào tạo đang giữ Ticket #123.
-  - When: Cán bộ nhập lý do "Liên quan đến mạng" và chuyển tiếp cho phòng IT.
-  - Then: Ticket #123 biến mất khỏi hàng đợi Đào tạo, xuất hiện ở hàng đợi IT với đầy đủ lịch sử cũ.
-- **FR-STF-04/AC-02:** Chặn chuyển khi thiếu lý do (Kiểm tra BR-STF-07, E-STF-04)
-  - Given: Cán bộ đang ở form chuyển cấp.
-  - When: Cán bộ không nhập chữ nào vào ô lý do và bấm Lưu.
-  - Then: Hệ thống không thực hiện việc chuyển và báo "Lý do chuyển là bắt buộc".
+- **FR-STF-04/AC-01:** Chuyển phòng, giữ ID và áp quyền mới (BR-STF-07, BR-STF-08)
+  - Given: Staff Đào tạo có quyền chuyển Ticket #123 sang IT. Ticket có trao đổi công khai, lịch sử trạng thái, ghi chú và tệp nội bộ của Đào tạo. Hai tài khoản thử chỉ thuộc một phòng và không có quyền độc lập khác.
+  - When: Staff nhập lý do và xác nhận chuyển sang IT. Mở Ticket, liên kết cũ và tệp nội bộ bằng các tài khoản thử của hai phòng.
+  - Then: Cùng Ticket ID xuất hiện ở hàng đợi IT và rời hàng đợi Đào tạo. Staff IT thấy trao đổi công khai, lịch sử trạng thái và sự kiện bàn giao có lý do; không thấy hoặc tải được ghi chú/tệp nội bộ Đào tạo. Tài khoản Đào tạo chỉ có quyền theo phân công cũ bị chặn khi mở lại Ticket. Dữ liệu lịch sử vẫn được lưu.
+- **FR-STF-04/AC-02:** Từ chối yêu cầu chuyển không hợp lệ (BR-STF-07, E-STF-04)
+  - Given: Có Ticket hợp lệ, tài khoản có quyền và tài khoản thiếu quyền với Ticket.
+  - When: Thử độc lập chuyển thiếu lý do, chuyển khi thiếu quyền, chọn đích ngoài phạm vi và xác nhận từ phiên bản Ticket cũ.
+  - Then: Mỗi yêu cầu bị từ chối với lý do phù hợp. Dữ liệu cũ yêu cầu tải lại. Không đổi hàng đợi, assignee, Ticket ID hoặc tạo sự kiện chuyển thành công.
 
 
 ### Tình huống ngoại lệ
@@ -236,19 +234,19 @@ Cán bộ đang phụ trách Ticket đó.
   - Given: Ticket đang ở trạng thái "Đang xử lý".
   - When: Cán bộ nhập "Vui lòng gửi kèm CCCD" và bấm "Gửi & Đổi trạng thái".
   - Then: Lời nhắn xuất hiện trong luồng chat và trạng thái Ticket đổi thành "Cần bổ sung".
-- **FR-STF-05/AC-02:** Sử dụng Template phản hồi (Kiểm tra BR-STF-10)
-  - Given: Cán bộ đang soạn thảo phản hồi.
-  - When: Cán bộ chọn mẫu "Chào mừng".
-  - Then: Nội dung ô văn bản tự động điền "Chào em {Tên}, phòng ban đã nhận được yêu cầu..."
+- **FR-STF-05/AC-02:** Thay biến trong mẫu phản hồi (BR-STF-10)
+  - Given: Ticket T-MOCK-021 của sinh viên giả lập Nguyễn Minh An. Mẫu đã lưu là "Chào em {Ten_Sinh_Vien}, phòng ban đã nhận được yêu cầu {Ma_Ticket}."
+  - When: Staff chọn mẫu khi soạn phản hồi cho Ticket.
+  - Then: Bản nháp hiện "Chào em Nguyễn Minh An, phòng ban đã nhận được yêu cầu T-MOCK-021." Hai biến đã được thay bằng dữ liệu của Ticket hiện tại, mẫu gốc giữ nguyên và phản hồi chờ Staff gửi.
 
 - **FR-STF-05/AC-03:** Chặn yêu cầu bổ sung sai trạng thái (BR-STF-09)
   - Given: Ticket đang ở Mới tạo hoặc Hoàn thành.
   - When: Staff gửi thao tác Yêu cầu bổ sung qua API.
   - Then: Hệ thống từ chối thao tác và giữ nguyên trạng thái.
 - **FR-STF-05/AC-04:** Từ chối tệp không an toàn (E-STF-05)
-  - Given: QA chuẩn bị tệp kiểm thử an toàn mô phỏng định dạng bị cấm theo BR-02.
-  - When: Staff gửi phản hồi kèm tệp đó.
-  - Then: Hệ thống từ chối gửi, nêu lỗi tệp, không phát hành phản hồi hoặc chuyển trạng thái một phần.
+  - Given: Ticket Đang xử lý. QA có bộ dữ liệu vô hại mô phỏng định dạng bị cấm theo BR-02 và một tệp giả lập đúng định dạng, dung lượng. Trong ca thứ hai, bộ kiểm tra nội dung mô phỏng trả kết quả Không an toàn.
+  - When: Thử độc lập gửi phản hồi với đầu vào sai định dạng, rồi gửi và yêu cầu bổ sung với tệp đúng định dạng nhưng bị đánh dấu Không an toàn.
+  - Then: Cả hai lần bị từ chối với lý do tương ứng. Không phát hành phản hồi, không gắn tệp vào Ticket, không gửi thông báo và không đổi trạng thái sang Cần bổ sung.
 
 ### Tình huống ngoại lệ
 - Gửi tệp vi phạm chính sách hoặc thao tác yêu cầu bổ sung từ màn hình đã cũ, kiểm không lưu một phần.
@@ -278,7 +276,7 @@ Cán bộ có quyền truy cập vào Ticket.
 
 ### Quy tắc nghiệp vụ
 - BR-STF-11: Ghi chú nội bộ tuyệt đối không được kích hoạt thông báo (notification) hay hiển thị dưới bất kỳ hình thức nào trên Student Portal.
-- BR-STF-12: Ghi chú nội bộ của bộ phận nào thì chỉ cán bộ thuộc bộ phận đó (và Admin/Manager) mới xem được.
+- BR-STF-12: Đọc ghi chú và tệp nội bộ cần đồng thời có quyền trên Ticket và quyền với phòng tạo ghi chú. Staff cần thuộc phòng tạo. Manager/Admin chỉ xem trong phạm vi ma trận quyền cho phép. Chuyển phòng theo FR-STF-04 giữ nguyên phòng tạo và phạm vi của ghi chú.
 
 ### Luồng rẽ nhánh và lỗi
 - E-STF-06: Nếu cán bộ nhập văn bản quá giới hạn ký tự cho phép, hệ thống chặn việc lưu và báo lỗi.

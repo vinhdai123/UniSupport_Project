@@ -4,7 +4,7 @@ Các thông số đo trong bảng là định mức đề xuất kế thừa b�
 
 | Mã | Nhóm | Yêu cầu | Ngưỡng đo | Cách đo | Áp dụng cho |
 | --- | --- | --- | --- | --- | --- |
-| NFR-GLOBAL-01 | Dữ liệu kiểm thử | Sử dụng 100% Mock Data trong Dev & Test, không dùng data thật | 0 bản ghi thật trên Dev/Staging | Audit database Dev/Staging | Toàn hệ thống |
+| NFR-GLOBAL-01 | Dữ liệu kiểm thử | Dùng 100% dữ liệu giả lập trên Dev/Test/Staging, gồm UAT trên Staging | 0 bản ghi thật trên Dev/Test/Staging | Audit dữ liệu và đối chiếu nguồn bộ dữ liệu từng môi trường | Toàn hệ thống |
 | NFR-GLOBAL-02 | Đa ngôn ngữ | Hỗ trợ song ngữ Tiếng Việt & Tiếng Anh | 100% nhãn, nút, thông báo hệ thống được bản địa hóa | UI Test Suite / Manual check | Toàn bộ giao diện M01-M05 |
 | NFR-GLOBAL-03 | Tính tương thích | Web Responsive trên Desktop và Mobile | Layout chuẩn trên màn hình >= 375px (Mobile) và >= 1024px (Desktop) | Chrome DevTools Responsive / BrowserStack | Toàn bộ giao diện M01-M05 |
 | NFR-GLOBAL-04 | Usability | Giao diện nhất quán, rõ ràng, dễ sử dụng | 100% form có validation feedback; thuật ngữ nhất quán | Usability review / UAT | Toàn bộ giao diện M01-M05 |
@@ -39,10 +39,7 @@ trong quá trình thiết kế, phát triển, kiểm thử và nghiệm thu h�
 
 ### Requirement
 
-Trong quá trình Development và Testing, hệ thống UniSupport phải sử dụng
-dữ liệu giả lập theo phạm vi đã thống nhất.
-
-Không sử dụng dữ liệu thật của Aurora University khi chưa được phép.
+Trong phạm vi dự án hiện hành, Dev, Test và Staging, kể cả UAT trên Staging, chỉ dùng dữ liệu giả lập. Ngưỡng kiểm là **0 bản ghi thật**. Mọi đề xuất thay đổi chính sách cần đánh giá và phê duyệt qua Change Request trước khi áp dụng.
 
 ### Applies To
 
@@ -50,16 +47,15 @@ Không sử dụng dữ liệu thật của Aurora University khi chưa được
 - Testing Environment.
 - Integration Testing.
 - System Testing.
-- UAT Preparation nếu sử dụng dữ liệu giả lập.
+- Chuẩn bị và thực hiện UAT trên Staging.
 
 ### Processing / Expected Behavior
 
 1. Project Team chuẩn bị dữ liệu giả lập phục vụ Development và Testing.
 2. Mock Data phải hỗ trợ các tình huống cần thiết để kiểm thử Functional Requirements.
-3. Các Module sử dụng Mock Data thay cho dữ liệu thật của Aurora University trong quá trình phát triển và kiểm thử.
-4. Nếu cần sử dụng dữ liệu thật:
-   - Phải có sự cho phép phù hợp từ Aurora University.
-5. Dữ liệu giả lập phải có khả năng hỗ trợ kiểm thử các Role, Ticket, Category, Department và các chức năng liên quan trong phạm vi dự án.
+3. DevOps kiểm nguồn bộ dữ liệu trước khi nạp. Nếu không chứng minh được là dữ liệu giả lập, giữ ngoài môi trường và báo PM.
+4. QA và DevOps đối chiếu dữ liệu đã nạp với nguồn bộ dữ liệu giả lập trước đợt kiểm/UAT. Có bản ghi thật hoặc nguồn không xác minh được thì chặn sử dụng môi trường để kiểm, xử lý dữ liệu và kiểm lại.
+5. Dữ liệu giả lập bao phủ vai trò, Ticket, danh mục và phòng ban theo kịch bản kiểm thử.
 
 ### Output
 
@@ -81,11 +77,11 @@ Không sử dụng dữ liệu thật của Aurora University khi chưa được
 - When: Test Case yêu cầu dữ liệu đầu vào.
 - Then: Có Mock Data phù hợp để thực hiện kiểm thử.
 
-**NFR-GLOBAL-01/AC-03 – Không tự ý sử dụng dữ liệu thật**
+**NFR-GLOBAL-01/AC-03 – Chỉ dùng dữ liệu giả lập trên Dev/Test/Staging**
 
-- Given: Dữ liệu thật của Aurora University chưa được cho phép sử dụng.
-- When: Development hoặc Testing được thực hiện.
-- Then: Dữ liệu thật không được sử dụng trong các môi trường tương ứng.
+- Given: Có danh sách nguồn của bộ dữ liệu thử và một bộ mẫu tổng hợp mô phỏng nguồn chưa xác minh.
+- When: Đối chiếu bộ dữ liệu đã nạp trên Dev/Test/Staging, kiểm quyết định nhận hoặc từ chối bộ mẫu chưa xác minh.
+- Then: Số bản ghi thật là 0, mọi bộ được dùng truy vết được về nguồn giả lập, bộ chưa xác minh bị loại khỏi đợt kiểm cho tới khi xác minh. Lưu bằng chứng audit và quyết định cho từng môi trường.
 
 **NFR-GLOBAL-01/AC-04 – Mock Data hỗ trợ Functional Testing**
 
@@ -95,7 +91,6 @@ Không sử dụng dữ liệu thật của Aurora University khi chưa được
 
 ### TBD / Pending Confirmation
 
-- Quy trình phê duyệt khi cần sử dụng dữ liệu thật.
 - Bộ Mock Data chuẩn của dự án.
 - Cách quản lý và reset Test Data giữa các lần kiểm thử.
 

@@ -1,29 +1,15 @@
 # Chỉ số giá trị (Success Metrics & KPIs)
 
-<!-- Hướng dẫn: chỉ số đo giá trị cho người dùng/khách, có mục tiêu và cách đo. -->
+Các mục tiêu dưới đây là **đề xuất trong tình huống Mô phỏng**, cần Aurora University và PM xác nhận trước khi dùng để đánh giá. Thời kỳ báo cáo dùng UTC+7. Khi mẫu số bằng 0 hoặc thiếu dữ liệu bắt buộc, ghi N/A và lý do. Số liệu chưa đủ kỳ theo dõi được ghi là tạm tính.
 
-Tài liệu này xác định các chỉ số đo lường giá trị thực tế mà hệ thống **UniSupport** mang lại cho Aurora University về mặt vận hành, chất lượng dịch vụ và trải nghiệm sinh viên.
+| Chỉ số | Mục tiêu đề xuất | Đối tượng, cách đo và nguồn | Kỳ và người theo dõi |
+| --- | --- | --- | --- |
+| Kích hoạt sinh viên | ≥ 80% sau 3 tháng đầu | Số tài khoản sinh viên thuộc danh sách được cấp lúc mở vận hành có lần đăng nhập thành công đầu tiên trong kỳ ÷ số tài khoản sinh viên hợp lệ trong danh sách đó. Danh sách cấp và lịch sử đăng nhập là hai nguồn đối soát. Báo cáo riêng nhóm cấp bổ sung. | Lũy kế từ mở vận hành, chốt sau 3 tháng. PM/BA và Phòng CTSV. |
+| Kích hoạt cán bộ | 100% sau 3 tháng đầu | Cùng định nghĩa kích hoạt nhưng dùng danh sách tài khoản **cán bộ xử lý** và kết quả đăng nhập của riêng nhóm này. Mỗi tài khoản tính một lần. | Lũy kế từ mở vận hành, chốt sau 3 tháng. PM/BA và đầu mối các phòng. |
+| Thời gian phản hồi đầu tiên (FRT) | ≤ 4 giờ làm việc mỗi Ticket | Với Ticket tạo trong tuần, đo từ lúc tạo đến phản hồi công khai đầu tiên của cán bộ theo lịch làm việc đã xác nhận. Dùng lịch sử Ticket; ghi riêng số chưa phản hồi và số đã quá mục tiêu tại ngày chốt. | Hằng tuần. Trưởng phòng. |
+| Tỷ lệ đúng hạn SLA | ≥ 90% | Ticket duy nhất vào `Resolved` lần đầu trong kỳ và đúng hạn ÷ số Ticket duy nhất vào `Resolved` lần đầu trong kỳ có SLA hợp lệ. Dùng lịch sử trạng thái, hạn và quy tắc dừng đồng hồ đã xác nhận. Báo riêng bản ghi thiếu SLA. | Hằng tuần và hằng tháng. Trưởng phòng và PM/BA. |
+| Tỷ lệ Ticket mở lại | ≤ 5% | Mẫu số là Ticket duy nhất lần đầu vào `Resolved` trong tháng. Tử số là Ticket trong cùng nhóm có ít nhất một sự kiện `Resolved → In Progress` do mở lại trong cửa sổ PRD đã xác nhận, mỗi Ticket tính một lần. Dùng lịch sử trạng thái, chốt sau khi toàn bộ nhóm qua cửa sổ mở lại. Nếu cửa sổ chưa xác nhận, ghi N/A. | Theo nhóm tháng. QA và trưởng phòng. |
+| CSAT | ≥ 4,2/5 | Tổng điểm ÷ số đánh giá hợp lệ gửi trong kỳ theo FR-STU-05, mỗi Ticket tối đa một đánh giá. Báo kèm số đánh giá làm mẫu. | Hằng tuần. Trưởng phòng và PM/BA. |
+| Độ sẵn sàng | ≥ 99,5% | Số phút dịch vụ sẵn sàng ÷ số phút trong khung vận hành đã xác nhận. Đối chiếu giám sát dịch vụ và biên bản sự cố. Khi chưa chốt khung giờ hoặc thiếu log, ghi N/A. | Hằng tháng. DevOps và Tech Lead. |
 
----
-
-## 1. Bảng Chỉ số Giá trị Vận hành
-
-| Chỉ số | Mục tiêu | Cách đo | Tần suất | Ai theo dõi |
-| --- | --- | --- | --- | --- |
-| **Tỷ lệ tiếp nhận tập trung (Adoption Rate)** | $\ge 80\%$ sinh viên kích hoạt trong 3 tháng đầu; $100\%$ cán bộ xử lý | $\frac{\text{Số User đăng nhập sử dụng}}{\text{Tổng số User được cấp tài khoản}} \times 100\%$ | Hằng tháng | Product Manager & Phòng CTSV |
-| **Thời gian phản hồi đầu tiên (First Response Time - FRT)** | $\le 4$ giờ làm việc cho mọi Ticket tiếp nhận | Thời gian từ lúc Ticket tạo thành công đến khi cán bộ có phản hồi đầu tiên | Hằng tuần | Trưởng phòng ban & Cán bộ xử lý |
-| **Tỷ lệ tuân thủ cam kết SLA (SLA Compliance Rate)** | $\ge 90\%$ Ticket được xử lý và hoàn tất đúng hạn cam kết | $\frac{\text{Số Ticket hoàn thành đúng hạn SLA}}{\text{Tổng số Ticket đã xử lý}} \times 100\%$ | Hằng tuần / Hằng tháng | Trưởng phòng ban & Ban giám hiệu |
-| **Tỷ lệ Ticket mở lại (Reopened Ticket Rate)** | $\le 5\%$ tổng số Ticket đã hoàn thành | $\frac{\text{Số Ticket bị Reopen}}{\text{Tổng số Ticket đã Resolved}} \times 100\%$ | Hằng tháng | QA Lead & Trưởng phòng ban |
-| **Độ hài lòng của sinh viên (CSAT Score)** | $\ge 4.2 / 5.0$ điểm đánh giá trung bình | Điểm đánh giá sao trung bình trên khảo sát sau khi hoàn tất Ticket | Thời gian thực / Báo cáo tuần | Trưởng phòng ban & Product Manager |
-| **Độ ổn định hệ thống (System Availability)** | $\ge 99.5\%$ trong khung giờ hành chính (07:00 – 19:00) | $\frac{\text{Thời gian hệ thống hoạt động bình thường}}{\text{Tổng thời gian vận hành yêu cầu}} \times 100\%$ | Hằng tháng | DevOps Engineer & Technical Lead |
-
----
-
-## 2. Bảng Cam kết Thời gian Xử lý Dịch vụ (SLA Reference)
-
-| Mức độ ưu tiên | Định nghĩa | Cam kết thời gian xử lý đề xuất |
-| --- | --- | --- |
-| **Urgent (Khẩn cấp)** | Vấn đề đình chỉ học tập, sai sót học phí giờ chót, sự cố đăng ký môn thi | $\le 4$ giờ làm việc |
-| **High (Cao)** | Yêu cầu giấy tờ xác nhận gấp, thủ tục tốt nghiệp, khiếu nại điểm | $\le 12$ giờ làm việc |
-| **Medium (Bình thường)** | Xin cấp bảng điểm, xác nhận sinh viên, hướng dẫn học phần thông thường | $\le 24$ giờ làm việc |
-| **Low (Thấp)** | Góp ý chung, tư vấn hoạt động ngoại khóa, câu lạc bộ | $\le 48$ giờ làm việc |
+Các công thức tỷ lệ nhân kết quả với 100%. Nếu nguồn dữ liệu chưa có báo cáo sẵn, PM xác định cách trích xuất được cấp quyền trước khi đo. Chỉ số vận hành và mục tiêu xử lý Ticket dùng quy tắc SLA từ [PRD](../03-modules/M04-management-admin/prd.md), [nghiệp vụ miền](../02-domain/business-rules.md) và trạng thái xác nhận tại [OQ-05](../08-project/open-questions.md). Hạn xử lý **lỗi phần mềm** theo [Quality Plan](../09-quality/quality-plan.md#mức-độ-lỗi-và-cách-xử-lý).

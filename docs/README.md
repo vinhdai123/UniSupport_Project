@@ -35,6 +35,8 @@
 | **Giá và hạng mục báo giá** | [08-project/quotation.xlsx](08-project/quotation.xlsx) (sheet Báo giá) |
 | **Lịch baseline 23 tuần và tám mốc** | [Workbook Master Plan](08-project/master-plan.xlsx), sheet **Milestone Matrix** và **Master Schedule (Gantt)**. [Bảng mốc và cơ sở chia mốc](08-project/master-plan.md). MS-08 baseline là **12/03/2027**. |
 | **Kịch bản rà soát Master Plan 2.2** | [Workbook Master Plan](08-project/master-plan.xlsx), sheet **Nghiệm thu** kiểm cửa sổ phản hồi và sheet **Kịch bản** thử capacity, QA và CR-01. Ngày **17/03/2027** của MS-08 thuộc phép thử phản hồi. [Giải thích phép thử](08-project/master-plan.md#cách-nhận-feedback-của-client-sau-mỗi-milestone). |
+| **Phương án lịch liên mốc 2.3** | Sheet **Lịch liên mốc** và **Tải liên mốc** trong [Master Plan](08-project/master-plan.xlsx). [Cách tính và trạng thái chờ duyệt](08-project/master-plan.md#phương-án-lịch-liên-mốc-23). |
+| **Phương án phản hồi 3 ngày 2.4** | Sheet **Lịch phản hồi 3 ngày** và **Tải phản hồi 3 ngày** trong [Master Plan](08-project/master-plan.xlsx). [Phương án chọn để thương lượng](08-project/master-plan.md#phương-án-phản-hồi-3-ngày-24). |
 | **Sổ theo dõi rủi ro** | [08-project/risk-register.md](08-project/risk-register.md) |
 | **Quy trình Change Request** | [11-governance/change-control.md](11-governance/change-control.md); [Mẫu issue Change Request](../.github/ISSUE_TEMPLATE/4-change-request.md) |
 | **Definition of Done (DoD)** | [09-quality/quality-plan.md](09-quality/quality-plan.md) mục Definition of Done |
@@ -69,7 +71,7 @@
 | **Khách hàng** | Mô phỏng | Aurora University (Trường Đại học Aurora) |
 | **Đội thực thi** | Mô phỏng | 1 PM/BA, 1 Tech Lead, 2 FE, 2 BE, 1 DevOps, 1 QA, 1 UI/UX |
 | **Dữ liệu kiểm thử** | Mô phỏng | 100% Mock Data trên Staging (4 nhóm role, 50 tickets mẫu) |
-| **Feedback & Khiếu nại** | Mô phỏng | Kịch bản khảo sát CSAT và biểu mẫu In-App |
+| **Feedback & Khiếu nại** | Mô phỏng | Đánh giá CSAT theo FR-STU-05 và kênh góp ý do PM/BA tiếp nhận |
 | **Change Request** | Mô phỏng | Kịch bản áp dụng theo quy trình chuẩn khi có thay đổi |
 
 ---

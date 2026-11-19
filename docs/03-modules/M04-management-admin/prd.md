@@ -46,10 +46,10 @@ Tài khoản đăng nhập có vai trò Administrator.
   - Given: Hệ thống đã có danh mục "Kỹ thuật".
   - When: Admin tạo mới một danh mục tên "Kỹ thuật" (hoặc "kỹ thuật").
   - Then: Hệ thống báo lỗi trùng lặp và không cho phép lưu.
-- **FR-ADM-01/AC-03:** Ngưng hoạt động danh mục (Kiểm tra BR-ADM-02, BR-ADM-03)
-  - Given: Danh mục "Bảo lưu" đang có 10 Ticket cũ.
-  - When: Admin chuyển trạng thái danh mục sang "Ngưng hoạt động".
-  - Then: Trạng thái được cập nhật thành công, sinh viên không còn thấy mục "Bảo lưu" khi tạo Ticket mới, nhưng 10 Ticket cũ không bị lỗi dữ liệu.
+- **FR-ADM-01/AC-03:** Chặn xóa cứng và cho ngưng hoạt động (BR-ADM-02, BR-ADM-03)
+  - Given: Danh mục "Bảo lưu" đang có 10 Ticket liên kết.
+  - When: Admin yêu cầu xóa cứng, kiểm kết quả, sau đó thử chuyển danh mục sang Ngưng hoạt động.
+  - Then: Xóa cứng bị từ chối, danh mục và cả 10 liên kết giữ nguyên. Khi ngưng hoạt động, danh mục biến mất khỏi biểu mẫu tạo mới nhưng Ticket lịch sử vẫn giữ liên kết và truy cập được theo quyền.
 - **FR-ADM-01/AC-04:** Tên danh mục bắt buộc (E-ADM-02)
   - Given: Admin ở form danh mục.
   - When: Để tên rỗng hoặc chỉ có khoảng trắng rồi lưu.
@@ -313,17 +313,17 @@ Manager đã đăng nhập, dữ liệu phòng ban và nhân sự đang hoạt �
 - BR-ADM-11: Manager chỉ điều phối Ticket và nhân sự trong phạm vi quyền, mỗi Ticket có tối đa một assignee theo BR-STF-03.
 
 ### Luồng rẽ nhánh và lỗi
-- E-ADM-08: Nhân sự đích không khả dụng hoặc Ticket đã được cập nhật bởi người khác thì từ chối thay đổi, yêu cầu tải lại.
+- E-ADM-08: API kiểm lại tính khả dụng của nhân sự đích và phiên bản Ticket khi xác nhận. Tài khoản đích đã ngưng hoạt động là một trường hợp không khả dụng. Nếu không khả dụng hoặc Ticket đã đổi, từ chối và yêu cầu tải lại. Các trạng thái khả dụng khác theo quy tắc được xác nhận.
 
 ### Tiêu chí nghiệm thu
 - **FR-ADM-07/AC-01:** Phân công lại và cập nhật workload (BR-ADM-11)
   - Given: Ticket đang gán Staff A, Staff B cùng phòng đang hoạt động.
   - When: Manager chuyển Ticket từ A sang B với lý do.
   - Then: Chỉ B là assignee, lịch sử giữ trước/sau, workload của A giảm và B tăng một.
-- **FR-ADM-07/AC-02:** Chặn ngoài quyền hoặc dữ liệu cũ (E-ADM-08, BR-ADM-11)
-  - Given: Manager có màn hình cũ và có nhân sự phòng khác.
-  - When: Thử phân công cho người ngoài quyền, rồi thử ghi đè Ticket vừa được người khác sửa.
-  - Then: Cả hai yêu cầu bị từ chối, không thay đổi assignee hoặc làm sai số liệu workload.
+- **FR-ADM-07/AC-02:** Chặn ngoài quyền, người đích không khả dụng và dữ liệu cũ (E-ADM-08, BR-ADM-11)
+  - Given: Manager đang quản lý Ticket và Staff đích cùng phòng. Chuẩn bị thêm Staff ngoài phạm vi và một phiên bản Ticket đã được cập nhật.
+  - When: Thử riêng ba ca. Chọn người ngoài phạm vi; xác nhận với Staff cùng phòng đã bị ngưng hoạt động sau khi mở màn hình; và ghi đè từ phiên bản Ticket cũ.
+  - Then: Mỗi yêu cầu bị từ chối với lý do tương ứng. Với ca người đích không khả dụng hoặc dữ liệu cũ, yêu cầu tải lại. Assignee, lịch sử phân công và workload giữ nguyên so với trạng thái hợp lệ ngay trước từng lần thử.
 
 ### Tình huống ngoại lệ
 - Hai Manager cùng phân công một Ticket, kiểm chỉ cập nhật hợp lệ đầu tiên và yêu cầu sau tải lại.

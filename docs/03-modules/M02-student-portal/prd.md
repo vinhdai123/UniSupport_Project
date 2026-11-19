@@ -32,26 +32,26 @@ Sinh viên đã đăng nhập thành công vào Cổng hỗ trợ sinh viên.
 
 ### Quy tắc nghiệp vụ
 - BR-STU-01: Tiêu đề, nội dung và danh mục là các trường thông tin bắt buộc.
-- BR-STU-02: Việc xác định phòng ban tiếp nhận do hệ thống tự động phân luồng (Routing Rule) dựa trên danh mục, sinh viên không được phép tự chọn phòng ban.
+- BR-STU-02: Hệ thống tự xác định và lưu phòng tiếp nhận theo danh mục; sinh viên chỉ chọn danh mục. Ở MS-03, các danh mục mở cho bản dùng thử có ánh xạ danh mục–phòng đích chuẩn bị sẵn. WBS 4.1 bàn giao phần này qua #60; WBS 4.2 và #93 kiểm kết quả lưu. Staff Desk, hàng đợi dự phòng và xử lý cấu hình thiếu theo FR-STF-02 tại MS-04.
 - BR-STU-03: Mã Ticket ID được sinh tự động theo quy tắc hệ thống, đảm bảo tính duy nhất.
 
 ### Luồng rẽ nhánh và lỗi
 - E-STU-01: Nếu sinh viên để trống thông tin bắt buộc, hệ thống từ chối tạo và đánh dấu đỏ các trường còn thiếu.
-- E-STU-02: Nếu tệp đính kèm vượt quá dung lượng quy định hoặc sai định dạng, hệ thống từ chối tải tệp lên và hiển thị thông báo lỗi.
+- E-STU-02: Hệ thống từ chối tệp hoặc bộ tệp vi phạm định dạng, dung lượng hoặc số lượng theo [BR-02](../../02-domain/business-rules.md#br-02--quy-định-tệp-đính-kèm-attachment-rules) và nêu lý do.
 
 ### Tiêu chí nghiệm thu
 - **FR-STU-01/AC-01:** Tạo yêu cầu thành công và phân luồng tự động (Kiểm tra BR-STU-02, BR-STU-03)
-  - Given: Sinh viên đã nhập đầy đủ thông tin hợp lệ trên biểu mẫu.
-  - When: Sinh viên gửi yêu cầu.
-  - Then: Hệ thống thông báo thành công, cấp một mã Ticket ID duy nhất, đặt trạng thái "Mới tạo" và chuyển ẩn đến phòng ban tương ứng.
+  - Given: Có hai danh mục thử đã ánh xạ đến hai phòng khác nhau và dữ liệu biểu mẫu hợp lệ.
+  - When: Sinh viên gửi một yêu cầu cho mỗi danh mục, không chọn phòng xử lý.
+  - Then: Mỗi lần nhận một mã Ticket ID duy nhất, trạng thái Mới tạo. Bản ghi lưu phòng nhận đúng ánh xạ của danh mục. QA đối chiếu kết quả trên dữ liệu Staging có quyền truy cập; giao diện Student không cần hiển thị phòng tiếp nhận.
 - **FR-STU-01/AC-02:** Xử lý khi thiếu thông tin bắt buộc (Kiểm tra BR-STU-01, E-STU-01)
   - Given: Sinh viên đang ở biểu mẫu tạo yêu cầu.
-  - When: Sinh viên bỏ trống nội dung yêu cầu và chọn gửi.
-  - Then: Hệ thống không tạo bản ghi và hiển thị cảnh báo "Vui lòng nhập nội dung yêu cầu".
-- **FR-STU-01/AC-03:** Xử lý tệp đính kèm không hợp lệ (Kiểm tra E-STU-02)
-  - Given: Sinh viên đang đính kèm tài liệu vào yêu cầu.
-  - When: Sinh viên tải lên tệp `.exe` hoặc tệp lớn hơn 5MB.
-  - Then: Hệ thống hiển thị thông báo "Định dạng tệp không được hỗ trợ hoặc vượt quá 5MB".
+  - When: Thử ba lần độc lập, mỗi lần bỏ trống đúng một trường trong tiêu đề, nội dung hoặc danh mục rồi chọn gửi.
+  - Then: Mỗi lần đều không tạo Ticket. Biểu mẫu đánh dấu đúng trường còn thiếu và nêu yêu cầu điền hoặc chọn trường đó.
+- **FR-STU-01/AC-03:** Kiểm định dạng, dung lượng và số lượng tệp (BR-02, E-STU-02)
+  - Given: Các trường bắt buộc hợp lệ. Lấy số tệp tối đa N, dung lượng và định dạng từ BR-02. Dùng giá trị đề xuất N = 3 cho mô phỏng cho tới khi OQ-04 được xác nhận.
+  - When: Thử độc lập tệp sai định dạng, tệp vượt dung lượng, bộ N tệp hợp lệ và bộ N + 1 tệp hợp lệ.
+  - Then: Tệp sai định dạng hoặc quá dung lượng bị từ chối với lý do tương ứng. Bộ N tệp hợp lệ được chấp nhận. Khi thêm tệp thứ N + 1, hệ thống báo giới hạn, không nhận tệp vượt và không lưu Ticket với hơn N tệp.
 
 
 ### Tình huống ngoại lệ
@@ -126,7 +126,7 @@ Sinh viên đang xem chi tiết một Ticket thuộc sở hữu của mình.
 
 ### Quy tắc nghiệp vụ
 - BR-STU-05: Chức năng gửi phản hồi chỉ khả dụng khi Ticket ở trạng thái "Mới tạo", "Đang xử lý" hoặc "Cần bổ sung". 
-- BR-STU-06: Không cho phép trao đổi thêm nếu Ticket đã chuyển sang trạng thái "Hoàn thành".
+- BR-STU-06: Hệ thống kiểm lại trạng thái hiện tại khi nhận yêu cầu gửi phản hồi và chặn gửi nếu Ticket đã chuyển sang Hoàn thành (`Resolved`).
 
 ### Luồng rẽ nhánh và lỗi
 - E-STU-04: Nếu sinh viên không nhập nội dung mà bấm gửi, hệ thống vô hiệu hóa nút gửi hoặc yêu cầu nhập văn bản.
@@ -137,9 +137,9 @@ Sinh viên đang xem chi tiết một Ticket thuộc sở hữu của mình.
   - When: Sinh viên nhập phản hồi, đính kèm ảnh và bấm Gửi.
   - Then: Phản hồi xuất hiện trên màn hình, đồng thời trạng thái Ticket tự động chuyển thành "Đang xử lý".
 - **FR-STU-03/AC-02:** Chặn phản hồi khi Ticket đã hoàn thành (Kiểm tra BR-STU-06)
-  - Given: Sinh viên mở một Ticket có trạng thái "Hoàn thành".
-  - When: Sinh viên lướt xuống khu vực trao đổi.
-  - Then: Khu vực nhập văn bản bị ẩn hoặc vô hiệu hóa, kèm dòng chữ "Yêu cầu này đã đóng, không thể trao đổi thêm".
+  - Given: Sinh viên sở hữu Ticket đã Hoàn thành và có một màn hình cũ mở từ lúc Ticket còn được trao đổi.
+  - When: Mở chi tiết mới để kiểm biểu mẫu, rồi gửi phản hồi từ màn hình cũ và qua API kiểm thử.
+  - Then: Biểu mẫu ẩn hoặc khóa và báo Ticket đã hoàn thành. API từ chối cả hai lần gửi, không lưu phản hồi hoặc tệp mới, không phát thông báo và giữ trạng thái `Resolved`.
 
 - **FR-STU-03/AC-03:** Không gửi phản hồi rỗng (E-STU-04)
   - Given: Sinh viên có quyền trao đổi trên Ticket chưa hoàn thành.
@@ -210,7 +210,7 @@ Sinh viên.
 Trung bình.
 
 ### Điều kiện tiên quyết
-Ticket đang ở trạng thái "Hoàn thành" hoặc "Đóng".
+Ticket của sinh viên đang ở trạng thái Hoàn thành (`Resolved`). Đối chiếu [vòng đời Ticket](../../02-domain/state-transition.md).
 
 ### Luồng chính
 1. Sinh viên truy cập chi tiết Ticket.
@@ -327,9 +327,9 @@ Sinh viên có tài khoản, Ticket thuộc quyền, cấu hình Email và danh 
   - When: Staff yêu cầu bổ sung rồi sinh viên mở thông báo.
   - Then: Có thông báo cho SV-MOCK-01 và liên kết mở đúng Ticket, Email được kiểm bằng hộp thư thử.
 - **FR-STU-07/AC-02:** Chặn thông báo sai quyền (BR-STU-10, E-STU-09)
-  - Given: Có ghi chú nội bộ và một sinh viên khác không sở hữu Ticket.
-  - When: Tạo ghi chú, sau đó thử truy cập liên kết thông báo từ tài khoản khác.
-  - Then: Ghi chú không phát sinh thông báo sinh viên, người ngoài quyền bị chặn.
+  - Given: Có ghi chú nội bộ và thông báo hợp lệ đã gửi trước đó cho một sinh viên từng có quyền xem Ticket trên dữ liệu giả lập.
+  - When: Kiểm thông báo khi tạo ghi chú. Mở liên kết với tài khoản vốn không có quyền. Sau đó thu hồi quyền của người nhận ban đầu theo ma trận quyền và mở lại chính liên kết cũ bằng tài khoản đó.
+  - Then: Ghi chú không phát sinh thông báo cho sinh viên. Cả hai lần truy cập không có quyền hiện hành bị từ chối; phản hồi không chứa nội dung Ticket hoặc tệp. Quyền được kiểm lại khi mở liên kết.
 - **FR-STU-07/AC-03:** Xử lý gửi lại và lỗi Email (BR-STU-11, E-STU-08)
   - Given: Môi trường kiểm thử làm dịch vụ Email lỗi.
   - When: Tạo sự kiện rồi xử lý lại cùng sự kiện.
