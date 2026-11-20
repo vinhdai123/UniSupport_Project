@@ -18,7 +18,7 @@ MS-04 cung cấp dữ liệu và quyền cho phần tích hợp ở MS-05. Trong
 
 Các việc kiểm và sửa dự kiến nằm trong WBS và [Báo giá](quotation.xlsx). WBS 3.6/3.5 dùng Q-03, 4.2 dùng Q-04, 4.6 dùng Q-05 và 5.3 dùng Q-06. WBS 6.3–6.4 dùng Q-07/Q-08, 7.2–7.4 dùng Q-08, 8.3–8.4 dùng Q-09/Q-10 và 9.2 dùng Q-10. **Resources** đối chiếu effort theo vai trò, tuần và mốc. Dùng định mức QA ở phần cuối sheet để kiểm sức chứa khi thêm một vòng hồi quy.
 
-MS-05 cần bằng chứng kiểm CSV theo WBS 6.4 và [TS-095](../06-acceptance/test-scenarios.md), gồm bộ lọc, quyền dữ liệu và đối chiếu kết quả với Dashboard. Phạm vi kiểm lần đầu được ghi tại [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) và đối chiếu với [#90](https://github.com/vinhdai123/UniSupport_Project/issues/90). MS-06 hồi quy CSV trên bản tích hợp và tổng hợp các ngưỡng NFR thuộc mốc đó.
+MS-05 cần bằng chứng Dashboard theo WBS 6.1 và CSV theo WBS 6.4. Dùng [TS-083/095](../06-acceptance/test-scenarios.md) để đối chiếu cùng kỳ/bộ lọc, số đếm và tập mã được phép xuất theo OQ-05. Phạm vi kiểm lần đầu được ghi tại [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) và đối chiếu với [#90](https://github.com/vinhdai123/UniSupport_Project/issues/90). MS-06 hồi quy CSV trên bản tích hợp và tổng hợp các ngưỡng NFR thuộc mốc đó.
 
 Đề xuất phân bổ trong Q-04 cho tuần bắt đầu 07/12/2026. Tech Lead và QA cần đối chiếu cả phần phân luồng lẫn các đầu việc còn lại trong cùng hai dòng **Resources**.
 
@@ -27,7 +27,14 @@ MS-05 cần bằng chứng kiểm CSV theo WBS 6.4 và [TS-095](../06-acceptance
 | R04 Backend, WBS 4.1, dòng 411 | 40 | 6 giờ đề xuất cho lưu phòng tiếp nhận theo danh mục khi tạo Ticket | 34 |
 | R08 QA, WBS 4.2, dòng 429 | 9 | 2 giờ đề xuất cho bằng chứng TS-021 | 7 |
 
-**Chờ xác nhận định mức.** Tech Lead kiểm tổng giờ phát triển của dòng 411 và khả năng bàn giao đầu ra #60 trước lượt kiểm cuối. QA kiểm tổng giờ của dòng 429, gồm TS-021, các ca chức năng/quyền còn lại và thời gian kiểm lại. Ghi kết luận ở #60 và #93, gồm phạm vi đã ước lượng, giờ cho từng phần, hạn bàn giao nội bộ, người xác nhận và ngày quyết định. Nếu phần việc vượt số giờ trong bảng hoặc không kịp cửa sổ kiểm, PM đánh giá lại phân bổ và lịch trước khi cam kết MS-03.
+**Chờ xác nhận khả dụng MS-03.** Tuần 07/12, R04 dùng 40/40 giờ và R08 dùng 18/40 giờ, gồm 9 giờ WBS 4.1 ở **Resources!F417** và 9 giờ WBS 4.2 ở **F429**. Nếu toàn bộ 18 giờ QA dồn vào 10–11/12, hai ngày theo trần mô phỏng 8 giờ/ngày thiếu ít nhất 2 giờ, trước khi tính thời gian chờ bản sửa.
+
+| Nơi ghi | Điều kiện cần kiểm | Bằng chứng chờ ghi nhận |
+| --- | --- | --- |
+| [#60](https://github.com/vinhdai123/UniSupport_Project/issues/60) | 6 giờ phân luồng và 18 giờ cho lõi API tạo Ticket đủ để bàn giao bản Staging tối thiểu cuối 09/12 theo đề xuất. 16 giờ còn lại đủ cho phần phát triển và hỗ trợ kiểm lại. | Tech Lead ghi việc, số giờ, phiên bản và thời điểm QA có thể dùng UI, API, tệp, hai danh mục đã ánh xạ và quyền đối chiếu bản ghi. |
+| [#93](https://github.com/vinhdai123/UniSupport_Project/issues/93) | Dòng F417 đề xuất 3 giờ chuẩn bị dữ liệu/kịch bản và 6 giờ kiểm sớm theo đầu ra UI, API, tệp. Dòng F429 đề xuất 2 giờ TS-021, 4 giờ tích hợp/tra cứu/quyền và 3 giờ kiểm lại/hồi quy. | QA ghi ca có thể làm trước 10/12, ca còn chờ đầu vào, giờ nhận bản tích hợp và số giờ kiểm còn lại. Khi bản sửa trượt mục tiêu 12:00 ngày 11/12, tính lại cửa sổ từ giờ nhận bản mới. |
+
+Tech Lead và QA ghi kết luận khả thi, người xác nhận và ngày quyết định tại hai Issue. PM đánh giá lại phân bổ hoặc lịch khi một phần việc vượt định mức hoặc cửa sổ kiểm. Các ngày trên theo baseline 11/12. Nếu OQ-08 đổi lịch áp dụng, lập lại cửa sổ bàn giao và kiểm từ ngày mới. Cửa sổ phản hồi của khách được kiểm riêng từ lúc nhận đủ hồ sơ theo Proposal.
 
 ## Dự phòng cho thay đổi và rủi ro
 
@@ -60,6 +67,16 @@ Nếu khách đồng ý ở cuối mỗi cửa sổ, lịch chưa tính ngày ng
 Bản rà soát 2.5 chuyển 3 giờ DevOps của WBS 9.2 từ 09/04 sang 12/04. Dự kiến DevOps làm 8 giờ triển khai ngày 08/04, 6 giờ triển khai và 2 giờ smoke sau bàn giao phiên bản ngày 09/04, rồi 8 giờ smoke/hồi quy ngày 12/04. Lịch dùng giả định tối đa 8 giờ/ngày và cần DevOps/PM xác nhận. QA chuẩn bị trước, thực thi kiểm Production sau khi 9.1 hoàn tất. Tổng effort và ngày dự kiến MS-08 giữ theo phương án 3 ngày. Tra bảng DevOps tại **Tải phản hồi 3 ngày**, cột H–O.
 
 Ô I6:I13 trên **Lịch phản hồi 3 ngày** cho phép thử thay đổi thời hạn phản hồi. Bảng kiểm so với snapshot và đánh dấu WBS bắt đầu trước hoặc cùng ngày mốc phải chờ. Ví dụ, tăng MS-02 lên 5 ngày làm việc làm WBS 4.1 vướng phụ thuộc và kích hoạt cảnh báo ở I15. Tính lại cả lịch và phân bổ theo ngày/tuần khi cảnh báo xuất hiện.
+
+### Xác nhận lịch và tác động thương mại OQ-08
+
+| Nội dung cần quyết định | Căn cứ để xác nhận |
+| --- | --- |
+| **Lịch áp dụng và phản hồi** | Baseline 23 tuần, MS-08 ngày **12/03/2027**. Phương án thương lượng dự kiến MS-08 ngày **19/04/2027**, chênh **38 ngày lịch** theo ô **Lịch phản hồi 3 ngày!F13**. PM ghi lịch làm việc, ngày nghỉ, thời điểm bắt đầu tính ba ngày và cách xử lý khi gửi lại hồ sơ. Lưu văn bản xác nhận của Aurora University. |
+| **Khả dụng thực hiện** | DevOps và PM xác nhận các cửa sổ 08, 09 và 12/04. Mỗi ngày dùng 8/8 giờ theo **Tải phản hồi 3 ngày!H6:O8**. Kiểm thứ tự 9.1 → 9.2, khả dụng QA sau bàn giao và mốc gửi đủ hồ sơ nếu một cửa sổ bị hụt. |
+| **Tác động thương mại** | PM tính chi phí 14 giờ PM/BA tăng thêm theo định mức nội bộ được phê duyệt, cộng chi phí môi trường/dịch vụ và chi phí giữ người phát sinh theo lịch mới. Đối chiếu cả thời hạn bảo hành được dời và giá bán 700 triệu để ghi quyết định giữ giá hay trình điều chỉnh. Lưu căn cứ chi phí trong hồ sơ nội bộ. |
+
+Khi có đủ quyết định thương mại và xác nhận lịch, PM đồng bộ [Proposal](proposal.docx), [báo giá](quotation.xlsx), Master Plan, [roadmap](../10-product-management/roadmap.md) và milestone GitHub. Nếu lịch hoặc giá đã cam kết cần đổi, áp dụng [Change Control](../11-governance/change-control.md).
 
 ## Thay đổi kế hoạch
 

@@ -37,9 +37,9 @@ Cán bộ đã đăng nhập thành công.
 
 ### Tiêu chí nghiệm thu
 - **FR-STF-01/AC-01:** Hiển thị dữ liệu đúng phạm vi phòng ban (Kiểm tra BR-STF-01)
-  - Given: Cán bộ thuộc phòng Đào tạo.
-  - When: Cán bộ truy cập Staff Desk.
-  - Then: Hệ thống chỉ hiển thị danh sách các Ticket thuộc danh mục của phòng Đào tạo.
+  - Given: Staff Đào tạo và Staff IT có phạm vi của từng phòng. Bộ dữ liệu TS-041 có Ticket được chuyển từ Đào tạo sang IT và giữ danh mục Đào tạo.
+  - When: Hai Staff mở hàng đợi, sau đó lọc danh mục Đào tạo.
+  - Then: Hàng đợi khớp tập Ticket được phép xem theo OQ-05. Khi lọc, kết quả là giao của tập đã được cấp quyền và danh mục được chọn. Ghi riêng tập trước và sau khi lọc cho từng tài khoản.
 - **FR-STF-01/AC-02:** Áp dụng bộ lọc đa điều kiện (Kiểm tra BR-STF-02)
   - Given: Cán bộ đang ở Hàng đợi.
   - When: Cán bộ chọn trạng thái "Mới tạo" và mức ưu tiên "Cao".
@@ -186,9 +186,9 @@ Ticket chưa Hoàn thành. Người thực hiện có quyền chuyển trên Tic
 
 ### Tiêu chí nghiệm thu
 - **FR-STF-04/AC-01:** Chuyển phòng, giữ ID và áp quyền mới (BR-STF-07, BR-STF-08)
-  - Given: Staff Đào tạo có quyền chuyển Ticket #123 sang IT. Ticket có trao đổi công khai, lịch sử trạng thái, ghi chú và tệp nội bộ của Đào tạo. Hai tài khoản thử chỉ thuộc một phòng và không có quyền độc lập khác.
-  - When: Staff nhập lý do và xác nhận chuyển sang IT. Mở Ticket, liên kết cũ và tệp nội bộ bằng các tài khoản thử của hai phòng.
-  - Then: Cùng Ticket ID xuất hiện ở hàng đợi IT và rời hàng đợi Đào tạo. Staff IT thấy trao đổi công khai, lịch sử trạng thái và sự kiện bàn giao có lý do; không thấy hoặc tải được ghi chú/tệp nội bộ Đào tạo. Tài khoản Đào tạo chỉ có quyền theo phân công cũ bị chặn khi mở lại Ticket. Dữ liệu lịch sử vẫn được lưu.
+  - Given: Staff Đào tạo có quyền chuyển Ticket #123 cùng danh mục Đào tạo sang IT. Ticket có trao đổi công khai, lịch sử trạng thái, ghi chú và tệp nội bộ của Đào tạo. Hai tài khoản thử chỉ thuộc một phòng và không có quyền độc lập khác.
+  - When: Staff nhập lý do và xác nhận chuyển sang IT trong ca chỉ đổi phòng phụ trách. Mở Ticket, liên kết cũ và tệp nội bộ bằng các tài khoản thử của hai phòng.
+  - Then: Ticket giữ ID, danh mục gốc và lịch sử. Ticket xuất hiện ở hàng đợi IT và rời hàng đợi Đào tạo. Staff IT thấy trao đổi công khai, lịch sử trạng thái và sự kiện bàn giao có lý do. Staff IT không xem/tải được ghi chú và tệp nội bộ Đào tạo. Tài khoản chỉ có quyền theo phân công cũ bị chặn khi mở lại Ticket.
 - **FR-STF-04/AC-02:** Từ chối yêu cầu chuyển không hợp lệ (BR-STF-07, E-STF-04)
   - Given: Có Ticket hợp lệ, tài khoản có quyền và tài khoản thiếu quyền với Ticket.
   - When: Thử độc lập chuyển thiếu lý do, chuyển khi thiếu quyền, chọn đích ngoài phạm vi và xác nhận từ phiên bản Ticket cũ.

@@ -40,7 +40,7 @@ Trước từng lần trình xác nhận, QA kiểm phạm vi mới, tích hợp
 | MS-02 | Quản trị tài khoản, gán vai trò, đặt lại mật khẩu và quyền chức năng đã có (WBS 3.5/3.7). | Hồi quy đăng nhập và phiên. Lưu kết quả theo bốn vai trò. Quyền Ticket/tệp đi cùng luồng tích hợp MS-03/MS-04. |
 | MS-03 | Gửi, tra cứu Ticket, tệp và FAQ; đối chiếu phòng nhận được lưu từ ánh xạ danh mục tại TS-021 và kiểm giới hạn, quyền, truy cập chéo theo PRD (WBS 4.1–4.2). | Hồi quy đăng nhập và quyền MS-01/MS-02. Lưu test run và bằng chứng Ticket/tệp theo quyền. |
 | MS-04 | Hàng đợi theo quyền, nhánh dự phòng thiếu quy tắc, phân công, xử lý, trả kết quả, mở lại, cấu hình SLA, quyền và Email/In-App (WBS 4.4/4.6/5.3). | Hồi quy gửi, tra cứu, tệp và quyền qua vòng đời Ticket. Lưu bằng chứng luồng liên vai trò, thông báo và xử lý sai khác. |
-| MS-05 | Dashboard, CSV theo quyền, bộ lọc và đối chiếu số liệu; kiểm 19 AC NFR toàn cục (WBS 6.3/6.4). | Hồi quy luồng Ticket và quyền liên quan báo cáo. Lưu file CSV mẫu, bảng đối chiếu và kết quả RTM, gồm TS-095 trước xác nhận mốc. |
+| MS-05 | Dashboard, CSV theo quyền, bộ lọc và đối chiếu số liệu; kiểm 19 AC NFR toàn cục (WBS 6.3/6.4). | Hồi quy luồng Ticket và quyền báo cáo. Lưu kết quả TS-083/095 trước xác nhận mốc, gồm số đếm Dashboard, tập mã CSV và phiên bản phạm vi quyền/quy thuộc đã xác nhận tại OQ-05. |
 | MS-06 | E2E năm module trên một bản Staging, quyền và sáu phép kiểm ngưỡng NFR (WBS 7.2–7.4). | Hồi quy luồng đã giao, gồm CSV và bộ NFR toàn cục theo lịch test. Lưu kết quả E2E, dữ liệu đo và danh sách lỗi đã verify/còn mở. |
 | MS-07 | Đại diện trường thực hiện UAT bốn vai trò. Kiểm tài liệu, đào tạo, sao lưu/khôi phục và điều kiện triển khai (WBS 8.3/8.4). | Hồi quy toàn bộ chức năng trên RC Staging và kiểm bản sửa UAT. Lưu hồ sơ RC, test run và biên bản UAT được xác nhận. |
 | MS-08 | Kiểm phiên bản trên Production, smoke và bộ ca luồng chính theo lịch test; kiểm hồ sơ chuyển giao (WBS 9.2/9.3). | Lưu kết quả cho đúng phiên bản triển khai, xử lý hoặc khôi phục nếu kiểm thất bại, lưu biên bản bàn giao. Bảo hành bắt đầu từ ngày liền sau ngày ký theo Proposal. |
@@ -82,6 +82,18 @@ Các hạn trên là đề xuất thuộc [OQ-06](../08-project/open-questions.m
 **Lỗi Medium/Low còn mở.** Chỉ trình ngoại lệ khi lỗi không làm trượt AC/NFR hoặc chặn luồng thuộc bản giao. QA kiểm cách thao tác tạm cho Medium và ghi bằng chứng, Tech Lead xác nhận rủi ro kỹ thuật, PM duyệt đề xuất hoãn và đại diện trường xác nhận bằng văn bản nếu lỗi ảnh hưởng phần khách sử dụng hoặc nghiệm thu. Lưu Bug ID, rủi ro, cách tạm, owner, hạn và xác nhận trong Issue và biên bản mốc. Với bản cuối, giới hạn đề xuất là dưới 5 lỗi Medium còn mở, tức tối đa 4. Nhóm phải chốt ngưỡng tại OQ-06 trước khi dùng. PM tạm hoãn duyệt ngoại lệ nếu chưa có quy tắc được xác nhận hoặc thiếu chấp thuận cần thiết.
 
 Lịch gửi hồ sơ, hạn phản hồi và việc phụ thuộc tra sheet **Nghiệm thu**. PM ghi thời điểm khách nhận đủ hồ sơ, xử lý phản hồi theo mục 8 Proposal và lưu quyết định bằng văn bản. Nếu khách chưa xác nhận, công việc phụ thuộc tiếp tục chờ theo Master Plan. Bảo hành phần mềm 30 ngày lịch từ ngày liền sau ký bàn giao. Hỗ trợ vận hành lâu dài theo thỏa thuận riêng.
+
+## Xác nhận ngưỡng chất lượng OQ-06
+
+| Hạng mục cần quyết định | Thông tin và bằng chứng cần lưu | Trạng thái |
+| --- | --- | --- |
+| Coverage logic lõi | Tech Lead xác nhận danh sách mã, công cụ và cách tính line coverage. QA lưu báo cáo theo build/commit và đối chiếu ngưỡng 80% đề xuất. | Chờ xác nhận |
+| Các ngưỡng NFR còn đề xuất | Chốt từng mã trong [bảng ngưỡng NFR](../05-non-functional-requirements/README.md) và phép đo tương ứng TS-118–TS-122. Ghi tập dữ liệu, môi trường, thiết bị hoặc tải, giá trị đo và căn cứ cho ngưỡng được chọn. Nếu tiêu chí liên quan nghiệm thu, PM lưu xác nhận theo thẩm quyền. | Chờ xác nhận từng ngưỡng |
+| Bộ dữ liệu chức năng | QA và Tech Lead xác nhận quy mô 50 Ticket đề xuất cùng các vai trò, phạm vi quyền và tình huống bao phủ. Lưu danh mục nguồn giả lập và kết quả audit TS-100/117 theo chính sách NFR-GLOBAL-01. | Chờ xác nhận quy mô và độ bao phủ |
+| Hạn xử lý lỗi | Chốt riêng hạn Critical, High, Medium và cách đặt hạn Low. Ghi lịch làm việc, khả dụng xử lý/kiểm lại, mốc bắt đầu/kết thúc và thẩm quyền gia hạn theo mục Mức độ lỗi. | Chờ xác nhận từng hạn |
+| Lỗi Medium còn mở ở bản cuối | Xác nhận giới hạn đề xuất tối đa 4 và trường hợp được xét ngoại lệ. Lưu bằng chứng kiểm cách tạm, người có thẩm quyền và chấp thuận cần thiết theo Release Criteria. | Chờ xác nhận |
+
+PM ghi từng quyết định đã duyệt hoặc còn mở, người xác nhận, ngày áp dụng, phiên bản và liên kết căn cứ tại [OQ-06](../08-project/open-questions.md). QA dùng ngưỡng đã xác nhận để kết luận, ghi riêng kết quả đo và trạng thái chờ đối với ngưỡng còn đề xuất.
 
 ## Định mức QA trong kế hoạch
 

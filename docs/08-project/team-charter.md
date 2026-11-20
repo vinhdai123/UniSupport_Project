@@ -249,15 +249,15 @@ Quyền chỉnh sửa được cấp theo nhiệm vụ. Quyền với dữ liệ
 
 **Bản 2.4 — chờ thông qua.** Bằng chứng thông qua, phạm vi đã duyệt và ngày hiệu lực đang chờ nhóm ghi nhận. [PR #103](https://github.com/vinhdai123/UniSupport_Project/pull/103) là hồ sơ tích hợp bản 2.1. Quyết định áp dụng bản 2.4 cần có bản ghi biểu quyết riêng.
 
-Nhóm cần xác nhận các nội dung sau.
+| Nội dung bản 2.4 cần xác nhận | Vị trí | Kết luận |
+| --- | --- | --- |
+| Người dự phòng theo tài liệu, quyền điều phối nội bộ và cơ chế thay reviewer | Mục 2, 4, 6, 8 và 9.3 | Chờ biểu quyết |
+| Người có quyền kết luận khi có xung đột lợi ích, thứ tự thay thế và cách xử lý quá hạn | Mục 4 và 7 | Chờ biểu quyết |
+| Kênh liên hệ khẩn, khung giờ phối hợp và các mốc nội bộ đề xuất | Mục 3 và 5 | Chờ biểu quyết |
+| Quy tắc đề xuất ít nhất 3 trong 4 thành viên đồng ý để thông qua hoặc sửa Charter | Mục 11 | Chờ biểu quyết |
+| Người merge PR tài liệu và code, người phê duyệt, quyền repo và luồng PR phát hành thông thường | Mục 9 | Chờ biểu quyết |
 
-1. Người dự phòng theo tài liệu, quyền điều phối nội bộ và cơ chế thay reviewer tại mục 2, 4, 6, 8 và 9.3.
-2. Người có quyền kết luận khi có xung đột lợi ích, thứ tự thay thế và cách xử lý quá hạn tại mục 4 và 7.
-3. Kênh liên hệ khẩn, khung giờ phối hợp và các mốc nội bộ đề xuất tại mục 3 và 5.
-4. Quy tắc biểu quyết đề xuất ít nhất 3 trong 4 thành viên đồng ý để thông qua hoặc sửa Charter.
-5. Người merge PR tài liệu và code, người phê duyệt, quyền repo và luồng PR phát hành thông thường tại mục 9.
-
-Trưởng nhóm tổng hợp trong Issue, PR hoặc biên bản có liên kết. Bản ghi nêu phiên bản, ý kiến từng thành viên, các điều khoản được thông qua, các điều khoản còn mở, người chịu trách nhiệm và ngày hiệu lực. Sau khi có quyết định, chủ tài liệu cập nhật trạng thái đầu file và dẫn tới bản ghi này. Nếu nhóm duyệt từng phần, ghi phiên bản và ngày hiệu lực cho từng phần, các phần còn mở tiếp tục mang trạng thái đề xuất.
+Trưởng nhóm tổng hợp trong Issue, PR hoặc biên bản có liên kết. Bản ghi nêu phiên bản, ý kiến từng thành viên, các điều khoản được thông qua, các điều khoản còn mở, người chịu trách nhiệm và ngày hiệu lực. Sau khi có quyết định, chủ tài liệu cập nhật các dòng tương ứng, trạng thái đầu file và liên kết bằng chứng tại [OQ-02](open-questions.md). Nếu nhóm duyệt từng phần, ghi phiên bản và ngày hiệu lực cho từng phần, các phần còn mở tiếp tục mang trạng thái đề xuất.
 
 Nhóm xem lại Charter khi đổi thành viên, trách nhiệm, công cụ, lịch phối hợp hoặc khi quy tắc hiện hành gây vướng mắc.
 

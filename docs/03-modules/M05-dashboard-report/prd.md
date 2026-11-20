@@ -30,7 +30,8 @@ Tài khoản có quyền xem báo cáo và hệ thống có dữ liệu Ticket.
    - Thời gian xử lý trung bình.
 
 ### Quy tắc nghiệp vụ
-- BR-RPT-01: Quản trị viên xem được dữ liệu toàn hệ thống. Quản lý chỉ xem được dữ liệu thuộc Phòng ban mình phụ trách.
+- BR-RPT-01: Manager xem số liệu trong phạm vi phòng được giao. Với Administrator, phương án chờ PM/BA duyệt tại OQ-05 là cấp riêng quyền xem tổng hợp toàn trường. Admin có quyền báo cáo cấp phòng chỉ xem phạm vi phòng đã cấp. Quyền xuất dữ liệu chi tiết được xét tại BR-RPT-07.
+- Quy tắc xác định phạm vi xem báo cáo, quy thuộc Ticket đã chuyển và thời điểm chốt số cho từng báo cáo chờ xác nhận tại [OQ-05](../../08-project/open-questions.md#phạm-vi-quyền-và-báo-cáo-oq-05). Bộ lọc danh mục áp dụng sau khi xác định phạm vi xem.
 - BR-RPT-02: Ticket được tính là "Tồn đọng" nếu trạng thái không phải là "Hoàn thành" VÀ đã vượt quá thời hạn xử lý quy định nhưng chưa được giải quyết dứt điểm.
 - BR-RPT-03: Thời gian xử lý trung bình chỉ tính trên các Ticket đã "Hoàn thành", đồng thời phải trừ đi khoảng thời gian Ticket nằm ở trạng thái "Cần bổ sung" (chờ sinh viên phản hồi).
 
@@ -40,9 +41,9 @@ Tài khoản có quyền xem báo cáo và hệ thống có dữ liệu Ticket.
 
 ### Tiêu chí nghiệm thu
 - **FR-RPT-01/AC-01:** Hiển thị đúng dữ liệu theo phân quyền (Kiểm tra BR-RPT-01)
-  - Given: Quản lý phòng Đào tạo đăng nhập.
-  - When: Truy cập Bảng điều khiển Tổng quan.
-  - Then: Các con số chỉ thống kê dựa trên các Ticket thuộc danh mục của phòng Đào tạo.
+  - Given: Bộ dữ liệu TS-083 có Ticket đã chuyển phòng và giữ danh mục gốc. Chuẩn bị hai Manager từng phòng và hai Administrator theo cấu hình OQ-05 đề xuất. Admin A có quyền báo cáo phòng Đào tạo. Admin B có thêm quyền tổng hợp toàn trường.
+  - When: Mở Dashboard bằng cả bốn tài khoản với cùng kỳ, bộ lọc và thời điểm chốt số.
+  - Then: Từng tài khoản chỉ nhận số liệu từ tập dữ liệu thuộc quyền xem. Số đếm của từng phòng khớp quy tắc quy thuộc và thời điểm được xác nhận tại OQ-05. Đối chiếu riêng Ticket đã chuyển. Theo phương án cấp riêng, số đếm của Admin A khớp Manager Đào tạo và Admin B thấy tổng cả hai phòng. Kết luận quyền Admin chờ phiên bản Permission Matrix được duyệt.
 - **FR-RPT-01/AC-02:** Xử lý điều kiện thời gian sai (Kiểm tra E-RPT-01)
   - Given: Người dùng đang ở màn hình Bảng điều khiển.
   - When: Chọn ngày bắt đầu là 20/10/2026 và ngày kết thúc là 15/10/2026.
@@ -217,16 +218,18 @@ Bộ lọc báo cáo đã được áp dụng và đang có dữ liệu hiển t
 4. Hệ thống tạo file và tiến hành tải xuống máy tính của người dùng.
 
 ### Quy tắc nghiệp vụ
-- BR-RPT-07: Dữ liệu bên trong file xuất ra phải tuân thủ nghiêm ngặt quyền truy cập dữ liệu của người dùng. Không được phép xem trên web bị giới hạn nhưng khi tải file lại hiển thị toàn bộ dữ liệu.
+- BR-RPT-07: CSV dùng cùng kỳ và bộ lọc nguồn. Tập mã Ticket được xuất là phần dữ liệu của nguồn mà người dùng có quyền xuất chi tiết theo OQ-05.
 
 ### Luồng rẽ nhánh và lỗi
 - E-RPT-06: Nếu số lượng bản ghi vượt quá 10.000 dòng, hệ thống hiển thị cảnh báo và chặn tải để bảo vệ hiệu năng máy chủ.
 
 ### Tiêu chí nghiệm thu
+<a id="fr-rpt-05-ac-01"></a>
+
 - **FR-RPT-05/AC-01:** Dữ liệu khớp với phân quyền (Kiểm tra BR-RPT-07)
-  - Given: Quản lý phòng Đào tạo đang xem báo cáo tháng 10.
-  - When: Thực hiện xuất file CSV.
-  - Then: File tải về chỉ chứa dữ liệu Ticket của phòng Đào tạo trong tháng 10, không có dữ liệu phòng khác.
+  - Given: Manager Đào tạo và Manager IT đang xem cùng kỳ báo cáo đối chứng của TS-095, có Ticket chuyển phòng và quyền xuất của từng tài khoản. Bổ sung Admin B có quyền tổng hợp toàn trường và chưa được cấp quyền xuất chi tiết.
+  - When: Từng Manager xuất CSV với cùng bộ lọc. Admin B thử xuất dữ liệu chi tiết của cùng báo cáo.
+  - Then: Tập mã Ticket trong CSV đúng với phạm vi xuất chi tiết và kỳ/bộ lọc nguồn. Đối chiếu Ticket đã chuyển và loại các bản ghi ngoài quyền xuất, kể cả bản ghi chỉ được tính trong số tổng hợp nếu có. Với cấu hình đề xuất, yêu cầu xuất chi tiết của Admin B bị từ chối và không trả bản ghi.
 - **FR-RPT-05/AC-02:** Xử lý hiển thị tiếng Việt
   - Given: Người dùng tải file về máy.
   - When: Mở file bằng phần mềm bảng tính (như Excel).

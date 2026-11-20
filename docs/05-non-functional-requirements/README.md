@@ -1,6 +1,6 @@
 # Yêu cầu phi chức năng (Non-Functional Requirements)
 
-Các thông số đo trong bảng là định mức đề xuất kế thừa bản hiện tại, cần đại diện nhóm và khách hàng Mô phỏng xác nhận trước khi dùng làm baseline nghiệm thu. Người phụ trách PRD lưu quyết định, dữ liệu và công cụ đo trong Issue liên quan.
+Chính sách chỉ dùng dữ liệu giả lập với ngưỡng 0 bản ghi thật áp dụng theo NFR-GLOBAL-01. Các ngưỡng đo còn đề xuất trong bảng cần đại diện nhóm và khách hàng Mô phỏng xác nhận trước khi dùng làm baseline nghiệm thu. Người phụ trách PRD lưu quyết định, dữ liệu và công cụ đo trong Issue liên quan. [Hồ sơ xác nhận ngưỡng OQ-06](../09-quality/quality-plan.md#xác-nhận-ngưỡng-chất-lượng-oq-06).
 
 | Mã | Nhóm | Yêu cầu | Ngưỡng đo | Cách đo | Áp dụng cho |
 | --- | --- | --- | --- | --- | --- |

@@ -180,7 +180,7 @@ Người dùng đã vượt qua bước kiểm tra quyền chức năng tại FR
 3. Hệ thống đối chiếu dữ liệu được yêu cầu với phạm vi cho phép.
 4. Nếu hợp lệ, hệ thống trả về dữ liệu hoặc tệp đính kèm tương ứng.
 
-> Data Scope cụ thể của từng Role: **TBD – Pending Confirmation**.
+> Phạm vi dữ liệu của từng vai trò và quyền khi Ticket chuyển phòng đang chờ xác nhận tại [OQ-05](../../08-project/open-questions.md#phạm-vi-quyền-và-báo-cáo-oq-05).
 
 ### Quy tắc nghiệp vụ
 - BR-AUTH-07: Quyền truy cập tệp đính kèm phải nhất quán hoàn toàn với quyền truy cập dữ liệu liên quan.
@@ -191,9 +191,9 @@ Người dùng đã vượt qua bước kiểm tra quyền chức năng tại FR
 
 ### Tiêu chí nghiệm thu
 - **FR-AUTH-04/AC-01:** Hiển thị dữ liệu đúng phạm vi (Kiểm tra BR-AUTH-08)
-  - Given: Nhân viên thuộc phòng Công nghệ thông tin.
-  - When: Nhân viên xem danh sách các yêu cầu hỗ trợ.
-  - Then: Hệ thống chỉ hiển thị các yêu cầu thuộc danh mục Công nghệ thông tin.
+  - Given: Có Staff IT và Staff Đào tạo được cấp phạm vi của từng phòng, cùng Ticket đã chuyển phòng nhưng giữ danh mục gốc trong bộ dữ liệu TS-011.
+  - When: Hai Staff tải danh sách không lọc danh mục. Đối chiếu bản ghi trả về ở giao diện và API.
+  - Then: Từng tài khoản chỉ nhận các bản ghi thuộc phạm vi được cấp. Tập mã mong đợi cho Ticket đã chuyển lấy theo Permission Matrix được xác nhận tại OQ-05. TS-011 ghi riêng kết quả của hai tài khoản.
 - **FR-AUTH-04/AC-02:** Chặn truy cập tệp đính kèm trái phép (Kiểm tra BR-AUTH-07) (Kiểm tra E-AUTH-06)
   - Given: Sinh viên A.
   - When: Sinh viên A cố tình truy cập vào liên kết tải tệp đính kèm từ một yêu cầu của Sinh viên B.
