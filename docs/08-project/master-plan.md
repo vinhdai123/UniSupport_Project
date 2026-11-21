@@ -46,7 +46,11 @@ Tra tổng giờ dự phòng ở **Resources** và WBS `CR.01`. Đây là năng 
 
 PM gửi phiên bản, quyền truy cập, kịch bản và hồ sơ kiểm. Ghi thời điểm khách nhận đủ hồ sơ và hạn phản hồi theo mục 8 [Proposal](proposal.docx). Mỗi phản hồi có Issue, phiên bản, người chịu trách nhiệm, bằng chứng và kết quả kiểm lại. Khi hồ sơ thay đổi sau sửa, PM thống nhất hạn của lần gửi lại. Xác nhận mốc cần bằng chứng bằng văn bản.
 
-Sheet **Nghiệm thu** mô phỏng khách dùng hết hạn phản hồi theo lịch làm việc. MS-04 và MS-08 lệch baseline nếu gửi đủ hồ sơ theo ngày sẵn sàng hiện tại. Kết quả ở từng dòng tính riêng, chưa cộng dồn phụ thuộc. Dùng phần phép thử ở cuối sheet để xem tác động của vòng sửa và kiểm bổ sung.
+Sheet **Nghiệm thu** mô phỏng riêng từng mốc khi khách dùng hết hạn phản hồi 5 ngày làm việc. Các dòng MS-02 đến MS-07 cho ngày xác nhận muộn hơn baseline 5 ngày làm việc mỗi mốc; MS-08 muộn hơn 3 ngày. Đây là so sánh từng mốc độc lập, chưa cộng dồn việc chờ xác nhận và không phải lịch thay thế đã được kiểm khả thi.
+
+Kết quả từng dòng cũng làm lộ xung đột với phụ thuộc trong Gantt. WBS 4.1 bắt đầu **30/11/2026** theo baseline, phụ thuộc **MS-02 FS**, trong khi sheet **Nghiệm thu!E7** cho ngày xác nhận muộn nhất theo kịch bản là **04/12/2026**. Vì vậy, WBS 4.1 không thể vừa bắt đầu theo baseline vừa đợi MS-02 được xác nhận theo kịch bản này. Các mốc sau cũng có thể dời qua phụ thuộc khi ngày xác nhận trước đó muộn hơn ngày bắt đầu WBS. PM cần lập lại đường găng và phân bổ sau khi xác định được ngày bắt đầu thực tế của từng công việc phụ thuộc.
+
+Không cộng cơ học số ngày trễ từng dòng thành lịch dự án: các lần gửi, phụ thuộc, công việc chạy song song, ngày nghỉ, lần gửi lại và nguồn lực theo ngày phải được tính lại cùng nhau. Trước khi OQ-08 được quyết định, baseline **23 tuần/MS-08 ngày 12/03/2027** vẫn là lịch gốc để đối chiếu. Kịch bản 5 ngày chỉ là phép thử. Phương án ba ngày cho kết quả khác và cũng chỉ là đề xuất thương lượng. PM ghi lịch áp dụng sau khi xác nhận điều kiện phản hồi, khả dụng, tác động thương mại và phê duyệt bằng văn bản tại [OQ-08](open-questions.md).
 
 ## Phương án lịch liên mốc 2.3
 
