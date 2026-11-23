@@ -2,26 +2,26 @@
 
 Phiên bản 2.4 — dự thảo ngày 18/11/2026
 
-Dự án mô phỏng môn Software Project Management, phục vụ tình huống Aurora University với khoảng 3.000 sinh viên. Charter quy định trách nhiệm, phối hợp, quyết định, xử lý bất đồng và quản lý thay đổi trong quá trình xây dựng tài liệu, kế hoạch và quy trình dự án UniSupport.
+Dự án UniSupport triển khai hệ thống hỗ trợ sinh viên cho Aurora University (Mô phỏng), quy mô khoảng 3.000 sinh viên. Charter quy định trách nhiệm, phối hợp, quyết định, xử lý bất đồng và quản lý thay đổi của ban quản lý dự án UniSupport trong suốt dự án.
 
-**Trạng thái.** Bản 2.4 đang chờ nhóm thông qua. Danh sách thành viên và trưởng nhóm được đối chiếu với feedback R1. Mảng phụ trách theo README tại commit `dfe998d`. Lịch họp hiện được ghi ở tài liệu Reporting. Các quy tắc phối hợp, dự phòng và thẩm quyền mới trong bản này là đề xuất. Xem mục 11 để kiểm tra bằng chứng xác nhận và ngày hiệu lực.
+**Trạng thái.** Bản 2.4 đang chờ ban quản lý dự án thông qua. Danh sách thành viên, trưởng nhóm và mảng phụ trách theo [README](../../README.md#thành-viên-nhóm-thực-hiện). Lịch họp được ghi ở tài liệu Reporting. Các quy tắc phối hợp, dự phòng và thẩm quyền mới trong bản này là đề xuất. Xem mục 11 để kiểm tra bằng chứng xác nhận và ngày hiệu lực.
 
 ## 1. Mục tiêu và nguyên tắc phối hợp
 
-Nhóm chịu trách nhiệm xây dựng bộ tài liệu nhất quán từ phạm vi và giá, yêu cầu sản phẩm, kế hoạch thực hiện đến công việc, kịch bản kiểm thử và quản trị. Mỗi thành viên phải giải thích được quyết định và bằng chứng thuộc phần mình phụ trách khi bảo vệ.
+Ban quản lý dự án chịu trách nhiệm giữ bộ hồ sơ dự án nhất quán từ phạm vi và giá, yêu cầu sản phẩm, kế hoạch thực hiện đến công việc, kịch bản kiểm thử và quản trị. Mỗi thành viên phải giải thích được quyết định và bằng chứng thuộc phần mình phụ trách khi trình khách hàng, khi review hoặc khi có thay đổi.
 
 - Mỗi đầu việc có một người chịu trách nhiệm chính, hạn và đầu ra có thể kiểm tra.
 - Nhận xét dựa vào yêu cầu, dữ liệu và tiêu chí đã thống nhất. Người đưa ra ý kiến chỉ rõ vị trí và tác động.
 - Thành viên báo sớm trở ngại, rủi ro và thay đổi khả dụng để nhóm điều phối.
-- Dữ liệu khách hàng, phản hồi, báo cáo, CR và đội thực thi trong tình huống học tập được ghi rõ Mô phỏng khi sử dụng.
+- Dữ liệu khách hàng, phản hồi, báo cáo, CR và đội thực thi được ghi rõ Mô phỏng khi sử dụng.
 - Quyết định phải lần được tới người quyết định, ngày, căn cứ và tài liệu bị ảnh hưởng.
-- Những hoạt động phát triển, kiểm thử thực thi và triển khai được mô tả ở mức kế hoạch của tình huống mô phỏng. Trạng thái hoàn thành của bài làm gắn với đầu ra tài liệu thực tế và bằng chứng review.
+- Hoạt động phát triển, kiểm thử và triển khai được quản lý ở mức kế hoạch. Một đầu việc quản lý dự án chỉ được coi là hoàn thành khi đầu ra tài liệu đã có và có bằng chứng review.
 
 ## 2. Thành viên và trách nhiệm
 
 ### 2.1. Ban quản lý dự án
 
-Danh sách theo feedback R1 gồm Trần Vĩnh Đại, Nguyễn Thành An, Phùng Ngô Huy Bảo và Huỳnh Hữu Như Mẫn. Trần Vĩnh Đại được ghi là trưởng nhóm. Mảng phụ trách trong bảng theo README cập nhật tại `dfe998d`. Tra người dự phòng theo từng đầu ra tại mục 2.3.
+Ban quản lý dự án gồm Trần Vĩnh Đại, Nguyễn Thành An, Phùng Ngô Huy Bảo và Huỳnh Hữu Như Mẫn. Trần Vĩnh Đại là trưởng ban, đồng thời là đầu mối PM với Aurora University. Mảng phụ trách trong bảng khớp với README. Tra người dự phòng theo từng đầu ra tại mục 2.3.
 
 | Thành viên | Mảng phụ trách đề xuất | Trách nhiệm chính |
 | --- | --- | --- |
@@ -34,7 +34,7 @@ Người chịu trách nhiệm chính tổng hợp ý kiến và duy trì bản 
 
 ### 2.2. Đội thực thi Mô phỏng
 
-Cơ cấu chín người dưới đây phục vụ lập kế hoạch thực hiện dự án phần mềm. Phân công ban quản lý ở mục 2.1 xác định trách nhiệm đối với bài làm và tài liệu.
+Cơ cấu chín người dưới đây phục vụ lập kế hoạch thực hiện dự án phần mềm. Phân công ban quản lý ở mục 2.1 xác định ai giữ từng tài liệu quản lý dự án.
 
 | Vai trò Mô phỏng | Số người | Trách nhiệm trong kế hoạch dự án | Báo cáo cho |
 | --- | ---: | --- | --- |
@@ -72,7 +72,7 @@ Bảng này là nguồn duy nhất để xác định người dự phòng của
 
 | Công cụ | Nội dung quản lý | Cách lưu và cập nhật |
 | --- | --- | --- |
-| GitHub repository | Tài liệu nộp bài, PRD Markdown, Proposal, báo giá, Master Plan và các kế hoạch | Bản dùng review được quản lý qua PR, có tên file cố định và lịch sử Git |
+| GitHub repository | Hồ sơ dự án, PRD Markdown, Proposal, báo giá, Master Plan và các kế hoạch | Bản dùng review được quản lý qua PR, có tên file cố định và lịch sử Git |
 | GitHub Issues | Task, bug, feedback, CR và quyết định cần theo dõi | Ghi owner, hạn, liên kết tài liệu và bằng chứng |
 | GitHub Projects | Trạng thái, owner, lịch và phụ thuộc công việc | Cập nhật từ các Issue tương ứng và đối chiếu Master Plan |
 | Google Drive | Hồ sơ gửi khách hàng, biên bản, bản xuất báo cáo, file tài chính nội bộ có quyền hạn phù hợp | Người phụ trách ghi phiên bản, ngày và liên kết tới bản nguồn khi chia sẻ |
@@ -179,7 +179,7 @@ Khi Tech Lead muốn bàn giao còn QA ghi nhận tiêu chí chưa đáp ứng, 
 
 | Loại vấn đề | Đầu mối xử lý | Khi cần chuyển cấp |
 | --- | --- | --- |
-| Kỹ thuật, tích hợp hoặc môi trường | Tech Lead trong kế hoạch Mô phỏng, thành viên phụ trách mảng trong bài làm | Ảnh hưởng lịch, nguồn lực hoặc phạm vi được chuyển PM |
+| Kỹ thuật, tích hợp hoặc môi trường | Tech Lead của đội thực thi Mô phỏng; thành viên ban quản lý phụ trách mảng liên quan | Ảnh hưởng lịch, nguồn lực hoặc phạm vi được chuyển PM |
 | Thiếu đầu vào nghiệp vụ hoặc rule chưa xác nhận | Người phụ trách PRD và PM/BA | Cần quyết định khách hàng hoặc thay đổi cam kết |
 | Sai lệch giá, effort hoặc nguồn lực | Người phụ trách kế hoạch và trưởng nhóm | Dự báo vượt giới hạn đã được xác nhận |
 | Chất lượng hoặc tiêu chí nghiệm thu | Người phụ trách chất lượng và trưởng nhóm | Có bất đồng về tiêu chí hoặc cần thay đổi điều kiện bàn giao |
@@ -209,7 +209,7 @@ Các quy tắc chi tiết dưới đây là phương án đề xuất cho nhóm 
 - Mọi thay đổi vào `main` được thực hiện qua PR và có lịch sử review.
 
 ### 9.2. Nội dung PR
-PR ghi vấn đề và Issue liên quan, quyết định được đề xuất, file/mục thay đổi, tác động liên tài liệu, cách kiểm và các điểm chờ xác nhận. Với feedback R1, ghi rõ mã feedback và đối chiếu dòng Hoàn thành khi.
+PR ghi vấn đề và Issue liên quan, quyết định được đề xuất, file/mục thay đổi, tác động liên tài liệu, cách kiểm và các điểm chờ xác nhận. Với PR xử lý Feedback Issue, CR hoặc Bug, ghi mã Issue và đối chiếu điều kiện hoàn thành của Issue đó.
 
 Word/Excel phải có mô tả thay đổi bằng chữ trong PR. Báo giá hoặc Master Plan thay đổi phải kèm kiểm tổng, công thức, ngày, capacity và các liên kết liên quan. Tác giả lưu bản trước theo quy trình phiên bản trước khi chỉnh file.
 
@@ -217,7 +217,7 @@ Word/Excel phải có mô tả thay đổi bằng chữ trong PR. Báo giá ho�
 
 PR tài liệu cần ít nhất một người không tham gia soạn hoặc chỉnh sửa nội dung của PR approve. Dùng reviewer chính tại mục 2.3. Nếu reviewer vắng, không thể review trước hạn hoặc đã tham gia sửa, tác giả báo trên Issue. Trưởng nhóm, hoặc điều phối viên tạm thời theo mục 6 khi trưởng nhóm vắng, chỉ định reviewer độc lập đủ khả năng và ghi tên, hạn review trên Issue cùng liên kết PR. Tác giả tiếp tục phụ trách tài liệu. Nếu chưa có reviewer độc lập, đầu mối ghi `Blocked` và cập nhật ETA. Điều phối viên có thể nhận review nếu đáp ứng yêu cầu độc lập. PR code áp dụng yêu cầu phê duyệt kỹ thuật tại mục 9.4.
 
-Reviewer kiểm nội dung theo chuẩn môn và yêu cầu của Issue, mã/liên kết còn dùng được, sự nhất quán với phạm vi và tài liệu phụ thuộc, nguồn và trạng thái xác nhận của thông số. Với PRD, kiểm đủ nội dung mẫu FR, quan hệ rule/error–AC, NFR và kịch bản test chịu ảnh hưởng. Với tài liệu kế hoạch, kiểm ngày, effort và cơ sở huy động.
+Reviewer kiểm nội dung theo yêu cầu của Issue, cam kết trong Proposal, quy ước mã tại [mục lục](../README.md#quy-ước-mã-định-danh), mã/liên kết còn dùng được, sự nhất quán với phạm vi và tài liệu phụ thuộc, nguồn và trạng thái xác nhận của thông số. Với PRD, kiểm đủ nội dung mẫu FR, quan hệ rule/error–AC, NFR và kịch bản test chịu ảnh hưởng. Với tài liệu kế hoạch, kiểm ngày, effort và cơ sở huy động.
 
 Các nhận xét cần sửa phải được xử lý hoặc có kết luận được ghi nhận. Thay đổi nội dung sau approve phải được reviewer kiểm lại phần bị ảnh hưởng trước khi merge. Với mã nguồn trong kế hoạch thực thi, kiểm thử và review kỹ thuật theo [Quality Plan](../09-quality/quality-plan.md).
 
@@ -261,21 +261,14 @@ Trưởng nhóm tổng hợp trong Issue, PR hoặc biên bản có liên kết.
 
 Nhóm xem lại Charter khi đổi thành viên, trách nhiệm, công cụ, lịch phối hợp hoặc khi quy tắc hiện hành gây vướng mắc.
 
-## 12. Căn cứ và đối chiếu feedback
+## 12. Tài liệu liên quan
 
-Bản này được viết từ Charter gốc của nhóm, review hiện tại, chuẩn môn và feedback R1. Nguồn đọc gồm
+Charter dùng chung cơ cấu và thẩm quyền với các tài liệu dưới đây. Khi một tài liệu đổi, người giữ Charter kiểm lại mục tương ứng.
 
-- Chuẩn môn, phần Nội dung tối thiểu, Format repo, Quy ước mã và Công bằng và dùng AI. [spm-standard.md](https://github.com/vinhdai123/UniSupport_Project/blob/e5beb485a45a2dc2962c768f66200d3c11bd651e/.claude/spm-standard.md).
-- Feedback R1-08 trang 6 và R1-10 trang 7, bản đánh giá commit `7c1534ae93` ngày 04/11/2026. Bản PDF do nhóm cung cấp có tên `feedback-r1-nhom-1.pdf`.
-- Cơ cấu, tuyến báo cáo, lịch họp và thẩm quyền phê duyệt trong tài liệu quản trị. [Nguồn quản trị đã đối chiếu](../11-governance/reporting.md).
-
-| Nội dung feedback cần xử lý | Vị trí trong Charter | Bằng chứng cần bổ sung khi nhóm áp dụng |
+| Nội dung | Nơi gốc | Mục trong Charter |
 | --- | --- | --- |
-| Nơi gốc của Team Charter và mục lục | Mục 3 và 11 | Đường dẫn từ README và mục lục đã có. PR xử lý feedback cần dẫn tới issue tương ứng |
-| Thành viên, vai trò và trách nhiệm tài liệu | Mục 2 | Xác nhận phân công của nhóm |
-| Quy ước nhánh, PR, review và merge | Mục 9 | Quyết định thông qua và quyền thực tế của người phụ trách repo |
-| Xử lý bất đồng | Mục 4 và 7 | Quy tắc được nhóm xác nhận, quyết định được lưu khi phát sinh |
-| Khi thiếu người | Mục 6 | Người dự phòng được xác nhận, bản ghi bàn giao khi kích hoạt |
-| Công cụ và lịch phối hợp thống nhất | Mục 3 và 5 | Liên kết tới nguồn lịch áp dụng và quyết định khi có thay đổi |
-
-Đối chiếu điều kiện hoàn thành của R1-08 khi có PR dẫn tới issue feedback tương ứng. Bằng chứng thông qua quy tắc và ngày hiệu lực được ghi theo mục 11.
+| Cam kết với khách hàng, đầu mối và quy trình nghiệm thu | [Proposal](proposal.docx), mục 8 và 9 | Mục 4 và 7 |
+| Đội thực thi, giờ huy động và dự phòng | [Master Plan](master-plan.xlsx), sheet Resources và RACI & Governance | Mục 2.2 và 6 |
+| Tuyến báo cáo và lịch họp | [Reporting](../11-governance/reporting.md) | Mục 5 |
+| Phê duyệt thay đổi | [Change Control](../11-governance/change-control.md) | Mục 4.3 |
+| Review, DoD và Code Review | [Quality Plan](../09-quality/quality-plan.md) | Mục 9 |

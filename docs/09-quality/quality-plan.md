@@ -83,6 +83,11 @@ Các hạn trên là đề xuất thuộc [OQ-06](../08-project/open-questions.m
 
 Lịch gửi hồ sơ, hạn phản hồi và việc phụ thuộc tra sheet **Nghiệm thu**. PM ghi thời điểm khách nhận đủ hồ sơ, xử lý phản hồi theo mục 8 Proposal và lưu quyết định bằng văn bản. Nếu khách chưa xác nhận, công việc phụ thuộc tiếp tục chờ theo Master Plan. Bảo hành phần mềm 30 ngày lịch từ ngày liền sau ký bàn giao. Hỗ trợ vận hành lâu dài theo thỏa thuận riêng.
 
+**Ví dụ áp dụng.**
+
+- *MS-03 còn lỗi High trong phạm vi mốc:* QA lưu kết quả Fail và Bug, Tech Lead phân công sửa, PM hoãn trình xác nhận. QA xác minh bản sửa và hồi quy trước khi PM trình lại.
+- *Production còn lỗi Medium có cách tạm:* QA kiểm cách tạm và điều kiện bắt buộc, Tech Lead xác nhận rủi ro, PM duyệt hoãn nếu đúng quy tắc lỗi Medium/Low ở trên và có xác nhận của đại diện trường khi ảnh hưởng nghiệm thu. Ghi quyết định và hạn trong Issue, dẫn từ biên bản. Nếu thiếu điều kiện, PM giữ bàn giao ở trạng thái chờ.
+
 ## Xác nhận ngưỡng chất lượng OQ-06
 
 | Hạng mục cần quyết định | Thông tin và bằng chứng cần lưu | Trạng thái |
@@ -97,4 +102,4 @@ PM ghi từng quyết định đã duyệt hoặc còn mở, người xác nhậ
 
 ## Định mức QA trong kế hoạch
 
-Tra **Resources** trong [Master Plan](../08-project/master-plan.xlsx) để kiểm effort theo từng mốc và vai trò, gồm 97 AC chức năng, 19 AC NFR toàn cục và 6 phép kiểm ngưỡng. Workload mô phỏng 287,75 giờ được so với 320 giờ QA triển khai, QA bảo hành có 24 giờ trong tổng 98 giờ bảo hành. Các giờ test và kiểm lại đã lập lịch nằm trong WBS và [Báo giá](../08-project/quotation.xlsx). Nếu phải thêm vòng kiểm hoặc giảm khả dụng, PM và QA dùng sheet **Kịch bản** để kiểm thiếu hụt trước khi đề xuất điều chuyển hoặc đổi lịch. Phần dự phòng CR theo Master Plan được xét riêng.
+Tra **Resources** trong [Master Plan](../08-project/master-plan.xlsx) để kiểm effort theo từng mốc và vai trò, gồm 102 AC chức năng, 19 AC NFR toàn cục và 6 phép kiểm ngưỡng. Workload mô phỏng 295,75 giờ được so với 320 giờ QA triển khai, QA bảo hành có 24 giờ trong tổng 98 giờ bảo hành. Các giờ test và kiểm lại đã lập lịch nằm trong WBS và [Báo giá](../08-project/quotation.xlsx). Nếu phải thêm vòng kiểm hoặc giảm khả dụng, PM và QA dùng sheet **Kịch bản** để kiểm thiếu hụt trước khi đề xuất điều chuyển hoặc đổi lịch. Phần dự phòng CR theo Master Plan được xét riêng.

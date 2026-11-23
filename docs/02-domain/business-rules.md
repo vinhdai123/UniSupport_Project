@@ -162,6 +162,68 @@ Sinh viên được phép mở lại Ticket đã hoàn thành trong khoảng th�
 
 **Trạng thái:** Thời hạn 72 giờ và quy tắc đóng Ticket cần được xác nhận.
 
+---
+
+### BR-06 – Chính sách mật khẩu (Password Policy)
+
+Áp dụng cho đặt lại mật khẩu ([FR-AUTH-02](../03-modules/M01-auth-rbac/prd.md#fr-auth-02--đặt-lại-mật-khẩu)) và mật khẩu ban đầu do quản trị cấp.
+
+| Thuộc tính | Giá trị đề xuất |
+|---|---|
+| Độ dài | 8 đến 64 ký tự |
+| Thành phần bắt buộc | Ít nhất 1 chữ hoa, 1 chữ thường và 1 chữ số |
+| Không được trùng | Định danh đăng nhập; mật khẩu đang dùng |
+
+Khi mật khẩu không đạt, hệ thống nêu từng điều kiện còn thiếu.
+
+**Trạng thái:** Đề xuất, chốt tại [OQ-09](../08-project/open-questions.md).
+
+---
+
+### BR-07 – Xác minh khi đặt lại mật khẩu (Reset Verification)
+
+- Hệ thống gửi liên kết đặt lại một lần tới email đã đăng ký của tài khoản.
+- Liên kết có hiệu lực **30 phút** kể từ khi tạo và chỉ dùng được một lần.
+- Yêu cầu mới làm vô hiệu liên kết cũ chưa dùng của cùng tài khoản.
+- Phản hồi trên màn hình giống nhau dù tài khoản có tồn tại hay không.
+
+**Trạng thái:** Đề xuất, chốt tại [OQ-09](../08-project/open-questions.md).
+
+---
+
+### BR-08 – Thao tác phải ghi nhật ký (Audit Scope)
+
+| Nhóm | Thao tác |
+|---|---|
+| Xác thực | Đăng nhập thành công, đăng nhập thất bại, đăng xuất, đặt lại mật khẩu |
+| Tài khoản | Tạo, cập nhật, khóa, mở tài khoản; gán hoặc đổi vai trò |
+| Ticket | Đổi trạng thái, đổi mức ưu tiên, phân công, phân công lại, chuyển phòng, chuyển cấp, mở lại |
+| Cấu hình | Thay đổi danh mục, phòng ban, routing, SLA, lịch làm việc, mẫu phản hồi, FAQ |
+| Dữ liệu | Xuất CSV; truy cập Ticket hoặc tệp bị từ chối |
+
+Mỗi bản ghi gồm người thực hiện, vai trò, hành động, đối tượng, giá trị trước và sau (nếu có), thời điểm (UTC+7) và kết quả. Thời gian lưu đề xuất là 12 tháng.
+
+**Trạng thái:** Đề xuất, chốt tại [OQ-09](../08-project/open-questions.md).
+
+---
+
+### BR-09 – Giới hạn ghi chú nội bộ (Internal Note Limit)
+
+- Mỗi ghi chú nội bộ tối đa **2.000 ký tự**.
+- Tệp đính kèm của ghi chú theo [BR-02](#br-02--quy-định-tệp-đính-kèm-attachment-rules).
+
+**Trạng thái:** Đề xuất, chốt tại [OQ-09](../08-project/open-questions.md).
+
+---
+
+### BR-10 – Gửi lại Email thông báo (Email Retry)
+
+- Khi gửi Email lỗi, hệ thống thử lại tối đa **3 lần**, sau 5 phút, 15 phút và 60 phút.
+- Mỗi cặp sự kiện và người nhận chỉ có một Email thành công; xử lý lại cùng sự kiện không gửi trùng.
+- Sau lần thử cuối vẫn lỗi, trạng thái gửi là `Thất bại` và lỗi được ghi cho vận hành. Thông báo trong hệ thống vẫn giữ nguyên.
+
+**Trạng thái:** Đề xuất, chốt tại [OQ-09](../08-project/open-questions.md).
+
 ## 3. Nguyên tắc áp dụng (Rule Enforcement)
 
 - Các Business Rules được áp dụng thống nhất cho những chức năng liên quan.

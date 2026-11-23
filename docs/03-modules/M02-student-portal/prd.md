@@ -1,6 +1,6 @@
 # MODULE M02: STUDENT PORTAL (CỔNG HỖ TRỢ SINH VIÊN)
 
-Bản đặc tả phục vụ kế hoạch Mô phỏng. Tham số mật khẩu, thời hạn, tệp, số dòng và chính sách quyền theo Business Rules/NFR là đề xuất cần PM/BA xác nhận trước baseline nghiệm thu.
+Bản đặc tả phục vụ kế hoạch Mô phỏng. Tham số mật khẩu, thời hạn, tệp, ghi chú, nhật ký và gửi lại Email lấy từ [Business Rules](../../02-domain/business-rules.md) BR-01 đến BR-10 và [NFR](../../05-non-functional-requirements/README.md). Giá trị đang đề xuất có người chốt và hạn chốt tại [câu hỏi mở](../../08-project/open-questions.md).
 
 
 # 1. Đặc tả yêu cầu chức năng
@@ -33,7 +33,7 @@ Sinh viên đã đăng nhập thành công vào Cổng hỗ trợ sinh viên.
 ### Quy tắc nghiệp vụ
 - BR-STU-01: Tiêu đề, nội dung và danh mục là các trường thông tin bắt buộc.
 - BR-STU-02: Hệ thống tự xác định và lưu phòng tiếp nhận theo danh mục; sinh viên chỉ chọn danh mục. Ở MS-03, các danh mục mở cho bản dùng thử có ánh xạ danh mục–phòng đích chuẩn bị sẵn. WBS 4.1 bàn giao phần này qua #60; WBS 4.2 và #93 kiểm kết quả lưu. Staff Desk, hàng đợi dự phòng và xử lý cấu hình thiếu theo FR-STF-02 tại MS-04.
-- BR-STU-03: Mã Ticket ID được sinh tự động theo quy tắc hệ thống, đảm bảo tính duy nhất.
+- BR-STU-03: Mã Ticket ID được sinh tự động theo [BR-01](../../02-domain/business-rules.md#br-01--định-danh-ticket-ticket-identification): dạng `AU-YYYY-XXXX`, duy nhất và không đổi trong vòng đời Ticket.
 
 ### Luồng rẽ nhánh và lỗi
 - E-STU-01: Nếu sinh viên để trống thông tin bắt buộc, hệ thống từ chối tạo và đánh dấu đỏ các trường còn thiếu.
@@ -53,6 +53,11 @@ Sinh viên đã đăng nhập thành công vào Cổng hỗ trợ sinh viên.
   - When: Thử độc lập tệp sai định dạng, tệp vượt dung lượng, bộ N tệp hợp lệ và bộ N + 1 tệp hợp lệ.
   - Then: Tệp sai định dạng hoặc quá dung lượng bị từ chối với lý do tương ứng. Bộ N tệp hợp lệ được chấp nhận. Khi thêm tệp thứ N + 1, hệ thống báo giới hạn, không nhận tệp vượt và không lưu Ticket với hơn N tệp.
 
+
+- **FR-STU-01/AC-04:** Định dạng và tính bất biến của Ticket ID (BR-01, BR-STU-03)
+  - Given: Năm hệ thống là 2026 và Ticket cuối cùng trong năm có mã `AU-2026-0041`.
+  - When: Sinh viên tạo hai Ticket liên tiếp, sau đó Ticket thứ nhất được đổi trạng thái, chuyển phòng và mở lại.
+  - Then: Hai Ticket nhận `AU-2026-0042` và `AU-2026-0043`. Mã của Ticket thứ nhất giữ nguyên sau mọi thao tác, ở giao diện, API, thông báo và CSV.
 
 ### Tình huống ngoại lệ
 - Thử tại giới hạn số tệp và dung lượng theo BR-02, sau đó vượt từng giới hạn một đơn vị. Các giá trị cần được xác nhận trước baseline.
@@ -82,6 +87,10 @@ Sinh viên đã đăng nhập.
 
 ### Quy tắc nghiệp vụ
 - BR-STU-04: Sinh viên chỉ được phép xem danh sách và chi tiết các Ticket do chính tài khoản của mình tạo.
+- BR-STU-12: Tìm kiếm khớp mã Ticket hoặc một phần tiêu đề, không phân biệt hoa thường và dấu. Bộ lọc trạng thái dùng bốn trạng thái của vòng đời. Kết quả chỉ gồm Ticket của sinh viên đang đăng nhập.
+
+### Luồng thay thế
+- A-STU-02-01 (bước 3): Sinh viên lọc theo trạng thái hoặc nhập từ khóa. Hệ thống chỉ hiển thị Ticket phù hợp. Không có kết quả thì hiển thị "Không tìm thấy yêu cầu phù hợp" kèm nút xóa bộ lọc.
 
 ### Luồng rẽ nhánh và lỗi
 - E-STU-03: Nếu sinh viên chưa từng tạo yêu cầu nào, hệ thống hiển thị minh họa trạng thái trống (Empty state) với thông điệp "Bạn chưa có yêu cầu hỗ trợ nào".
@@ -95,6 +104,10 @@ Sinh viên đã đăng nhập.
   - Given: Sinh viên C là người mới, chưa từng tạo yêu cầu.
   - When: Sinh viên C truy cập Danh sách yêu cầu.
   - Then: Hệ thống hiển thị thông báo "Bạn chưa có yêu cầu hỗ trợ nào" kèm nút bấm điều hướng đi tạo yêu cầu mới.
+- **FR-STU-02/AC-03:** Lọc và tìm kiếm Ticket (A-STU-02-01, BR-STU-12)
+  - Given: SV-MOCK-01 có `AU-2026-0001` (Mới tạo, "Xin giấy xác nhận"), `AU-2026-0002` (Cần bổ sung, "Học phí kỳ 2"), `AU-2026-0003` (Hoàn thành, "Đổi lớp"). SV-MOCK-02 có `AU-2026-0004` (Cần bổ sung, "Học phí").
+  - When: SV-MOCK-01 lọc "Cần bổ sung"; tìm "0003"; tìm "hoc phi"; tìm "abc".
+  - Then: Lần lượt chỉ thấy `AU-2026-0002`; chỉ `AU-2026-0003`; chỉ `AU-2026-0002`; thông báo "Không tìm thấy yêu cầu phù hợp". `AU-2026-0004` không xuất hiện ở lần nào.
 
 
 ### Tình huống ngoại lệ
@@ -178,9 +191,11 @@ Ticket đang ở trạng thái "Hoàn thành".
 
 ### Quy tắc nghiệp vụ
 - BR-STU-07: Thời hạn đề xuất theo BR-05 là 72 giờ liên tục từ thời điểm hoàn thành, cần xác nhận trước baseline. Khi mở lại dùng trạng thái In Progress theo vòng đời gốc.
+- BR-STU-13: Lý do mở lại là bắt buộc, từ 10 đến 1.000 ký tự. Khi mở lại thành công, cán bộ đang phụ trách nhận một thông báo trong hệ thống có lý do và liên kết Ticket.
 
 ### Luồng rẽ nhánh và lỗi
 - E-STU-05: Nếu đã quá 72 giờ, hệ thống từ chối yêu cầu mở lại ở cả giao diện và API. Ticket giữ trạng thái "Hoàn thành".
+- E-STU-10: Nếu lý do trống hoặc dưới 10 ký tự, hệ thống từ chối ở giao diện và API, Ticket giữ "Hoàn thành".
 
 ### Tiêu chí nghiệm thu
 - **FR-STU-04/AC-01:** Mở lại yêu cầu hợp lệ
@@ -191,6 +206,10 @@ Ticket đang ở trạng thái "Hoàn thành".
   - Given: Ticket đã ở trạng thái "Hoàn thành" cách đây 4 ngày.
   - When: Sinh viên vào xem chi tiết Ticket.
   - Then: Nút "Mở lại yêu cầu" không còn xuất hiện. Gọi API trực tiếp bị từ chối và Ticket giữ trạng thái "Hoàn thành".
+- **FR-STU-04/AC-03:** Lý do bắt buộc và thông báo cán bộ (BR-STU-13, E-STU-10)
+  - Given: Ticket của SV-MOCK-01 Hoàn thành cách đây 1 ngày, Staff A đang phụ trách.
+  - When: Gửi mở lại với lý do trống, với lý do 9 ký tự (qua giao diện và API), rồi với lý do "Kết quả chưa đúng học kỳ".
+  - Then: Hai lần đầu bị từ chối, Ticket giữ "Hoàn thành" và không phát sinh thông báo. Lần cuối Ticket chuyển "Đang xử lý", lý do lưu vào lịch sử và Staff A có đúng một thông báo trong hệ thống chứa lý do và liên kết Ticket.
 
 
 ### Tình huống ngoại lệ
@@ -318,7 +337,7 @@ Sinh viên có tài khoản, Ticket thuộc quyền, cấu hình Email và danh 
 - BR-STU-11: Một sự kiện nghiệp vụ chỉ có một thông báo trong hệ thống cho mỗi người nhận.
 
 ### Luồng rẽ nhánh và lỗi
-- E-STU-08: Lỗi Email được lưu trạng thái gửi và báo cho vận hành. Ticket và thông báo trong hệ thống vẫn được giữ.
+- E-STU-08: Lỗi Email được thử lại theo [BR-10](../../02-domain/business-rules.md#br-10--gửi-lại-email-thông-báo-email-retry) (tối đa 3 lần, sau 5, 15 và 60 phút), sau đó lưu trạng thái `Thất bại` và báo cho vận hành. Ticket và thông báo trong hệ thống vẫn được giữ.
 - E-STU-09: Khi người nhận đã mất quyền, truy cập từ liên kết cũ bị từ chối.
 
 ### Tiêu chí nghiệm thu
@@ -333,7 +352,7 @@ Sinh viên có tài khoản, Ticket thuộc quyền, cấu hình Email và danh 
 - **FR-STU-07/AC-03:** Xử lý gửi lại và lỗi Email (BR-STU-11, E-STU-08)
   - Given: Môi trường kiểm thử làm dịch vụ Email lỗi.
   - When: Tạo sự kiện rồi xử lý lại cùng sự kiện.
-  - Then: Ticket giữ dữ liệu, có một thông báo trong hệ thống, lỗi gửi được theo dõi để xử lý theo chính sách thử lại đã xác nhận.
+  - Then: Ticket giữ dữ liệu và có đúng một thông báo trong hệ thống. Nhật ký gửi có 1 lần gửi đầu và 3 lần thử lại ở phút 5, 15, 60, sau đó trạng thái `Thất bại` và một bản ghi lỗi cho vận hành. Khi bật lại dịch vụ và xử lý lại cùng sự kiện, sinh viên nhận đúng một Email.
 
 ### Tình huống ngoại lệ
 - Sinh viên mở thông báo từ Email sau khi Ticket đã thay đổi trạng thái hoặc quyền xem, server kiểm quyền hiện tại.

@@ -17,7 +17,7 @@ Hệ thống quản lý và xử lý yêu cầu hỗ trợ tập trung cho sinh 
 | 23090017 | Phùng Ngô Huy Bảo | Master Plan, Quản trị và giám sát, Báo giá |
 | 23090020 | Huỳnh Hữu Như Mẫn | PRD, Review |
 
-MSSV và phân công tài liệu theo bản README được nhóm cập nhật tại commit dfe998d. Trưởng nhóm đối chiếu feedback R1. Reviewer, dự phòng và quyền merge được xác nhận theo Team Charter. Ánh xạ tên với tài khoản GitHub do thành viên bổ sung.
+MSSV và phân công tài liệu theo bản README được nhóm cập nhật tại commit dfe998d. Feedback của môn học được theo dõi bằng Issue nhãn `course-feedback`, tách khỏi hồ sơ dự án trong `docs/`. Reviewer, dự phòng và quyền merge được xác nhận theo Team Charter. Ánh xạ tên với tài khoản GitHub do thành viên bổ sung.
 
 ---
 

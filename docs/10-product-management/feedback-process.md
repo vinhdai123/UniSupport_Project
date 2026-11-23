@@ -21,4 +21,12 @@ PM/BA đối chiếu giá trị, nhóm người dùng bị ảnh hưởng, rủi
 
 ## Ai quyết định sau bàn giao
 
-Theo mục 8 [Proposal](../08-project/proposal.docx), bảo hành kéo dài **30 ngày lịch từ ngày liền sau ngày ký nghiệm thu và bàn giao**. PM và Tech Lead điều phối khắc phục lỗi thuộc phạm vi bảo hành theo Quality Plan. Sau bảo hành, Aurora University quyết định vận hành. Tính năng mới và hỗ trợ dài hạn theo thỏa thuận riêng.
+Theo mục 8 [Proposal](../08-project/proposal.docx), bảo hành kéo dài **30 ngày lịch từ ngày liền sau ngày ký nghiệm thu và bàn giao**. PM và Tech Lead điều phối khắc phục lỗi thuộc phạm vi bảo hành theo Quality Plan.
+
+| Giai đoạn | Người quyết định | Quyết định gì | Căn cứ |
+| --- | --- | --- | --- |
+| Trong bảo hành 30 ngày | PM dự án cùng đại diện Aurora University | Lỗi nào thuộc bảo hành, lỗi nào là yêu cầu mới | Proposal mục 8, Quality Plan |
+| Sau bảo hành | **Chủ sản phẩm phía trường** (đề xuất: Trưởng phòng Công tác Sinh viên, được Aurora University chỉ định trong biên bản bàn giao MS-08) | Xếp ưu tiên backlog hằng tháng; duyệt đưa cải tiến vào Release 1.x; đề xuất Release 2.0 | [Chỉ số SM-01 đến SM-07](success-metrics.md), Feedback Issue |
+| Release 2.0, ngân sách mới | Ban Giám hiệu Aurora University theo đề xuất của Chủ sản phẩm | Ký thỏa thuận phát triển giai đoạn mới | Roadmap, thỏa thuận riêng |
+
+Bên vận hành do nhà trường chỉ định theo Proposal mục 8 thực hiện thay đổi đã được Chủ sản phẩm duyệt. Tính năng mới và hỗ trợ dài hạn theo thỏa thuận riêng.

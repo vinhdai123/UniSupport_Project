@@ -1,6 +1,6 @@
 # MODULE M03: STAFF DESK (KHÔNG GIAN CÁN BỘ)
 
-Bản đặc tả phục vụ kế hoạch Mô phỏng. Tham số mật khẩu, thời hạn, tệp, số dòng và chính sách quyền theo Business Rules/NFR là đề xuất cần PM/BA xác nhận trước baseline nghiệm thu.
+Bản đặc tả phục vụ kế hoạch Mô phỏng. Tham số mật khẩu, thời hạn, tệp, ghi chú, nhật ký và gửi lại Email lấy từ [Business Rules](../../02-domain/business-rules.md) BR-01 đến BR-10 và [NFR](../../05-non-functional-requirements/README.md). Giá trị đang đề xuất có người chốt và hạn chốt tại [câu hỏi mở](../../08-project/open-questions.md).
 
 
 # 1. Đặc tả yêu cầu chức năng
@@ -133,6 +133,7 @@ Cán bộ có quyền xử lý Ticket đang mở chi tiết Ticket đó.
 ### Quy tắc nghiệp vụ
 - BR-STF-05: Cán bộ không được phép đổi trạng thái về "Mới tạo" nếu Ticket đã được bắt đầu xử lý.
 - BR-STF-06: Khi trạng thái được chuyển sang "Hoàn thành", hệ thống sẽ tự động cập nhật thời gian giải quyết thực tế (Resolution Time).
+- BR-STF-15: Ticket mới có mức ưu tiên mặc định `Medium` theo [BR-03](../../02-domain/business-rules.md#br-03--ma-trận-thời-hạn-xử-lý-sla-matrix). Chỉ Staff đang phụ trách, Manager trong phạm vi và Administrator được đổi mức ưu tiên.
 
 ### Luồng rẽ nhánh và lỗi
 - E-STF-03: Nếu một cán bộ khác đã thay đổi trạng thái của Ticket này vài giây trước đó, hệ thống sẽ chặn thao tác hiện tại và báo lỗi "Dữ liệu đã cũ, vui lòng tải lại trang".
@@ -151,6 +152,10 @@ Cán bộ có quyền xử lý Ticket đang mở chi tiết Ticket đó.
   - Given: Ticket đã bắt đầu xử lý.
   - When: Staff gọi giao diện hoặc API yêu cầu đổi về Mới tạo.
   - Then: Hệ thống từ chối, giữ trạng thái và lịch sử đã có.
+- **FR-STF-03/AC-04:** Mức ưu tiên mặc định và quyền đổi (BR-03, BR-STF-15)
+  - Given: Sinh viên vừa tạo Ticket mới. Staff A phụ trách Ticket, Staff B thuộc phòng khác.
+  - When: Mở Ticket; Staff B gọi API đổi mức ưu tiên lên High; Staff A đổi lên High.
+  - Then: Ticket mới có mức `Medium`. Yêu cầu của Staff B bị từ chối, mức giữ `Medium`. Yêu cầu của Staff A thành công, lịch sử ghi người đổi và giá trị trước, sau.
 
 ### Tình huống ngoại lệ
 - Hai cán bộ lưu thay đổi trên cùng phiên bản Ticket, kiểm yêu cầu cũ bị từ chối và lịch sử không bị ghi đè.
@@ -226,6 +231,10 @@ Cán bộ đang phụ trách Ticket đó.
 - BR-STF-09: Cán bộ chỉ có thể dùng chức năng "Yêu cầu bổ sung" khi Ticket đang ở trạng thái "Đang xử lý".
 - BR-STF-10: Cán bộ có thể sử dụng các Biến tự động (Placeholder) như {Ten_Sinh_Vien} trong Mẫu phản hồi để hệ thống tự điền.
 
+### Luồng thay thế
+- A-STF-05-01 (bước 4): Trả lời thông thường. Cán bộ bấm "Gửi" mà không yêu cầu bổ sung. Phản hồi hiển thị cho sinh viên, trạng thái giữ "Đang xử lý" và sinh viên nhận thông báo theo FR-STU-07.
+- A-STF-05-02 (bước 5–6): Gửi và yêu cầu bổ sung, kiểm bằng FR-STF-05/AC-01.
+
 ### Luồng rẽ nhánh và lỗi
 - E-STF-05: Nếu cán bộ gửi tệp đính kèm chứa mã độc hoặc vi phạm chính sách bảo mật tệp, hệ thống từ chối việc gửi và cảnh báo.
 
@@ -247,6 +256,11 @@ Cán bộ đang phụ trách Ticket đó.
   - Given: Ticket Đang xử lý. QA có bộ dữ liệu vô hại mô phỏng định dạng bị cấm theo BR-02 và một tệp giả lập đúng định dạng, dung lượng. Trong ca thứ hai, bộ kiểm tra nội dung mô phỏng trả kết quả Không an toàn.
   - When: Thử độc lập gửi phản hồi với đầu vào sai định dạng, rồi gửi và yêu cầu bổ sung với tệp đúng định dạng nhưng bị đánh dấu Không an toàn.
   - Then: Cả hai lần bị từ chối với lý do tương ứng. Không phát hành phản hồi, không gắn tệp vào Ticket, không gửi thông báo và không đổi trạng thái sang Cần bổ sung.
+
+- **FR-STF-05/AC-05:** Trả lời thông thường kèm thông báo (A-STF-05-01)
+  - Given: Ticket của SV-MOCK-01 đang ở "Đang xử lý".
+  - When: Staff nhập "Phòng đã tiếp nhận hồ sơ, dự kiến trả kết quả ngày mai" và bấm "Gửi".
+  - Then: Phản hồi hiện trong lịch sử Ticket ở giao diện sinh viên, trạng thái giữ "Đang xử lý". SV-MOCK-01 có đúng một thông báo trong hệ thống và một Email cho sự kiện này.
 
 ### Tình huống ngoại lệ
 - Gửi tệp vi phạm chính sách hoặc thao tác yêu cầu bổ sung từ màn hình đã cũ, kiểm không lưu một phần.
@@ -279,7 +293,7 @@ Cán bộ có quyền truy cập vào Ticket.
 - BR-STF-12: Đọc ghi chú và tệp nội bộ cần đồng thời có quyền trên Ticket và quyền với phòng tạo ghi chú. Staff cần thuộc phòng tạo. Manager/Admin chỉ xem trong phạm vi ma trận quyền cho phép. Chuyển phòng theo FR-STF-04 giữ nguyên phòng tạo và phạm vi của ghi chú.
 
 ### Luồng rẽ nhánh và lỗi
-- E-STF-06: Nếu cán bộ nhập văn bản quá giới hạn ký tự cho phép, hệ thống chặn việc lưu và báo lỗi.
+- E-STF-06: Nếu ghi chú vượt 2.000 ký tự theo [BR-09](../../02-domain/business-rules.md#br-09--giới-hạn-ghi-chú-nội-bộ-internal-note-limit), hệ thống chặn việc lưu và báo lỗi.
 
 ### Tiêu chí nghiệm thu
 - **FR-STF-06/AC-01:** Sinh viên không nhìn thấy ghi chú nội bộ (Kiểm tra BR-STF-11)
@@ -292,12 +306,12 @@ Cán bộ có quyền truy cập vào Ticket.
   - When: Staff B mở Ticket hoặc gọi API đọc ghi chú của phòng A.
   - Then: Nội dung ghi chú bị chặn. Manager trong phạm vi quản lý và Admin được kiểm theo ma trận quyền đã xác nhận.
 - **FR-STF-06/AC-03:** Vượt giới hạn ký tự (E-STF-06)
-  - Given: Baseline đã xác nhận giới hạn L ký tự cho ghi chú.
-  - When: Nhập L ký tự rồi thử L+1 ký tự.
-  - Then: L ký tự được lưu nếu hợp lệ. L+1 bị từ chối với thông báo, không cắt mất nội dung hoặc tạo bản ghi dở dang.
+  - Given: Giới hạn ghi chú là 2.000 ký tự theo BR-09.
+  - When: Lưu ghi chú 2.000 ký tự, rồi thử ghi chú 2.001 ký tự.
+  - Then: Ghi chú 2.000 ký tự được lưu đủ nội dung. Ghi chú 2.001 ký tự bị từ chối với thông báo nêu giới hạn 2.000, không cắt nội dung và không tạo bản ghi dở dang.
 
 ### Tình huống ngoại lệ
-- Thử ghi chú tại L và L+1 ký tự theo giới hạn đã xác nhận, kiểm không lộ nội dung qua API hoặc thông báo sinh viên.
+- Thử ghi chú 2.000 và 2.001 ký tự qua giao diện và API, kiểm không lộ nội dung qua API hoặc thông báo sinh viên.
 
 ---
 

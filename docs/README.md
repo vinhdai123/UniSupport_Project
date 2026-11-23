@@ -33,10 +33,10 @@
 | **Mục tiêu và giới hạn sản phẩm** | [Goals and Non-goals](01-product/goals-and-non-goals.md) là nguồn tra mục tiêu có mã `BG-xx`, `UG-xx` và giới hạn `NG-xx`. |
 | **Nguồn lực & Nhân sự** | `08-project/master-plan.xlsx` sheet Resources, ước tính QA từ dòng 704; [08-project/team-charter.md](08-project/team-charter.md) |
 | **Giá và hạng mục báo giá** | [08-project/quotation.xlsx](08-project/quotation.xlsx) (sheet Báo giá) |
-| **Lịch baseline 23 tuần và tám mốc** | [Workbook Master Plan](08-project/master-plan.xlsx), sheet **Milestone Matrix** và **Master Schedule (Gantt)**. [Bảng mốc và cơ sở chia mốc](08-project/master-plan.md). MS-08 baseline là **12/03/2027**. |
-| **Kịch bản rà soát Master Plan 2.2** | [Workbook Master Plan](08-project/master-plan.xlsx), sheet **Nghiệm thu** kiểm cửa sổ phản hồi và sheet **Kịch bản** thử capacity, QA và CR-01. Ngày **17/03/2027** của MS-08 thuộc phép thử phản hồi. [Giải thích phép thử](08-project/master-plan.md#cách-nhận-feedback-của-client-sau-mỗi-milestone). |
-| **Phương án lịch liên mốc 2.3** | Sheet **Lịch liên mốc** và **Tải liên mốc** trong [Master Plan](08-project/master-plan.xlsx). [Cách tính và trạng thái chờ duyệt](08-project/master-plan.md#phương-án-lịch-liên-mốc-23). |
-| **Phương án phản hồi 3 ngày 2.4** | Sheet **Lịch phản hồi 3 ngày** và **Tải phản hồi 3 ngày** trong [Master Plan](08-project/master-plan.xlsx). [Phương án chọn để thương lượng](08-project/master-plan.md#phương-án-phản-hồi-3-ngày-24). |
+| **Baseline đang áp dụng (3.2)** | [Baseline, người duyệt và ngày khởi động](08-project/master-plan.md#baseline-đang-áp-dụng). Workbook [Master Plan](08-project/master-plan.xlsx): sheet **Hướng dẫn** chỉ đường; Milestones ở sheet **Milestone Matrix**, WBS và Gantt ở sheet **Master Schedule (Gantt)**, Resources, Change Log. Khởi động **05/10/2026**, MS-08 **12/03/2027**. |
+| **Phương án P-01: cửa sổ phản hồi 5 ngày (chưa áp dụng)** | [Workbook Master Plan](08-project/master-plan.xlsx), sheet **Nghiệm thu** kiểm cửa sổ phản hồi và sheet **Kịch bản** thử capacity, QA và CR-01. Ngày **17/03/2027** của MS-08 thuộc phép thử phản hồi. [Giải thích phép thử](08-project/master-plan.md#cách-nhận-feedback-của-client-sau-mỗi-milestone). |
+| **Phương án P-02: lịch liên mốc (chưa áp dụng)** | Sheet **Lịch liên mốc** và **Tải liên mốc** trong [Master Plan](08-project/master-plan.xlsx). [Cách tính và trạng thái chờ duyệt](08-project/master-plan.md#phương-án-p-02-lịch-liên-mốc-chưa-áp-dụng). |
+| **Phương án P-03: phản hồi 3 ngày (đề xuất thương lượng OQ-08)** | Sheet **Lịch phản hồi 3 ngày** và **Tải phản hồi 3 ngày** trong [Master Plan](08-project/master-plan.xlsx). [Phương án chọn để thương lượng](08-project/master-plan.md#phương-án-p-03-phản-hồi-3-ngày-đề-xuất-thương-lượng-oq-08). |
 | **Sổ theo dõi rủi ro** | [08-project/risk-register.md](08-project/risk-register.md) |
 | **Quy trình Change Request** | [11-governance/change-control.md](11-governance/change-control.md); [Mẫu issue Change Request](../.github/ISSUE_TEMPLATE/4-change-request.md) |
 | **Definition of Done (DoD)** | [09-quality/quality-plan.md](09-quality/quality-plan.md) mục Definition of Done |
@@ -58,6 +58,10 @@
 | **Hạng mục báo giá** | `Q-xx` | `docs/08-project/quotation.xlsx` | Module hoặc FR thuộc hạng mục |
 | **Milestone** | `MS-01` – `MS-08` | `docs/08-project/master-plan.xlsx`, GitHub Milestones | Phần bàn giao, điều kiện nghiệm thu |
 | **Công việc (Task)** | `#xx` | GitHub Issues | Mã FR, Milestone, owner theo vai trò hoặc assignee, hạn chót |
+| **Mã giá theo vai trò, gói** | `DG01` – `DG11` | `docs/08-project/quotation.xlsx` sheet Đơn giá; dùng lại ở sheet Chi tiết effort và Resources của Master Plan | Vai trò hoặc gói, đơn giá |
+| **Phương án kế hoạch chưa áp dụng** | `P-01` – `P-04` | `docs/08-project/master-plan.xlsx` sheet Change Log, bảng phương án | Sheet tính toán, câu hỏi mở liên quan |
+| **Chỉ số giá trị** | `SM-01` – `SM-07` | `docs/10-product-management/success-metrics.md` | Mục tiêu, cách đo, người theo dõi |
+| **Câu hỏi mở** | `OQ-01` – `OQ-08` | `docs/08-project/open-questions.md` | Người chốt, hạn chốt, mốc hoặc task bị chặn |
 | **Rủi ro** | `R-01` – `R-13` | `docs/08-project/master-plan.xlsx` sheet Risk Register, dẫn từ `risk-register.md` | Chủ sở hữu (Owner), giải pháp ứng phó |
 | **Change Request** | `CR-xx` | GitHub Issues (nhãn `change-request`) | Tài liệu và task đã cập nhật |
 | **Giả định** | `A-xx` | `docs/08-project/proposal.docx` mục 3, dẫn từ `assumptions.md` | Tác động và trạng thái |

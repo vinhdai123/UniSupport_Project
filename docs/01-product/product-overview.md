@@ -130,11 +130,11 @@ Cung cấp:
 
 ## 6. Success Metrics
 
-Các chỉ số dưới đây được sử dụng để theo dõi hiệu quả vận hành
-sau khi hệ thống được đưa vào sử dụng.
+Chỉ số giá trị dùng sau khi hệ thống vào vận hành có mã `SM-01` đến `SM-07`, mục tiêu, công thức, kỳ đo và người theo dõi tại nơi gốc duy nhất [Chỉ số giá trị](../10-product-management/success-metrics.md).
 
-| Mã | Metric | Ý nghĩa |
-|---|---|---|
+Các số liệu vận hành như tỷ lệ hoàn thành, Ticket tồn đọng và thời gian xử lý trung bình là nội dung Dashboard theo [FR-RPT-01](../03-modules/M05-dashboard-report/prd.md). Chúng là nguồn dữ liệu cho chỉ số giá trị, không tạo thêm phạm vi chức năng.
+
+---|---|---|
 | SM-01 | Ticket Completion Rate | Tỷ lệ Ticket hoàn thành |
 | SM-02 | Overdue Ticket Rate | Tỷ lệ Ticket quá thời hạn xử lý |
 | SM-03 | Average Processing Time | Thời gian xử lý Ticket trung bình |

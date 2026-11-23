@@ -11,6 +11,29 @@ Chính sách chỉ dùng dữ liệu giả lập với ngưỡng 0 bản ghi th�
 | NFR-PERF-01 | Hiệu năng | Thời gian phản hồi trang chính | 95% request trả về < 1.5s khi 100 người dùng đồng thời | JMeter / K6 Load testing | M01, M02, M03 |
 | NFR-SEC-01 | Bảo mật | Kiểm soát quyền truy cập RBAC và bảo vệ phiên làm việc | 0 ca truy cập trái phép trong bộ kiểm thử quyền đã xác nhận, JWT hết hạn sau 24h theo cấu hình đề xuất | OWASP ZAP / Security Testing | Toàn hệ thống |
 
+## Màn hình dùng để đo NFR giao diện
+
+NFR-GLOBAL-02, 03 và 04 đo trên danh sách màn hình dưới đây. Ở MS-01 đến MS-04, QA kiểm các AC này trên màn hình đã giao của mốc, và mỗi module được làm VI/EN, responsive trong hạng mục báo giá của chính module đó (cột Module và FR, sheet Báo giá, [quotation.xlsx](../08-project/quotation.xlsx)). MS-05 chạy đủ 19 AC trên S01–S14. TS-117 đến TS-122 đo lại ngưỡng tổng trên bản tích hợp MS-06.
+
+| Mã | Màn hình | Module | Giao ở mốc |
+| --- | --- | --- | --- |
+| S01 | Đăng nhập, đăng xuất | M01 | MS-01 |
+| S02 | Đặt lại mật khẩu | M01 | MS-02 |
+| S03 | Quản trị tài khoản và vai trò | M01 (FR-AUTH-07) | MS-02 |
+| S04 | Tạo Ticket | M02 | MS-03 |
+| S05 | Danh sách và chi tiết Ticket của sinh viên | M02 | MS-03 |
+| S06 | FAQ | M02 | MS-03 |
+| S07 | Thông báo, bổ sung thông tin, mở lại, CSAT | M02 | MS-04 |
+| S08 | Hàng đợi Ticket của cán bộ | M03 | MS-04 |
+| S09 | Chi tiết Ticket của cán bộ: phản hồi, ghi chú, chuyển, trạng thái | M03 | MS-04 |
+| S10 | Cấu hình danh mục, phòng ban, routing | M04 | MS-04 |
+| S11 | Cấu hình SLA, lịch làm việc, mẫu phản hồi, FAQ | M04 | MS-04 |
+| S12 | Workload và phân công lại | M04 | MS-04 |
+| S13 | Dashboard tổng quan | M05 | MS-05 |
+| S14 | Báo cáo hiệu suất, xu hướng, CSAT và xuất CSV | M05 | MS-05 |
+
+**Bố cục chuẩn** (ngưỡng NFR-GLOBAL-03) nghĩa là ở độ rộng đo: trang không cuộn ngang, không phần tử bị che hoặc cắt chữ, mọi trường và nút của luồng chính thao tác được. Bảng dữ liệu rộng được cuộn trong khung riêng. Độ rộng đo: 375×812 (Mobile), 1024×768 và 1366×768 (Desktop).
+
 ---
 
 # GLOBAL NON-FUNCTIONAL REQUIREMENTS
@@ -65,17 +88,17 @@ Trong phạm vi dự án hiện hành, Dev, Test và Staging, kể cả UAT trê
 
 ### Acceptance Criteria
 
-**NFR-GLOBAL-01/AC-01 – Development sử dụng Mock Data**
+**NFR-GLOBAL-01/AC-01 – Development dùng dữ liệu giả lập**
 
-- Given: Hệ thống đang được phát triển.
-- When: Developer cần dữ liệu để phát triển chức năng.
-- Then: Có dữ liệu giả lập phù hợp để sử dụng.
+- Given: Bộ dữ liệu giả lập phiên bản hiện hành có manifest nguồn: 4 vai trò và 50 Ticket đánh dấu MOCK.
+- When: Developer khởi tạo môi trường Dev bằng script nạp dữ liệu của dự án.
+- Then: Môi trường có đủ 4 vai trò và 50 Ticket. 100% bản ghi mang nhãn MOCK, 0 bản ghi lấy từ nguồn thật.
 
-**NFR-GLOBAL-01/AC-02 – Testing sử dụng Mock Data**
+**NFR-GLOBAL-01/AC-02 – Testing dùng dữ liệu giả lập**
 
-- Given: QA thực hiện kiểm thử chức năng.
-- When: Test Case yêu cầu dữ liệu đầu vào.
-- Then: Có Mock Data phù hợp để thực hiện kiểm thử.
+- Given: Test run của một mốc và danh sách TS của mốc đó.
+- When: QA nạp dữ liệu Test/Staging và đối chiếu tài khoản, Ticket mà từng TS cần.
+- Then: Mọi TS của mốc dùng tài khoản và Ticket có trong manifest (SV-MOCK-01/02, Staff A/B, Manager A/B, Admin). Số TS thiếu dữ liệu là 0, không TS nào phải tạo dữ liệu thật.
 
 **NFR-GLOBAL-01/AC-03 – Chỉ dùng dữ liệu giả lập trên Dev/Test/Staging**
 
@@ -83,11 +106,11 @@ Trong phạm vi dự án hiện hành, Dev, Test và Staging, kể cả UAT trê
 - When: Đối chiếu bộ dữ liệu đã nạp trên Dev/Test/Staging, kiểm quyết định nhận hoặc từ chối bộ mẫu chưa xác minh.
 - Then: Số bản ghi thật là 0, mọi bộ được dùng truy vết được về nguồn giả lập, bộ chưa xác minh bị loại khỏi đợt kiểm cho tới khi xác minh. Lưu bằng chứng audit và quyết định cho từng môi trường.
 
-**NFR-GLOBAL-01/AC-04 – Mock Data hỗ trợ Functional Testing**
+**NFR-GLOBAL-01/AC-04 – Dữ liệu giả lập đủ tình huống kiểm thử chức năng**
 
-- Given: Một Functional Requirement cần được kiểm thử.
-- When: QA chuẩn bị Test Data.
-- Then: Mock Data phải có khả năng hỗ trợ các trường hợp kiểm thử cần thiết.
+- Given: Danh sách tình huống tại mục Dữ liệu dùng chung của [kịch bản test](../06-acceptance/test-scenarios.md#dữ-liệu-dùng-chung).
+- When: QA đối chiếu manifest với danh sách tình huống.
+- Then: Có ít nhất một Ticket cho mỗi trạng thái New, In Progress, Pending, Resolved; có và không có tệp; đúng hạn và quá hạn; có và không có CSAT; đủ bộ DT-01, IT-01, DT-02 cho chuyển phòng. Mỗi tình huống thiếu ghi Fail.
 
 ### TBD / Pending Confirmation
 
@@ -146,27 +169,27 @@ Yêu cầu này áp dụng cho các giao diện người dùng của:
 
 **NFR-GLOBAL-02/AC-01 – Giao diện Tiếng Việt**
 
-- Given: Hệ thống đang sử dụng Tiếng Việt.
-- When: User truy cập các chức năng chính.
-- Then: Các thành phần giao diện thuộc phạm vi hỗ trợ hiển thị bằng Tiếng Việt.
+- Given: Ngôn ngữ đang chọn là Tiếng Việt. Danh sách màn hình đã giao của mốc lấy từ S01–S14.
+- When: QA mở từng màn hình, kích hoạt một thông báo thành công và một thông báo lỗi của luồng chính.
+- Then: 100% nhãn, nút, tiêu đề, placeholder và thông báo hệ thống hiển thị Tiếng Việt. Còn một chuỗi Tiếng Anh hoặc khóa dịch thô (ví dụ `ticket.submit`) là Fail. Nội dung người dùng nhập không thuộc phạm vi dịch.
 
 **NFR-GLOBAL-02/AC-02 – Giao diện Tiếng Anh**
 
-- Given: Hệ thống đang sử dụng Tiếng Anh.
-- When: User truy cập các chức năng chính.
-- Then: Các thành phần giao diện thuộc phạm vi hỗ trợ hiển thị bằng Tiếng Anh.
+- Given: Ngôn ngữ đang chọn là Tiếng Anh. Danh sách màn hình đã giao của mốc lấy từ S01–S14.
+- When: QA mở từng màn hình, kích hoạt một thông báo thành công và một thông báo lỗi của luồng chính.
+- Then: 100% nhãn, nút, tiêu đề, placeholder và thông báo hệ thống hiển thị Tiếng Anh. Còn một chuỗi Tiếng Việt hoặc khóa dịch thô là Fail.
 
-**NFR-GLOBAL-02/AC-03 – Nhất quán ngôn ngữ**
+**NFR-GLOBAL-02/AC-03 – Giữ ngôn ngữ khi chuyển module**
 
-- Given: Một ngôn ngữ đã được áp dụng.
-- When: User di chuyển giữa các Module.
-- Then: Giao diện phải tiếp tục sử dụng ngôn ngữ tương ứng.
+- Given: Người dùng đã chọn Tiếng Anh.
+- When: Đi qua các màn hình theo quyền của vai trò (ví dụ S01 → S05 → S08 → S13), tải lại trang, đăng xuất rồi đăng nhập lại.
+- Then: Mọi màn hình giữ Tiếng Anh, lựa chọn được nhớ theo tài khoản. Số màn hình tự đổi ngôn ngữ là 0.
 
-**NFR-GLOBAL-02/AC-04 – Không ảnh hưởng dữ liệu**
+**NFR-GLOBAL-02/AC-04 – Đổi ngôn ngữ không đổi dữ liệu**
 
-- Given: User thay đổi ngôn ngữ giao diện.
-- When: Hệ thống cập nhật ngôn ngữ.
-- Then: Dữ liệu Ticket, User, Report và các dữ liệu nghiệp vụ khác không bị thay đổi.
+- Given: Ticket AU-2026-0001 có tiêu đề, nội dung và trạng thái; Dashboard có số liệu của bộ dữ liệu giả lập.
+- When: Ghi lại nội dung Ticket, số đếm Dashboard và tệp CSV, đổi Tiếng Việt ↔ Tiếng Anh rồi ghi lại lần nữa.
+- Then: Nội dung Ticket, số đếm và dữ liệu CSV giống hệt trước khi đổi. Chỉ nhãn giao diện và tên trạng thái hiển thị theo ngôn ngữ.
 
 ### TBD / Pending Confirmation
 
@@ -223,33 +246,33 @@ Tất cả các giao diện chính của:
 
 **NFR-GLOBAL-03/AC-01 – Desktop**
 
-- Given: User truy cập UniSupport trên Desktop.
-- When: User sử dụng một chức năng nằm trong In-Scope.
-- Then: Giao diện phải hiển thị và cho phép thực hiện chức năng tương ứng.
+- Given: Chrome và Edge bản ổn định hiện hành ở 1024×768 và 1366×768.
+- When: Thực hiện luồng chính trên từng màn hình đã giao của mốc.
+- Then: Đạt bố cục chuẩn ở cả hai độ rộng: không cuộn ngang trang, không che hoặc cắt chữ, mọi trường và nút của luồng chính thao tác được.
 
 **NFR-GLOBAL-03/AC-02 – Mobile**
 
-- Given: User truy cập UniSupport trên Mobile.
-- When: User sử dụng một chức năng nằm trong In-Scope.
-- Then: Giao diện phải hiển thị và cho phép thực hiện chức năng tương ứng.
+- Given: Chrome Android và Safari iOS ở 375×812.
+- When: Thực hiện luồng chính trên từng màn hình đã giao của mốc.
+- Then: Đạt bố cục chuẩn ở 375px. Menu thu gọn mở được, bảng dữ liệu cuộn trong khung riêng, trang không cuộn ngang.
 
-**NFR-GLOBAL-03/AC-03 – Responsive Layout**
+**NFR-GLOBAL-03/AC-03 – Đổi kích thước màn hình**
 
-- Given: Kích thước màn hình thay đổi.
-- When: Giao diện được render lại.
-- Then: Nội dung phải điều chỉnh phù hợp và không mất chức năng cốt lõi.
+- Given: Một màn hình đã giao đang mở ở 1366px và đang nhập dở một form.
+- When: Thu hẹp cửa sổ qua 1024px, 768px rồi 375px.
+- Then: Ở mỗi độ rộng, bố cục đạt chuẩn, không mất trường hoặc nút của luồng chính và dữ liệu đang nhập không mất.
 
-**NFR-GLOBAL-03/AC-04 – Navigation**
+**NFR-GLOBAL-03/AC-04 – Điều hướng**
 
-- Given: User đang sử dụng Mobile hoặc Desktop.
-- When: User điều hướng giữa các chức năng.
-- Then: Các chức năng chính vẫn có thể truy cập được.
+- Given: Mỗi vai trò đăng nhập ở 375px và 1024px.
+- When: Từ trang chủ của vai trò, mở menu và đi tới từng màn hình theo quyền.
+- Then: Mọi màn hình theo quyền tới được trong tối đa 3 lần chạm hoặc nhấp từ trang chủ của vai trò ở cả hai độ rộng.
 
-**NFR-GLOBAL-03/AC-05 – Business Logic**
+**NFR-GLOBAL-03/AC-05 – Cùng quy tắc trên Desktop và Mobile**
 
-- Given: Cùng một User và cùng một chức năng.
-- When: User sử dụng trên Desktop hoặc Mobile.
-- Then: Business Rule và Permission phải được áp dụng giống nhau.
+- Given: Tài khoản Staff A, Ticket DT-01 và một ghi chú nội bộ của phòng B.
+- When: Thực hiện cùng thao tác đổi trạng thái và xem ghi chú phòng B ở 375px rồi ở 1366px.
+- Then: Kết quả, thông báo lỗi và quyền giống nhau ở hai độ rộng. API trả cùng mã phản hồi.
 
 ### TBD / Pending Confirmation
 
@@ -312,55 +335,41 @@ Toàn bộ giao diện của UniSupport.
 
 ### Acceptance Criteria
 
-**NFR-GLOBAL-04/AC-01 – Consistent Terminology**
+**NFR-GLOBAL-04/AC-01 – Thuật ngữ nhất quán**
 
-- Given: Một thuật ngữ nghiệp vụ được sử dụng ở nhiều Module.
-- When: User truy cập các Module khác nhau.
-- Then: Thuật ngữ phải được sử dụng nhất quán.
+- Given: Bảng thuật ngữ tại [terminology.md](../02-domain/terminology.md).
+- When: QA rà nhãn của các màn hình đã giao ở cả hai ngôn ngữ.
+- Then: Ticket, Category, Priority và bốn vai trò dùng đúng một cách gọi theo bảng thuật ngữ ở mỗi ngôn ngữ. Mỗi cách gọi khác ghi Fail.
 
-Ví dụ:
+**NFR-GLOBAL-04/AC-02 – Trạng thái Ticket nhất quán**
 
-- Ticket.
-- Category.
-- Priority.
-- Student.
-- Staff.
-- Manager.
-- Administrator.
+- Given: Có Ticket ở đủ bốn trạng thái.
+- When: Xem cùng Ticket ở S05, S08, S09, S13 và trong tệp CSV.
+- Then: Trạng thái hiển thị đúng bốn cặp Mới tạo/New, Đang xử lý/In Progress, Cần bổ sung/Pending, Hoàn thành/Resolved. Số cách gọi khác là 0.
 
-**NFR-GLOBAL-04/AC-02 – Consistent Ticket Status**
+**NFR-GLOBAL-04/AC-03 – Phản hồi khi nhập sai**
 
-- Given: Ticket được hiển thị ở nhiều màn hình.
-- When: User xem trạng thái Ticket.
-- Then: Cách gọi trạng thái phải nhất quán với:
-  - Mới tạo.
-  - Đang xử lý.
-  - Cần bổ sung.
-  - Hoàn thành.
+- Given: Danh sách form đã giao của mốc: S01, S02, S03, S04, S07, S09, S10, S11, S12.
+- When: Gửi mỗi form với một trường bắt buộc để trống, sau đó với một trường sai định dạng.
+- Then: 100% form chặn gửi, đánh dấu đúng trường lỗi và nêu cách sửa bằng ngôn ngữ đang chọn. Form gửi được hoặc chỉ báo lỗi chung là Fail.
 
-**NFR-GLOBAL-04/AC-03 – Form Validation Feedback**
+**NFR-GLOBAL-04/AC-04 – Phản hồi khi thao tác thành công**
 
-- Given: User nhập thiếu hoặc nhập dữ liệu không hợp lệ.
-- When: User thực hiện Submit.
-- Then: Hệ thống phải cung cấp thông tin để User nhận biết dữ liệu cần bổ sung hoặc chỉnh sửa.
+- Given: Các thao tác tạo, lưu, gửi và xuất trên màn hình đã giao.
+- When: Thực hiện thành công từng thao tác.
+- Then: Mỗi thao tác hiển thị thông báo thành công nêu đối tượng vừa xử lý (ví dụ mã Ticket), và dữ liệu mới hiện trên màn hình mà không cần tải lại trang.
 
-**NFR-GLOBAL-04/AC-04 – Success Feedback**
+**NFR-GLOBAL-04/AC-05 – Giao diện theo quyền**
 
-- Given: Một thao tác được thực hiện thành công.
-- When: Hệ thống hoàn tất xử lý.
-- Then: User phải nhận được phản hồi thể hiện kết quả thao tác.
+- Given: Bốn tài khoản Student, Staff, Manager, Administrator và ma trận quyền đã xác nhận tại OQ-05.
+- When: Đăng nhập lần lượt từng tài khoản và mở mọi mục trên menu.
+- Then: Menu và nút chỉ hiện chức năng có trong ma trận quyền của vai trò. Số nút dẫn tới màn hình bị từ chối là 0.
 
-**NFR-GLOBAL-04/AC-05 – Permission-aware UI**
+**NFR-GLOBAL-04/AC-06 – Thể hiện dữ liệu nhất quán giữa module**
 
-- Given: User có một Role cụ thể.
-- When: User truy cập hệ thống.
-- Then: Các chức năng được cung cấp phải phù hợp với Permission của Role đó.
-
-**NFR-GLOBAL-04/AC-06 – Cross-module Consistency**
-
-- Given: Cùng một loại dữ liệu hoặc thao tác xuất hiện ở nhiều Module.
-- When: User sử dụng các Module khác nhau.
-- Then: Cách thể hiện và thuật ngữ phải nhất quán.
+- Given: Ticket DT-01 xuất hiện ở M02, M03 và M05.
+- When: So sánh cùng Ticket ở S05, S09, S13 và trong CSV.
+- Then: Cùng mã Ticket, tên phòng, trạng thái và định dạng ngày giờ dd/mm/yyyy HH:mm (UTC+7) ở mọi nơi.
 
 ### TBD / Pending Confirmation
 

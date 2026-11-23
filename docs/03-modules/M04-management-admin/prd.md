@@ -1,6 +1,6 @@
 # MODULE M04: ADMIN CONFIG (QUẢN TRỊ & CẤU HÌNH)
 
-Bản đặc tả phục vụ kế hoạch Mô phỏng. Tham số mật khẩu, thời hạn, tệp, số dòng và chính sách quyền theo Business Rules/NFR là đề xuất cần PM/BA xác nhận trước baseline nghiệm thu.
+Bản đặc tả phục vụ kế hoạch Mô phỏng. Tham số mật khẩu, thời hạn, tệp, ghi chú, nhật ký và gửi lại Email lấy từ [Business Rules](../../02-domain/business-rules.md) BR-01 đến BR-10 và [NFR](../../05-non-functional-requirements/README.md). Giá trị đang đề xuất có người chốt và hạn chốt tại [câu hỏi mở](../../08-project/open-questions.md).
 
 
 # 1. Đặc tả yêu cầu chức năng

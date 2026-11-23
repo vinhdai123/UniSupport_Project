@@ -1,6 +1,6 @@
 # Ma trận truy vết UniSupport
 
-Bảng tổng hợp theo từng AC từ PRD, test, task GitHub và kế hoạch. Bảng dùng phương án cập nhật trong PR R1. Mỗi Q-xx dẫn hạng mục theo module trong báo giá, nhiều AC dùng chung một hạng mục. Một chức năng có thể được triển khai qua nhiều gói công việc, như phần Sinh viên ở Q-04 và luồng xử lý/kết quả tại Q-05. Quản trị tài khoản theo WBS 3.7 thuộc Q-06, thông báo WBS 4.6 thuộc Q-05, SLA WBS 5.3 thuộc Q-06.
+Bảng tổng hợp theo từng AC từ PRD, test, task GitHub và kế hoạch, theo Master Plan baseline 3.2. Cột Báo giá lấy từ cột Module và FR của sheet Báo giá trong [quotation.xlsx](../08-project/quotation.xlsx); nhiều AC dùng chung một hạng mục. Một chức năng có thể được triển khai qua nhiều gói công việc, như phần Sinh viên ở Q-04 và luồng xử lý/kết quả tại Q-05. Quản trị tài khoản theo WBS 3.7 thuộc Q-06, thông báo WBS 4.6 thuộc Q-05, SLA WBS 5.3 thuộc Q-06.
 
 Các AC có nhiều điều kiện được kiểm theo từng ca con trong cùng mã TS. Khi chạy TS-020, TS-022, TS-023, TS-027, TS-039, TS-051, TS-052, TS-065, TS-082 hoặc TS-100, lưu kết quả từng ca con trước khi đánh dấu AC đạt. Đối chiếu quyền chuyển phòng với OQ-05 và kiểm dữ liệu giả lập trên từng môi trường theo NFR-GLOBAL-01. Tham số tệp tham chiếu BR-02 và OQ-04.
 
@@ -29,14 +29,17 @@ Các AC có nhiều điều kiện được kiểm theo từng ca con trong cùn
 | [FR-STU-01/AC-01](../03-modules/M02-student-portal/prd.md) | TS-021 | [#60](https://github.com/vinhdai123/UniSupport_Project/issues/60), [#93](https://github.com/vinhdai123/UniSupport_Project/issues/93) | MS-03 | Q-04 |
 | [FR-STU-01/AC-02](../03-modules/M02-student-portal/prd.md) | TS-022 | [#60](https://github.com/vinhdai123/UniSupport_Project/issues/60) | MS-03 | Q-04 |
 | [FR-STU-01/AC-03](../03-modules/M02-student-portal/prd.md) | TS-023 | [#60](https://github.com/vinhdai123/UniSupport_Project/issues/60) | MS-03 | Q-04 |
+| [FR-STU-01/AC-04](../03-modules/M02-student-portal/prd.md) | TS-123 | [#60](https://github.com/vinhdai123/UniSupport_Project/issues/60) | MS-03 | Q-04 |
 | [FR-STU-02/AC-01](../03-modules/M02-student-portal/prd.md) | TS-024 | [#68](https://github.com/vinhdai123/UniSupport_Project/issues/68) | MS-03 | Q-04 |
 | [FR-STU-02/AC-02](../03-modules/M02-student-portal/prd.md) | TS-025 | [#68](https://github.com/vinhdai123/UniSupport_Project/issues/68) | MS-03 | Q-04 |
+| [FR-STU-02/AC-03](../03-modules/M02-student-portal/prd.md) | TS-124 | [#68](https://github.com/vinhdai123/UniSupport_Project/issues/68) | MS-03 | Q-04 |
 | [FR-STU-03/AC-01](../03-modules/M02-student-portal/prd.md) | TS-026 | [#79](https://github.com/vinhdai123/UniSupport_Project/issues/79) | MS-04 | Q-04 |
 | [FR-STU-03/AC-02](../03-modules/M02-student-portal/prd.md) | TS-027 | [#79](https://github.com/vinhdai123/UniSupport_Project/issues/79) | MS-04 | Q-04 |
 | [FR-STU-03/AC-03](../03-modules/M02-student-portal/prd.md) | TS-028 | [#79](https://github.com/vinhdai123/UniSupport_Project/issues/79) | MS-04 | Q-04 |
 | [FR-STU-03/AC-04](../03-modules/M02-student-portal/prd.md) | TS-029 | [#79](https://github.com/vinhdai123/UniSupport_Project/issues/79) | MS-04 | Q-04 |
 | [FR-STU-04/AC-01](../03-modules/M02-student-portal/prd.md) | TS-030 | [#74](https://github.com/vinhdai123/UniSupport_Project/issues/74) | MS-04 | Q-04, Q-05 |
 | [FR-STU-04/AC-02](../03-modules/M02-student-portal/prd.md) | TS-031 | [#74](https://github.com/vinhdai123/UniSupport_Project/issues/74) | MS-04 | Q-04, Q-05 |
+| [FR-STU-04/AC-03](../03-modules/M02-student-portal/prd.md) | TS-125 | [#74](https://github.com/vinhdai123/UniSupport_Project/issues/74) | MS-04 | Q-04, Q-05 |
 | [FR-STU-05/AC-01](../03-modules/M02-student-portal/prd.md) | TS-032 | [#75](https://github.com/vinhdai123/UniSupport_Project/issues/75) | MS-04 | Q-04, Q-05 |
 | [FR-STU-05/AC-02](../03-modules/M02-student-portal/prd.md) | TS-033 | [#75](https://github.com/vinhdai123/UniSupport_Project/issues/75) | MS-04 | Q-04, Q-05 |
 | [FR-STU-05/AC-03](../03-modules/M02-student-portal/prd.md) | TS-034 | [#75](https://github.com/vinhdai123/UniSupport_Project/issues/75) | MS-04 | Q-04, Q-05 |
@@ -56,12 +59,14 @@ Các AC có nhiều điều kiện được kiểm theo từng ca con trong cùn
 | [FR-STF-03/AC-01](../03-modules/M03-staff-desk/prd.md) | TS-048 | [#64](https://github.com/vinhdai123/UniSupport_Project/issues/64) | MS-04 | Q-05 |
 | [FR-STF-03/AC-02](../03-modules/M03-staff-desk/prd.md) | TS-049 | [#64](https://github.com/vinhdai123/UniSupport_Project/issues/64) | MS-04 | Q-05 |
 | [FR-STF-03/AC-03](../03-modules/M03-staff-desk/prd.md) | TS-050 | [#64](https://github.com/vinhdai123/UniSupport_Project/issues/64) | MS-04 | Q-05 |
+| [FR-STF-03/AC-04](../03-modules/M03-staff-desk/prd.md) | TS-126 | [#64](https://github.com/vinhdai123/UniSupport_Project/issues/64) | MS-04 | Q-05 |
 | [FR-STF-04/AC-01](../03-modules/M03-staff-desk/prd.md) | TS-051 | [#13](https://github.com/vinhdai123/UniSupport_Project/issues/13) | MS-04 | Q-05 |
 | [FR-STF-04/AC-02](../03-modules/M03-staff-desk/prd.md) | TS-052 | [#13](https://github.com/vinhdai123/UniSupport_Project/issues/13) | MS-04 | Q-05 |
 | [FR-STF-05/AC-01](../03-modules/M03-staff-desk/prd.md) | TS-053 | [#69](https://github.com/vinhdai123/UniSupport_Project/issues/69) | MS-04 | Q-05 |
 | [FR-STF-05/AC-02](../03-modules/M03-staff-desk/prd.md) | TS-054 | [#69](https://github.com/vinhdai123/UniSupport_Project/issues/69) | MS-04 | Q-05 |
 | [FR-STF-05/AC-03](../03-modules/M03-staff-desk/prd.md) | TS-055 | [#69](https://github.com/vinhdai123/UniSupport_Project/issues/69) | MS-04 | Q-05 |
 | [FR-STF-05/AC-04](../03-modules/M03-staff-desk/prd.md) | TS-056 | [#69](https://github.com/vinhdai123/UniSupport_Project/issues/69) | MS-04 | Q-05 |
+| [FR-STF-05/AC-05](../03-modules/M03-staff-desk/prd.md) | TS-127 | [#69](https://github.com/vinhdai123/UniSupport_Project/issues/69) | MS-04 | Q-05 |
 | [FR-STF-06/AC-01](../03-modules/M03-staff-desk/prd.md) | TS-057 | [#15](https://github.com/vinhdai123/UniSupport_Project/issues/15) | MS-04 | Q-05 |
 | [FR-STF-06/AC-02](../03-modules/M03-staff-desk/prd.md) | TS-058 | [#15](https://github.com/vinhdai123/UniSupport_Project/issues/15) | MS-04 | Q-05 |
 | [FR-STF-06/AC-03](../03-modules/M03-staff-desk/prd.md) | TS-059 | [#15](https://github.com/vinhdai123/UniSupport_Project/issues/15) | MS-04 | Q-05 |
@@ -107,21 +112,21 @@ Các AC có nhiều điều kiện được kiểm theo từng ca con trong cùn
 | [NFR-GLOBAL-01/AC-02](../05-non-functional-requirements/README.md) | TS-099 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
 | [NFR-GLOBAL-01/AC-03](../05-non-functional-requirements/README.md) | TS-100 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
 | [NFR-GLOBAL-01/AC-04](../05-non-functional-requirements/README.md) | TS-101 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-02/AC-01](../05-non-functional-requirements/README.md) | TS-102 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-02/AC-02](../05-non-functional-requirements/README.md) | TS-103 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-02/AC-03](../05-non-functional-requirements/README.md) | TS-104 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-02/AC-04](../05-non-functional-requirements/README.md) | TS-105 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-03/AC-01](../05-non-functional-requirements/README.md) | TS-106 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-03/AC-02](../05-non-functional-requirements/README.md) | TS-107 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-03/AC-03](../05-non-functional-requirements/README.md) | TS-108 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-03/AC-04](../05-non-functional-requirements/README.md) | TS-109 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-03/AC-05](../05-non-functional-requirements/README.md) | TS-110 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-04/AC-01](../05-non-functional-requirements/README.md) | TS-111 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-04/AC-02](../05-non-functional-requirements/README.md) | TS-112 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-04/AC-03](../05-non-functional-requirements/README.md) | TS-113 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-04/AC-04](../05-non-functional-requirements/README.md) | TS-114 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-04/AC-05](../05-non-functional-requirements/README.md) | TS-115 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
-| [NFR-GLOBAL-04/AC-06](../05-non-functional-requirements/README.md) | TS-116 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-08 |
+| [NFR-GLOBAL-02/AC-01](../05-non-functional-requirements/README.md) | TS-102 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-02/AC-02](../05-non-functional-requirements/README.md) | TS-103 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-02/AC-03](../05-non-functional-requirements/README.md) | TS-104 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-02/AC-04](../05-non-functional-requirements/README.md) | TS-105 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-03/AC-01](../05-non-functional-requirements/README.md) | TS-106 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-03/AC-02](../05-non-functional-requirements/README.md) | TS-107 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-03/AC-03](../05-non-functional-requirements/README.md) | TS-108 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-03/AC-04](../05-non-functional-requirements/README.md) | TS-109 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-03/AC-05](../05-non-functional-requirements/README.md) | TS-110 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-04/AC-01](../05-non-functional-requirements/README.md) | TS-111 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-04/AC-02](../05-non-functional-requirements/README.md) | TS-112 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-04/AC-03](../05-non-functional-requirements/README.md) | TS-113 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-04/AC-04](../05-non-functional-requirements/README.md) | TS-114 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-04/AC-05](../05-non-functional-requirements/README.md) | TS-115 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
+| [NFR-GLOBAL-04/AC-06](../05-non-functional-requirements/README.md) | TS-116 | [#22](https://github.com/vinhdai123/UniSupport_Project/issues/22) | MS-05 | Q-03–Q-07 (làm theo module), Q-08 (kiểm đủ 5 module) |
 | [NFR-GLOBAL-01](../05-non-functional-requirements/README.md) | TS-117 | [#23](https://github.com/vinhdai123/UniSupport_Project/issues/23) | MS-06 | Q-08 |
 | [NFR-GLOBAL-02](../05-non-functional-requirements/README.md) | TS-118 | [#23](https://github.com/vinhdai123/UniSupport_Project/issues/23) | MS-06 | Q-08 |
 | [NFR-GLOBAL-03](../05-non-functional-requirements/README.md) | TS-119 | [#23](https://github.com/vinhdai123/UniSupport_Project/issues/23) | MS-06 | Q-08 |

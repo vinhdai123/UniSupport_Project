@@ -1,6 +1,6 @@
 # MODULE M01: SECURITY, AUTHENTICATION & RBAC
 
-Bản đặc tả phục vụ kế hoạch Mô phỏng. Tham số mật khẩu, thời hạn, tệp, số dòng và chính sách quyền theo Business Rules/NFR là đề xuất cần PM/BA xác nhận trước baseline nghiệm thu.
+Bản đặc tả phục vụ kế hoạch Mô phỏng. Tham số mật khẩu, thời hạn, tệp, ghi chú, nhật ký và gửi lại Email lấy từ [Business Rules](../../02-domain/business-rules.md) BR-01 đến BR-10 và [NFR](../../05-non-functional-requirements/README.md). Giá trị đang đề xuất có người chốt và hạn chốt tại [câu hỏi mở](../../08-project/open-questions.md).
 
 
 # 1. Đặc tả yêu cầu chức năng
@@ -77,11 +77,11 @@ Tài khoản của người dùng tồn tại trên hệ thống.
 5. Hệ thống kiểm tra tính hợp lệ của mật khẩu mới.
 6. Hệ thống cập nhật mật khẩu, thông báo thành công và chuyển về màn hình đăng nhập.
 
-> Quy trình xác minh người dùng cụ thể: **TBD – Pending Confirmation**.
+> Quy trình xác minh theo [BR-07](../../02-domain/business-rules.md#br-07--xác-minh-khi-đặt-lại-mật-khẩu-reset-verification): liên kết một lần gửi tới email đã đăng ký, hiệu lực 30 phút.
 
 ### Quy tắc nghiệp vụ
-- BR-AUTH-03: Mật khẩu mới phải đáp ứng chính sách bảo mật mật khẩu của hệ thống.
-- BR-AUTH-04: Quá trình xác minh người dùng có giới hạn thời gian hiệu lực.
+- BR-AUTH-03: Mật khẩu mới phải đáp ứng [BR-06](../../02-domain/business-rules.md#br-06--chính-sách-mật-khẩu-password-policy): 8–64 ký tự, có chữ hoa, chữ thường, chữ số, không trùng định danh đăng nhập hoặc mật khẩu đang dùng.
+- BR-AUTH-04: Liên kết xác minh theo BR-07 có hiệu lực 30 phút, dùng một lần; yêu cầu mới làm vô hiệu liên kết cũ.
 
 ### Luồng rẽ nhánh và lỗi
 - E-AUTH-03: Nếu tài khoản không tồn tại, hệ thống không tiếp tục quy trình để tránh lộ lọt thông tin.
@@ -94,20 +94,20 @@ Tài khoản của người dùng tồn tại trên hệ thống.
   - Then: Hệ thống cập nhật mật khẩu mới và người dùng có thể sử dụng ngay lập tức.
 - **FR-AUTH-02/AC-02:** Mật khẩu mới không đạt chuẩn (Kiểm tra BR-AUTH-03)
   - Given: Người dùng ở bước nhập mật khẩu mới.
-  - When: Người dùng nhập mật khẩu quá ngắn hoặc thiếu ký tự bảo mật.
-  - Then: Hệ thống báo lỗi và yêu cầu nhập lại theo đúng chính sách.
+  - When: Thử độc lập `Abc1234` (7 ký tự), `abcdefg1` (thiếu chữ hoa), `Abcdefgh` (thiếu chữ số), mật khẩu trùng định danh đăng nhập, rồi `Abcdefg1` (8 ký tự hợp lệ).
+  - Then: Bốn lần đầu bị từ chối, mật khẩu cũ giữ nguyên và thông báo nêu đúng điều kiện còn thiếu theo BR-06. Lần cuối được chấp nhận.
 
 - **FR-AUTH-02/AC-03:** Tài khoản không tồn tại (E-AUTH-03)
   - Given: Người dùng chưa đăng nhập.
   - When: Yêu cầu đặt lại mật khẩu cho định danh không tồn tại.
   - Then: Hệ thống hiển thị phản hồi chung, không tiết lộ sự tồn tại của tài khoản và không tạo thay đổi mật khẩu.
 - **FR-AUTH-02/AC-04:** Xác minh thất bại hoặc hết hạn (BR-AUTH-04, E-AUTH-04)
-  - Given: Có yêu cầu đặt lại mật khẩu với cơ chế xác minh và thời hạn đã xác nhận.
-  - When: Gửi bằng chứng xác minh sai, sau đó thử bằng chứng đã hết hạn.
-  - Then: Cả hai trường hợp đều bị từ chối ở API, mật khẩu cũ giữ nguyên và người dùng được hướng dẫn thực hiện lại.
+  - Given: Có yêu cầu đặt lại mật khẩu với liên kết theo BR-07 (hiệu lực 30 phút, dùng một lần).
+  - When: Thử liên kết sai mã, liên kết ở phút 31, và liên kết đã dùng để đổi mật khẩu thành công.
+  - Then: Cả ba trường hợp bị từ chối ở API, mật khẩu giữ nguyên giá trị trước đó và người dùng được hướng dẫn yêu cầu liên kết mới.
 
 ### Tình huống ngoại lệ
-- Thử bằng chứng xác minh ngay trước và sau thời hạn đã xác nhận, sau đó thử dùng lại sau một lần đổi thành công.
+- Dùng liên kết ở phút 29 (được chấp nhận) và phút 31 (bị từ chối); tạo yêu cầu mới rồi dùng liên kết cũ (bị từ chối).
 
 ---
 
@@ -224,7 +224,7 @@ Người dùng vừa thực hiện thành công một thao tác làm thay đổi
 2. Nếu thuộc nhóm cần ghi nhận, hệ thống thu thập thông tin bao gồm người thực hiện, thao tác, đối tượng bị tác động và thời điểm.
 3. Hệ thống tạo bản ghi nhật ký và lưu trữ an toàn vào cơ sở dữ liệu.
 
-> Danh sách cụ thể các thao tác cần ghi nhật ký: **TBD – Pending Confirmation**.
+> Danh sách thao tác phải ghi nhật ký và các trường của bản ghi theo [BR-08](../../02-domain/business-rules.md#br-08--thao-tác-phải-ghi-nhật-ký-audit-scope).
 
 ### Quy tắc nghiệp vụ
 - BR-AUTH-09: Việc ghi nhật ký hệ thống diễn ra độc lập và giữ nguyên kết quả thao tác gốc, thời gian phản hồi tuân theo NFR-PERF-01 đã xác nhận.
@@ -236,7 +236,7 @@ Người dùng vừa thực hiện thành công một thao tác làm thay đổi
 - **FR-AUTH-05/AC-01:** Ghi nhận thao tác thành công
   - Given: Quản trị viên thay đổi vai trò của một tài khoản.
   - When: Thao tác cập nhật thành công.
-  - Then: Hệ thống lưu lại một bản ghi chứa ID của quản trị viên, hành động thay đổi quyền và thời gian thực hiện.
+  - Then: Hệ thống lưu một bản ghi có đủ trường theo BR-08: ID quản trị viên, vai trò, hành động đổi vai trò, tài khoản bị tác động, vai trò trước và sau, thời điểm UTC+7 và kết quả.
 
 - **FR-AUTH-05/AC-02:** Lỗi hệ thống ghi nhật ký (BR-AUTH-09, E-AUTH-07)
   - Given: Môi trường kiểm thử cô lập mô phỏng lỗi nơi lưu nhật ký.
