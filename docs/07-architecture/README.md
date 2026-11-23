@@ -1,6 +1,6 @@
 # Kiến trúc hệ thống (System Architecture)
 
-<!-- Hướng dẫn: phần này dùng làm bằng chứng cho PRD, effort và rủi ro. Giảng viên không chấm thiết kế đúng hay sai. Giúp làm rõ cấu trúc kỹ thuật tổng thể của UniSupport. -->
+<!-- Phần này làm rõ cấu trúc kỹ thuật tổng thể của UniSupport và là căn cứ cho PRD, effort và rủi ro. -->
 
 ## 1. Mô hình Kiến trúc Tổng thể (High-Level Architecture)
 
