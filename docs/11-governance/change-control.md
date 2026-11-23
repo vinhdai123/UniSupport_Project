@@ -44,6 +44,7 @@ Mỗi Change Request bắt buộc phải được đánh giá trên 6 khía cạ
 | **Thay đổi In-Scope, Ngân sách hoặc Cột mốc bàn giao (MS-01 đến MS-08)** | Đại diện có thẩm quyền của Aurora University & Project Manager | Văn bản ký xác nhận hoặc Email chính thức |
 | **Thay đổi giải pháp kỹ thuật, thư viện, kiến trúc nội bộ** | Technical Lead | Phê duyệt trên GitHub Pull Request / Architecture review |
 | **Điều chỉnh phân bổ nhân sự, thứ tự task nội bộ (không trễ mốc)** | Project Manager | Cập nhật trên GitHub Projects / Milestone board |
+| **Làm rõ hoặc bổ sung AC, quy tắc nghiệp vụ cho chức năng đã cam kết, không đổi phạm vi, giá hay mốc** | PM/BA đề xuất; đại diện nghiệp vụ Aurora University xác nhận | Email hoặc biên bản, theo dõi bằng câu hỏi mở `OQ-xx`. Trước khi trường xác nhận, AC và quy tắc ghi trạng thái đề xuất. Nếu ảnh hưởng phạm vi, giá hoặc mốc thì lập CR. |
 | **Thay đổi nhỏ về nhãn hiển thị, tinh chỉnh giao diện nhỏ (UI tweak)** | UI/UX Designer & BA / PM | Xác nhận qua Issue comment |
 
 ---

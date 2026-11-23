@@ -6,8 +6,8 @@
 
 | Nội dung | Giá trị |
 | --- | --- |
-| Phiên bản | **Baseline 3.2**, duyệt ngày 23/11/2026. Bản 3.0 được duyệt khi ký thỏa thuận ngày 28/09/2026; 3.1 và 3.2 là điều chỉnh nội bộ không đổi ngày, giá hay phạm vi. |
-| Người duyệt | Bản 3.0: PM (Trần Vĩnh Đại) và đại diện Aurora University — Mô phỏng. Bản 3.1 và 3.2 chỉ đổi phân bổ nội bộ, PM duyệt theo [Change Control](../11-governance/change-control.md#người-duyệt). |
+| Phiên bản | **Baseline 3.2**, PM duyệt ngày 23/11/2026. Bản 3.0 được duyệt khi ký thỏa thuận ngày 28/09/2026. Bản 3.1 và 3.2 không đổi ngày, giá hay phạm vi. Bản 3.2 bổ sung 5 AC và tham số BR-06 đến BR-10 cho chức năng đã cam kết; các nội dung này là **đề xuất chờ trường xác nhận tại [OQ-09](open-questions.md)**. |
+| Người duyệt | Bản 3.0: PM (Trần Vĩnh Đại) và đại diện Aurora University — Mô phỏng. Bản 3.1 và phần phân bổ giờ QA của bản 3.2: PM duyệt. 5 AC và BR-06 đến BR-10: đại diện nghiệp vụ Aurora University xác nhận tại OQ-09, vì PRD và tiêu chí nghiệm thu đã được trường xác nhận tại MS-01 (Proposal mục 2, 8, 9). Phân loại theo [Change Control](../11-governance/change-control.md#người-duyệt). |
 | Ngày khởi động | **05/10/2026**, thứ Hai sau khi ký thỏa thuận và nhận tạm ứng 30% ngày 28/09/2026. |
 | Thời gian và mốc cuối | 23 tuần, MS-08 ngày **12/03/2027**, bảo hành đến 11/04/2027. |
 | Sheet baseline | Hướng dẫn, Master Schedule (Gantt) chứa WBS, Milestone Matrix, Resources, RACI & Governance, SLA & Project Metrics, Risk Register, Change Log. |

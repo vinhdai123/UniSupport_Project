@@ -152,7 +152,7 @@ Cán bộ có quyền xử lý Ticket đang mở chi tiết Ticket đó.
   - Given: Ticket đã bắt đầu xử lý.
   - When: Staff gọi giao diện hoặc API yêu cầu đổi về Mới tạo.
   - Then: Hệ thống từ chối, giữ trạng thái và lịch sử đã có.
-- **FR-STF-03/AC-04:** Mức ưu tiên mặc định và quyền đổi (BR-03, BR-STF-15)
+- **FR-STF-03/AC-04:** Mức ưu tiên mặc định và quyền đổi (BR-03, BR-STF-15) — *Đề xuất ở baseline 3.2, chờ trường xác nhận tại [OQ-09](../../08-project/open-questions.md)*
   - Given: Sinh viên vừa tạo Ticket mới. Staff A phụ trách Ticket, Staff B thuộc phòng khác.
   - When: Mở Ticket; Staff B gọi API đổi mức ưu tiên lên High; Staff A đổi lên High.
   - Then: Ticket mới có mức `Medium`. Yêu cầu của Staff B bị từ chối, mức giữ `Medium`. Yêu cầu của Staff A thành công, lịch sử ghi người đổi và giá trị trước, sau.
@@ -257,7 +257,7 @@ Cán bộ đang phụ trách Ticket đó.
   - When: Thử độc lập gửi phản hồi với đầu vào sai định dạng, rồi gửi và yêu cầu bổ sung với tệp đúng định dạng nhưng bị đánh dấu Không an toàn.
   - Then: Cả hai lần bị từ chối với lý do tương ứng. Không phát hành phản hồi, không gắn tệp vào Ticket, không gửi thông báo và không đổi trạng thái sang Cần bổ sung.
 
-- **FR-STF-05/AC-05:** Trả lời thông thường kèm thông báo (A-STF-05-01)
+- **FR-STF-05/AC-05:** Trả lời thông thường kèm thông báo (A-STF-05-01) — *Đề xuất ở baseline 3.2, chờ trường xác nhận tại [OQ-09](../../08-project/open-questions.md)*
   - Given: Ticket của SV-MOCK-01 đang ở "Đang xử lý".
   - When: Staff nhập "Phòng đã tiếp nhận hồ sơ, dự kiến trả kết quả ngày mai" và bấm "Gửi".
   - Then: Phản hồi hiện trong lịch sử Ticket ở giao diện sinh viên, trạng thái giữ "Đang xử lý". SV-MOCK-01 có đúng một thông báo trong hệ thống và một Email cho sự kiện này.

@@ -54,7 +54,7 @@ Sinh viên đã đăng nhập thành công vào Cổng hỗ trợ sinh viên.
   - Then: Tệp sai định dạng hoặc quá dung lượng bị từ chối với lý do tương ứng. Bộ N tệp hợp lệ được chấp nhận. Khi thêm tệp thứ N + 1, hệ thống báo giới hạn, không nhận tệp vượt và không lưu Ticket với hơn N tệp.
 
 
-- **FR-STU-01/AC-04:** Định dạng và tính bất biến của Ticket ID (BR-01, BR-STU-03)
+- **FR-STU-01/AC-04:** Định dạng và tính bất biến của Ticket ID (BR-01, BR-STU-03) — *Đề xuất ở baseline 3.2, chờ trường xác nhận tại [OQ-09](../../08-project/open-questions.md)*
   - Given: Năm hệ thống là 2026 và Ticket cuối cùng trong năm có mã `AU-2026-0041`.
   - When: Sinh viên tạo hai Ticket liên tiếp, sau đó Ticket thứ nhất được đổi trạng thái, chuyển phòng và mở lại.
   - Then: Hai Ticket nhận `AU-2026-0042` và `AU-2026-0043`. Mã của Ticket thứ nhất giữ nguyên sau mọi thao tác, ở giao diện, API, thông báo và CSV.
@@ -104,7 +104,7 @@ Sinh viên đã đăng nhập.
   - Given: Sinh viên C là người mới, chưa từng tạo yêu cầu.
   - When: Sinh viên C truy cập Danh sách yêu cầu.
   - Then: Hệ thống hiển thị thông báo "Bạn chưa có yêu cầu hỗ trợ nào" kèm nút bấm điều hướng đi tạo yêu cầu mới.
-- **FR-STU-02/AC-03:** Lọc và tìm kiếm Ticket (A-STU-02-01, BR-STU-12)
+- **FR-STU-02/AC-03:** Lọc và tìm kiếm Ticket (A-STU-02-01, BR-STU-12) — *Đề xuất ở baseline 3.2, chờ trường xác nhận tại [OQ-09](../../08-project/open-questions.md)*
   - Given: SV-MOCK-01 có `AU-2026-0001` (Mới tạo, "Xin giấy xác nhận"), `AU-2026-0002` (Cần bổ sung, "Học phí kỳ 2"), `AU-2026-0003` (Hoàn thành, "Đổi lớp"). SV-MOCK-02 có `AU-2026-0004` (Cần bổ sung, "Học phí").
   - When: SV-MOCK-01 lọc "Cần bổ sung"; tìm "0003"; tìm "hoc phi"; tìm "abc".
   - Then: Lần lượt chỉ thấy `AU-2026-0002`; chỉ `AU-2026-0003`; chỉ `AU-2026-0002`; thông báo "Không tìm thấy yêu cầu phù hợp". `AU-2026-0004` không xuất hiện ở lần nào.
@@ -206,7 +206,7 @@ Ticket đang ở trạng thái "Hoàn thành".
   - Given: Ticket đã ở trạng thái "Hoàn thành" cách đây 4 ngày.
   - When: Sinh viên vào xem chi tiết Ticket.
   - Then: Nút "Mở lại yêu cầu" không còn xuất hiện. Gọi API trực tiếp bị từ chối và Ticket giữ trạng thái "Hoàn thành".
-- **FR-STU-04/AC-03:** Lý do bắt buộc và thông báo cán bộ (BR-STU-13, E-STU-10)
+- **FR-STU-04/AC-03:** Lý do bắt buộc và thông báo cán bộ (BR-STU-13, E-STU-10) — *Đề xuất ở baseline 3.2, chờ trường xác nhận tại [OQ-09](../../08-project/open-questions.md)*
   - Given: Ticket của SV-MOCK-01 Hoàn thành cách đây 1 ngày, Staff A đang phụ trách.
   - When: Gửi mở lại với lý do trống, với lý do 9 ký tự (qua giao diện và API), rồi với lý do "Kết quả chưa đúng học kỳ".
   - Then: Hai lần đầu bị từ chối, Ticket giữ "Hoàn thành" và không phát sinh thông báo. Lần cuối Ticket chuyển "Đang xử lý", lý do lưu vào lịch sử và Staff A có đúng một thông báo trong hệ thống chứa lý do và liên kết Ticket.
