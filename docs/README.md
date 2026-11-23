@@ -61,7 +61,7 @@
 | **Mã giá theo vai trò, gói** | `DG01` – `DG11` | `docs/08-project/quotation.xlsx` sheet Đơn giá; dùng lại ở sheet Chi tiết effort và Resources của Master Plan | Vai trò hoặc gói, đơn giá |
 | **Phương án kế hoạch chưa áp dụng** | `P-01` – `P-04` | `docs/08-project/master-plan.xlsx` sheet Change Log, bảng phương án | Sheet tính toán, câu hỏi mở liên quan |
 | **Chỉ số giá trị** | `SM-01` – `SM-07` | `docs/10-product-management/success-metrics.md` | Mục tiêu, cách đo, người theo dõi |
-| **Câu hỏi mở** | `OQ-01` – `OQ-08` | `docs/08-project/open-questions.md` | Người chốt, hạn chốt, mốc hoặc task bị chặn |
+| **Câu hỏi mở** | `OQ-01` – `OQ-09` | `docs/08-project/open-questions.md` | Người chốt, hạn chốt, mốc hoặc task bị chặn |
 | **Rủi ro** | `R-01` – `R-13` | `docs/08-project/master-plan.xlsx` sheet Risk Register, dẫn từ `risk-register.md` | Chủ sở hữu (Owner), giải pháp ứng phó |
 | **Change Request** | `CR-xx` | GitHub Issues (nhãn `change-request`) | Tài liệu và task đã cập nhật |
 | **Giả định** | `A-xx` | `docs/08-project/proposal.docx` mục 3, dẫn từ `assumptions.md` | Tác động và trạng thái |

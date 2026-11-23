@@ -10,14 +10,14 @@ Hệ thống quản lý và xử lý yêu cầu hỗ trợ tập trung cho sinh 
 
 ## Thành viên nhóm thực hiện
 
-| MSSV | Họ tên | Trách nhiệm tài liệu đề xuất |
-| --- | --- | --- |
-| 23090009  | Trần Vĩnh Đại | Proposal, Quản lý chất lượng, Quản lý sản phẩm |
-| 23090011 | Nguyễn Thành An | Team Charter, Git |
-| 23090017 | Phùng Ngô Huy Bảo | Master Plan, Quản trị và giám sát, Báo giá |
-| 23090020 | Huỳnh Hữu Như Mẫn | PRD, Review |
+| MSSV | Họ tên | GitHub | Trách nhiệm tài liệu đề xuất |
+| --- | --- | --- | --- |
+| 23090009 | Trần Vĩnh Đại | [@vinhdai123](https://github.com/vinhdai123) | Proposal, Quản lý chất lượng, Quản lý sản phẩm |
+| 23090011 | Nguyễn Thành An | [@Catra12](https://github.com/Catra12) | Team Charter, Git |
+| 23090017 | Phùng Ngô Huy Bảo | [@Huybao312](https://github.com/Huybao312) | Master Plan, Quản trị và giám sát, Báo giá |
+| 23090020 | Huỳnh Hữu Như Mẫn | [@manhuynh061105](https://github.com/manhuynh061105) | PRD, Review |
 
-MSSV và phân công tài liệu theo bản README được nhóm cập nhật tại commit dfe998d. Feedback của môn học được theo dõi bằng Issue nhãn `course-feedback`, tách khỏi hồ sơ dự án trong `docs/`. Reviewer, dự phòng và quyền merge được xác nhận theo Team Charter. Ánh xạ tên với tài khoản GitHub do thành viên bổ sung.
+MSSV và phân công tài liệu theo bản README được nhóm cập nhật tại commit dfe998d. Feedback của môn học được theo dõi bằng Issue nhãn `course-feedback`, tách khỏi hồ sơ dự án trong `docs/`. Reviewer, dự phòng và quyền merge được xác nhận theo Team Charter. Ánh xạ tài khoản GitHub đã được nhóm xác nhận (OQ-01).
 
 ---
 

@@ -8,7 +8,7 @@ PM theo dõi quyết định và bằng chứng trên Issue. Nếu quyết đị
 
 | Mã | Nội dung | Người chốt | Hạn chốt | Hạn muộn nhất và việc bị chặn | Trạng thái |
 | --- | --- | --- | --- | --- | --- |
-| `OQ-01` | Tài khoản GitHub nào tương ứng với từng thành viên đã ghi trong README? | Trưởng ban quản lý dự án | 09/10/2026 (WBS 1.1) | 27/11/2026: gán assignee cho task MS-03 (#60, #68) | Mở — quá hạn chốt |
+| `OQ-01` | Tài khoản GitHub nào tương ứng với từng thành viên đã ghi trong README? | Trưởng ban quản lý dự án | 09/10/2026 (WBS 1.1) | — | **Đã chốt** 23/11/2026. Ánh xạ tại bảng thành viên trong [README](../../README.md#thành-viên-nhóm-thực-hiện). |
 | `OQ-02` | Ban quản lý chốt những điều khoản nào trong [Team Charter 2.4](team-charter.md#11-xác-nhận-và-duy-trì-charter)? | Ban quản lý dự án, ít nhất 3/4 thành viên | 27/11/2026 | 27/11/2026: quyền merge và reviewer độc lập cho PR từ MS-03 | Mở — chờ biểu quyết |
 | `OQ-03` | Cửa sổ mở lại 72 giờ và trạng thái khi mở lại hoặc hết hạn ([BR-05](../02-domain/business-rules.md)). | Đại diện nghiệp vụ Aurora University; PM/BA chuẩn bị | 06/11/2026 (MS-01, A-06) | 25/12/2026: WBS 4.5 mở lại và CSAT (bắt đầu 28/12) | Mở — quá hạn chốt |
 | `OQ-04` | Loại, số lượng và dung lượng tệp được phép ([BR-02](../02-domain/business-rules.md)). | Đại diện nghiệp vụ và CNTT Aurora University | 06/11/2026 (MS-01, A-06) | 27/11/2026: WBS 4.1 tạo Ticket kèm tệp (bắt đầu 30/11) | Mở — quá hạn chốt |
